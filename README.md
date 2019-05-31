@@ -123,6 +123,16 @@
 3. [k8s](./tool/3)
 4. [正则](./tool/4)
 ## web前端
+1. [SEO](./webF/1)
+2. [CSS选择器种类](./webF/2)
+3. [CSS Sprite](./webF/3)
+4. [link和import](./webF/4)
+5. [flex布局](./webF/5)
+6. [水平居中和竖直居中](./webF/6)
+7. [Fetch API使用以及跨域问题](./webF/7)
+8. [JSONP](./webF/8)
+9. [懒加载](./webF/9)
+10. [渐进增强](./webF/10)
 
 ***
 
