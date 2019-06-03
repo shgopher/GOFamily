@@ -177,8 +177,6 @@
 
 > 推荐[LeetCode](https://leetcode-cn.com)去具体使用算法
 
-> 这里我将我认为非常优秀的[LeetCode题目](https://github.com/googege/amazingLeetcode)总结了一下
-
 1. [链表（单向，双向，循环）](./al/2)
 3. [线性表](./al/3)
 4. [堆， 可以使用数组来实现，是一个平衡二叉树](./al/4)
