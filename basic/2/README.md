@@ -12,7 +12,7 @@ sl := struct{
 //比如sl[:8]
 
 sl= struct{
-  *a
+  &a
   8
   10
 }
