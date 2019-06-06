@@ -1,5 +1,42 @@
 ## 数组
 
+### 基本储存类型
+
+其中的bit的单位是位 也就是 二进制中的位数 比如 10010就是5位
+
+1 Byte（B） = 8 bit
+
+1 Kilo Byte（KB） = 1024B
+
+1 Mega Byte（MB） = 1024 KB
+
+1 Giga Byte （GB）= 1024 MB
+
+1 Tera Byte（TB）= 1024 GB
+
+1 Peta Byte（PB） = 1024 TB
+
+1 Exa Byte（EB） = 1024 PB
+
+1 Zetta Byte（ZB） = 1024 EB
+
+1Yotta Byte（YB）= 1024 ZB
+
+1 Bronto Byte（BB） = 1024 YB
+
+1Nona Byte（NB）=1024 BB
+
+1 Dogga Byte（DB）=1024 NB
+
+1 Corydon Byte（CB）=1024DB
+
+1 Xero Byte （XB）=1024CB
+
+例如int类型就是32位，也就是一个int是 00001111100 （32个组成的）所以它的占有的byte大小就是4 也就是下面说到的 1000 - 1003 这说明的单位是byte 也就是字节。不是比特。
+
+顺便提一下 带宽的单位是bit 比如说 8Mbit 我们翻译一下就是 9m的比特带宽 转化成 bite就是 1mbyte 然后带宽都是秒嘛 所以 下载的速度就是 1Mbyte/s 等于8Mbit/s  通常我们都用byte为最小单位,因为bit 这个单位太小了。一个bit类型才装一个二进制的数字，一个 int就需要32个数字。
+
+> PS : bite 使用b作为缩写 Byte使用B 作为缩写，所以这里打大小写不能搞错了。 
 ### 数组长什么样？
 
 |下标|数组(连续排列的内存空间)要求类型必须一样|内存空间地址|
