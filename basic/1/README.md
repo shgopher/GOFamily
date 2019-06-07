@@ -4,6 +4,33 @@
 ### 实现单向,双向，循环链表以及增删操作
 [实现代码,以及具体的代码分析](./1.go)
 ### 实现单向链表的反转
+
+```go
+func (l *LinkedList) Reverse() {
+	now := l.head.next
+	var pre *sNode = nil
+	for now != nil {
+		tem := now.next // 已经记录好了下一位
+		now.next = pre // 将 now.next 改写成 前一个now
+		pre = now  // pre 就是前一个now
+		now = tem // now 等于下一位
+	}
+	l.head.next = pre
+}
+
+//举个例子：
+
+0 - 1-2-3-4-5-6
+//第一次 now等于1 pre等于nil tem等于2 now.next=nil pre= 1 now = 2 这个时候的链表是 0-1-nil
+//第二次 now等于2 tem等于3 now.next 等于1 pre等于2 now 等于3 链表是 0-2-1 剩余 3456 
+//第三次 now等于3 tem等于4 now.next 等于2 now等于4 pre 等于 3链表是 0-4-2-1 剩余 456 
+//第四次 now等于4 tem等于5 now.next 等于3 now等于5 pre等于4 链表是 0-5--4-3-2-1 剩余 56
+//第五次 now等于5 tem等于6 ...  剩余 6
+//now等于6 tem等于nil now.next = 5 now = nil 
+//然后 将这个链表的 跟liknklist挂钩也牛市 l.head.next = pre 即可
+
+```
+
 [实现代码,以及具体的代码分析](./2.go)
 ### 实现两个有序链表合并为一个有序链表
 [实现代码,以及具体的代码分析](./3.go)
