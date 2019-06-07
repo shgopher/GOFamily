@@ -16,7 +16,7 @@ func TestRange(t *testing.T) {
 	list.Range()
 }
 
-var listD = newListD(00)
+var listD = newListD()
 
 func TestLinkedList_Range(t *testing.T) {
 

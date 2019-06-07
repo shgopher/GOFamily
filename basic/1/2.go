@@ -2,6 +2,9 @@
 package main
 
 func(l *LinkedList ) turn(){
+	if l.length == 0 {
+		return
+	}
 	now := l.head
 	for now.next != nil {
 		now = now.next

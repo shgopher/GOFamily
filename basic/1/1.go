@@ -132,12 +132,12 @@ type LinkedListD struct {
 	length int
 }
 
-func newListD(ele interface{}) *LinkedListD {
+func newListD() *LinkedListD {
 	return &LinkedListD{
 		head: &dNode{
 			prev:  nil,
 			next:  nil,
-			value: ele,
+			value: nil,
 		},
 		length: 0,
 	}
