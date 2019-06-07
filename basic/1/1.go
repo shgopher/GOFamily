@@ -112,6 +112,17 @@ func (l *LinkedList) Range() {
 	fmt.Println(now.value)
 }
 
+func (l *LinkedList) Reverse() {
+	now := l.head.next
+	var pre *sNode = nil
+	for now != nil {
+		now.next = pre
+		pre = now
+		now = now.next
+	}
+	l.head.next = pre
+}
+
 /*
 
 下面👇  是双链表的基本操作
