@@ -15,13 +15,13 @@ type LinkedList struct {
 
 func (l *LinkedList) MoveTOHead(this *Node) {
 	next := this.next
-	now := l.head.next
-	for now.next != nil {
-		if now.next == this {
+	cur := l.head.next
+	for cur.next != nil {
+		if cur.next == this {
 			break
 		}
 	}
-	now.next = next
+	cur.next = next
 	this.next = l.head.next
 	l.head.next = this
 }
