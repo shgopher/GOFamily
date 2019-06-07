@@ -204,3 +204,17 @@ func (l *LinkedListD) Search(ele interface{}) *dNode {
 	}
 	return now
 }
+
+func (l *LinkedListD) SearchByLength(num int) *dNode {
+	if num > l.length {
+		return nil
+	}
+	now := l.head
+	i := 0
+	for i < num {
+		now = now.next
+		i++
+	}
+	return now
+
+}
