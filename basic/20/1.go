@@ -7,11 +7,18 @@ package main
 
 //首先我们要实现 栈的 出栈和入栈，以及查阅栈顶这三个功能，然后我将使用两种方式进行选择，然后我们再实现 前进和后退这个功能
 
-// 
+//
 type stackSlice struct {
+	value  []interface{}
+	length int
 }
-
+type node struct {
+	value interface{}
+	next  *node
+}
 type stackLinkedList struct {
+	length int
+	head   *node
 }
 
 type Bower struct {
