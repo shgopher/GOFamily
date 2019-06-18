@@ -24,3 +24,49 @@ type StackLinkedList struct {
 	length int
 	head   *node
 }
+
+type Stack interface {
+	Top() (url string)
+	In(url string)
+	Out() (url string)
+	Length() int
+	Add()
+	Delete()
+}
+
+type Bower struct {
+	a1 Stack // 第一个 栈
+	a2 Stack // 第二个栈
+}
+
+// new一个新的Bower
+func NewBower(a1, a2 Stack) *Bower {
+	return &Bower{
+		a1: a1,
+		a2: a2,
+	}
+}
+
+// 前进
+func (b *Bower) GO(url string) string {
+
+	if b.a2.Length() <= 0 {
+		b.a1.In(url)
+		return url
+	} else {
+		url := b.a2.Out()
+		b.a1.In(url)
+		return url
+	}
+}
+
+//后退
+func (b *Bower) Back() string {
+	if b.a1.Length() <= 0 {
+		return ""
+	} else {
+		url := b.a1.Out()
+		b.a2.In(url)
+		return b.a1.Top()
+	}
+}
