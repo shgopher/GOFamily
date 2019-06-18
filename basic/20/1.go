@@ -8,7 +8,7 @@ package main
 //首先我们要实现 栈的 出栈和入栈，以及查阅栈顶这三个功能，然后我将使用两种方式进行选择，然后我们再实现 前进和后退这个功能
 
 // 数组形式的栈
-type stackSlice struct {
+type StackSlice struct {
 	value  []interface{}
 	length int
 }
@@ -20,7 +20,7 @@ type node struct {
 }
 
 // 链表形式的栈
-type stackLinkedList struct {
+type StackLinkedList struct {
 	length int
 	head   *node
 }
@@ -38,4 +38,42 @@ func GO(b Bower) {
 
 func Back(b Bower) {
 	b.Back()
+}
+
+// new 一个新的SatckSlice
+func NewSlice() *StackSlice {
+	return &StackSlice{}
+}
+
+// new 一个新的StackLinkedList
+func NewList() *StackLinkedList {
+	return &StackLinkedList{}
+}
+
+// 数组类型实现栈
+func (sli *StackSlice) In() {
+
+}
+func (sli *StackSlice) Out() {
+
+}
+func (sli *StackSlice) Next() {
+
+}
+func (sli *StackSlice) Back() {
+
+}
+
+// 链表类型实现栈
+func (sli *StackLinkedList) In() {
+
+}
+func (sli *StackLinkedList) Out() {
+
+}
+func (sli *StackLinkedList) Next() {
+
+}
+func (sli *StackLinkedList) Back() {
+
 }
