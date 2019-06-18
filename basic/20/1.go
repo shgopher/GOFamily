@@ -9,7 +9,7 @@ package main
 
 // 数组形式的栈
 type StackSlice struct {
-	value  []interface{}
+	value  []string
 	length int
 }
 
@@ -30,8 +30,6 @@ type Stack interface {
 	In(url string)
 	Out() (url string)
 	Length() int
-	Add()
-	Delete()
 }
 
 type Bower struct {
@@ -69,4 +67,66 @@ func (b *Bower) Back() string {
 		b.a2.In(url)
 		return b.a1.Top()
 	}
+}
+
+// 使用数组来实现 Stack
+func (s *StackSlice) Top() (url string) {
+	return s.value[s.Length()-1]
+}
+func (s *StackSlice) In(url string) {
+	s.value = append(s.value, url)
+
+}
+func (s *StackSlice) Out() (url string) {
+	if s.Length() == 0 {
+		return ""
+	}
+	u := s.value[s.Length()-1]
+	s.value = s.value[:s.Length()-1]
+	return u
+}
+func (s *StackSlice) Length() int {
+	return len(s.value)
+}
+
+// 使用 链表的方式来实现 Stack
+
+func (s *StackLinkedList) Top() (url string) {
+	return s.PointerByNumber(s.length).value.(string)
+
+}
+func (s *StackLinkedList) In(url string) {
+	t := s.PointerByNumber(s.length)
+	t.next = &node{
+		value: url,
+		next:  nil,
+	}
+	s.length++
+}
+func (s *StackLinkedList) Out() (url string) {
+	if s.length <= 0 {
+		return ""
+	}
+	r := s.PointerByNumber(s.length)
+	s.length--
+	r1 := s.PointerByNumber(s.length)
+	r1.next = nil
+	return r.value.(string)
+}
+func (s *StackLinkedList) Length() int {
+	return s.length
+}
+
+func (s *StackLinkedList) PointerByNumber(num int) *node {
+	if num <= 0 {
+		return &node{
+			value: 0,
+			next:  nil,
+		}
+	}
+	curil := s.head.next // 第一个 （哨兵的下一个）
+	for i := 0; i < num-1; i++ {
+		curil = curil.next
+	}
+	return curil
 }
