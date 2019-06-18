@@ -40,8 +40,8 @@ func TestBower(t *testing.T) {
 
 	// 普通值
 	b1 := &StackLinkedList{}
-	b2 := &StackLinkedList{}
-	c := NewBower(b1, b2)
+	b22 := &StackLinkedList{}
+	c := NewBower(b1, b22)
 	c.GO("1")
 	c.GO("2")
 	c.GO("3")
@@ -60,8 +60,8 @@ func TestBower(t *testing.T) {
 
 	// 空
 	b21 := &StackSlice{}
-	b22 := &StackSlice{}
-	c2 := NewBower(b21, b22)
+	b222 := &StackSlice{}
+	c2 := NewBower(b21, b222)
 	fmt.Println(c2.Back())
 
 }

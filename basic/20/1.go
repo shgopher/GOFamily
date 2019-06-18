@@ -119,10 +119,11 @@ func (s *StackLinkedList) Length() int {
 
 func (s *StackLinkedList) PointerByNumber(num int) *node {
 	if num <= 0 {
-		return &node{
+		s.head = &node{
 			value: 0,
 			next:  nil,
 		}
+		return s.head
 	}
 	curil := s.head.next // 第一个 （哨兵的下一个）
 	for i := 0; i < num-1; i++ {
