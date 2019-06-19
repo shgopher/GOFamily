@@ -7,7 +7,7 @@ type Queue interface {
 	Out() (v interface{})
 }
 
-// 使用slice来实现一个队列
+// 使用循环slice来实现一个队列
 type QueueSlice struct {
 	trail  int
 	head   int
