@@ -269,6 +269,10 @@
 
 ***
 
+欢迎加入算法讨论群，这里不近有算法和数据结构，也有各种计算机技术的讨论
+
+![p](./joinUs.jpeg)
+***
 ☕️ 如果真的对你有所帮助,你可以请我喝杯咖啡,非常感谢。
 
 ![p](https://raw.githubusercontent.com/googege/Files/master/donate.png)
