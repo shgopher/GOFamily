@@ -34,3 +34,29 @@ func TestQueueLinkedList_Out(t *testing.T) {
 	fmt.Println(testLink.Out())
 
 }
+func TestQueueLinkedList_In2(t *testing.T) {
+	testLink.In("*")
+	testLink.In("**")
+	testLink.In("***")
+	testLink.In("****")
+	testLink.In("*****")
+	testLink.In("******")
+	testLink.In("*******")
+	testLink.In("********")
+	fmt.Println(testLink.length)
+}
+
+
+func TestQueueLinkedList_Out2(t *testing.T) {
+	fmt.Println(testLink.Out())
+	fmt.Println(testLink.Out())
+	fmt.Println(testLink.Out())
+	fmt.Println(testLink.Out())
+	fmt.Println(testLink.Out())
+	fmt.Println(testLink.Out())
+	fmt.Println(testLink.Out())
+	fmt.Println(testLink.Out())
+	fmt.Println(testLink.length)
+	fmt.Println(testLink.Out())
+
+}
