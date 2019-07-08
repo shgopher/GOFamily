@@ -5,6 +5,7 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 // 顺序
@@ -90,21 +91,49 @@ func (q *QueueSliceCycle) Out() (v interface{}) {
 	return q.value[now]
 }
 
-//// 阻塞
-//type QueueSliceCrimp struct {
-//	lock   sync.Mutex
-//	trail  int
-//	head   int
-//	length int
-//	value  []interface{}
-//}
-//
-//func (q *QueueSliceCrimp) In(v interface{}) {
-//
-//}
-//func (q *QueueSliceCrimp) Out() (v interface{}) {
-//
-//}
+// 阻塞
+type QueueSliceCrimp struct {
+	lock   sync.Mutex
+	trail  int
+	head   int
+	length int
+	value  []interface{}
+}
+
+func (q *QueueSliceCrimp) In(v interface{}) {
+L:
+	for {
+		if (q.trail+1)%len(q.value) == q.head {
+
+		} else {
+			break L
+		}
+		time.Sleep(time.Second / 10)
+	}
+
+	q.length++
+	now := (q.trail + 1) % len(q.value)
+	q.value[now] = v
+	q.trail = now
+
+}
+func (q *QueueSliceCrimp) Out() (v interface{}) {
+L:
+	for {
+		if q.head == q.trail {
+
+		} else {
+			break L
+		}
+		time.Sleep(time.Second / 100)
+	}
+
+	now := (q.head + 1) % len(q.value)
+	q.length--
+	q.head = now
+	return q.value[now]
+
+}
 
 // 并发加锁
 // 只需要 加上 sync.Mutext 即可。
