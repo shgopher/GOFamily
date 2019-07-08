@@ -42,12 +42,40 @@ func NewQueueLinkedList() *QueueLinkedList{
 }
 func(q *QueueLinkedList)In(v interface{}){
 	q.length++
-}
+	var now *node
+	if q.trail != nil {
+		now = &node{
+			value: v,
+			last:  q.trail,
+			next:  nil,
+		}
+		q.trail.next = now
 
+	}else {
+		now = &node{
+			value:v,
+			last:q.head,
+			next:nil,
+		}
+		q.head.next=now
+		now.last = q.head
+	}
+	q.trail = now
+}
+//
 func(q *QueueLinkedList)Out()(v interface{}){
 	if q.length <=0 {
 		return fmt.Errorf("错误，链表队列中没有数据。")
+	}else if q.length == 1 {
+		q.length--
+		q.trail = nil
+		return q.head.next.value
 	}
+	out := q.head.next
+	now := out.next
+	now.last = q.head
+	q.head.next = now
 	q.length--
+	return out.value
 }
 
