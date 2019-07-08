@@ -1,3 +1,4 @@
+//使用数组
 package main
 
 type Queue interface {
