@@ -21,3 +21,8 @@ func BenchmarkMao1(b *testing.B) {
 		Mao(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,)
 	}
 }
+
+func TestMao2(t *testing.T) {
+
+	fmt.Println("fan",Mao1(1,443,2333,556,4344,66534,4434,))
+}
