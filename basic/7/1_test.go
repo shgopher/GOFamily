@@ -10,15 +10,16 @@ func TestMao(t *testing.T) {
 	fmt.Println("0",Mao(0,0,0,0,0))
 }
 
+// 95 ns/op
 func BenchmarkMao(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Mao(1,32,23,23,2344,5534,23,1,1,323,323,22,55,13,67,7442,24245,5424,)
+		Mao(1,1,1,1,1,1,12,3,4,5,6,98,5)
 	}
 }
-
+// 118
 func BenchmarkMao1(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Mao(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,)
+		Mao1(1,1,1,1,1,1,12,3,4,5,6,98,5)
 	}
 }
 
