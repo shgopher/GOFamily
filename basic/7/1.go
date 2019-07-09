@@ -1,6 +1,7 @@
+// 冒泡 选择 插入
 package main
 
-//
+// 冒泡
 
 func Mao(x ...int)[]int{
 	for i := 0;i < len(x);i++ {
@@ -23,3 +24,6 @@ func Mao1(x...int) []int{
 	}
 	return x
 }
+
+
+// 选择
