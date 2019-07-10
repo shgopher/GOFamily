@@ -56,9 +56,9 @@ func Cha(x ...int) []int {
 
 // 插入排序的链表实现
 
-func ChaLinkedList(head interface{}) interface{}{
-	
-}
+//func ChaLinkedList(head interface{}) interface{}{
+//
+//}
 
 // 选择排序
 
