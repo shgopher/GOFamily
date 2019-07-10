@@ -37,3 +37,14 @@ func BenchmarkCha(b *testing.B) {
 		Cha(1,1,1,1,1,1,12,3,4,5,6,98,5)
 	}
 }
+
+func TestXu(t *testing.T) {
+	fmt.Println(Xu(1,1,1,1,1,1,12,3,4,5,6,98,5))
+}
+
+// 129
+func BenchmarkXu(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Xu(1,1,1,1,1,1,12,3,4,5,6,98,5)
+	}
+}

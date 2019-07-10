@@ -33,21 +33,39 @@ func Mao1(x ...int) []int {
 
 // 插入排序
 
-func Cha(x ...int)[]int{
+func Cha(x ...int) []int {
 	if len(x) == 0 {
-		return make([]int,0)
+		return make([]int, 0)
 	}
-	for i := 1; i < len(x);i++ {
+	for i := 1; i < len(x); i++ {
 		value := x[i]
-		j := i-1
-		for ;j >=0 ;j--  {
+		j := i - 1
+	L:
+		for ; j >= 0; j-- {
 			if x[j] > value {
-				x[j+1]= x[j] // 移动找位置
-			}else {
-				break
+				x[j+1] = x[j] // 移动找位置
+			} else {
+				break L
 			}
 		}
 		x[j+1] = value // 当后面的都往后移动了以后，那么就会在j+1的地方空出来一个位置。
+	}
+	return x
+}
+
+
+// 选择排序
+
+func Xu(x...int)[]int{
+	for i := 0 ;i < len(x)-1;i++ {
+		min := i
+		for j := i + 1; j < len(x); j++ {
+			if x[min] > x[j] {
+				min = j
+			}
+
+		}
+		x[i],x[min] = x[min],x[i]
 	}
 	return x
 }
