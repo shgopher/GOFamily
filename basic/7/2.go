@@ -36,19 +36,19 @@ func ShellSort(arr []int) []int {
 
 // 归并排序
 
-func mergeSort(arr []int) []int {
-	length := len(arr)
-	if length < 2 { // 当这个数组中的数据已经只有一个的时候，就可以返回了。
+func MergeSort(arr []int) []int {
+	n := len(arr)
+	if n < 2 {
 		return arr
 	}
-	middle := length / 2                            // 从中间劈开 分治的思想，一直将这些数据从中间劈开。
-	left := arr[0:middle]                           // 从中间劈开的左侧的数据
-	right := arr[middle:]                           // 右侧的数据
-	return merge(mergeSort(left), mergeSort(right)) // 合并 左侧的和右侧的数据，将左右两侧的数据开始 排序。
+
+	left := arr[0 : n/2]
+	right := arr[n/2:]
+	return merge(MergeSort(left), MergeSort(right))
 }
 
-func merge(left []int, right []int) []int {
-	var result []int
+func merge(left, right []int) []int {
+	result := make([]int, 0)
 	for len(left) != 0 && len(right) != 0 {
 		if left[0] <= right[0] {
 			result = append(result, left[0])
@@ -63,11 +63,9 @@ func merge(left []int, right []int) []int {
 		result = append(result, left[0])
 		left = left[1:]
 	}
-
 	for len(right) != 0 {
 		result = append(result, right[0])
 		right = right[1:]
 	}
-
 	return result
 }
