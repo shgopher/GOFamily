@@ -70,4 +70,8 @@ func merge(left, right []int) []int {
 	return result
 }
 
+
 // 快排
+func QuickSort(){
+
+}
