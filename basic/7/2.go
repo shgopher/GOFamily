@@ -66,12 +66,12 @@ func merge(left, right []int) []int {
 	for len(right) != 0 {
 		result = append(result, right[0])
 		right = right[1:]
-	}
+	}k
 	return result
 }
 
 
 // 快排
 func QuickSort(){
-
+	
 }
