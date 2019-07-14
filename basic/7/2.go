@@ -66,12 +66,34 @@ func merge(left, right []int) []int {
 	for len(right) != 0 {
 		result = append(result, right[0])
 		right = right[1:]
-	}k
+	}
 	return result
 }
 
-
 // 快排
-func QuickSort(){
-	
+func QuickSort(x []int) []int {
+	left := 0
+	right := len(x) - 1
+	return quickSort(left, right, x)
+}
+
+func quickSort(left int, right int, arr []int) []int {
+	if left < right {
+		m := pattion(left, right, arr)
+		quickSort(left, m-1, arr)
+		quickSort(m+1, right, arr)
+	}
+	return arr
+}
+func pattion(left int, right int, arr []int) int {
+	p := left
+	index := p + 1
+	for i := index; i <= right; i++ {
+		if arr[i] < arr[p] {
+			arr[i], arr[index] = arr[index], arr[i]
+			index += 1
+		}
+	}
+	arr[p], arr[index-1] = arr[index-1], arr[p]
+	return index - 1
 }
