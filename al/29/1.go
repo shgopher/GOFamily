@@ -1,28 +1,30 @@
 package TN
 
 // 快排
-func TOPKQuickSelect(x []int, k int) {
+func TOPKQuickSelect(x []int, k int) int {
 	left := 0
 	right := len(x) - 1
-	quickSort(left, right, x, k)
+	return quickSort(left, right, x, k)
 
 }
 
-func quickSort(left int, right int, arr []int, k int) {
+func quickSort(left int, right int, arr []int, k int) int {
+	tt := 0
 	if left < right {
 		b1, b2 := 0, 0
 		t, m := pattion(left, right, arr, k)
 		if t == 0 {
 			// fmt.Println(arr[m])
-			return
+			return arr[m]
 		}
 		if t == 1 {
 			b1, b2 = left, m-1
 		} else if t == 2 {
 			b1, b2 = m+1, right
 		}
-		quickSort(b1, b2, arr, k)
+		tt = quickSort(b1, b2, arr, k)
 	}
+	return tt
 }
 func pattion(left int, right int, arr []int, k int) (int, int) {
 	p := left

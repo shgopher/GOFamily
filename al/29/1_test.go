@@ -1,6 +1,7 @@
 package TN
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -205,11 +206,12 @@ var (
 )
 
 func TestTOPKQuickSelect(t *testing.T) {
-	TOPKQuickSelect(x, 4)
+	fmt.Println(TOPKQuickSelect(x, 30))
 }
 
+//  8472 ns/op
 func BenchmarkTOPKQuickSelect(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		TOPKQuickSelect(x, 3)
+		TOPKQuickSelect(x, 30)
 	}
 }
