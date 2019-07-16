@@ -27,6 +27,10 @@ func ERD(x []int, value int) int {
 	return eRD(x, low, heigh, value)
 }
 func eRD(x []int, low int, heigh int, value int) int {
+	if low > heigh {
+		return -1
+	}
+
 	middle := low + (heigh-low)>>1
 	result := 0
 	if low <= heigh {
