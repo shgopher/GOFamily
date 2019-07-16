@@ -54,7 +54,9 @@ func ER3(x []int, value int) int {
 
 		if x[middle] >= value {
 			if middle == 0 || x[middle-1] < value {
-				return middle - 1
+
+				// fmt.Println("测试这里", x[middle])
+				return middle
 			} else {
 				heigh = middle - 1
 			}
@@ -68,15 +70,15 @@ func ER3(x []int, value int) int {
 }
 
 //查找最后一个小于等于给定值的元素
-func ER3(x []int, value int) int {
+func ER4(x []int, value int) int {
 	low := 0
 	heigh := len(x) - 1
 	for low <= heigh {
 		middle := low + (heigh-low)>>1 // 这样为了防止 数字过大。
 
 		if x[middle] <= value {
-			if middle = n-1 || x[middle+1] > value {
-				return middle - 1
+			if middle == len(x)-1 || x[middle+1] > value {
+				return middle
 			} else {
 				low = middle + 1
 			}
