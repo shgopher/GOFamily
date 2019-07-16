@@ -44,3 +44,47 @@ func ER2(x []int, value int) int {
 	}
 	return -1
 }
+
+//查找第一个大于等于给定值的元素
+func ER3(x []int, value int) int {
+	low := 0
+	heigh := len(x) - 1
+	for low <= heigh {
+		middle := low + (heigh-low)>>1 // 这样为了防止 数字过大。
+
+		if x[middle] >= value {
+			if middle == 0 || x[middle-1] < value {
+				return middle - 1
+			} else {
+				heigh = middle - 1
+			}
+
+		} else {
+			low = middle + 1
+		}
+
+	}
+	return -1
+}
+
+//查找最后一个小于等于给定值的元素
+func ER3(x []int, value int) int {
+	low := 0
+	heigh := len(x) - 1
+	for low <= heigh {
+		middle := low + (heigh-low)>>1 // 这样为了防止 数字过大。
+
+		if x[middle] <= value {
+			if middle = n-1 || x[middle+1] > value {
+				return middle - 1
+			} else {
+				low = middle + 1
+			}
+
+		} else {
+			heigh = middle - 1
+		}
+
+	}
+	return -1
+}
