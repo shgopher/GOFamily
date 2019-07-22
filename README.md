@@ -170,6 +170,7 @@
 17. [栈](./basic/20)
 3. [队列](./basic/3)
 4. [二叉树](./basic/4)
+9. [二叉搜索树](./basic/25)
 18. [字典树](./basic/18)
 18. [红黑树](./basic/21)
 17. [HASH TABLE](./basic/17)
@@ -191,7 +192,6 @@
 > [**leetcode 解答**](https://github.com/googege/amazingLeetcode)
 
 1. [线性表](./al/3)
-9. [二叉搜索树](./al/9)
 10. [平衡二叉树](./al/10)
 18. [KMP](./al/18)
 19. [布隆过滤器](./al/19)
