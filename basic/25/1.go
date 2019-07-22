@@ -129,3 +129,17 @@ func findSmall(b *BinarySearchTree) (*BinarySearchTree, *BinarySearchTree) {
 	}
 	return b, b.left
 }
+
+func Delete1(b *BinarySearchTree, value int) {
+	for b != nil {
+		if value == b.value {
+			b.value = -10 // 将删除的数据标记为-10即可。 这样就不用真的删除了。
+		}
+		if value > b.value {
+			b = b.right
+		} else {
+			b = b.left
+		}
+	}
+
+}
