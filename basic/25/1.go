@@ -86,3 +86,46 @@ func Insert(root *BinarySearchTree, value int) *BinarySearchTree {
 	// 返回数据
 	return result
 }
+
+// 删除
+func Delete(b *BinarySearchTree, value int) {
+
+	// 子节点 没有孙子节点的
+	if value == b.left.value && b.left.left == nil && b.left.right == nil {
+		b.left = nil
+	} else if value == b.right.value && b.right.left == nil && b.right.right == nil {
+		b.right = nil
+	}
+	// 子节点只有一个孙子节点
+	if value == b.left.value && b.left.left == nil && b.left.right != nil && b.left.right.left == nil && b.left.right.right == nil {
+		b.left = b.left.left
+
+	} else if value == b.left.value && b.left.left != nil && b.left.right == nil && b.left.left.left == nil && b.left.left.right == nil {
+		b.left = b.left.right
+	} else if value == b.right.value && b.right.left == nil && b.right.right != nil && b.right.right.left == nil && b.right.right.right == nil {
+		b.right = b.right.right
+	} else if value == b.right.value && b.right.left != nil && b.right.right == nil && b.right.left.left == nil && b.right.left.right == nil {
+		b.right = b.right.left
+	}
+
+	// 子节点有很多节点
+
+	if value == b.left.value && b.left.left != nil && b.left.right != nil {
+		t, c := findSmall(b.right.right)
+		b.left = c
+		t.left = nil
+
+	} else if value == b.right.value && b.right.left != nil && b.right.right != nil {
+		t, c := findSmall(b.right.right)
+		b.right = c
+		t.left = nil
+
+	}
+
+}
+func findSmall(b *BinarySearchTree) (*BinarySearchTree, *BinarySearchTree) {
+	for b.left != nil {
+		b = b.left
+	}
+	return b, b.left
+}
