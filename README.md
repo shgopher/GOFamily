@@ -180,7 +180,7 @@
 9. [二叉搜索树](./basic/25)
 18. [红黑树](./basic/21)
 20. [递归树](./basic/24)
-18. [字典树](./basic/18)
+18. [trie字典树](./basic/18)
 17. [HASH TABLE](./basic/17)
 23. [HASH算法](./basic/23)
 5. [堆和堆排序](./basic/5)
@@ -199,7 +199,6 @@
 > [**leetcode 解答**](https://github.com/googege/amazingLeetcode)
 
 1. [线性表](./al/3)
-18. [KMP](./al/18)
 19. [布隆过滤器](./al/19)
 20. [负心算法](./al/20)
 23. [最小生成树](./al/23)
