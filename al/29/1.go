@@ -1,4 +1,4 @@
-package TN
+package main
 
 // 快排
 func TOPKQuickSelect(x []int, k int) int {

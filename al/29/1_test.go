@@ -1,4 +1,4 @@
-package TN
+package main
 
 import (
 	"fmt"
