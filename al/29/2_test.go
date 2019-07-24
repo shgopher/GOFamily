@@ -15,5 +15,5 @@ func TestTOPK(t *testing.T) {
 	h.Insert1(643)
 	h.Insert1(34)
 	h.Insert1(234)
-	fmt.Println("heap---???????????>>>", TOPK(3, h))
+	fmt.Println("heap--->>>", TOPK(3, h))
 }
