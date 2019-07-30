@@ -27,3 +27,13 @@ func (g *Graph) AddEdge(a, b int) {
 	g.adj[a].PushBack(b)
 	g.adj[b].PushBack(a)
 }
+
+// 广度优先搜索
+func (g *Graph) BFS() {
+
+}
+
+// 深度优先搜索
+func (g *Graph) DFS() {
+
+}
