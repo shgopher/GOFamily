@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestDFS(t *testing.T) {
 	g := NewGraph(100)
@@ -11,5 +14,6 @@ func TestDFS(t *testing.T) {
 	g.AddEdge(2, 3)
 	g.AddEdge(3, 5)
 	g.AddEdge(4, 5)
+	fmt.Println("深度优先")
 	g.DFS(0, 5)
 }
