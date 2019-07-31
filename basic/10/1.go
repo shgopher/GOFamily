@@ -33,10 +33,42 @@ func (g *Graph) AddEdge(a, b int) {
 	g.adj[b].PushBack(a)
 }
 
-// 广度优先搜索
+// 广度优先搜索 关键词 visited pre queue
 func (g *Graph) BFS(a, b int) {
+	var queue []int
 	if a == b {
 		return
+	}
+	pre := make([]int, g.v)
+	visited := make([]bool, g.v)
+	for k := range g.adj { // 将所有的顶点都设置为未访问
+		pre[k] = -1
+	}
+	visited[a] = true
+	isFound := false
+
+	for len(queue) > 0 && !isFound {
+		top := queue[0]                                 // 第一个顶点。
+		list := g.adj[top]                              // 这个是获取第一个顶点的链表
+		queue = queue[1:]                               // 队列队头出列
+		for i := list.Front(); i != nil; i = i.Next() { // 这个是为了遍历每个顶点中的链表中的顶点，然后将这些个顶点加入这个队列中。
+			value := i.Value.(int)
+			if !visited[value] {
+				pre[value] = top
+				if value == a {
+					isFound = true
+					break
+				}
+				queue = append(queue, value)
+				visited[value] = true
+			}
+
+		}
+	}
+	if !visited {
+		fmt.Println("找不到这个路径")
+	} else {
+		g.Range(pre, a, b)
 	}
 
 }
