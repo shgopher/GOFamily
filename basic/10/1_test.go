@@ -11,5 +11,5 @@ func TestWFS(t *testing.T) {
 	g.AddEdge(2, 3)
 	g.AddEdge(3, 5)
 	g.AddEdge(4, 5)
-	g.BFS(0, 5)
+	g.BFS(0, 9)
 }
