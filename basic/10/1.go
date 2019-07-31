@@ -55,7 +55,7 @@ L:
 			value := i.Value.(int)
 			if !visited[value] {
 				pre[value] = top
-				if value == a {
+				if value == b {
 					isFound = true
 					break L
 				}
