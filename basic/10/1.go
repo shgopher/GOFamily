@@ -82,7 +82,7 @@ func (g *Graph) Range(pre []int, a, b int) {
 	} else {
 		g.Range(pre, a, pre[b]) // 往前找路径。递归到a == b 或者 pre[b] = -1 就会跳出来。 其实就是那个TOp的值也就是上一个顶点的值。
 		fmt.Print(b, " -> ")    // 放到下面就可以在出栈的时候刚好以反方向然后输出。
-		ga
+
 	}
 
 }
