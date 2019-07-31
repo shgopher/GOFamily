@@ -44,8 +44,10 @@ func (g *Graph) BFS(a, b int) {
 	for k := range g.adj { // 将所有的顶点都设置为未访问
 		pre[k] = -1
 	}
-	visited[a] = true
-	isFound := false
+	// 设置初始量
+	visited[a] = true        // a 设置为已经访问过
+	isFound := false         // 查找到的标示为没有找到呢
+	queue = append(queue, a) // 将第一个a 加入到队列中。
 L:
 	for len(queue) > 0 && !isFound {
 		top := queue[0]                                 // 第一个顶点。
@@ -73,17 +75,17 @@ L:
 
 }
 
-// 深度优先搜索
-func (g *Graph) DFS() {
-
-}
-
 // 遍历搜索路径
 func (g *Graph) Range(pre []int, a, b int) {
 	if a == b || pre[b] == -1 {
-		fmt.Println(b)
+		fmt.Print(b, " -> ")
 	} else {
-		g.Range(pre, a, pre[b]) // 往前找路径。递归到a == b 或者 pre[b] = -1 就会跳出来。
-		fmt.Println(b)
+		g.Range(pre, a, pre[b]) // 往前找路径。递归到a == b 或者 pre[b] = -1 就会跳出来。 其实就是那个TOp的值也就是上一个顶点的值。
+		fmt.Print(b, " -> ")    // 放到下面就可以在出栈的时候刚好以反方向然后输出。
+		ga
 	}
+
+	//  递归是系统使用了 栈 这种结构，然后最开始的在第一个，然后一直往后加，然后再从最后的出栈，所以是先 输出了 0 也就是最后一个入栈的b
+	// 然后最后一个是第一个入栈的数据也就是5 所以最后的结果是0 。。。 5
+	// 事实上只有出栈才是运行函数的时候，入栈只是数据的初始化。
 }
