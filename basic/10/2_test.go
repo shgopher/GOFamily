@@ -15,5 +15,5 @@ func TestDFS(t *testing.T) {
 	g.AddEdge(3, 5)
 	g.AddEdge(4, 5)
 	fmt.Println("深度优先")
-	g.DFS(0, 5)
+	g.DFS(2, 5)
 }
