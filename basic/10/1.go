@@ -46,7 +46,7 @@ func (g *Graph) BFS(a, b int) {
 	}
 	visited[a] = true
 	isFound := false
-
+L:
 	for len(queue) > 0 && !isFound {
 		top := queue[0]                                 // 第一个顶点。
 		list := g.adj[top]                              // 这个是获取第一个顶点的链表
@@ -57,7 +57,7 @@ func (g *Graph) BFS(a, b int) {
 				pre[value] = top
 				if value == a {
 					isFound = true
-					break
+					break L
 				}
 				queue = append(queue, value)
 				visited[value] = true
@@ -65,7 +65,7 @@ func (g *Graph) BFS(a, b int) {
 
 		}
 	}
-	if !visited {
+	if !isFound {
 		fmt.Println("找不到这个路径")
 	} else {
 		g.Range(pre, a, b)
