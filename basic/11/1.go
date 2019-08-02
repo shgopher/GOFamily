@@ -1,16 +1,14 @@
 package main
 
 func P(m, p string) bool {
-	b := make([]string, len(p))
-	for i := 0; i < len(m)-len(p); i++ {
-		if i+len(p) > len(m) {
-			b = append(b, string(m[i:]))
+	for i := 0; i <= len(m)-len(p); i++ {
+		var a string
+		if i+len(p) >= len(m) {
+			a = string(m[i:])
 		} else {
-			b = append(b, string(m[i:i+len(p)]))
+			a = string(m[i : i+len(p)])
 		}
-	}
-	for i := 0; i < len(b); i++ {
-		if p == b[i] {
+		if a == p {
 			return true
 		}
 	}

@@ -6,7 +6,15 @@ import (
 )
 
 func TestP(t *testing.T) {
-	fmt.Println(P("tggigjrwefewfokjogrejgernvdmsfkewfoewfpogjhyryevfndjjd", "foew"))
+	fmt.Println(P("abcdefghijklmnopqrstuvwxyz", "abcde")) // 头
+	fmt.Println(P("abcdefghijklmnopqrstuvwxyz", "wxyz"))  // 尾
+	fmt.Println(P("abcdefghijklmnopqrstuvwxyz", "jklm"))  // 普通
+	fmt.Println(P("abcdefghijklmnopqrstuvwxyz", "bblm"))  // 没有
+	// true
+	// true
+	// true
+	// false
+
 }
 
 func BenchmarkP(b *testing.B) {
@@ -27,7 +35,6 @@ func BenchmarkP2(b *testing.B) {
 	}
 }
 
-//
-// BenchmarkP-4    	 2000000	       807 ns/op
-// BenchmarkP1-4   	 1000000	      1465 ns/op
-// BenchmarkP2-4   	  300000	      4295 ns/op
+// BenchmarkP-4    	10000000	       167 ns/op
+// BenchmarkP1-4   	 5000000	       342 ns/op
+// BenchmarkP2-4   	 2000000	       837 ns/op
