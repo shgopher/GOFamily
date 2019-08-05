@@ -15,10 +15,8 @@ func (t *Trie) Insert(word string) {
 	cur := t
 	for i, c := range word {
 		n := c - 'a'
-
 		if cur.children[n] == nil {
 			cur.children[n] = &Trie{}
-
 		}
 		cur = cur.children[n]
 		if i == len(word)-1 {
@@ -28,7 +26,7 @@ func (t *Trie) Insert(word string) {
 	}
 }
 
-func (t *Trie) Search(word string) bool {
+func (t *Trie) isHave(word string) bool {
 	cur := t
 	for _, c := range word {
 		n := c - 'a'
@@ -41,16 +39,29 @@ func (t *Trie) Search(word string) bool {
 }
 
 // Returns if there is any word in the trie that starts with the given prefix.
-func (t *Trie) StartsWith(prefix string) (bool, []string) {
+func (t *Trie) StartsWith(prefix string) (value []string) {
 	cur := t
-	var result []string
+	result := make([][]string, 0)
 	for _, c := range prefix {
 		n := c - 'a'
 		if cur.children[n] == nil {
-			return false, nil
+			return nil
 		}
 		cur = cur.children[n]
-		result = append(result, cur)
 	}
-	return true, result
+	rang(cur)
+}
+
+func rang(t *Trie, result []int) {
+if t == nil {
+  return
+}
+  cur := t
+	for k,v :=  cur.children {
+    if k > 0 {
+      smallResult := make([]string,26)
+      result = append(result,smallResult)
+        rang(v,result)
+    }
+  }
 }
