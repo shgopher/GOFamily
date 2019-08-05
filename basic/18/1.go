@@ -52,6 +52,7 @@ func (t *Trie) StartsWith(prefix string) (value []string) {
 	rang(cur)
 }
 
+// todo 此处应该适用DFS来写。这里写的rang函数不正确
 func rang(t *Trie, result []int) {
 if t == nil {
   return
