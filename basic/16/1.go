@@ -1,8 +1,6 @@
 // 动态规划下的背包问题。
 package main
 
-import "fmt"
-
 var (
 	ZW     int   // 载重
 	a      []int // 重量的数组
@@ -28,7 +26,6 @@ func DPPackage(zw int, a []int, result *int, status [][]int) {
 	}
 	for n := zw; n >= 0; n-- {
 		if status[len(a)-1][n] == 1 {
-			fmt.Println(n)
 			*result = n
 			returng
 		}
