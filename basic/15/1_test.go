@@ -24,5 +24,14 @@ func TestBei1(t *testing.T) {
 	fmt.Println(result)
 }
 
+//   112 ns/opg
+func BenchmarkBei(b *testing.B) {
+
+	result := 0
+	for i := 0; i < b.N; i++ {
+		Bei(0, a2, 0, maxWgith2, &result)
+	}
+}
+
 // 17
 // 13
