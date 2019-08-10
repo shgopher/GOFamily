@@ -27,7 +27,7 @@ func DPPackage(zw int, a []int, result *int, status [][]int) {
 	for n := zw; n >= 0; n-- {
 		if status[len(a)-1][n] == 1 {
 			*result = n
-			returng
+			return
 		}
 	}
 }
