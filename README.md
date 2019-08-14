@@ -36,7 +36,7 @@
 14. [缓存cpu缓存](./system/14)
 ## 计算机网络
 1. [计算机5层分类网络](./network/1)
-2. [TCP/IP协议，IPV4和IPV6](./network/2)
+2. [IP协议，IPV4和IPV6](./network/2)
 3. [以太网和帧](./network/3)
 4. [集线器，交换机，和路由器](./network/4)
 5. [IP数据报常见字段](./network/5)
