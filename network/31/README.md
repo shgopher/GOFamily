@@ -1,2 +1,3 @@
 # IO复用
-IO复用是通过某种机制对于多个socket，哪个socket哪个数据变的可读，使用recvform把数据从内核缓冲区复制到进程缓存区。
+
+IO复用是通过某种机制对于多个socket，哪个socket数据变的可读，使用recvform把数据从内核缓冲区复制到进程缓存区。
