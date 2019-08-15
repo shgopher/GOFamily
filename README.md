@@ -67,8 +67,8 @@
 29. [HTTP和FTP](./network/29)
 33. [keep-alive字段](./network/33)
 ***
-30. [五种Socket的模型](./network/30)
-31. [Select，Poll和Epoll](./network/31)
+30. [IO模型](./network/30)
+31. [IO复用 Select，Poll和Epoll](./network/31)
 32. [Epol的水平触发和边缘触发](./network/32)
 ## 设计模式
 
