@@ -48,9 +48,9 @@
 11. [四次挥手](./network/11)
 12. [Time_Wait](./network/12)
 13. [TCP的几个特性](./network/13)
-14. [Web 页面请求过程](./network/14)
+14. [dns](./network/14)
 15. [TCP粘包](./network/15)
-16. [TCP阻塞控制](./network/16)
+16. [TCP阻塞控制详解](./network/16)
 17. [建立TCP连接后为什么还要发送确认?](./network/17)
 ***
 18. [GET和POST](./network/18)
