@@ -114,7 +114,7 @@
 1. [XSS](./safe/1)
 2. [CSRF](./safe/2)
 3. [SQL注入](./safe/3)
-4. [DOS,DDOS](./safe/4)
+4. [DDOS](./safe/4)
 5. [伪随机数和真随机数](./safe/5)
 ## GO
 
