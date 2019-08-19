@@ -1,0 +1,6 @@
+# context包
+
+context包是为了处理goruntime之间的关系，为了控制主goruntine和子goruntine的关系而应运而生的包,
+在父goruntine中调用一个context.WithTimeOut()的时候就可以把返回的ct给子goruntine来使用，
+然后子goruntine中使用一个ctx.Done()的一个chan（配合使用selsect）就可以实现在父goruntine设置的时间后
+子goruntine自动退出，等等操作。
