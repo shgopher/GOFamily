@@ -11,9 +11,9 @@
 
 <br/>
 
-|必备工具|数据库|web 技术|计算机编译原理|计算机组成原理|机器学习|区块链技术|云计算|
-|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
-|[🍪](#必备工具)|[🧀](#数据库)|[🥔](#web技术)|[🥟](#编译原理)|[🍞](#计算机组成原理)|[🍙](#机器学习)|[🍔](#区块链技术)|[☁️](#云计算技术)|
+|必备工具|数据库|web 技术|计算机编译原理|计算机组成原理|
+|:------:|:------:|:------:|:------:|:------:|
+|[🍪](#必备工具)|[🧀](#数据库)|[🥔](#web技术)|[🥟](#编译原理)|[🍞](#计算机组成原理)|
 
 [HERE](#HERE)
 <br/>
@@ -267,12 +267,6 @@
 ## 计算机组成原理
 1. [计算机系统概论](./computer/1)
 2. [浮点数](./computer/2)
-## 机器学习
-1. [机器学习的概论](./machineLearning/1)
-## 区块链技术
-1. [区块链技术的概论](./chain/1)
-## 云计算技术
-1. [云计算技术的概论](./cloud/1)
 
 ## HERE
 
@@ -282,7 +276,7 @@
 ***
 ☕️ 如果真的对你有所帮助,你可以请我喝杯咖啡,非常感谢。
 
-![p](https://raw.githubusercontent.com/googege/Files/master/donate.png)
+![p](https://raw.githubusercontent.com/basicExploration/Demos/master/donate.png)
 ***
 [推荐VPS服务器](https://app.cloudcone.com/?ref=2525)
 
@@ -292,6 +286,6 @@
 
 ***
 
-如有转载，请标注: "转载于: https://github.com/googege/AMAC  作者: googege"
+如有转载，请标注: "转载于: https://github.com/basicExploration/AMAC  作者: googege"
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a>进行许可。
