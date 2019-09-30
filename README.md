@@ -165,9 +165,9 @@
 34. [redis 数据类型等基础知识](./db/33)
 ## 基础算法和数据结构
 
-> [**算法实战解答**](https://github.com/googege/CoolCode)
+> [**算法实战解答**](https://github.com/basicExploration/CoolCode)
 
-> [**面试问题大汇总**](https://gitub.com/googege/interviewQuestions)
+> [**面试问题大汇总**](https://gitub.com/basicExploration/interviewQuestions)
 
 1. [计算时间复杂度和空间复杂度](./basic/19)
 7. [排序算法](./basic/7)
