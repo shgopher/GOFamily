@@ -165,6 +165,10 @@
 34. [redis 数据类型等基础知识](./db/33)
 ## 基础算法和数据结构
 
+> [**算法实战解答**](https://github.com/googege/CoolCode)
+
+> [**面试问题大汇总**](https://gitub.com/googege/interviewQuestions)
+
 1. [计算时间复杂度和空间复杂度](./basic/19)
 7. [排序算法](./basic/7)
 12. [递归](./basic/12)
@@ -192,9 +196,6 @@
 19. [!跳表](./basic/22)
 ## 算法和数据结构
 
-> [**leetcode 解答**](https://github.com/googege/amazingLeetcode)
-
-> [**面试问题大汇总**](https://gitub.com/googege/interviewQuestions)
 1. [线性表](./al/3)
 2. [搜索引擎算法](./al/1)
 3. [高性能并发队列](./al/2)
