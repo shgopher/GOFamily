@@ -288,12 +288,7 @@
 
 ![p](https://raw.githubusercontent.com/basicExploration/Demos/master/donate.png)
 ***
-[推荐VPS服务器](https://app.cloudcone.com/?ref=2525) 【网站被qiang了】
-
-[VPS网站使用说明](https://www.bilibili.com/video/av38630366)
-
-*可支持 **支付宝支付**, 个人提子使用版本 2刀/月，`1T`流量 ，最高`1Gb`带宽， 速度测试:基本上在`1M/s` 以上,最高速度能达到`8M/s`(联通4g)*
-
+[推荐ssr机场服务-轻松科学上网](https://justmysocks.net/members/aff.php?aff=7983) 【挂梯子访问】
 ***
 
 如有转载，请标注: "转载于: https://github.com/basicExploration/AMAC  作者: googege"
