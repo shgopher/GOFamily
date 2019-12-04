@@ -275,6 +275,9 @@
 ## HERE
 
 欢迎加入算法讨论群，这里不仅有算法和数据结构，也有各种计算机技术的讨论
+***
+[推荐ssr机场服务-轻松科学上网](https://justmysocks.net/members/aff.php?aff=7983) 【挂梯子访问】
+***
 
 **QQ群**
 
@@ -287,9 +290,7 @@
 ☕️ 如果真的对你有所帮助,你可以请我喝杯咖啡,非常感谢。
 
 ![p](https://raw.githubusercontent.com/basicExploration/Demos/master/donate.png)
-***
-[推荐ssr机场服务-轻松科学上网](https://justmysocks.net/members/aff.php?aff=7983) 【挂梯子访问】
-***
+
 
 如有转载，请标注: "转载于: https://github.com/basicExploration/AMAC  作者: googege"
 
