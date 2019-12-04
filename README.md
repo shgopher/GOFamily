@@ -288,7 +288,7 @@
 
 ![p](https://raw.githubusercontent.com/basicExploration/Demos/master/donate.png)
 ***
-[推荐VPS服务器](https://app.cloudcone.com/?ref=2525)
+[推荐VPS服务器](https://app.cloudcone.com/?ref=2525) 【网站被qiang了】
 
 [VPS网站使用说明](https://www.bilibili.com/video/av38630366)
 
