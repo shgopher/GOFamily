@@ -281,11 +281,11 @@
 
 **QQ群**
 
-![p](./joinUs.png)
+![p](./https://raw.githubusercontent.com/basicExploration/AMAC/master/joinUs.png)
 
 **微信公众号**
 
-![p](./joinUsW.jpg)
+![p](./https://raw.githubusercontent.com/basicExploration/AMAC/master/joinUsW.png)
 ***
 ☕️ 如果真的对你有所帮助,你可以请我喝杯咖啡,非常感谢。
 
