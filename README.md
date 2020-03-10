@@ -1,7 +1,6 @@
 # AMAC
 
 ![p](./amac.png)
-[HERE](#HERE)
 ## 概括
 ![p1](./title.png)
 <br/>
