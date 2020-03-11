@@ -1,6 +1,4 @@
-# AMAC
-
-![p](./amac.png)
+# GOFamily
 ## 概括
 ![p1](./title.png)
 <br/>
