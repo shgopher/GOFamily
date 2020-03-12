@@ -11,13 +11,9 @@
 
 欢迎加入算法讨论群，这里不仅有算法和数据结构，也有各种计算机技术的讨论
 
-**QQ群**
-
-![p](https://raw.githubusercontent.com/googege/AMAC/master/joinUs.png)
-
 **微信公众号**
 
-![p](https://raw.githubusercontent.com/googege/AMAC/master/joinUsW.jpg)
+![p](https://raw.githubusercontent.com/googege/GOFamily/master/joinUsW.jpg)
 ***
 
 ## 声明
