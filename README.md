@@ -1,4 +1,5 @@
 # GOFamily
+大厂 bat 面试高频知识点，go语言后端体系。
 ## 概括
 ![p1](./title.png)
 <br/>
