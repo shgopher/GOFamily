@@ -34,7 +34,8 @@
 |OPINION|跨域请求的时候使用，用于获取这个url对应的相关的method这个是添加一个allow标签然后后面跟着 例如 allow:GET|
 |TRACE|类似shell命令中的trace命令，获取资源在服务器中走动的各个流程的信息|
 |CONNECT||
-## http协议的格式
+## http协议的真容
+![1.1](./1.1.png)
 ## 分块传递
 ## 持久连接
 ## pipeline管线化
