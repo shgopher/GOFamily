@@ -7,7 +7,7 @@
 |202|这个code表示异步请求，跟nodejs的那个机制很像，就是服务器直接返回一个标志，然后并没有实际的东西，实际的东西需要等待回调函数|
 |301|永远重定向，意思就是只有在第一次才请求服务器，之后都不会请求服务器直接请求浏览器中的缓存，除非删除浏览器中的缓存|
 |302|302是暂时重定向，一般比如引入微信登陆啊，微博登陆啊，用这个，因为它每次的重定向都会再次询问服务器|
-|304|这个标志是指，http的if-none-match 匹配成功了，然后浏览器直接将浏览器中的缓存给了用户，而不再去访问服务器了|
+|304|这个标志是指，http的iif-Modified-Since 匹配成功了，然后浏览器直接将浏览器中的缓存给了用户，而不再去访问服务器了|
 |400|参数验证失败|
 |401|用户的权限不够|
 |403|一般就是你被拉入黑名单之类的，你被服务器禁止掉了|
@@ -21,45 +21,67 @@
 ## HTTP协议头大全
 |协议头|作用|
 |:---:|:---|
-|Accept| |
-|Accept-Charset| |
-|Accept-Language| |
-|Content-Language| |
-|Content-Length| |
-|Content-MD5| |
-|Date| |
-|Age| |
-|Expires| |
-|ETag| |
-|if-Match| |
-|if-None-Match| |
-|Allow| |
-|Connection| |
-|From| |
-|Host| |
-|Last-Modified| |
-|if-Modified-Since| |
-|if-Unmodified-Since| |
-|Range| |
-|Content-Range| |
-|if-Range| |
-|Location| |
-|Max-Forwards| |
-|Pragma| |
-|Referer| |
-|Retry-After| |
-|Server| |
-|User-Agent| |
-|Transfer-Encoding| |
-|Upgrade| |
-|Vary| |
-|Via| |
-|Warning| |
-|WWW-Authenticate| |
-|Authorization| |
-|Proxy-Authenticate| |
-|Proxy-Authorization| |
-|Cache-Control| |
+|Accept|【客户端发送的】客户端期待服务器端返回的媒体的格式，逗号分割类型，分号分割属性，举个例子：Accept:audio/*; q=0.1, vedio/basic 意思就是有前面的就用前面的，没有就往后延续找逗号分割。q表示优先级，范围是0-1，这就跟前端css中那个表示层级的一个意思|
+|Accept-Charset|【客户端发送的】这个值表示希望服务器返回的编码，举个例子Accept-Charset:utf-8;q=0.7,gkb;q=0.6;utf-256 q=0.5 假如没有q就是默认q=1 |
+|Content-Type|【服务器端返回】这个就常见了把，它代表服务器给浏览器发送的头，代表媒体和编码，其实它就是服务器端对前面俩的应答例如content-Type:text/html;Charset=utf8|
+|Accept-Language|【客户端发】表示期待服务器返回的内容的语言例如 Accept-Language:zh-CN,en-us;q=0.7,zh-HK;q=0.6|
+|Content-Language|【服务器返回】表示对Accept-Language的应答例如 Content-Language:zh-CN,en-us q=0.7|
+|Content-Length|【all】表示传输的请求or响应的body的长度，get不需要，它没有body，携带body的碧玺要有这个字段，知道发送的或者响应的数据大小，当然如果选择了分块传送，这个字段就不用了|
+|Content-Location|【服务器响应】当客户端请求这个资源的时候，这个资源在服务器中还有其他地址也有这个资源，这个字段就是告诉浏览器其这个资源的额其它的地址的|
+|Content-MD5|用来做body内容校验，body内容被md5加密了|
+|Date|【服务器响应】这个字段记录了服务器响应的生成时间，当然如果有缓存就是缓存响应的时间，格式固定不能乱写 格式为：Date: Tue, 15 Nov 2020 03:20:11 GMT|
+|Age|表示资源缓存存在的时间单位是秒 Age: 8900|
+|Expires|【服务器响应】告知资源失效的时间 Expires: Thu ,01 Dec 2020 16:00:00 GMT|
+|ETag|【服务器发送】这个是资源的标签一般是这样的，服务器发给浏览器，浏览器记住了，然后再|
+|if-Match|客户端get到服务器发送的资源的Etag然后记录下来，记录到if-Match中，然后浏览器请求一个资源的时候，会发送这个if-match 如果服务器中的etag跟这个if-math一致的话就可以执行，如果不一致就不执行返回412的错误|
+|if-None-Match|原理一样，但是是这样的，浏览器获取到etag，然后if-none-match记录下来，如果发送过去编码一致，那么就 **不**去执行，通常这个更改资源的事情会用put或者patch 因为它不存在叠加的状态，下面的method中有介绍|
+|Allow| 【服务器发送】表示允许的method Allow:GET,POST|
+|Connection|当浏览器和服务器协商的时候会发送这个属性，比如Connection:close 意思就是断开吧。这个请求结束后不要再长连接了，可以断开了|
+|Expect|向服务器发送东西之前先发送的一个许可，问能不能发啊大哥，这个意思 服务器说行就是100不行就是417|
+|From|这个字段标记浏览器发送的人的邮件的地址|
+|Host|这个是rpc协议中的东西就是假如没有这个字段服务器要抛出400的错误的， |
+|Last-Modified| 标记资源最近的修改时间，服务器向浏览器发送，它跟Date的区别是它标记更改修改时间，date是创建时间|
+|if-Modified-Since|如果一个资源浏览器有缓存了，它就会携带if-Modified-Since|
+|if-Unmodified-Since|跟上一个意思相反，当资源不满足的时候不是返回304了，直接返回412错误|
+|Range|支持断点续传，服务器要处理range头因为这个rang记录了每次传的数据 例如 Range: bytes=500-999 那么服务器就记住了，下次从这个地方开始传即可|
+|Content-Range|这是服务器端的，它记录了这个资源的rang在整个资源的区域 例如Content-Range: bytes 21010-47021/47022 这个其实就是最后了为啥是47021不是47022，因为这个值是offset偏移的值，那么是从0开始计算的，所以说最后的那个也是小1的跟数组那个从0计算一个意思的|
+|if-Range|这个就是为了保证断点续传的时候两次的资源是一个资源 if-Range 要带上Etag编号的，可以就是206不可以就是200 就相当于一次新的请求了。例如说你百度下东西，突然服务器那边变了，那么你的资源就会从0开始下载|
+|Location|服务器向客户端发送302跳转的时候会发给浏览器这个location代表了要跳转的地址|
+|Max-Forwards|用来限制最大的转发次数 也就是这个资源经过的不同的网关代理层啥的被转发，这个记录最大的转发的次数，它每次经过一个转发就-1，假如被减去到0了，还没转发到，那么就会不转发了|
+|Pragma|用户开发者模式，当网关收到这个字段的时候即使内部存在该请求资源的缓存并且有效也不可以直接发送给客户端，而必须转发给后面的upstream进行处理|
+|Referer|【浏览器发送】表示请求发起的来源URI,举个例子 你从知乎跳转到了GitHub，那么GitHub就会记录你从哪跳转的，就这个意思。[URL和URN是URI的子集，例如mailto://xxx就是uri但是它不是URL，uri是唯一资源标示符号，URL是统一资源定位符]|
+|Retry-After|假如你的服务器正在升级，那么这个字段就是服务器用来告诉浏览器中要恢复的时间长度，浏览器可能会在这个时间段后去尝试|
+|Server|【服务器返回】返回软件信息，告知浏览器这个服务器是xx公司提供的|
+|User-Agent|这个就是携带的用户代理信息,【浏览器发送】它包换了浏览器名称，浏览器内核，操作系统等版本的信息，跟上面的那个server是一样额都是告知的信息，这样服务器就可以根据不同的user-agent给浏览器不同的信息，比如不同的界面喽|
+|Transfer-Encoding|分块传送的时候，需要添加 Transfer-Encoding:Chunked|
+|Upgrade|【服务器发送】它建议的浏览器使用的http的版本,当使用websocket的时候，三次握手阶段，就会提醒浏览器你跟我通信的时候要使用websocket协议|
+|Vary|【浏览器发送给服务器的参数建议】控制不同的缓存参数用不同的缓存，例如 Vary:Accept-Encoding,Accept-Language ,根据这些参数的不同，服务器在获取来询的请求的时候可以作出不同的判断发送不同的缓存结果，|
+|Via|该字段标示一个请求的经历的不同的网关节点的信息|
+|Warning|rpc协议中的东西，【服务器响应】标示给客户端一些警告信息|
+|WWW-Authenticate|401错误的时候携带的头，这个头携带信息给客户端，告诉客户端你准备的东西不够，你要准备这些东西我才让你访问。例如 www-Authenticate: Basic realm=xxx Basic标示base64转换，realme代表场合，情景等信息|
+|Authorization|【浏览器】是浏览器对上面的那个www-Authorizatio的回答，回答的内容就是服务器提出的要求|
+|Proxy-Authenticate|用户认证，用在代理服务器上，服务器给浏览器的问题|
+|Proxy-Authorization| 客户端的回答|
+|Cache-Control|【all】no-cache： 如果no-cache没有指定值，那就表示不允许缓存。对于请求来说，服务器不得使用缓存内容直接返回。对于响应来说，客户端不得缓存响应的资源内容。如果no-cache指定了值，那就表示值对应的头信息不得使用缓存，其它的信息还是可以缓存的。就是指定了xx不能用，不指定xx就是都不能用
+
+no-store： 告知对方不要持久化请求/响应数据到其它地方，这种信息是敏感的，要保持它的易失性。告知对方记录在内存就行了不能记录在硬盘上
+
+no-transform 。no-transform告知对方保留原始数据信息，不要进行任何转换。比如不要压缩图片给我，给我原图即可
+
+only-if-cached 用于请求头，告知服务器只要那些已经缓存的内容，不要去reload。如果没有缓存内容就返回504，意思就是有缓存你就用，没有就报错。
+
+ Gateway Timeout错误。表示客户端不想太麻烦服务器，有就给，没就gg
+
+max-age 用于请求头。限制缓存内容的时间，如果超过max-age的，需要服务器去reload内容资源。意思就是如果缓存太老了，我就不要了
+
+max-stale 用于请求头。客户端允许服务器返回缓存已过期的资源内容，但是限定了最大过期时间。表示客户端虽然很宽容，那是也是有限度的。
+
+min-fresh 用于请求头。客户端限制服务器不要那些即将过期的资源内容。这个值就是给定一个返回，就跟快过期的面包一意思，即使块过期，没过期我都不要，任性。
+
+public 用于响应头。表示允许客户端缓存响应信息，并可以给别人使用。比如代理服务器缓存静态资源供所有代理用户使用。
+
+private 用于响应头。表示仅允许客户端缓存响应信息给自己使用，不得分享给别人。这样是为了禁止代理服务器进行缓存，而允许客户端自己缓存资源内容。意思就是客户端可以存，但是不能给代理|
+
 ### ETag Last-Modified Expires 的区别
 
 ## HTTP各种方法
