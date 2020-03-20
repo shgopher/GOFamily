@@ -21,45 +21,45 @@
 ## HTTP协议头大全
 ｜协议头｜作用｜
 ｜:---:|:---|
-|Accept||
-|Accept-Charset||
-|Accept-Language||
-|Content-Language||
-|Content-Length||
-|Content-MD5||
-|Date||
-|Age||
-|Expires||
-|ETag||
-|if-Match||
-|if-None-Match||
-|Allow||
-|Connection||
-|From||
-|Host||
-|Last-Modified||
-|if-Modified-Since||
-|if-Unmodified-Since||
-|Range||
-|Content-Range||
-|if-Range||
-|Location||
-|Max-Forwards||
-|Pragma||
-|Referer||
-|Retry-After||
-|Server||
-|User-Agent||
-|Transfer-Encoding||
-|Upgrade||
-|Vary||
-|Via||
-|Warning||
-|WWW-Authenticate||
-|Authorization||
-|Proxy-Authenticate||
-|Proxy-Authorization||
-|Cache-Control||
+|Accept| |
+|Accept-Charset| |
+|Accept-Language| |
+|Content-Language| |
+|Content-Length| |
+|Content-MD5| |
+|Date| |
+|Age| |
+|Expires| |
+|ETag| |
+|if-Match| |
+|if-None-Match| |
+|Allow| |
+|Connection| |
+|From| |
+|Host| |
+|Last-Modified| |
+|if-Modified-Since| |
+|if-Unmodified-Since| |
+|Range| |
+|Content-Range| |
+|if-Range| |
+|Location| |
+|Max-Forwards| |
+|Pragma| |
+|Referer| |
+|Retry-After| |
+|Server| |
+|User-Agent| |
+|Transfer-Encoding| |
+|Upgrade| |
+|Vary| |
+|Via| |
+|Warning| |
+|WWW-Authenticate| |
+|Authorization| |
+|Proxy-Authenticate| |
+|Proxy-Authorization| |
+|Cache-Control| |
 ### ETag Last-Modified Expires 的区别
 
 ## HTTP各种方法
