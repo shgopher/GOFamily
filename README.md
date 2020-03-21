@@ -19,7 +19,8 @@
 ![p](https://raw.githubusercontent.com/googege/GOFamily/master/joinUsW.jpg)
 
 **欢迎添加我的微信**
-![wechat](https://raw.githubusercontent.com/googege/GOFamily/master/me.jpeg)
+
+<img src="https://raw.githubusercontent.com/googege/GOFamily/master/me.jpeg" style="width:50%"/>
 
 添加微信的时候请备注：来自GitHub
 ***
