@@ -18,6 +18,10 @@ https://app.cloudcone.com/?ref=2525
 
 **微信公众号**
 
+算法和数据结构的峡谷
+
+我将持续更新计算机的知识，大家共同学习
+
 ![p](https://raw.githubusercontent.com/googege/GOFamily/master/joinUsW.jpg)
 
 **欢迎添加我的微信**
