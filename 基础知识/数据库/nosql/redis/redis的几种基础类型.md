@@ -43,6 +43,9 @@ incr aa
 decr aa
 ```
 注意计数器有返回，它的区间是 `[long.MIN,long.Max]`全闭区间
+> [-9223372036854775807,9223372036854775807]
+
+错误提示是` ERR increment or decrement would overflow`
 
 ## list
 ## hash
