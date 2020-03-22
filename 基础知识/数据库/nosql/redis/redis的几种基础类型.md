@@ -47,6 +47,15 @@ decr aa
 
 错误提示是` ERR increment or decrement would overflow`
 
+**字符串的删除和自动删除(过期)**
+```shell
+//删除字符串 del key
+del aa
+// 设置过期时间(单位是s) expire key time
+expire aa 60
+// 查看寿命 ttl key
+ttl aa
+```
 ## list
 ## hash
 ## set
