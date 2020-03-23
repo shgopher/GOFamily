@@ -181,6 +181,7 @@ hincrby u a 4
 ### map的缩容
 跟扩容原理一样，也是直接缩写一倍，然后逐步使用定时任务将数据逐步转移。
 ## set
+![p](./1.2.png)
 其实你可以把set想像成一个多个key一个value的数据结构，但是这个value又是隐藏的。
 
 举个例子 比如这个set我们要增加数据
@@ -212,7 +213,7 @@ spop q
 sismember q 43
 ```
 ## zset
-![p](./1.2.png)
+
 内部数据结构 map 跳表
 
 hash是关联 元素key和权重（key和权重一一对应，其实相当于权重就是它的value值），跳表在于排序value 根据score范围查找元素
@@ -264,6 +265,10 @@ zremrangenyrank zsetname scorestart scoreend
 
 排序很定是用的跳表来实现的，
 
-在set zset hash list中使用的链表都是ziplist（list中大数据使用quicklist）
+在set zset hash list中使用的链表都是ziplist（小数据）（list中大数据使用quicklist，zset使用跳表）
 
 这里跳表就是把这些数据添加了很多的索引，并且这些索引是根据权重来添加计算的，所以说这个你可以想像成类似b+树，他们都是属于查找
+
+//todo zset是如何能实现跳表的功能又能实现哈希table的功能
+
+这个里面就是一边是hash 然后储存在数组中，数组中如果数量级小就是ziplist，如果大了，那么就是skiplist。
