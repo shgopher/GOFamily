@@ -138,7 +138,7 @@ ltrim -1 0 // 因为end比start小，那么这个list就会被删除光。
 
 哈希函数算出值，然后加入到那个值对应的数组，然后数组中是一个链表，链表表示都是算出来的这个的值的kv结构（这个时候如果链表太长就意味着是hash碰撞了，这也是攻击手段的一种。）
 
-**增加元素**
+**增加查询删除**
 ```shell
 //hset mapname key value 增加一个
 hset ui a b
@@ -154,7 +154,30 @@ hgetall ui
 hkeys mapname
 // 获取全部value
 hvals mapname
+// 删除元素
+// hdel mapname key key key
+// 判断元素是否存在
+// hexists mapname key
+hexists ui a // 0表示不存在 1 表示存在
 ```
+**计数器hash**
+
+每一个k-v都是一个独立的计数器
+
+```shell
+
+hincrby mapname key 1 // 没有 hincr那种每次+1的命令。
+
+hset u a 1
+hincrby u a 4
+// 5
+// 假如不是整数调用了hincrby就会报错。
+```
+
+### map的扩容
+
+### map的缩容
+
 ## set
 
 ## zset
