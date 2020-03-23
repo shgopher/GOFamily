@@ -58,7 +58,7 @@ ttl aa
 ```
 ## list
 list的底层是一个双向链表，所以可以使用这个链表来实现队列或者stack的功能
-```bash
+```shell
 // rpush rpop lpush lpop 分别是 右边推入 右边推出 左边推入 左边推出
 
 // 实现栈的功能
@@ -81,6 +81,19 @@ lpush aaa go java tt
 rpop aaa
 rpop aaa
 rpop aaa
+// 获取链表的长度
+//llen key
+llen aaa
+```
+我们可以获取list的子链
+
+```shell
+rpush aaa go rust dart2
+lindex aaa 1 // 获取aaa的第2个元素
+lrang aaa 0 2 // 获取子链
+lrang aaa 0 -1 // -的意思就是倒着数
+// 遍历全部的数据
+lrang 0 -1 // 这个时候使用-数不用使用llen了，也是极好的。
 ```
 ## hash
 ## set
