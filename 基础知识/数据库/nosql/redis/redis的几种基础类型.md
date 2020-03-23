@@ -128,6 +128,11 @@ lrange aa 0 -1
 ltrim -1 0 // 因为end比start小，那么这个list就会被删除光。
 ```
 ### 探究list的链表的真实底层
+![p](./1.1.png)
+
+当数据很少的时候只是用ziplist，当数据起来了才会采用quicklist，Ziplist 是由一系列特殊编码的内存块构成的列表
+### ziplist
+
 ## hash
 ## set
 ## zset
