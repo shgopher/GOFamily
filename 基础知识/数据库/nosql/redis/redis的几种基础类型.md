@@ -57,6 +57,31 @@ expire aa 60
 ttl aa
 ```
 ## list
+list的底层是一个双向链表，所以可以使用这个链表来实现队列或者stack的功能
+```bash
+// rpush rpop lpush lpop 分别是 右边推入 右边推出 左边推入 左边推出
+
+// 实现栈的功能
+rpush aaa go  java tt
+rpop aaa
+rpop aaa
+rpop aaa
+//or
+lpush aaa go java tt
+rpop aaa
+rpop aaa
+rpop aaa
+// 实现队列的功能
+rpush aaa go java tt
+lpop aaa
+lpop aaa
+lpop aaa
+//or
+lpush aaa go java tt
+rpop aaa
+rpop aaa
+rpop aaa
+```
 ## hash
 ## set
 ## zset
