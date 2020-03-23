@@ -132,7 +132,29 @@ ltrim -1 0 // 因为end比start小，那么这个list就会被删除光。
 
 当数据很少的时候只是用ziplist，当数据起来了才会采用quicklist，Ziplist 是由一系列特殊编码的内存块构成的列表
 ### ziplist
-
+//todo
 ## hash
+跟一般的hash table没有区别，使用哈希函数 + 数组 + 链表
+
+哈希函数算出值，然后加入到那个值对应的数组，然后数组中是一个链表，链表表示都是算出来的这个的值的kv结构（这个时候如果链表太长就意味着是hash碰撞了，这也是攻击手段的一种。）
+
+**增加元素**
+```shell
+//hset mapname key value 增加一个
+hset ui a b
+// hmset mapnae key value key value 增加一堆
+hmset ui a b c d e f g h
+// 获取一个key hget mapname key
+hget ui a
+//获取一堆key value hmget mapname key key key
+hmget ui a c e h
+// 获取全部k-v hgetall mapname
+hgetall ui
+//获取全部key
+hkeys mapname
+// 获取全部value
+hvals mapname
+```
 ## set
+
 ## zset
