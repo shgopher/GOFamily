@@ -124,8 +124,10 @@ lrange aa 0 -1
 6) "6"
 7) "7"
 8) "8"
-
+// 小技巧
+ltrim -1 0 // 因为end比start小，那么这个list就会被删除光。
 ```
+### 探究list的链表的真实底层
 ## hash
 ## set
 ## zset
