@@ -95,6 +95,37 @@ lrang aaa 0 -1 // -的意思就是倒着数
 // 遍历全部的数据
 lrang 0 -1 // 这个时候使用-数不用使用llen了，也是极好的。
 ```
+**修改和插入元素**
+```shell
+rpush aa go java rust
+// 修改
+lset aa 1 t // 变成了  go t rust
+
+// 插入数据
+linsert aa before go tt// tt go java rust
+linsert aa after go tt // go tt java rust
+```
+这里要注意，插入数据不是根据的下标的顺序，因为redis经常用在分布式的环境中，那么分布式中的下标就没有意义了，所以特别的指定在某个元素后面或者前面插入xx元素。
+**删除元素**
+```shell
+rpush aa go rust dd
+lrem aa 1 go // 删除的时候不仅仅要写出来个数还要写出来元素的值
+```
+**固定长度的列表**
+```shell
+rpush aa 1 2 3 4 5 6 7 8 9 10 // 往队列里添加数据
+ltrim 0 8 // 标注起始和结束即可。
+lrange aa 0 -1
+1) "1"
+2) "2"
+3) "3"
+4) "4"
+5) "5"
+6) "6"
+7) "7"
+8) "8"
+
+```
 ## hash
 ## set
 ## zset
