@@ -212,7 +212,7 @@ spop q
 sismember q 43
 ```
 ## zset
-
+![p](./1.2.png)
 内部数据结构 map 跳表
 
 hash是关联 元素key和权重（key和权重一一对应，其实相当于权重就是它的value值），跳表在于排序value 根据score范围查找元素
@@ -263,3 +263,7 @@ zremrangenyrank zsetname scorestart scoreend
 ## 跳表的简单讲述
 
 排序很定是用的跳表来实现的，
+
+在set zset hash list中使用的链表都是ziplist（list中大数据使用quicklist）
+
+这里跳表就是把这些数据添加了很多的索引，并且这些索引是根据权重来添加计算的，所以说这个你可以想像成类似b+树，他们都是属于查找
