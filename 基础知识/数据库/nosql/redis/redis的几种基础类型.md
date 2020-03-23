@@ -181,5 +181,34 @@ hincrby u a 4
 ### map的缩容
 跟扩容原理一样，也是直接缩写一倍，然后逐步使用定时任务将数据逐步转移。
 ## set
+其实你可以把set想像成一个一key多value的数据结构，但是这个key又是隐藏的。
 
+举个例子 比如这个set我们要增加数据
+
+**增加元素**
+
+```shell
+// 增加元素sadd setname value value value value
+sadd y 1 2 3 4 5
+// 读取元素 smembers 读取全部元素。 scard 获取set的长度 srandmember获取随机个数的元素，默认是1
+smembers y
+scard y
+srandmember y 2
+```
+
+**删除元素**
+
+```shell
+// 删除元素 srem zetname 1 2 3 4 删除必须指出来删除谁
+srem q 1 2 3 4
+// 随机删除一个元素 spop zetname
+spop q
+
+```
+**判断元素是否存在**
+
+```shell
+// 判断是否存在 sismember setname value
+sismember q 43
+```
 ## zset
