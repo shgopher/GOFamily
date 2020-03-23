@@ -181,7 +181,7 @@ hincrby u a 4
 ### map的缩容
 跟扩容原理一样，也是直接缩写一倍，然后逐步使用定时任务将数据逐步转移。
 ## set
-其实你可以把set想像成一个一key多value的数据结构，但是这个key又是隐藏的。
+其实你可以把set想像成一个多个key一个value的数据结构，但是这个value又是隐藏的。
 
 举个例子 比如这个set我们要增加数据
 
@@ -212,3 +212,54 @@ spop q
 sismember q 43
 ```
 ## zset
+
+内部数据结构 map 跳表
+
+hash是关联 元素key和权重（key和权重一一对应，其实相当于权重就是它的value值），跳表在于排序value 根据score范围查找元素
+
+**增加删除数据**
+```shell
+zadd u 4.0 go // zaddd zsetname 权重 value 权重 value
+
+zadd u 4.0 go 1.0 java // 后面跟着的是权重。
+// 获取元素个数
+zcard q
+// 删除元素
+//zrem zsetname value
+zrem u  Java
+
+````
+
+**计数器**
+
+```shell
+zadd q 4.0 python // zadd zsetname 权重 value
+// 获取排名和分数
+zscore q python
+// zrank获取指定元素的正向排名
+zrank q python
+// zrerank 反向排名
+```
+
+**根据排名范围获取元素**
+这个原理主要是因为跳表
+
+```shell
+zrange q 0 -1 // 获取所有数据
+zrange q 0 -1 withscores // 获取数据和他们的权重
+zrevrange q 0 -1 // 按照负的顺序去排名
+
+// 根据sore返回获取value
+zrangebysocre q 0 5// zrangebyscore zsetname 权重区间
+zrangebyscore q -inf + inf withscores // -inf负无穷 +inf 正无穷
+
+```
+**根据范围移除元素**
+
+```shell
+zremrangenyrank zsetname scorestart scoreend
+```
+
+## 跳表的简单讲述
+
+排序很定是用的跳表来实现的，
