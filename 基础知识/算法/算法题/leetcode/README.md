@@ -3,6 +3,8 @@ All leetcode questions that solved in different methods.
 
 ![p](https://raw.githubusercontent.com/basicExploration/Demos/master/donate.png)
 
+[梯子服务器](https://app.cloudcone.com/?ref=2525) 个人用着还可以的，每月2-3.75，价格不等。总之很便宜啦。最重要的是人家支持支付宝充钱。每次最少冲5美元。
+
 |question number|URL|type|result|
 |:---:|:---:|:---:|:---:|
 |[9](./9.md)|[Palindrome Number](https://leetcode-cn.com/problems/palindrome-number/description/)|string|😯|
