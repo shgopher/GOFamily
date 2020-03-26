@@ -1,5 +1,6 @@
 # Leetcode
 All leetcode questions that solved in different methods.
+
 ![p](https://raw.githubusercontent.com/basicExploration/Demos/master/donate.png)
 
 |question number|URL|type|result|
