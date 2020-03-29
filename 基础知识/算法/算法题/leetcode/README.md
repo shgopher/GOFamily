@@ -8,14 +8,14 @@ All leetcode questions that solved in different methods.
 |question number|URL|type|result|
 |:---:|:---:|:---:|:---:|
 |[9](./9.md)|[Palindrome Number](https://leetcode-cn.com/problems/palindrome-number/description/)|string|😯|
-|[20]|[Valid Parentheses](https://leetcode-cn.com/problems/valid-parentheses/)|stack|😯|
+|[20](./20.md)|[Valid Parentheses](https://leetcode-cn.com/problems/valid-parentheses/)|stack|👌|
 |[24](./24.md)|[swap nodes in pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)|Linkedlist|👌|
 |[25](./25.md)|[reverse nodes in k group](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)|Linkedlist|😯|
 |[141](./141.md)|[linked list cycle](https://leetcode-cn.com/problems/linked-list-cycle/)|Linkedlist|👌|
 |[142](./142.md)|[linked list cycle ii](https://leetcode-cn.com/problems/linked-list-cycle-ii/)|Linkedlist|😯|
 |[205](./205.md)|[Isomorphic Strings](https://leetcode-cn.com/problems/isomorphic-strings/description/)|string|👌|
 |[206](./206.md)|[Reverse Linked list](https://leetcode-cn.com/problems/reverse-linked-list/)|Linkedlist|👌|
-|[225][Implement Stack using Queues](https://leetcode-cn.com/problems/implement-stack-using-queues/)|stack|😯|
+|[225](./225.md)|[Implement Stack using Queues](https://leetcode-cn.com/problems/implement-stack-using-queues/)|stack|😯|
 |[232]|[Implement Queue using Stacks](https://leetcode-cn.com/problems/implement-queue-using-stacks/)|stack|😯|
 |[240](./240.md)|[Search a 2D Matrix II](https://leetcode-cn.com/problems/search-a-2d-matrix-ii/description/)|array|👌|
 |[242](./242.md)|[Valid Anagram](https://leetcode-cn.com/problems/valid-anagram/description/)|string|👌|
