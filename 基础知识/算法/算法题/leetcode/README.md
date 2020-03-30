@@ -30,6 +30,7 @@ All leetcode questions that solved in different methods.
 |[667](./667.md)|[Beautiful Arrangement II](https://leetcode-cn.com/problems/beautiful-arrangement-ii/description/)|array|👌|
 |[696](./696.md)|[Count Binary Substrings](https://leetcode-cn.com/problems/count-binary-substrings/description/)|string|😯|
 |[697](./697.md)|[Degree of an Array](https://leetcode-cn.com/problems/degree-of-an-array/description/)|array|👌|
+|[703](./703.md)|[topk](https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/)|heap|👌|
 |[766](./766.md)|[Toeplitz Matrix](https://leetcode-cn.com/problems/toeplitz-matrix/)|array|👌|
 |[769](./769.md)|[Max Chunks To Make Sorted](https://leetcode-cn.com/problems/max-chunks-to-make-sorted/description/)|array|👌|
 |[844](./844.md)|[Backspace String Compare](https://leetcode-cn.com/problems/backspace-string-compare/)|stack|😯|
