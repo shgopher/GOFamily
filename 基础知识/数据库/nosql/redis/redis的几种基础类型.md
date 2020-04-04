@@ -132,7 +132,7 @@ ltrim -1 0 // 因为end比start小，那么这个list就会被删除光。
 
 当数据很少的时候只是用ziplist，当数据起来了才会采用quicklist，Ziplist 是由一系列特殊编码的内存块构成的列表
 ### ziplist
-//todo
+[可以参考这里](http://zhangtielei.com/posts/blog-redis-ziplist.html) 这个要以后填坑
 ## hash
 跟一般的hash table没有区别，使用哈希函数 + 数组 + 链表
 
