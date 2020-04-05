@@ -9,6 +9,8 @@ All leetcode questions that solved in different methods.
 |:---:|:---:|:---:|:---:|
 |[1](./1.md)|[two sum](https://leetcode-cn.com/problems/two-sum/)|hash table|👌|
 |[9](./9.md)|[Palindrome Number](https://leetcode-cn.com/problems/palindrome-number/description/)|string|😯|
+|[**15**](./15.md)|[3sum](https://leetcode-cn.com/problems/3sum/)|two pointer|👌|
+|[18](./18.md)|[4sum](https://leetcode-cn.com/problems/4sum/)|hash|😯|
 |[20](./20.md)|[Valid Parentheses](https://leetcode-cn.com/problems/valid-parentheses/)|stack|👌|
 |[24](./24.md)|[swap nodes in pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)|Linkedlist|👌|
 |[25](./25.md)|[reverse nodes in k group](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)|Linkedlist|😯|
