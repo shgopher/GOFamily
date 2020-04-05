@@ -7,6 +7,7 @@ All leetcode questions that solved in different methods.
 
 |question number|URL|type|result|
 |:---:|:---:|:---:|:---:|
+|[1](./1.md)|[two sum](https://leetcode-cn.com/problems/two-sum/)|hash table|👌|
 |[9](./9.md)|[Palindrome Number](https://leetcode-cn.com/problems/palindrome-number/description/)|string|😯|
 |[20](./20.md)|[Valid Parentheses](https://leetcode-cn.com/problems/valid-parentheses/)|stack|👌|
 |[24](./24.md)|[swap nodes in pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)|Linkedlist|👌|
