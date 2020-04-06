@@ -14,6 +14,7 @@ All leetcode questions that solved in different methods.
 |[20](./20.md)|[Valid Parentheses](https://leetcode-cn.com/problems/valid-parentheses/)|stack|👌|
 |[24](./24.md)|[swap nodes in pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)|Linkedlist|👌|
 |[25](./25.md)|[reverse nodes in k group](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)|Linkedlist|😯|
+|[98](./98.md)|[validate binary search tree](https://leetcode-cn.com/problems/validate-binary-search-tree/)|Binary tree|👌|
 |[141](./141.md)|[linked list cycle](https://leetcode-cn.com/problems/linked-list-cycle/)|Linkedlist|👌|
 |[142](./142.md)|[linked list cycle ii](https://leetcode-cn.com/problems/linked-list-cycle-ii/)|Linkedlist|😯|
 |[205](./205.md)|[Isomorphic Strings](https://leetcode-cn.com/problems/isomorphic-strings/description/)|string|👌|
