@@ -5,6 +5,8 @@ All leetcode questions that solved in different methods.
 
 [梯子服务器](https://app.cloudcone.com/?ref=2525) 个人用着还可以的，每月2-3.75，价格不等。总之很便宜啦。最重要的是人家支持支付宝充钱。每次最少冲5美元。
 
+> 👌 表示已经完成 😯 表示将要完成
+
 |question number|URL|type|result|
 |:---:|:---:|:---:|:---:|
 |[1](./1.md)|[two sum](https://leetcode-cn.com/problems/two-sum/)|hash table|👌|
