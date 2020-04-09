@@ -20,6 +20,7 @@ All leetcode questions that solved in different methods.
 |[98](./98.md)|[validate binary search tree](https://leetcode-cn.com/problems/validate-binary-search-tree/)|Binary tree|👌|
 |[141](./141.md)|[linked list cycle](https://leetcode-cn.com/problems/linked-list-cycle/)|Linkedlist|👌|
 |[142](./142.md)|[linked list cycle ii](https://leetcode-cn.com/problems/linked-list-cycle-ii/)|Linkedlist|😯|
+|[169](./169.md)|[majority element](https://leetcode-cn.com/problems/majority-element/)|Divide-conquer|👌|
 |[205](./205.md)|[Isomorphic Strings](https://leetcode-cn.com/problems/isomorphic-strings/description/)|string|👌|
 |[206](./206.md)|[Reverse Linked list](https://leetcode-cn.com/problems/reverse-linked-list/)|Linkedlist|👌|
 |[225](./225.md)|[Implement Stack using Queues](https://leetcode-cn.com/problems/implement-stack-using-queues/)|queue|👌|
