@@ -9,6 +9,7 @@
 |项目|介绍|
 |:---:|:---:|
 |对我的赞助|![p](https://raw.githubusercontent.com/basicExploration/Demos/master/donate.png)|
+|阿里云服务器推荐，便宜又好用！|[阿里云](https://www.aliyun.com/minisite/goods?userCode=ol87kpmz)，中国最大的云计算厂家，世界前5的云计算服务商|
 |梯子推荐|[梯子服务器](https://app.cloudcone.com/?ref=2525) 个人用着还可以的，每月2-3.75，价格不等。总之很便宜啦。最重要的是人家支持支付宝充钱。每次最少冲5美元。|
 |微信公众号(算法和数据结构的峡谷)|![p](https://raw.githubusercontent.com/googege/GOFamily/master/joinUsW.jpg)|
 |我的微信（请标注：来自Github）|![p](https://raw.githubusercontent.com/googege/GOFamily/master/me.jpeg)|
