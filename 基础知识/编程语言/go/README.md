@@ -14,6 +14,7 @@ go相关的技术罗列
 - GORM go语言的orm框架
 - urfave/cli go版本的cli框架
 - colly go的爬虫框架
+- glog go的日志管理框架
 ## 主题
 
 - [go的一些注意事项](./1)
