@@ -16,6 +16,7 @@
 |我的b站|[b站](https://space.bilibili.com/23170151)|
 |我的YouTube|[YouTube](https://www.youtube.com/channel/UCM_-pFgD_HZDGD0yxfzguRQ?view_as=subscriber)|
 |我的抖音|googege|
+|我的微博|[魔都一只土拨鼠](https://weibo.com/imgoogege)|
 
 ## 声明
 如有转载，请标注: "转载于: https://github.com/googege/GOFamily  作者: 魔都一只土拨鼠"
