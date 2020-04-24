@@ -12,7 +12,7 @@
 |便宜服务器推荐|[阿里云](https://www.aliyun.com/minisite/goods?userCode=ol87kpmz)，[梯子服务器](https://app.cloudcone.com/?ref=2525):支持支付宝|
 |微信公众号|![p](https://raw.githubusercontent.com/googege/GOFamily/master/joinUsW.jpg)|
 |知识讨论微信群群|![p](https://raw.githubusercontent.com/googege/GOFamily/master/me.jpeg)|
-|我的社交平台|[b站](https://space.bilibili.com/23170151)，[YouTube](https://www.youtube.com/channel/UCM_-pFgD_HZDGD0yxfzguRQ?view_as=subscriber)，微博[魔都一只土拨鼠](https://weibo.com/imgoogege)，抖音：googege|
+|我的社交平台|[b站](https://space.bilibili.com/23170151)，[YouTube](https://www.youtube.com/channel/UCM_-pFgD_HZDGD0yxfzguRQ?view_as=subscriber)，[微博](https://weibo.com/imgoogege)，抖音：googege|
 
 ## 声明
 如有转载，请标注: "转载于: https://github.com/googege/GOFamily  作者: 魔都一只土拨鼠"
