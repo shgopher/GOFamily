@@ -22,6 +22,7 @@ All leetcode questions that solved in different methods.
 |[50](./50.md)|[powx n](https://leetcode-cn.com/problems/powx-n/)|Divide-conquer|👌|
 |[51](./51.md)|[n queens](https://leetcode-cn.com/problems/n-queens/)|Pruning|👌|
 |[52](./52.md)|[n queens ii](https://leetcode-cn.com/problems/n-queens-ii/)|Pruning|😯|
+|[69](./69.md)|[sqrtx](https://leetcode-cn.com/problems/sqrtx/)|Binary search|😯|
 |[98](./98.md)|[validate binary search tree](https://leetcode-cn.com/problems/validate-binary-search-tree/)|Binary tree|👌|
 |[102](./102.md)|[binary tree level order traversal](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)|BFS|👌|
 |[104](./104)|[maximum depth of binary tree](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/submissions/)|DFS|👌|
@@ -40,6 +41,7 @@ All leetcode questions that solved in different methods.
 |[242](./242.md)|[Valid Anagram](https://leetcode-cn.com/problems/valid-anagram/description/)|string|👌|
 |[283](./283.md)|[Move Zeroes](https://leetcode-cn.com/problems/move-zeroes/description/)|array|👌|
 |[287](./287.md)|[Find the Duplicate Number](https://leetcode-cn.com/problems/find-the-duplicate-number/description/)|array|👌|
+|[367](./367.md)|[valid perfect square](https://leetcode-cn.com/problems/valid-perfect-square/)|Binary search|😯|
 |[378](./378.md)|[Kth Smallest Element in a Sorted Matrix](https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/description/)|array|👌|
 |[409](./409.md)|[Longest Palindrome](https://leetcode-cn.com/problems/longest-palindrome/description/)|string|👌|
 |[485](./485.md)|[Max Consecutive Ones](https://leetcode-cn.com/problems/max-consecutive-ones/description/)|array|👌|
