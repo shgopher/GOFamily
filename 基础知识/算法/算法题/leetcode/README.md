@@ -18,7 +18,7 @@ All leetcode questions that solved in different methods.
 |[24](./24.md)|[swap nodes in pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)|Linkedlist|👌|
 |[25](./25.md)|[reverse nodes in k group](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)|Linkedlist|😯|
 |[36](./36.md)|[valid-sudoku](https://leetcode-cn.com/problems/valid-sudoku/)|hash table|👌|
-|[37](./37.md)|[sudoku-solver](https://leetcode-cn.com/problems/sudoku-solver/)|Pruning|👌|
+|[37](./37.md)|[sudoku-solver](https://leetcode-cn.com/problems/sudoku-solver/)|Pruning|😯|
 |[50](./50.md)|[powx n](https://leetcode-cn.com/problems/powx-n/)|Divide-conquer|👌|
 |[51](./51.md)|[n queens](https://leetcode-cn.com/problems/n-queens/)|Pruning|👌|
 |[52](./52.md)|[n queens ii](https://leetcode-cn.com/problems/n-queens-ii/)|Pruning|😯|
