@@ -17,8 +17,11 @@ All leetcode questions that solved in different methods.
 |[22](./22.md)|[generate-parentheses](https://leetcode-cn.com/problems/generate-parentheses/)|Pruning|👌|
 |[24](./24.md)|[swap nodes in pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)|Linkedlist|👌|
 |[25](./25.md)|[reverse nodes in k group](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)|Linkedlist|😯|
+|[36](./36.md)|[valid-sudoku](https://leetcode-cn.com/problems/valid-sudoku/)|Pruning|👌|
+|[37](./37.md)|[sudoku-solver](https://leetcode-cn.com/problems/sudoku-solver/)|Pruning|👌|
 |[50](./50.md)|[powx n](https://leetcode-cn.com/problems/powx-n/)|Divide-conquer|👌|
-|[51](./51.md)|[]()|Pruning|👌|
+|[51](./51.md)|[n queens](https://leetcode-cn.com/problems/n-queens/)|Pruning|👌|
+|[52](./52.md)|[n queens ii](https://leetcode-cn.com/problems/n-queens-ii/)|Pruning|😯|
 |[98](./98.md)|[validate binary search tree](https://leetcode-cn.com/problems/validate-binary-search-tree/)|Binary tree|👌|
 |[102](./102.md)|[binary tree level order traversal](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)|BFS|👌|
 |[104](./104)|[maximum depth of binary tree](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/submissions/)|DFS|👌|
