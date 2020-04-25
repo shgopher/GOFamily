@@ -23,6 +23,7 @@ All leetcode questions that solved in different methods.
 |[51](./51.md)|[n queens](https://leetcode-cn.com/problems/n-queens/)|Pruning|👌|
 |[52](./52.md)|[n queens ii](https://leetcode-cn.com/problems/n-queens-ii/)|Pruning|😯|
 |[69](./69.md)|[sqrtx](https://leetcode-cn.com/problems/sqrtx/)|Binary search|👌|
+|[79](./79.md)|[word search](https://leetcode-cn.com/problems/word-search/)|trie|😯|
 |[98](./98.md)|[validate binary search tree](https://leetcode-cn.com/problems/validate-binary-search-tree/)|Binary tree|👌|
 |[102](./102.md)|[binary tree level order traversal](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)|BFS|👌|
 |[104](./104)|[maximum depth of binary tree](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/submissions/)|DFS|👌|
@@ -32,6 +33,8 @@ All leetcode questions that solved in different methods.
 |[169](./169.md)|[majority element](https://leetcode-cn.com/problems/majority-element/)|Divide-conquer|👌|
 |[205](./205.md)|[Isomorphic Strings](https://leetcode-cn.com/problems/isomorphic-strings/description/)|string|👌|
 |[206](./206.md)|[Reverse Linked list](https://leetcode-cn.com/problems/reverse-linked-list/)|Linkedlist|👌|
+|[208](./208.md)|[implement-trie-prefix-tree](https://leetcode-cn.com/problems/implement-trie-prefix-tree/)|trie|👌|
+|[212](./212.md)|[word search ii](https://leetcode-cn.com/problems/word-search-ii/)|trie|👌|
 |[225](./225.md)|[Implement Stack using Queues](https://leetcode-cn.com/problems/implement-stack-using-queues/)|queue|👌|
 |[232](./232.md)|[Implement Queue using Stacks](https://leetcode-cn.com/problems/implement-queue-using-stacks/)|stack|👌|
 |[235](./235.md)|[lowest common ancestor of a binary search tree](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)|Binary tree|👌|
