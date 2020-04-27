@@ -31,11 +31,14 @@ All leetcode questions that solved in different methods.
 |[141](./141.md)|[linked list cycle](https://leetcode-cn.com/problems/linked-list-cycle/)|Linkedlist|👌|
 |[142](./142.md)|[linked list cycle ii](https://leetcode-cn.com/problems/linked-list-cycle-ii/)|Linkedlist|😯|
 |[169](./169.md)|[majority element](https://leetcode-cn.com/problems/majority-element/)|Divide-conquer|👌|
+|[191](./191.md)|[number-of-1-bits](https://leetcode-cn.com/problems/number-of-1-bits/)|bit operation|👌|
+|[200](./200.md)|[number-of-islands](https://leetcode-cn.com/problems/number-of-islands/)|union and find|😯|
 |[205](./205.md)|[Isomorphic Strings](https://leetcode-cn.com/problems/isomorphic-strings/description/)|string|👌|
 |[206](./206.md)|[Reverse Linked list](https://leetcode-cn.com/problems/reverse-linked-list/)|Linkedlist|👌|
 |[208](./208.md)|[implement-trie-prefix-tree](https://leetcode-cn.com/problems/implement-trie-prefix-tree/)|trie|👌|
 |[212](./212.md)|[word search ii](https://leetcode-cn.com/problems/word-search-ii/)|trie|👌|
 |[225](./225.md)|[Implement Stack using Queues](https://leetcode-cn.com/problems/implement-stack-using-queues/)|queue|👌|
+|[231](./231.md)|[power-of-two](https://leetcode-cn.com/problems/power-of-two/)|Bit operation|👌|
 |[232](./232.md)|[Implement Queue using Stacks](https://leetcode-cn.com/problems/implement-queue-using-stacks/)|stack|👌|
 |[235](./235.md)|[lowest common ancestor of a binary search tree](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)|Binary tree|👌|
 |[236](./236.md)|[lowest common ancestor of a binary tree](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/)|Binary tree|😯|
@@ -44,10 +47,12 @@ All leetcode questions that solved in different methods.
 |[242](./242.md)|[Valid Anagram](https://leetcode-cn.com/problems/valid-anagram/description/)|string|👌|
 |[283](./283.md)|[Move Zeroes](https://leetcode-cn.com/problems/move-zeroes/description/)|array|👌|
 |[287](./287.md)|[Find the Duplicate Number](https://leetcode-cn.com/problems/find-the-duplicate-number/description/)|array|👌|
+|[338](./338.md)|[counting-bits](https://leetcode-cn.com/problems/counting-bits/)|bit operation|👌|
 |[367](./367.md)|[valid perfect square](https://leetcode-cn.com/problems/valid-perfect-square/)|Binary search|😯|
 |[378](./378.md)|[Kth Smallest Element in a Sorted Matrix](https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/description/)|array|👌|
 |[409](./409.md)|[Longest Palindrome](https://leetcode-cn.com/problems/longest-palindrome/description/)|string|👌|
 |[485](./485.md)|[Max Consecutive Ones](https://leetcode-cn.com/problems/max-consecutive-ones/description/)|array|👌|
+|[547](./547.md)|[friend-circles](https://leetcode-cn.com/problems/friend-circles/)|union and find|😯|
 |[565](./565.md)|[Array Nesting](https://leetcode-cn.com/problems/array-nesting/description/)|array|👌|
 |[645](./645.md)|[Set Mismatch](https://leetcode-cn.com/problems/set-mismatch/description/)|array|👌|
 |[647](./647.md)|[Palindromic Substrings](https://leetcode-cn.com/problems/palindromic-substrings/description/)|string|😯|
