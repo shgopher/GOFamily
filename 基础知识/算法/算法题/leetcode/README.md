@@ -31,6 +31,7 @@ All leetcode questions that solved in different methods.
 |[141](./141.md)|[linked list cycle](https://leetcode-cn.com/problems/linked-list-cycle/)|Linkedlist|👌|
 |[142](./142.md)|[linked list cycle ii](https://leetcode-cn.com/problems/linked-list-cycle-ii/)|Linkedlist|😯|
 |[146](./146.md)|[lru-cache](https://leetcode-cn.com/problems/lru-cache/)|design|👌|
+|[155](./155.md)|[min stack](https://leetcode-cn.com/problems/min-stack/)|stack|😯|
 |[169](./169.md)|[majority element](https://leetcode-cn.com/problems/majority-element/)|Divide-conquer|👌|
 |[191](./191.md)|[number-of-1-bits](https://leetcode-cn.com/problems/number-of-1-bits/)|bit operation|👌|
 |[200](./200.md)|[number-of-islands](https://leetcode-cn.com/problems/number-of-islands/)|union and find|😯|
