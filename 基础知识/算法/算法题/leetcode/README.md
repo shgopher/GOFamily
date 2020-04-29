@@ -14,6 +14,7 @@ All leetcode questions that solved in different methods.
 |[**15**](./15.md)|[3sum](https://leetcode-cn.com/problems/3sum/)|two pointer|👌|
 |[18](./18.md)|[4sum](https://leetcode-cn.com/problems/4sum/)|hash|😯|
 |[20](./20.md)|[Valid Parentheses](https://leetcode-cn.com/problems/valid-parentheses/)|stack|👌|
+|[21](./21.md)|[merge-two-sorted-lists](https://leetcode-cn.com/problems/merge-two-sorted-lists/)|linkedlist|👌|
 |[22](./22.md)|[generate-parentheses](https://leetcode-cn.com/problems/generate-parentheses/)|Pruning|👌|
 |[24](./24.md)|[swap nodes in pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)|Linkedlist|👌|
 |[25](./25.md)|[reverse nodes in k group](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)|Linkedlist|😯|
