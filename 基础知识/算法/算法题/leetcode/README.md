@@ -22,7 +22,7 @@ All leetcode questions that solved in different methods.
 |[37](./37.md)|[sudoku-solver](https://leetcode-cn.com/problems/sudoku-solver/)|Pruning|😯|
 |[50](./50.md)|[powx n](https://leetcode-cn.com/problems/powx-n/)|Divide-conquer|👌|
 |[51](./51.md)|[n queens](https://leetcode-cn.com/problems/n-queens/)|Pruning|👌|
-|[52](./52.md)|[n queens ii](https://leetcode-cn.com/problems/n-queens-ii/)|Pruning|😯|
+|[52](./52.md)|[n queens ii](https://leetcode-cn.com/problems/n-queens-ii/)|bit operation|👌|
 |[69](./69.md)|[sqrtx](https://leetcode-cn.com/problems/sqrtx/)|Binary search|👌|
 |[79](./79.md)|[word search](https://leetcode-cn.com/problems/word-search/)|trie|😯|
 |[98](./98.md)|[validate binary search tree](https://leetcode-cn.com/problems/validate-binary-search-tree/)|Binary tree|👌|
