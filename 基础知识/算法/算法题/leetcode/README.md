@@ -22,7 +22,7 @@ All leetcode questions that solved in different methods.
 |[37](./37.md)|[sudoku-solver](https://leetcode-cn.com/problems/sudoku-solver/)|Pruning|😯|
 |[50](./50.md)|[powx n](https://leetcode-cn.com/problems/powx-n/)|Divide-conquer|👌|
 |[51](./51.md)|[n queens](https://leetcode-cn.com/problems/n-queens/)|Pruning|👌|
-|[52](./52.md)|[n queens ii](https://leetcode-cn.com/problems/n-queens-ii/)|bit operation|👌|
+|[52](./52.md)|[n queens ii](https://leetcode-cn.com/problems/n-queens-ii/)|bit operations|👌|
 |[69](./69.md)|[sqrtx](https://leetcode-cn.com/problems/sqrtx/)|Binary search|👌|
 |[79](./79.md)|[word search](https://leetcode-cn.com/problems/word-search/)|trie|😯|
 |[98](./98.md)|[validate binary search tree](https://leetcode-cn.com/problems/validate-binary-search-tree/)|Binary tree|👌|
@@ -36,7 +36,7 @@ All leetcode questions that solved in different methods.
 |[155](./155.md)|[min stack](https://leetcode-cn.com/problems/min-stack/)|stack|😯|
 |[169](./169.md)|[majority element](https://leetcode-cn.com/problems/majority-element/)|Divide-conquer|👌|
 |[191](./191.md)|[number-of-1-bits](https://leetcode-cn.com/problems/number-of-1-bits/)|bit operation|👌|
-|[200](./200.md)|[number-of-islands](https://leetcode-cn.com/problems/number-of-islands/)|union and find|😯|
+|[200](./200.md)|[number-of-islands](https://leetcode-cn.com/problems/number-of-islands/)|union and find|👌|
 |[205](./205.md)|[Isomorphic Strings](https://leetcode-cn.com/problems/isomorphic-strings/description/)|string|👌|
 |[206](./206.md)|[Reverse Linked list](https://leetcode-cn.com/problems/reverse-linked-list/)|Linkedlist|👌|
 |[208](./208.md)|[implement-trie-prefix-tree](https://leetcode-cn.com/problems/implement-trie-prefix-tree/)|trie|👌|
@@ -56,7 +56,7 @@ All leetcode questions that solved in different methods.
 |[378](./378.md)|[Kth Smallest Element in a Sorted Matrix](https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/description/)|array|👌|
 |[409](./409.md)|[Longest Palindrome](https://leetcode-cn.com/problems/longest-palindrome/description/)|string|👌|
 |[485](./485.md)|[Max Consecutive Ones](https://leetcode-cn.com/problems/max-consecutive-ones/description/)|array|👌|
-|[547](./547.md)|[friend-circles](https://leetcode-cn.com/problems/friend-circles/)|union and find|😯|
+|[547](./547.md)|[friend-circles](https://leetcode-cn.com/problems/friend-circles/)|union and find|👌|
 |[565](./565.md)|[Array Nesting](https://leetcode-cn.com/problems/array-nesting/description/)|array|👌|
 |[645](./645.md)|[Set Mismatch](https://leetcode-cn.com/problems/set-mismatch/description/)|array|👌|
 |[647](./647.md)|[Palindromic Substrings](https://leetcode-cn.com/problems/palindromic-substrings/description/)|string|😯|
