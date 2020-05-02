@@ -33,6 +33,7 @@ All leetcode questions that solved in different methods.
 |[122](./122.md)|[best time to buy and sell stock ii](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)|DP|👌|
 |[141](./141.md)|[linked list cycle](https://leetcode-cn.com/problems/linked-list-cycle/)|Linkedlist|👌|
 |[142](./142.md)|[linked list cycle ii](https://leetcode-cn.com/problems/linked-list-cycle-ii/)|Linkedlist|😯|
+|[144](./144.md)|[binary tree preorder traversal](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/)|Binary tree|😯|
 |[146](./146.md)|[lru-cache](https://leetcode-cn.com/problems/lru-cache/)|design|👌|
 |[155](./155.md)|[min stack](https://leetcode-cn.com/problems/min-stack/)|stack|😯|
 |[169](./169.md)|[majority element](https://leetcode-cn.com/problems/majority-element/)|Divide-conquer|👌|
