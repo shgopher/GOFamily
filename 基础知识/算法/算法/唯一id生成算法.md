@@ -8,7 +8,7 @@
 - 数据库多主模式
 - 号段模式
 - redis incr
-- 雪花算法 snowflake
-- 滴滴打车的 [tinyid](https://github.com/didi/tinyid)
-- 百度的 [uidgenerator](https://github.com/baidu/uid-generator)
-- 美团的 [leaf](https://github.com/Meituan-Dianping/Leaf)
+- twitter 雪花算法 [snowflake](https://github.com/twitter-archive/snowflake)
+- 滴滴打车 [tinyid](https://github.com/didi/tinyid)
+- 百度 [uidgenerator](https://github.com/baidu/uid-generator)
+- 美团 [leaf](https://github.com/Meituan-Dianping/Leaf)
