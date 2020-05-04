@@ -14,4 +14,4 @@
 - 美团 [leaf](https://github.com/Meituan-Dianping/Leaf)
 
 didi和meituan都是使用的数据库多主模式的算法 百度是使用的 twitter的算法 当然它是Java版本，上面有go的版本。生成唯一id的时候 uuid并不合适。因为uuid本身没有意义，而且太长，这样的话不利于储存。
-[gotools](https://github.com/googege/gotools/id) 这里有实现了的源代码
+[gotools](https://github.com/googege/gotools/tree/master/id) 这里有实现了的源代码
