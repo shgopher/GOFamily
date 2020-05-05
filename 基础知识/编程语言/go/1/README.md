@@ -42,6 +42,6 @@ func main(){
 5. 对于接口的时候非常严格，指针和非指针对象完全是不同的。
 6. rang中的数据是对原有数据的复制，其实所有的地方使用的数据都是复制。所以要谨记这一条。
 7. copy 对于数据的复制是值的复制不是引用的复制，所以对新的slice进行更改不会对老的底层数组造成任何的影响
-
+8. go中 `^` 这个 符号不表示次方，只表示异 ，go中的次方只能用 math.Pow
 
 具体的信息可以参考 https://github.com/googege/blog/blob/master/go/go/important/README.md
