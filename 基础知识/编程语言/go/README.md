@@ -30,3 +30,7 @@ go相关的技术罗列
 - [go中mutext和channel以及ticker的底层实现原理](./go中mutext和channel以及ticker的底层实现原理.md)
 - [go语言性能优化实战](./go语言性能优化实战.md)
 - [go语言中的基础类型](./go语言中的基础类型.md)
+
+## 推荐读文
+- go语言圣经
+- [go语言进阶](https://rainbowmango.gitbook.io/go/)
