@@ -28,18 +28,18 @@
 - [chain of responsibility 职责链模式](./职责链模式.md)
 - [vistor 访问者模式](./访问者模式.md)
 ## 同步模式
-- [semaphore 信号模式 :ok:](./信号模式.md)
+- [semaphore 信号模式 ](./信号模式.md)
 ## 并发模式
-- [Bounded Parallelism 有界平行模式 :ok:](./有界平行模式.md)
-- [Generators 发电机模式 :ok:](./发电机模式.md)
-- [Parallelism 排比模式 :ok:](./排比模式.md)
+- [Bounded Parallelism 有界平行模式 ](./有界平行模式.md)
+- [Generators 发电机模式 ](./发电机模式.md)
+- [Parallelism 排比模式 ](./排比模式.md)
 ## 信息模式
-- [Fan-In 扇入模式 :ok:](./扇入模式.md)
-- [Fan-Out 扇出模式 :ok:](./扇出模式.md)
-- [Publish/Subscribe 发布/订阅模式 :ok:](./发布订阅.md)
+- [Fan-In 扇入模式 ](./扇入模式.md)
+- [Fan-Out 扇出模式 ](./扇出模式.md)
+- [Publish/Subscribe 发布/订阅模式 ](./发布订阅.md)
 ## 稳定性模式
-- [Circuit-Breaker 断路器模式 :ok:](./断路器模式.md)
+- [Circuit-Breaker 断路器模式 ](./断路器模式.md)
 ## 分析模式
-- [Timing Functions 计时功能模式 :ok:](./计时功能模式.md)
+- [Timing Functions 计时功能模式 ](./计时功能模式.md)
 ## 固定用法
-- [Functional Options 功能选项 :ok:](./功能选项.md)
+- [Functional Options 功能选项 ](./功能选项.md)
