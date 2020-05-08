@@ -32,7 +32,7 @@
 ## 并发模式
 - [Bounded Parallelism 有界平行模式 :ok:](./有界平行模式.md)
 - [Generators 发电机模式 :ok:](./发电机模式.md)
-- [Parallelism 排比模式](./排比模式.md)
+- [Parallelism 排比模式 :ok:](./排比模式.md)
 ## 信息模式
 - [Fan-In 扇入模式 :ok:](./扇入模式.md)
 - [Fan-Out 扇出模式 :ok:](./扇出模式.md)
