@@ -1,6 +1,6 @@
 # 设计模式
 ## 创建型模式
-- [simple factory 简单工厂方法模式](./简单工厂方法模式.md)
+- [simple factory 简单工厂模式](./简单工厂模式.md)
 - [factory method 工厂方法模式](./工厂方法模式.md)
 - [abstrat factory 抽象工厂模式](./抽象工厂模式.md)
 - [singleton 单例模式](./单例模式.md)

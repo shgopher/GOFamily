@@ -53,6 +53,7 @@ All leetcode questions that solved in different methods.
 |[242](./242.md)|[Valid Anagram](https://leetcode-cn.com/problems/valid-anagram/description/)|string|👌|
 |[283](./283.md)|[Move Zeroes](https://leetcode-cn.com/problems/move-zeroes/description/)|array|👌|
 |[287](./287.md)|[Find the Duplicate Number](https://leetcode-cn.com/problems/find-the-duplicate-number/description/)|array|👌|
+|[300](./300.md)|[longest increasing subsequence](https://leetcode-cn.com/problems/longest-increasing-subsequence/)|array|😯|
 |[338](./338.md)|[counting-bits](https://leetcode-cn.com/problems/counting-bits/)|bit operation|👌|
 |[367](./367.md)|[valid perfect square](https://leetcode-cn.com/problems/valid-perfect-square/)|Binary search|😯|
 |[378](./378.md)|[Kth Smallest Element in a Sorted Matrix](https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/description/)|array|👌|
