@@ -5,7 +5,8 @@
 - [abstrat factory 抽象工厂模式](./抽象工厂模式.md)
 - [singleton 单例模式 :ok:](./单例模式.md)
 - [builder 创建者模式 :ok:](./创建者模式.md)
-- [prototype 原型模式](./原型模式.md)
+- [prototype 原型模式 :ok:](./原型模式.md)
+- [object pool 对象池 :ok:](./对象池模式.md)
 ## 结构型模式
 - [facade 外观模式](./外观模式.md)
 - [adapter 适配器模式](./适配器模式.md)
