@@ -3,8 +3,8 @@
 - [simple factory 简单工厂模式 :ok:](./简单工厂模式.md)
 - [factory method 工厂方法模式 :ok:](./工厂方法模式.md)
 - [abstrat factory 抽象工厂模式](./抽象工厂模式.md)
-- [singleton 单例模式:ok:](./单例模式.md)
-- [builder 创建者模式:ok:](./创建者模式.md)
+- [singleton 单例模式 :ok:](./单例模式.md)
+- [builder 创建者模式 :ok:](./创建者模式.md)
 - [prototype 原型模式](./原型模式.md)
 ## 结构型模式
 - [facade 外观模式](./外观模式.md)
