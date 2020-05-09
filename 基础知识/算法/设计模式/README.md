@@ -34,8 +34,8 @@
 - [Generators 生成器模式 :ok:](./生成器模式.md)
 - [Parallelism 并行模式 :ok:](./并行模式.md)
 ## 信息模式
-- [Fan-In 扇入模式 ](./扇入模式.md)
-- [Fan-Out 扇出模式 ](./扇出模式.md)
+- [Fan-In 扇入模式 :ok:](./扇入模式.md)
+- [Fan-Out 扇出模式 :ok:](./扇出模式.md)
 - [Publish/Subscribe 发布/订阅模式 ](./发布订阅.md)
 ## 稳定性模式
 - [Circuit-Breaker 断路器模式 ](./断路器模式.md)
