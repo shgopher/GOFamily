@@ -30,9 +30,9 @@
 ## 同步模式
 - [semaphore 信号模式 :ok:](./信号模式.md)
 ## 并发模式
-- [Bounded Parallelism 有界并行模式 :ok:](./有界平行模式.md)
+- [Bounded Parallelism 有界并行模式 :ok:](./有界并行模式.md)
 - [Generators 生成器模式 :ok:](./生成器模式.md)
-- [Parallelism 并行模式 ](./排比模式.md)
+- [Parallelism 并行模式 ](./并行模式.md)
 ## 信息模式
 - [Fan-In 扇入模式 ](./扇入模式.md)
 - [Fan-Out 扇出模式 ](./扇出模式.md)
