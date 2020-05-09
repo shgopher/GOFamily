@@ -28,7 +28,7 @@
 - [chain of responsibility 职责链模式](./职责链模式.md)
 - [vistor 访问者模式](./访问者模式.md)
 ## 同步模式
-- [semaphore 信号模式 ](./信号模式.md)
+- [semaphore 信号模式 :ok:](./信号模式.md)
 ## 并发模式
 - [Bounded Parallelism 有界平行模式 :ok:](./有界平行模式.md)
 - [Generators 发电机模式 ](./发电机模式.md)
