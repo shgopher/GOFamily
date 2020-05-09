@@ -30,7 +30,7 @@
 ## 同步模式
 - [semaphore 信号模式 ](./信号模式.md)
 ## 并发模式
-- [Bounded Parallelism 有界平行模式 ](./有界平行模式.md)
+- [Bounded Parallelism 有界平行模式 :ok:](./有界平行模式.md)
 - [Generators 发电机模式 ](./发电机模式.md)
 - [Parallelism 排比模式 ](./排比模式.md)
 ## 信息模式
