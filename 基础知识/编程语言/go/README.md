@@ -5,6 +5,7 @@ go相关的技术罗列
 - 操作系统（Linux）
 - MySQL ：数据库
 - Redis ：缓存数据库
+- etcd：分布式数据库
 - gPRC ：分布式框架 记住 分布式 约等于 PRC
 - go-micro ： 微服务框架
 - nsq ：消息队列框架
