@@ -42,4 +42,4 @@
 ## 分析模式
 - [Timing Functions 计时功能模式 :ok:](./计时功能模式.md)
 ## 固定用法
-- [Functional Options 功能选项 :ok:](./功能选项.md)
+- [Functional Options 功能选项 ok](./功能选项.md)
