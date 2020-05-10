@@ -36,10 +36,10 @@
 ## 信息模式
 - [Fan-In 扇入模式 :ok:](./扇入模式.md)
 - [Fan-Out 扇出模式 :ok:](./扇出模式.md)
-- [Publish/Subscribe 发布/订阅模式 ](./发布订阅.md)
+- [Publish/Subscribe 发布/订阅模式 ](./发布订阅模式.md)
 ## 稳定性模式
-- [Circuit-Breaker 断路器模式 ](./断路器模式.md)
+- [Circuit-Breaker 断路器模式 :ok:](./断路器模式.md)
 ## 分析模式
-- [Timing Functions 计时功能模式 ](./计时功能模式.md)
+- [Timing Functions 计时功能模式 :ok:](./计时功能模式.md)
 ## 固定用法
-- [Functional Options 功能选项 ](./功能选项.md)
+- [Functional Options 功能选项 :ok:](./功能选项.md)

@@ -18,7 +18,7 @@
   - 数据库
     - 关系型数据库
       - MySQL
-      -PQSQL
+      - PQSQL
     - noSQL
       - [Redis](./基础知识/数据库/nosql/redis)
       - monodb
