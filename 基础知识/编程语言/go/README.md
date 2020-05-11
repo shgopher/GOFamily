@@ -41,3 +41,4 @@ go相关的技术罗列
 ## 推荐读文
 - go语言圣经
 - [go语言进阶](https://rainbowmango.gitbook.io/go/)
+- [go语言设计原理](https://draveness.me/golang)
