@@ -62,3 +62,49 @@ type Mutex struct {
 这个原子操作其实就是 相加或者是比较这种东西，祝不过是原子性的，原子性的东西是一瞬间只能一个执行。
 
 ## slice
+```go
+type slice struct {
+    array unsafe.Pointer
+    len   int
+    cap   int
+}
+```
+- 每个切片都指向一个底层数组
+- 每个切片都保存了当前切片的长度、底层数组可用容量
+- 使用len()计算切片长度时间复杂度为O(1)，不需要遍历切片
+- 使用cap()计算切片容量时间复杂度为O(1)，不需要遍历切片
+- 通过函数传递切片时，不会拷贝整个切片，因为切片本身只是个结构体而已
+- 使用append()向切片追加元素时有可能触发扩容，扩容后将会生成新的切片
+
+### map
+```go
+type hmap struct {
+    count     int // 当前保存的元素个数
+
+    B         uint8  // 指示bucket数组的大小
+
+    buckets    unsafe.Pointer // bucket数组指针，数组的大小为2^B
+
+}
+
+```
+### iota
+
+它的数据是根据索引的下标来决定的。简而言之就是根据的是index
+所以这块的const中不管你写了几个iota 它表示的都是索引值，所以值是不会变化的。
+
+```go
+const(
+  a = iota,b = iota-1// 0,-1
+  c ,d // 1,1
+)
+```
+
+### string
+```go
+type stringStruct struct {
+    str unsafe.Pointer
+    len int
+}
+```
+需要注意的是 []byte 和string的转化是需要内存的复制的，所以是会消耗额外的内存空间的。（编译器也会优化，比如某些条件下并不会需要内存的复制）

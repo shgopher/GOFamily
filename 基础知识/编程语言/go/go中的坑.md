@@ -154,3 +154,48 @@ b := a[3:4]
 //cap(b)= 7
 ```
 所以记住容量并不是10，它从它的初始值开始算了。
+### return的真实含义
+
+go里面的return xxx其实是这么干的
+
+```go
+func a()(result int){
+  defer func ()  {
+  result++  
+  }
+  return 1
+}
+```
+实际执行过程是
+
+```go
+result = 1
+result ++
+return result
+```
+
+所以return并不是立马return出去的意思而是两个意思1先赋值 2 return值出去。
+### recover没有被defer方法直接调用；
+
+ ```go
+ func a(){
+   recover()
+ }
+
+ func b (){
+   defer a()
+   panic()
+ }
+ ```
+ 这样就不对，因为recover并不是直接被b中的defer直接调用的。你调用的是 a（）
+
+ ### 空select会引发死锁
+
+ ```go
+ func main() {
+    select {
+    }
+}
+ ```
+ 什么时候会发生死锁？就是某个协程 如果系统判断你永远永远都无法启动运行，就是你永远都不会运行，没有希望了，
+ 那么就死锁了。
