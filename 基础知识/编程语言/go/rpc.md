@@ -67,3 +67,12 @@ func main(){
 	fmt.Println(t)
 }
 ```
+
+## 底层
+
+注册方法的底层
+
+```go
+func suitableMethods(typ reflect.Type, reportErr bool) map[string]*methodType {
+	methods := make(map[string]*methodType) // 就是这个map记录了已经注册的method
+```
