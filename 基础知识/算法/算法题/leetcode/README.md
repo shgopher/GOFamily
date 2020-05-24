@@ -26,18 +26,23 @@ All leetcode questions that solved in different methods.
 |[54](./54.md)|[spiral-matrix](https://leetcode-cn.com/problems/spiral-matrix/)|array|😯|
 |[69](./69.md)|[sqrtx](https://leetcode-cn.com/problems/sqrtx/)|Binary search|👌|
 |[70](./70.md)|[climbing stairs](https://leetcode-cn.com/problems/climbing-stairs/)|dp|👌|
+|[72](./72.md)||dp|😯|
 |[79](./79.md)|[word search](https://leetcode-cn.com/problems/word-search/)|trie|😯|
 |[98](./98.md)|[validate binary search tree](https://leetcode-cn.com/problems/validate-binary-search-tree/)|Binary tree|👌|
 |[102](./102.md)|[binary tree level order traversal](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)|BFS|👌|
 |[104](./104)|[maximum depth of binary tree](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/submissions/)|DFS|👌|
 |[120](./120.md)|[triangle](https://leetcode-cn.com/problems/triangle/)|dp|👌|
+|[121](./121.md)||dp|😯|
 |[122](./122.md)|[best time to buy and sell stock ii](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)|DP|👌|
+|[123](./123.md)||dp|😯|
 |[141](./141.md)|[linked list cycle](https://leetcode-cn.com/problems/linked-list-cycle/)|Linkedlist|👌|
 |[142](./142.md)|[linked list cycle ii](https://leetcode-cn.com/problems/linked-list-cycle-ii/)|Linkedlist|😯|
 |[144](./144.md)|[binary tree preorder traversal](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/)|Binary tree|😯|
 |[146](./146.md)|[lru-cache](https://leetcode-cn.com/problems/lru-cache/)|design|👌|
+|[152](./152.md)|[maximum product subarray](https://leetcode-cn.com/problems/maximum-product-subarray/)|dp|👌|
 |[155](./155.md)|[min stack](https://leetcode-cn.com/problems/min-stack/)|stack|😯|
 |[169](./169.md)|[majority element](https://leetcode-cn.com/problems/majority-element/)|Divide-conquer|👌|
+|[188](./188.md)||dp|😯|
 |[191](./191.md)|[number-of-1-bits](https://leetcode-cn.com/problems/number-of-1-bits/)|bit operation|👌|
 |[200](./200.md)|[number-of-islands](https://leetcode-cn.com/problems/number-of-islands/)|union and find|👌|
 |[205](./205.md)|[Isomorphic Strings](https://leetcode-cn.com/problems/isomorphic-strings/description/)|string|👌|
@@ -55,6 +60,8 @@ All leetcode questions that solved in different methods.
 |[283](./283.md)|[Move Zeroes](https://leetcode-cn.com/problems/move-zeroes/description/)|array|👌|
 |[287](./287.md)|[Find the Duplicate Number](https://leetcode-cn.com/problems/find-the-duplicate-number/description/)|array|👌|
 |[300](./300.md)|[longest increasing subsequence](https://leetcode-cn.com/problems/longest-increasing-subsequence/)|array|😯|
+|[309](./309.md)||dp|😯|
+|[322](./322.md)||dp|😯|
 |[338](./338.md)|[counting-bits](https://leetcode-cn.com/problems/counting-bits/)|bit operation|👌|
 |[367](./367.md)|[valid perfect square](https://leetcode-cn.com/problems/valid-perfect-square/)|Binary search|😯|
 |[378](./378.md)|[Kth Smallest Element in a Sorted Matrix](https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/description/)|array|👌|
@@ -68,6 +75,7 @@ All leetcode questions that solved in different methods.
 |[696](./696.md)|[Count Binary Substrings](https://leetcode-cn.com/problems/count-binary-substrings/description/)|string|😯|
 |[697](./697.md)|[Degree of an Array](https://leetcode-cn.com/problems/degree-of-an-array/description/)|array|👌|
 |[703](./703.md)|[topk](https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/)|heap|👌|
+|[714](./714.md)||dp|😯|
 |[766](./766.md)|[Toeplitz Matrix](https://leetcode-cn.com/problems/toeplitz-matrix/)|array|👌|
 |[769](./769.md)|[Max Chunks To Make Sorted](https://leetcode-cn.com/problems/max-chunks-to-make-sorted/description/)|array|👌|
 |[844](./844.md)|[Backspace String Compare](https://leetcode-cn.com/problems/backspace-string-compare/)|stack|😯|
