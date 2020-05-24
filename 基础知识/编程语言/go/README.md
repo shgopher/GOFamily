@@ -8,7 +8,7 @@ go相关的技术罗列
 - etcd：分布式数据库
 - gPRC ：分布式框架 记住 分布式 约等于 PRC
 - go-micro ： 微服务框架
-- nsq ：消息队列框架
+- nsq| nats：消息队列框架
 - gin ：web服务框架
 - docker ：容器
 - k8s ：容器管理框架
