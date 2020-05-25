@@ -39,6 +39,7 @@ go相关的技术罗列
 - [go中的反射](./反射.md)
 - [go中mutext和channel以及ticker的底层实现原理](./go中mutext和channel以及ticker的底层实现原理.md)
 - [go语言中的基础类型](./go语言中的基础类型.md)
+- [go 动态调试](./go动态调试.md)
 
 ## 推荐读文
 - go语言圣经
