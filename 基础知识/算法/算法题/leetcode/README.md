@@ -32,7 +32,7 @@ All leetcode questions that solved in different methods.
 |[102](./102.md)|[binary tree level order traversal](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)|BFS|👌|
 |[104](./104)|[maximum depth of binary tree](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/submissions/)|DFS|👌|
 |[120](./120.md)|[triangle](https://leetcode-cn.com/problems/triangle/)|dp|👌|
-|[121](./121.md)||dp|😯|
+|[121](./121.md)|[best time to buy and sell stock](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock)|dp|👌|
 |[122](./122.md)|[best time to buy and sell stock ii](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)|DP|👌|
 |[123](./123.md)||dp|😯|
 |[141](./141.md)|[linked list cycle](https://leetcode-cn.com/problems/linked-list-cycle/)|Linkedlist|👌|
