@@ -93,7 +93,7 @@
 |我的社交平台|[b站](https://space.bilibili.com/478621088)，[YouTube](https://www.youtube.com/channel/UCM_-pFgD_HZDGD0yxfzguRQ?view_as=subscriber)，[微博](https://weibo.com/imgoogege)，抖音：googege|
 
 ## 声明
-如有转载，请标注: "转载于: https://github.com/googege/GOFamily  作者: 魔都一只土拨鼠"
+如有转载，请标注: "转载于: https://github.com/shgopher/GOFamily  作者: [shgopher](https://shgopher.github.io)"
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a>进行许可。
 ## Stargazers over time
