@@ -51,7 +51,6 @@
   - [高性能短链接服务](./项目/高性能短链接服务.md)
   - [go 补充数据结构](https://github.com/shgopher/godata)
   - [go 工具包](https://github.com/shgopher/gotools)
-  - [🐯 视频下载工具](https://github.com/shgopher/phd)
 - [程序员非技术主题](./程序员非技术主题)
   - 变现能力
   - 法律知识
