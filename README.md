@@ -1,5 +1,5 @@
 # GOFamily
-大厂 bat 面试高频知识点，后端体系。
+大厂 BAT 面试高频知识点，技术体系包含了 C GO Python, 网络，Redis ，MySQL ，消息队列 ，高并发，微服务，缓存，操作系统，算法，LeetCode 刷题等知识
 > 由于某些原因，本项目**放缓**更新，将于2021年5月份开始进行大的内容优化以及各项内容的添加，想关注后续进程的，请 **star fork watching**，本项目**长期存在**，**长期更新**。
 
 >本项目中所有的思维导图都是使用的[processon](https://www.processon.com/i/5dd7b050e4b06b336e47bbda)来制作，在此表示感谢
