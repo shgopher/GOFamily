@@ -39,8 +39,7 @@
 |对我的赞助|![p](https://raw.githubusercontent.com/basicExploration/Demos/master/donate.png)|
 |uml图形设计推荐|本项目中所有的思维导图都是使用的[processon](https://www.processon.com/i/5dd7b050e4b06b336e47bbda)来制作，在此表示感谢|
 |便宜服务器推荐|[阿里云](https://www.aliyun.com/minisite/goods?userCode=ol87kpmz)，[梯子服务器](https://app.cloudcone.com/?ref=2525):支持支付宝|
-|微信公众号|![p](https://raw.githubusercontent.com/basicExploration/Demos/master/pluspro.png)|
-|知识讨论微信群|![p](https://raw.githubusercontent.com/basicExploration/Demos/master/joinMyGroup.png)|
+|微信公众号|搜索：科科人神|
 |我的社交平台|[b站](https://space.bilibili.com/478621088)，[YouTube](https://www.youtube.com/channel/UCM_-pFgD_HZDGD0yxfzguRQ?view_as=subscriber)，[微博](https://weibo.com/imgoogege)，抖音：shgopher|
 
 ## 声明
