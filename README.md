@@ -103,7 +103,7 @@
 ## HERE
 |项目|介绍|
 |:---:|:---:|
-|对我的赞助|![p](https://raw.githubusercontent.com/basicExploration/Demos/master/donate.png)|
+|对我的赞助|![p](https://img03.sogoucdn.com/app/a/100520146/dd09f78e99cfbe26e0671938efa5fc41)|
 |uml图形设计推荐|本项目中所有的思维导图都是使用的[processon](https://www.processon.com/i/5dd7b050e4b06b336e47bbda)来制作，在此表示感谢|
 |便宜服务器推荐|[阿里云](https://www.aliyun.com/minisite/goods?userCode=ol87kpmz)，[梯子服务器](https://app.cloudcone.com/?ref=2525):支持支付宝|
 |微信公众号|搜索：科科人神|
