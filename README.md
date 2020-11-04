@@ -101,13 +101,7 @@
 |3|新技术|
 
 ## HERE
-|项目|介绍|
-|:---:|:---:|
-|对我的赞助|![p](https://img03.sogoucdn.com/app/a/100520146/dd09f78e99cfbe26e0671938efa5fc41)|
-|uml图形设计推荐|本项目中所有的思维导图都是使用的[processon](https://www.processon.com/i/5dd7b050e4b06b336e47bbda)来制作，在此表示感谢|
-|便宜服务器推荐|[阿里云](https://www.aliyun.com/minisite/goods?userCode=ol87kpmz)，[梯子服务器](https://app.cloudcone.com/?ref=2525):支持支付宝|
-|微信公众号|搜索：科科人神|
-|我的社交平台|[b站](https://space.bilibili.com/478621088)，[YouTube](https://www.youtube.com/channel/UCokcZZPCf0rYWAjLeKlr5uA)|
+学习 go Python 算法 知识，欢迎关注【公众号】 “**科科人神**” 【b站】 “**科科人神**”
 
 ## 声明
 如有转载，请标注: "转载于: https://github.com/shgopher/GOFamily  作者: [科科人神](https://shgopher.github.io)"
