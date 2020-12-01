@@ -1,11 +1,5 @@
 # GOFamily
-
-<p style='color:red'>
-  <a href='#HERE'>
-  重点
-  </a>
-</p>
-
+> [重点](#HERE)
 
 🔥 大厂 BAT 面试高频知识点，技术体系包含了  GO Python, 网络，Redis ，MySQL ，消息队列 ，高并发，微服务，缓存，操作系统，算法，LeetCode 刷题等知识
 
