@@ -106,7 +106,11 @@
 |3|新技术|
 
 ## HERE
-学习 go Python 算法 知识，欢迎关注【公众号】 “**科科人神**” 【b站】 “**科科人神**”
+- 想了解更多计算机知识，更多赚钱“秘籍”，程序员生活，数码科技，请关注公众号“**科科人神**” 
+
+![p](./joinUsW.jpg)
+
+- 我的b站： “**[科科人神](https://space.bilibili.com/478621088)**”
 
 ## 声明
 如有转载，请标注: "转载于: https://github.com/shgopher/GOFamily  作者: [科科人神](https://shgopher.github.io)"
