@@ -1,6 +1,6 @@
 # linux 基础操作
 ### 基础
-- [入手终端的基础](./doc/shell-scriptbasic.md)
+- [入手终端的基础](./doc/basic.md)
 - [跳转](./doc/jump.md)
 - [探究Linux本身](./doc/linux-itself.md)
 - [文件和目录等操作命令](./doc/file-contents.md)
