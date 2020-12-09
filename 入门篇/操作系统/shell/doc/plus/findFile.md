@@ -1,5 +1,5 @@
 # 查找文件
-[目录](./summary.md)
+## [目录](.https://github.com/shgopher/GOFamily/tree/master/%E5%85%A5%E9%97%A8%E7%AF%87/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/shell)
 ## 基本命令
 - locate – 通过名字来查找文件
 - find – 在目录层次结构中搜索文件

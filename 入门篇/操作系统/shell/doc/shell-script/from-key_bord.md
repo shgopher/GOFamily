@@ -1,6 +1,6 @@
 # 和标准输入流的交流
 
-## [目录](./summary.md)
+## [目录](.https://github.com/shgopher/GOFamily/tree/master/%E5%85%A5%E9%97%A8%E7%AF%87/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/shell)
 > 也就是说如何跟shell输出的时候做一些交互
 
 ## 用到的命令

@@ -1,6 +1,6 @@
 ## linux 中神奇的地方。
 
-[目录](./summary.md)
+## [目录](.https://github.com/shgopher/GOFamily/tree/master/%E5%85%A5%E9%97%A8%E7%AF%87/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/shell)
 
 ## echo含义:就是获取输入流并输出输出流。
   > 要记得字符表达模式是最常见的，并且是最好用的，最容易的（但是相对而言也是最难掌握的）

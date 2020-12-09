@@ -1,6 +1,6 @@
 # 很早之前写的summary，不扔了吧 留个纪念。
 
-## [目录](./summary.md)
+## [目录](.https://github.com/shgopher/GOFamily/tree/master/%E5%85%A5%E9%97%A8%E7%AF%87/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/shell)
 
 
     > # linux 的一些技术总结（详细的不说了，你们可以自己去看书，我只写大概的东西）
@@ -32,6 +32,6 @@
     结果就是以换行进行输出
     ![this is a picture](./picture/picture1.png)
 
-## [目录](./summary.md)
+## [目录](.https://github.com/shgopher/GOFamily/tree/master/%E5%85%A5%E9%97%A8%E7%AF%87/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/shell)
 
 
