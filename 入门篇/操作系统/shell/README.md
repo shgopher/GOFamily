@@ -32,7 +32,7 @@
 - [while](./doc/shell-script/while.md)
 - [错误的排解](./doc/shell-script/error.md)
 - [case](./doc/shell-script/case.md)
-- [位置参数](./doc/shell-script/locate.md)./shell/shell
+- [位置参数](./doc/shell-script/locate.md)
 - [for](./doc/shell-script/for.md)
 - [string && number](./doc/shell-script/string-number.md)
 - [array](./doc/shell-script/array.md)
