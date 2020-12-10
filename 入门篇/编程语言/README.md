@@ -1,9 +1,9 @@
 # 计算机程序设计语言
-- [go](./go)
-- python3
+- [Go](./go)
+- Python3
+- [JavaScript](./JavaScript)
 - c/cpp
 - java
 - shell script
-- javascript
 - dart2/flutter
 - c#
