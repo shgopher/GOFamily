@@ -38,14 +38,14 @@
 - CPP/C
 ### 算法系列
 
-- [数据结构](https://github.com/GOFamily/hi-algorithm)
-- [算法基础](https://github.com/GOFamily/hi-algorithm)
-- [**算法题**](https://github.com/GOFamily/hi-algorithm)
-- [设计模式](https://github.com/GOFamily/hi-algorithm)
+- [数据结构](https://github.com/GOFamily/hi-algorithm#数据结构)
+- [算法基础](https://github.com/GOFamily/hi-algorithm#算法)
+- [**算法题**](https://github.com/GOFamily/hi-algorithm#算法题)
+- [设计模式](https://github.com/GOFamily/hi-algorithm#设计模式)
 ### 网络
 
-- [应用层](https://github.com/GOFamily/hi-network)
-- [传输层](https://github.com/GOFamily/hi-network)
+- [应用层](https://github.com/GOFamily/hi-network#应用层)
+- [传输层](https://github.com/GOFamily/hi-network#传输层)
 - 网络层
 - 链路层
 - 物理层
@@ -97,11 +97,11 @@
 
 ### 程序员个人发展
 
-- [变现](https://github.com/GOFamily/hi-computeEngineer)
-- [法律](https://github.com/GOFamily/hi-computeEngineer)
-- [考研](https://github.com/GOFamily/hi-computeEngineer)
-- [领导](https://github.com/GOFamily/hi-computeEngineer)
-- [面试](https://github.com/GOFamily/hi-computeEngineer)
+- [变现](https://github.com/GOFamily/hi-computeEngineer#变现)
+- [法律](https://github.com/GOFamily/hi-computeEngineer#法律)
+- [考研](https://github.com/GOFamily/hi-computeEngineer#考研)
+- [领导](https://github.com/GOFamily/hi-computeEngineer#领导)
+- [面试](https://github.com/GOFamily/hi-computeEngineer#面试)
 - [PDF图书](https://github.com/basicExploration/books)
 ## 终篇
 ### 分布式及云计算
