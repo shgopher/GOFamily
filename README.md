@@ -29,8 +29,8 @@
 ## 入门篇
 ### 编程语言
 
-- [GO](./入门篇/编程语言/go)
-- Python3
+- [GO](https://github.com/GOFamily/hi-go)
+- [Python3](https://github.com/GOFamily/hi-python)
 - JavaScript
 - PHP
 - Java
@@ -38,14 +38,14 @@
 - CPP/C
 ### 算法系列
 
-- [数据结构](./入门篇/算法/数据结构)
-- [算法基础](./入门篇/算法/算法)
-- [**算法题**](./入门篇/算法/算法题)
-- [设计模式](./入门篇/算法/设计模式)
+- [数据结构](https://github.com/GOFamily/hi-algorithm)
+- [算法基础](https://github.com/GOFamily/hi-algorithm)
+- [**算法题**](https://github.com/GOFamily/hi-algorithm)
+- [设计模式](https://github.com/GOFamily/hi-algorithm)
 ### 网络
 
-- [应用层](./入门篇/网络/应用层)
-- [传输层](./入门篇/网络/传输层)
+- [应用层](https://github.com/GOFamily/hi-network)
+- [传输层](https://github.com/GOFamily/hi-network)
 - 网络层
 - 链路层
 - 物理层
@@ -55,7 +55,7 @@
 - 内存
 - 文件
 - 设备
-- [Linux基本操作](./入门篇/操作系统/shell)
+- [Linux基本操作](https://github.com/GOFamily/hi-Linux)
 ### 计算机组成原理
 
 - 数据
@@ -97,11 +97,11 @@
 
 ### 程序员个人发展
 
-- [变现](./提高篇/程序员个人发展/变现能力)
-- [法律](./提高篇/程序员个人发展/法律知识)
-- [考研](./提高篇/程序员个人发展/考研)
-- [领导](./提高篇/程序员个人发展/领导能力)
-- [面试](./提高篇/程序员个人发展/面试)
+- [变现](https://github.com/GOFamily/hi-computeEngineer)
+- [法律](https://github.com/GOFamily/hi-computeEngineer)
+- [考研](https://github.com/GOFamily/hi-computeEngineer)
+- [领导](https://github.com/GOFamily/hi-computeEngineer)
+- [面试](https://github.com/GOFamily/hi-computeEngineer)
 - [PDF图书](https://github.com/basicExploration/books)
 ## 终篇
 ### 分布式及云计算
