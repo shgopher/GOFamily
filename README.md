@@ -130,4 +130,4 @@
 
 [![Stargazers over time](https://starchart.cc/googege/GOFamily.svg)](https://starchart.cc/googege/GOFamily)
 ## 未来可期
-![未来可期！](./未来可期.jpeg)
+[![未来可期！](./未来可期.jpeg)](https://github.com/shgopher/GOFamily)
