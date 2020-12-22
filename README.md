@@ -99,6 +99,7 @@
 
 ### 程序员个人发展
 
+- [职场](https://github.com/GOFamily/hi-computeEngineer#职场)
 - [变现](https://github.com/GOFamily/hi-computeEngineer#变现)
 - [法律](https://github.com/GOFamily/hi-computeEngineer#法律)
 - [考研](https://github.com/GOFamily/hi-computeEngineer#考研)
