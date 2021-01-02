@@ -38,10 +38,10 @@
 - CPP/C
 ### 算法系列
 
-- [数据结构](https://github.com/GOFamily/hi-algorithm#数据结构)
-- [算法基础](https://github.com/GOFamily/hi-algorithm#算法)
+- [数据结构](https://github.com/GOFamily/hi-algorithm/blob/main/%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.md#数据结构)
+- [算法基础](https://github.com/GOFamily/hi-algorithm/blob/main/%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.md#算法)
 - [**算法题**](https://github.com/GOFamily/hi-algorithm#算法题)
-- [设计模式](https://github.com/GOFamily/hi-algorithm#设计模式)
+- [设计模式](https://github.com/GOFamily/hi-algorithm/blob/main/%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.md#设计模式)
 ### 网络
 
 - [应用层](https://github.com/GOFamily/hi-network#应用层)
