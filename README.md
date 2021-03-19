@@ -63,7 +63,7 @@
 - IO
 ### 数据库
 - SQL
-- [noSQL](https://github.com/GOFamily/hi-db#nosql)
+- [noSQL](./入门篇/数据库/nosql)
 - 分布式数据库
 ## 提高篇
 ### 系统设计
