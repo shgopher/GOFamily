@@ -29,8 +29,9 @@
 ## 入门篇
 ### 编程语言
 
-- [GO](https://github.com/GOFamily/hi-go)
-- [Python3](https://github.com/GOFamily/hi-python)
+- [GO](./入门篇/编程语言/go)
+- [Python3](./入门篇/编程语言/python)
+- [shell](./入门篇/编程语言/shell)  
 - JavaScript
 - PHP
 - Java
@@ -38,26 +39,22 @@
 - CPP/C
 ### 算法系列
 
-- [数据结构](https://github.com/GOFamily/hi-algorithm/blob/main/%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.md#数据结构)
-- [算法基础](https://github.com/GOFamily/hi-algorithm/blob/main/%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.md#算法)
-- [**算法题**](https://github.com/GOFamily/hi-algorithm#算法题)
-- [设计模式](https://github.com/GOFamily/hi-algorithm/blob/main/%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.md#设计模式)
+- [数据结构](./入门篇/算法/数据结构)
+- [算法基础](./入门篇/算法/算法)
+- [**算法题**](./入门篇/算法/算法题)
+- [设计模式](./入门篇/算法/设计模式)
 ### 网络
-
-- [应用层](https://github.com/GOFamily/hi-network#应用层)
-- [传输层](https://github.com/GOFamily/hi-network#传输层)
+- [应用层](./入门篇/网络/应用层)
+- [传输层](./入门篇/网络/传输层)
 - 网络层
 - 链路层
 - 物理层
 ### 操作系统
-
 - 进程
 - 内存
 - 文件
 - 设备
-- [Linux基本操作](https://github.com/GOFamily/hi-Linux)
 ### 计算机组成原理
-
 - 数据
 - 存储
 - 指令
@@ -65,28 +62,23 @@
 - 总线
 - IO
 ### 数据库
-
 - SQL
 - [noSQL](https://github.com/GOFamily/hi-db#nosql)
 - 分布式数据库
 ## 提高篇
 ### 系统设计
+- 分布式技术概念
+- 分布式技术算法
 - RPC
 - 微服务
 - 中台
-- 分布式算法
 - 消息队列
 - 缓存
 - 数据库的优化
 - 负载均衡
 - 高并发以及并行计算
 - 网关
----
-- 高性能
-- 高可用
-- 高扩展
-- 高弹力
-- 高安全性
+
 ### 软件工程
 
 - 可行性和需求
@@ -105,12 +97,12 @@
 
 ### 程序员个人发展
 
-- [职场](https://github.com/GOFamily/hi-computeEngineer#职场)
-- [变现](https://github.com/GOFamily/hi-computeEngineer#变现)
-- [法律](https://github.com/GOFamily/hi-computeEngineer#法律)
-- [考研](https://github.com/GOFamily/hi-computeEngineer#考研)
-- [领导](https://github.com/GOFamily/hi-computeEngineer#领导)
-- [面试](https://github.com/GOFamily/hi-computeEngineer#面试)
+- [职场](./提高篇/程序员个人发展/职场)
+- [变现](./提高篇/程序员个人发展/变现能力)
+- [法律](./提高篇/程序员个人发展/法律知识)
+- [考研](./提高篇/程序员个人发展/考研)
+- [领导](./提高篇/程序员个人发展/领导能力)
+- [面试](./提高篇/程序员个人发展/面试)
 - [PDF图书](https://github.com/basicExploration/books)
 ## 终篇
 ### 分布式及云计算
