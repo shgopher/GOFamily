@@ -1,0 +1,21 @@
+{
+  "title":"GOFamily",
+  "author": "科科人神 <shgopher@foxmail.com>",
+  "description": "GOFamily is a go-learning book.",
+  "sidebar": {
+            "GOFamily": "https://github.com/shgopher/GOFamily"
+        },
+  "pdf": {
+        "fontSize": 16,
+        "footerTemplate": null,
+        "headerTemplate": null,
+        "margin": {
+            "bottom": 36,
+            "left": 2,
+            "right": 2,
+            "top": 36
+        },
+        "pageNumbers": false,
+        "paperSize": "a4"
+    }
+}
