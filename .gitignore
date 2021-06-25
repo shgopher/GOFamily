@@ -5,3 +5,4 @@ node_modules
 go.sum
 go.mod
 _book
+*.pdf
