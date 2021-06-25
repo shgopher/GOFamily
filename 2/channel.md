@@ -880,6 +880,69 @@ func w(d time.Duration) chan interface{} {
 	return c
 }
 ```
+
+当节点过多的时候，我们就要很深的递归，这个时候很容易发生内存泄漏，所以我们在海量的g的时候可以使用反射这种方式来实现or-done这种模式。
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+	"time"
+)
+
+func main() {
+	t1 := time.Now()
+
+	<-Or(
+		w(1*time.Second),
+		w(2*time.Second),
+		w(3*time.Second),
+		w(4*time.Second),
+		w(5*time.Second),
+		w(6*time.Second),
+	)
+	fmt.Println(time.Since(t1))
+
+}
+
+//Or 实现的功能：输入众多chan interface{}的时候，我们只需要一个执行完毕就可以让这个or返回chan interface{}值
+// 由于本场景goroutine众多，所以此处采用reflect包，反射的方式来写。
+func Or(c ...chan interface{}) chan interface{} {
+	switch len(c) {
+	case 0:
+		return nil
+	case 1:
+		return c[0]
+	}
+	// 下面就是大于等于2的时候，使用反射做出来的操作：
+	done := make(chan interface{})
+	go func() {
+		defer close(done)
+		var f []reflect.SelectCase
+		for _, v := range c {
+			f = append(f, reflect.SelectCase{
+				Dir:  reflect.SelectRecv,
+				Chan: reflect.ValueOf(v),
+			})
+		}
+		reflect.Select(f)
+	}()
+	return done
+}
+
+//w 此处模拟了工作状态
+func w(d time.Duration) chan interface{} {
+	done := make(chan interface{})
+	go func() {
+		defer close(done)
+		time.Sleep(d)
+	}()
+	return done
+}
+
+```
 ### 扇入
 
 ### 扇出
