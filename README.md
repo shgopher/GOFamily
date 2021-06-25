@@ -9,7 +9,7 @@ go语言从入门到熟练掌握
 ## 导图
 > 国内访问可能无法访问到图片，可以添加微信公众号：`科科人神`，回复：`go思维导图` 获取**高清大图**，另外回复 `go-book` 可获得本教程的**PDF离线版本**。
 
->在线阅读[地址](https://shgopher.github.io/GOFamily-book)
+>在线阅读[地址](https://shgopher.github.io/GOFamily)
 
 
 ![https://github.com/shgopher/GOFamily](./go.png)
