@@ -7,7 +7,7 @@ go语言从入门到熟练掌握
 ![p](./gofamily.jpg)
 
 ## 导图
-> 国内访问可能无法访问到图片，可以添加微信公众号：`科科人神`，回复：`go思维导图` 获取，另外回复 `go-book` 可获得本教程的PDF离线版本。
+> 国内访问可能无法访问到图片，可以添加微信公众号：`科科人神`，回复：`go思维导图` 获取**高清大图**，另外回复 `go-book` 可获得本教程的**PDF离线版本**。
 
 >在线阅读[地址](https://shgopher.github.io/GOFamily-book)
 
@@ -67,6 +67,7 @@ go语言从入门到熟练掌握
 - [atom](./3/atom.md)
 - [log](./3/log.md)
 - [json](./3/json.md)
+## Q&A
 
 ## 作者的计算机知识项目
 - [foolon](https://github.com/shgopher/foo-lon) : 系统设计以及分布式协议
