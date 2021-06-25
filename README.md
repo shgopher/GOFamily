@@ -70,7 +70,7 @@
 ## Q&A
 
 ## 作者的计算机知识项目
-- [foolon](https://github.com/shgopher/foo-lon) : 系统设计以及分布式协议
+- [foo-lon](https://github.com/shgopher/foo-lon) : 系统设计以及分布式协议
 - [GOFamily](https://github.com/shgopher/GOFamily) :go语言从入门到熟练掌握 
 - [408Family](https://github.com/shgopher/408Family) : 算法和数据结构,设计模式，正则表达式，网络，操作系统，计算机组成原理
 - [DBFamily](https://github.com/shgopher/DBFamily) : 从零开始学习数据库知识
