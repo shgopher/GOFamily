@@ -804,7 +804,82 @@ func (w *WaitGroup) Wait() {
 ### 流水线模式
 上文中的数据传递，击鼓传花模式就是流水线模式的一种表现形式。流水线模式，顾名思义，就是跟工厂中的流水线类似，一个工位搞定以后再往下一个工作走，属于单线程模式。上文中的击鼓传花数据传递，那个数据在不同的g之间流转一个接着一个，单线程工作，是典型的流水线模式。
 ### Or-Done
+这是上文中信号通知的延伸，上文中信号是当某一个任务完成的时候，我们给予了信号通知的方式，这里我们是多任务，当多任务中的任意一个完成的时候，就发起通知。
 
+现在有一个场景，我们需要发送一个信息到分布式的多服务器节点，我们要求，只要有一个节点服务器做出了应答，我们就可以返回这个信号
+
+我们先看一下使用传统的递归分治的算法：
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	n := time.Now()
+	<- Or(
+		w(1*time.Second),
+		w(2*time.Second),
+		w(3*time.Second),
+		w(4*time.Second),
+		w(5*time.Second),
+		w(6*time.Second),
+		w(7*time.Second),
+		w(8*time.Second),
+		w(9*time.Second),
+		w(10*time.Second),
+		w(11*time.Second),
+		w(12*time.Second),
+		)
+	fmt.Println("测试结束",time.Since(n))
+}
+
+//Or 这是Or-done模式,本方法采用分治的方法
+func Or(c ...chan interface{})chan interface{}{
+	// 特殊情况，有零个或者一个的情况
+	// 必须拥有特殊值的处理，不然无法跳出递归
+	switch len(c) {
+	case 0:
+		return nil
+	case 1:
+		return c[0]
+	}
+	t := make(chan interface{})
+	go func() {
+		defer close(t)
+		// 只有两个
+		switch len(c) {
+		// 必须拥有特殊值的处理，不然无法跳出递归
+		case 2:
+			select {
+				case <- c[0]:
+				case  <- c[1]:
+			}
+		default:
+			mi := len(c)/2
+			select {
+			// 这里开始分治
+				case <- Or(c[:mi]...):
+				case <- Or(c[mi:]...):
+			}
+		}
+	}()
+	// 返回分治的结果
+	return t
+}
+//w 测试的工作文件
+func w(d time.Duration) chan interface{} {
+	c := make(chan interface{})
+	go func() {
+		defer close(c)
+		time.Sleep(d)
+	}()
+	return c
+}
+```
 ### 扇入
 
 ### 扇出
