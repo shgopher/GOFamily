@@ -948,6 +948,78 @@ func w(d time.Duration) chan interface{} {
 
 使用反射的方法实现扇入
 ```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+	"time"
+)
+
+func main() {
+
+	fi := FanInReflect(
+		work(1*time.Second),
+		work(2*time.Second),
+		work(3*time.Second),
+		work(4*time.Second),
+		work(5*time.Second),
+		work(6*time.Second),
+		work(7*time.Second),
+		work(8*time.Second),
+		work(9*time.Second),
+		work(10*time.Second),
+		work(11*time.Second),
+		work(12*time.Second),
+	)
+	for v := range fi {
+		fmt.Println(v)
+	}
+
+}
+
+//FanInReflect
+func FanInReflect(channels ...chan interface{}) chan interface{} {
+	out := make(chan interface{})
+	go func() {
+		// 结尾关闭out
+		defer close(out)
+		// 构造一个收的反射select
+		var rcs []reflect.SelectCase
+		for _, v := range channels {
+			rcs = append(rcs, reflect.SelectCase{
+				Dir:  reflect.SelectRecv,
+				Chan: reflect.ValueOf(v),
+			},
+			)
+		}
+		// 这是将已经关闭的chan给筛出去。
+		for len(rcs) > 0 {
+			i, r, ok := reflect.Select(rcs)
+			if !ok {
+				fmt.Println("关闭一个chan，剩余",len(rcs))
+				// 证明这个chan是关闭的，这个c的内容就不用发送出去了，所以是continue
+				rcs = append(rcs[:i], rcs[i+1:]...)
+				continue
+			}
+			out <- r
+		}
+
+	}()
+	return out
+}
+
+// work 这里就是作为测试使用
+func work(d time.Duration) chan interface{} {
+	done := make(chan interface{})
+	go func() {
+		defer close(done)
+		done <- d.String()
+		time.Sleep(d)
+	}()
+	return done
+}
+
 ```
 使用分治的方法实现扇入
 ```go
