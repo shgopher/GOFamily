@@ -1052,7 +1052,7 @@ func main() {
 
 }
 
-//FanInRec 使用归并的思想进行处理
+//FanInRec 使用归并的思想进行处理，可以类比算法中的多路归并。
 func FanInRec(channels ...chan interface{}) chan interface{} {
 	switch len(channels) {
 	case 0:
@@ -1112,13 +1112,76 @@ func work(d time.Duration) chan interface{} {
 ### 扇出
 在chan中的定义就是一个输入端口，多个输出端口
 
-使用观察者模式 设计模式来写
+我们经常使用这种模式来完成设计模式中的观察者模式，即使用一个目标去同时通知多个目标，这一个通知者就是所谓的观察者。
+
+我们可以设想这么一个场景，有一群的节点，然后他们拥有一个配置中心，需要让配置中心充当观察者，只要发生了改变，观察者去通知各个节点，下面我们将使用
+两种方法去实现这么一种扇出 (fanOut)的模式
 ```go
-```
-使用反射的方法来写
-```go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func main() {
+	c1 := make(chan interface{})
+	go func() {
+		defer close(c1)
+		for i := 0; i < 12; i++ {
+			c1 <- i
+		}
+	}()
+	cs := make([]chan interface{}, 6)
+	for k := range cs {
+		cs[k] = make(chan interface{})
+	}
+	FanOut(c1, cs, true)
+	wg := new(sync.WaitGroup)
+	for k := range cs {
+		wg.Add(1)
+		go func(k int) {
+			defer wg.Done()
+			for {
+				select {
+				case v := <- cs[k]:
+					fmt.Println(v)
+				case <- time.After(time.Second>>2):
+					return
+				}
+			}
+		}(k)
+	}
+	wg.Wait()
+}
+
+//FanOut 扇出模式
+// victor 为观察者，也就是它一个人的数据要传递给out这个slice中的各个文件，async表示是否异步传递
+func FanOut(victor chan interface{}, out []chan interface{}, async bool) {
+	go func() {
+		//defer func() {
+		//	for _ ,v := range out {
+		//		close(v)
+		//	}
+		//}()
+		for v := range victor {
+			for i:= 0;i < len(out);i++ {
+				i:= i
+				if async {
+					go func(v interface{}) {
+						out[i] <- v
+					}(v)
+				} else {
+					out[i] <- v
+				}
+			}
+		}
+	}()
+}
+
 ```
 ### Stream
 流式管道用法，提供跳过几个元素，或者只取某几个元素这种功能
 ### Map-Reduce
-map-reduce可以简单的看作两个步骤，第一，将数据进行映射，也就是分类，第二将数据进行排序。这个意思就是将那些分类好的数据，按照某个次序，进行排列后放入一个统一的结果中。可以类比算法中的多路归并。
+map-reduce可以简单的看作两个步骤，第一，将数据进行映射，也就是分类，第二将数据进行排序。这个意思就是将那些分类好的数据，按照某个次序，进行排列后放入一个统一的结果中。可以类比算法中的快速排序。
