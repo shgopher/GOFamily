@@ -1023,6 +1023,91 @@ func work(d time.Duration) chan interface{} {
 ```
 使用分治的方法实现扇入
 ```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+
+	fi := FanInRec(
+		work(1*time.Second),
+		work(2*time.Second),
+		work(3*time.Second),
+		work(4*time.Second),
+		work(5*time.Second),
+		work(6*time.Second),
+		work(7*time.Second),
+		work(8*time.Second),
+		work(9*time.Second),
+		work(10*time.Second),
+		work(11*time.Second),
+		work(12*time.Second),
+	)
+	for v := range fi {
+		fmt.Println(v)
+	}
+
+}
+
+//FanInRec 使用归并的思想进行处理
+func FanInRec(channels ...chan interface{}) chan interface{} {
+	switch len(channels) {
+	case 0:
+		c := make(chan interface{})
+		close(c)
+		return c
+	case 1:
+		return channels[0]
+	case 2:
+		return mergeTwoChannel(channels[0],channels[1])
+	default:
+		m := len(channels)/2
+		return mergeTwoChannel(
+			FanInRec(channels[:m]...),
+			FanInRec(channels[m:]...),
+		)
+	}
+}
+
+// mergeTwoChannel
+func mergeTwoChannel(a, b chan interface{}) chan interface{} {
+	done := make(chan interface{})
+	go func() {
+		defer close(done)
+		for a!= nil || b != nil {
+			select {
+			case v,ok :=  <- a:
+				if !ok {
+					a = nil
+					continue
+				}
+				done <- v
+			case v,ok :=  <- b:
+				if !ok {
+					b = nil
+					continue
+				}
+				done <- v
+			}
+		}
+	}()
+	return done
+}
+
+// work 这里就是作为测试使用
+func work(d time.Duration) chan interface{} {
+	done := make(chan interface{})
+	go func() {
+		defer close(done)
+		done <- d.String()
+		time.Sleep(d)
+	}()
+	return done
+}
+
 ```
 ### 扇出
 在chan中的定义就是一个输入端口，多个输出端口
