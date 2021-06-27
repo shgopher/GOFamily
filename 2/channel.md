@@ -1185,17 +1185,171 @@ func FanOut(victor chan interface{}, out []chan interface{}, async bool) {
 流式管道用法，提供跳过几个元素，或者只取某几个元素这种功能,将数据从数组转化为流, 注意这个从切片改为流跟上文中的扇入颇为相似，
 只不过这里是切片中的数据改为流，上文中是切片中的各个chan改为一个chan,这是本质的区别。
 
+```go
+//TobeStream 将数据从数组转化为流，注意这个从切片改为流跟上文中的扇入颇为相似，
+//只不过这里是切片中的数据改为流，上文中是切片中的各个chan改为一个chan
+// 这是本质的区别。
+func TobeStream(ctx context.Context, values ...interface{}) chan interface{} {
+	done := make(chan interface{})
+	go func() {
+		defer close(done)
+		for i := 0; i < len(values); i++ {
+			select {
+			case done <- values[i]:
+			case <-ctx.Done():
+			}
+		}
+	}()
+	return done
+}
+```
+
 下面有几种可以实现的方法：
 - takeN 只取前n个
+	```go
+
+	//TakeN 只取前n个
+	func TakeN(ctx context.Context, stream chan interface{}, n int) chan interface{} {
+		done := make(chan interface{})
+		go func() {
+			defer close(done)
+			for i := 0; i < n; i++ {
+				select {
+				case done <- <-stream:
+				case <-ctx.Done():
+					return
+				}
+			}
+		}()
+		return done
+	}
+
+	```
 - takeFn 筛选只满足fn的数据
+	```go
+	//TakeFn 筛选只满足fn的数据
+	func TakeFn(ctx context.Context, stream chan interface{}, fn func() bool) chan interface{} {
+		done := make(chan interface{})
+		go func() {
+			defer close(done)
+			for len(stream) > 0 {
+				if fn() {
+					select {
+					case done <- <-stream:
+					case <-ctx.Done():
+						return
+					}
+				}else {
+					<- stream
+				}
+
+			}
+		}()
+		return done
+	}
+
+	```
 - takeFnWhile 从满足条件开始取，一旦遇到不满足的直接走人
+	```go
+	//TakeFnWhile 从满足条件开始取，一旦遇到不满足的直接走人
+	func TakeFnWhile(ctx context.Context, stream chan interface{}, fn func() bool) chan interface{} {
+		done := make(chan interface{})
+		go func() {
+			defer close(done)
+			key := 0
+			for len(stream) > 0 {
+				if fn() {
+					key = 1
+					select {
+					case done <- <-stream:
+					case <-ctx.Done():
+						return
+					}
+				} else if !fn() && key == 1 {
+					break
+				}else {
+					<- stream
+				}
+			}
+		}()
+		return done
+	}
+
+	```
 - skipN 跳过前n个
+	```go
+	//SkipN 跳过前n个
+	func SkipN(ctx context.Context, stream chan interface{}, n int) chan interface{} {
+		done := make(chan interface{})
+		go func() {
+			defer close(done)
+			i := 0
+			for len(stream) > 0 {
+				i++
+				if i > n {
+					select {
+					case done <- <-stream:
+					case <-ctx.Done():
+						return
+					}
+				}else {
+					<- stream
+				}
+			}
+		}()
+		return done
+	}
+
+	```
 - skipFn 跳过满足条件的
+	```go
+	//SkipFn 跳过满足条件的
+	func SkipFn(ctx context.Context, stream chan interface{}, fn func() bool) chan interface{} {
+		done := make(chan interface{})
+		go func() {
+			defer close(done)
+			for len(stream) > 0 {
+				if !fn() {
+					select {
+					case done <- <-stream:
+					case <-ctx.Done():
+						return
+					}
+				}else {
+					<- stream
+				}
+			}
+		}()
+		return done
+	}
+
+	```
 - skipFnWhile 跳过满足条件的，直到不满足，然后就不跳走了。
+	```go
+	//SkipFnWhile 跳过满足条件的，直到不满足，然后就不跳走了
+	func SkipFnWhile(ctx context.Context, stream chan interface{}, fn func() bool) chan interface{} {
+		done := make(chan interface{})
+		go func() {
+			defer close(done)
+			key := 0
+			for len(stream) > 0 {
+				if !fn() || fn() && key == 1 {
+					key = 1
+					select {
+					case done <- <-stream:
+					case <-ctx.Done():
+						return
+					}
+				} else if fn() && key == 0{
+					continue
+				}
+			}
+		}()
+		return done
+	}
 
-```go
+	```
 
-```
 
 ### Map-Reduce
 map-reduce可以简单的看作两个步骤，第一，将数据进行映射，也就是分类，第二将数据进行排序。这个意思就是将那些分类好的数据，按照某个次序，进行排列后放入一个统一的结果中。可以类比算法中的快速排序。
