@@ -1210,6 +1210,13 @@ func TobeStream(ctx context.Context, values ...interface{}) chan interface{} {
 
 	//TakeN 只取前n个
 	func TakeN(ctx context.Context, stream chan interface{}, n int) chan interface{} {
+
+			if n > len(stream) {
+				
+			panic("n 不应该大于len(stream)")
+			
+			}
+
 		done := make(chan interface{})
 		go func() {
 			defer close(done)
