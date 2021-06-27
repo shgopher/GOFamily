@@ -1212,7 +1212,7 @@ func TobeStream(ctx context.Context, values ...interface{}) chan interface{} {
 	func TakeN(ctx context.Context, stream chan interface{}, n int) chan interface{} {
 
 			if n > len(stream) {
-				
+
 			panic("n 不应该大于len(stream)")
 			
 			}
@@ -1359,4 +1359,82 @@ func TobeStream(ctx context.Context, values ...interface{}) chan interface{} {
 
 
 ### Map-Reduce
-map-reduce可以简单的看作两个步骤，第一，将数据进行映射，也就是分类，第二将数据进行排序。这个意思就是将那些分类好的数据，按照某个次序，进行排列后放入一个统一的结果中。可以类比算法中的快速排序。
+map-reduce可以简单的看作两个步骤，第一，将数据进行映射，也就是分类，第二将数据进行处理。这个意思就是将那些分类好的数据，按照某个次序，进行排列后放入一个统一的结果中。
+
+map:
+
+```go
+//MapChan 将流中的数据映射到不同的处理单元
+func MapChan(in chan interface{},fn func(v interface{})interface{})chan interface{}{
+	done := make(chan interface{})
+	// 如果in是nil的化，直接向外传递一个已经close掉的信号即可。
+	if in == nil {
+		close(done)
+		return done
+	}
+	go func() {
+		defer close(done)
+		for v := range in {
+			// 这里就是fn是map函数，使用这个函数将v传入，看看返回值。
+			done <- fn(v)
+		}
+	}()
+return done
+}
+
+```
+
+reduce:
+
+```go
+//ReduceData
+func ReduceData(in chan interface{}, fn func(v1, v2 interface{}) interface{}) interface{} {
+	if in == nil {
+		return nil
+	}
+	v := <-in
+	for vi := range in {
+		v = fn(v, vi)
+	}
+	return v
+}
+
+```
+
+下面我们来演示一下场景：
+
+```go
+func main() {
+mapfn1 := func(v interface{}) interface{}{
+		if v.(int) %2 == 0{
+			return v
+		}
+		return nil
+	}
+	reduceFn := func(v1, v2 interface{}) interface{}{
+		return v1.(int) *2 + v2.(int) *3
+	}
+
+	data := []interface{} {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}
+	ctx,cal := context.WithCancel(context.Background())
+	defer cal()
+	in := streamData(ctx,data...)
+	m1 := MapChan(in,mapfn1)
+	fmt.Println(ReduceData(m1,reduceFn))
+
+}
+// 将数组合并为流
+func streamData(ctx context.Context,data ...interface{})chan  interface{}{
+	done := make(chan interface{})
+	go func() {
+		defer close(done)
+		for _,v := range data{
+			select {
+			case <- ctx.Done():
+			case done <- v :
+			}
+		}
+	}()
+	return done
+}
+```
