@@ -26,7 +26,7 @@
 - [go语言的错误处理](./1/error.md)
 - [go语言的测试](./1/testing.md)
 ## go语言高级用法
-
+### 并发相关
 - [同步原语和锁](./2/mutex.md)
 - [context](./2/context.md)
 - [channel](./2/channel.md)
@@ -36,9 +36,11 @@
 - [系统监控](./2/system-control.md)
 - [go语言的内存模型](./2/happens-before.md)
 - [go语言的并发模型](./2/csp.md)
+### 内存管理相关
 - [内存分配](./2/tcmolloc.md)
 - [内存回收gc](./2/gc.md)  
 - [栈内存管理](./2/stack-mem.md)
+### 工程相关
 - [go语言的动态调试](./2/d-debug.md)
 - [go语言的性能优化](./2/better.md)
 - [cgo，unsafe非常见的操作能力](./2/cgo.md)
