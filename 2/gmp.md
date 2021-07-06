@@ -143,3 +143,4 @@ func main(){
     fmt.Println("over")
 }
 ```
+底层的逻辑就是，将这个g从m中取消，放到本地q的队尾
