@@ -64,6 +64,14 @@ go在1.11之前使用的是堆区线性内存管理模式，跟c语言配合的�
 - reserved：运行时持有该地址空间，但是访问该内存会导致错误
 - prepared：内存被保留，可以快速转换到 Ready 状态
 - ready：可以被安全访问
+## 内存管理组件
+- 内存管理单元: `runtime.mspan`
+- 线程缓存: `runtime.mcache`
+- 中心缓存: `runtime.mcentral`
+- 页堆: `runtime.mheap`
+
+![draveness.me](./resource/tcmolloc2.png)
+从上图可以清晰的看出来我们上文中介绍的两个结构，第一个就是go使用的多级线程缓存机制，第二我们可以看出来，在页堆这个区域的时候，我们对于内存的控制，正如上文说的那样，是稀疏管理的
 
 
 
