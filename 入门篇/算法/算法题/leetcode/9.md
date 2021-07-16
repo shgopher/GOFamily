@@ -1,1 +1,0 @@
-# Palindrome Number
