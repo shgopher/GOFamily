@@ -70,7 +70,7 @@
 - [log](./3/log.md)
 - [json](./3/json.md)
 ## Q&A
-
+## go语言编程模式
 ## 作者的计算机知识项目
 - [foo-lon](https://github.com/shgopher/foo-lon) : 系统设计以及分布式协议
 - [GOFamily](https://github.com/shgopher/GOFamily) :go语言从入门到熟练掌握 
