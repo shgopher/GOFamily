@@ -45,7 +45,6 @@
 - [go语言的性能优化](./2/better.md)
 - [cgo，unsafe非常见的操作能力](./2/cgo.md)
 - [go语言的反射](./2/reflect.md)
-- [go语言线上事故排查](./2/accident.md)
 ## go语言编程模式
 - 
 ## Q&A
