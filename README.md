@@ -45,6 +45,8 @@
 - [go语言的性能优化](./2/better.md)
 - [cgo，unsafe非常见的操作能力](./2/cgo.md)
 - [go语言的反射](./2/reflect.md)
+- [静态代码扫描检查工具go lint](./2/golint.md)
+- [go语言项目中的压力测试](./2/hey.md)
 ## go语言编程模式
 - 
 ## Q&A
