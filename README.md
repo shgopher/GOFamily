@@ -7,10 +7,7 @@
 ![p](./gofamily.jpg)
 
 ## 导图
-> 国内访问可能无法访问到图片，可以添加微信公众号：`科科人神`，回复：`go思维导图` 获取**高清大图**，另外回复 `go-book` 可获得本教程的**PDF离线版本**。
-
->在线阅读[地址](https://shgopher.github.io/GOFamily)
-
+> 添加微信公众号：`科科人神`，回复：`go思维导图`获取作者多个go相关的**高清大图**,回复`go面试题`，获取经典go面试宝典。
 
 ![https://github.com/shgopher/GOFamily](./go.png)
 
@@ -48,6 +45,7 @@
 - [静态代码扫描检查工具go lint](./2/golint.md)
 - [go语言项目中的压力测试](./2/hey.md)
 - [API测试软件postman](./2/postman.md)
+- [网络抓包工具wireshark](./2/wireshark.md)
 ## go语言编程模式
 - 
 ## Q&A
