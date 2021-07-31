@@ -11,7 +11,7 @@
 - 黑盒测试
 ---
 - http测试
-- 性能分析
+- **性能分析：cpu，g等的使用情况**
 - http请求跟踪测试
 
 
@@ -198,7 +198,7 @@ http测试，意思就是当你需要一个服务的时候，不需要自己再�
 
 这个包大致可以分为三个内容
 1. request，请求
-注意此包并不是客户端的请求，这是服务端的请求。
+注意此包并不是客户端的请求，这是服务端的请求。【客户端用postman】
 ```go
 func NewRequest(method, target string, body io.Reader) *http.Request
 ```

@@ -7,10 +7,7 @@
 ![p](./gofamily.jpg)
 
 ## 导图
-> 国内访问可能无法访问到图片，可以添加微信公众号：`科科人神`，回复：`go思维导图` 获取**高清大图**，另外回复 `go-book` 可获得本教程的**PDF离线版本**。
-
->在线阅读[地址](https://shgopher.github.io/GOFamily)
-
+> 添加微信公众号：`科科人神`，回复：`go思维导图`获取作者多个go相关的**高清大图**,回复`go面试题`，获取经典go面试宝典。
 
 ![https://github.com/shgopher/GOFamily](./go.png)
 
@@ -45,32 +42,36 @@
 - [go语言的性能优化](./2/better.md)
 - [cgo，unsafe非常见的操作能力](./2/cgo.md)
 - [go语言的反射](./2/reflect.md)
-- [go语言线上事故排查](./2/accident.md)
-## go语言的标准库用法
-
-- [net](./3/net.md)
-- [http](./3/http.md)
-- [rpc](./3/rpc.md)
-- [time](./3/time.md)
-- [io](./3/io.md)
-- [bufio](./3/bufio.md)
-- [container](./3/container.md)
-- [sql](./3/sql.md)
-- [crypto](./3/crypto.md)
-- [encoding](./3/encoding.md)
-- [flag](./3/flag.md)
-- [fmt](./3/fmt.md)
-- [os](./3/os.md)
-- [syscall](./3/syscall.md)
-- [text](./3/text.md)
-- [strconv](./3/strconv.md)
-- [sort](./3/sort.md)
-- [strings](./3/strings.md)
-- [atom](./3/atom.md)
-- [log](./3/log.md)
-- [json](./3/json.md)
+- [静态代码扫描检查工具go lint](./2/golint.md)
+- [go语言项目中的压力测试](./2/hey.md)
+- [API测试软件postman](./2/postman.md)
+- [网络抓包工具wireshark](./2/wireshark.md)
+## go语言编程模式
+- 
 ## Q&A
-
+- 
+## 附录：go语言的标准库的简要用法
+- [net](./5/net.md)
+- [http](./5/http.md)
+- [rpc](./5/rpc.md)
+- [time](./5/time.md)
+- [io](./5/io.md)
+- [bufio](./5/bufio.md)
+- [container](./5/container.md)
+- [sql](./5/sql.md)
+- [crypto](./5/crypto.md)
+- [encoding](./5/encoding.md)
+- [flag](./5/flag.md)
+- [fmt](./5/fmt.md)
+- [os](./5/os.md)
+- [syscall](./5/syscall.md)
+- [text](./5/text.md)
+- [strconv](./5/strconv.md)
+- [sort](./5/sort.md)
+- [strings](./5/strings.md)
+- [atom](./5/atom.md)
+- [log](./5/log.md)
+- [json](./5/json.md)
 ## 作者的计算机知识项目
 - [foo-lon](https://github.com/shgopher/foo-lon) : 系统设计以及分布式协议
 - [GOFamily](https://github.com/shgopher/GOFamily) :go语言从入门到熟练掌握 
