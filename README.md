@@ -47,7 +47,12 @@
 - [API测试软件postman](./2/postman.md)
 - [网络抓包工具wireshark](./2/wireshark.md)
 ## go语言编程模式
-- 
+- [go常用设计模式](./3/goPatterns.md)
+- [go项目工程规范](./3/goSubjectSpecification.md)
+- [go编程模式](./3/codeSpecification.md)
+- [优雅的go代码](./3/beautifulGo.md)
+- [go编码规范](./3/goProgrammingSpecification.md)
+- [go项目中的Makefile文件的规范](./3/makeFileSpecificaion.md)
 ## Q&A
 - 
 ## 附录：go语言的标准库的简要用法

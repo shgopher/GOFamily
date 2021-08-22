@@ -101,9 +101,14 @@ length <4 的数组，数据是直接存在栈空间上的，如果数据大于4
 
 数组的语法糖`[...]int` 使用这种方式，必须在声明的时候直接赋值，否则下面进行赋值的时候，系统不知道你的length到底是多少，就会"out of index"
 
-关于go里面的比较问题，只有类型一致的情况下，进行比较，比如struct int,等，接口也可以比较，slice map 以及函数体，都是无法进行比较的。chan 可以比较，但是即使是类型一样，也是false的结果，nil也是可以比较的，因为nil的底层是 `var nil Type` `type Type int` 也就是说nil其实是一个值类型。nil也是有类型的，比如说接口的nil就是接口类型，那么指针类型的nil就是指针类型，slice的nil就是这个slice类型。
-
 数组的初始化的中括号里要么是`...`, 要么就是个常量，不能是变量
+
+
+## 关于go里面的比较问题
+
+只有类型一致的情况下，进行比较，比如struct int,等，接口也可以比较，*slice* *map* 以及*函数体*，都是无法进行比较的。chan 可以比较，但是即使是类型一样，也是false的结果，nil也是可以比较的，因为nil的底层是 `var nil Type` `type Type int` 也就是说nil其实是一个值类型。nil也是有类型的，比如说接口的nil就是接口类型，那么指针类型的nil就是指针类型，slice的nil就是这个slice类型。
+>  一直在变的无法比较，一成不变的就可以比较，slice和map都因为底层指向可以一直变所以无法比较，函数体内部也是一直可以变，所以只有他们三个无法进行比较。
+
 
 ### slice
 切片，是一个内置的引用类型，其实质是一个structure，也就是说是一个结构体，这个结构体内部含有一个指向某个数组的地址，所以说我们可以简单的来理解，slice是某个数组的指针。
@@ -180,7 +185,36 @@ func growslice(et *_type, old slice, cap int) slice {
 当然这只是初步确定容量，下面还要进行内容的对齐。
 
 切片的数据拷贝：`copy(newSlice,oldSlice)`，这里直接是值的拷贝。
+### 谨防切片的数据入侵
+谨防，两个切片共用一块公共内存的时候，发生数据的侵入，这个时候可以使用 **限制容量** 的方式来做到规避这个bug。
 
+```go
+package main
+
+import "fmt"
+
+func main() {
+	A := []int{1, 2, 3, 4, 5, 6, 7}
+	a := A[:3]
+	b := A[3:]
+	fmt.Println("第一次的a和b的数值", a, b)
+	a = append(a, 21, 22)
+	fmt.Println("第二次的a和b的值", a, b)
+	fmt.Println("可以看出，因为a的append并没有超过cap所以说，a和b的底层内存是一块，b的数据被bug更改了")
+	
+    // 解决方法
+	B := []int{1, 2, 3, 4, 5, 6, 7}
+	c := B[:3:4] // 这里的4就是一个限制容量参数。限制c的容量是4。
+	d := B[3:]
+	fmt.Println("第一次c和d的值", c, d)
+	c = append(c, 21, 22)
+	fmt.Println("第二次测试c和d的值", c, d)
+	fmt.Println(`这个时候发现，因为在给c定义slice的时候制定了限制的cap，也就是说c的cap被我人为的定义为了4" 
+"所以c在append的时候就重新指向了一块新的内存地址`)
+}
+
+```
+`c := B[:3:4]` 这段代码是关键，这里的4就是一个限制容量参数。限制c的容量是4。
 ### map
 map，也就是所谓的hash map 哈希表，散列表，在go里面的哈希表，使用的避免哈希碰撞的算法是链表法。map的key必须是Type,并且是可以比较的类型，例如int，string，interface{},bool,一般接口类型，不过不可比较的例如 slice map都无法充当key值。
 
