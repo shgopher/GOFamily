@@ -1,4 +1,4 @@
-<p align="center">
+<p align="left">
 hey~，我是科科人神，目前就职于国内一家互联网公司，下面这些文章我会优先发表到我的<a href="#wechat.png">公众号</a>上，哦对了你们可以加我<a href="#wechat.png">微信</a>，交个朋友吧
 </p>
 <p align="center">
