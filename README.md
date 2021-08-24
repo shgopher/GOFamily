@@ -4,7 +4,7 @@
 <br>
 <br>
 <p align="center">
-<a src='#wechat.png'"><img src="https://img.shields.io/static/v1?label=wechat&message=微信群&color=green"></a>
+<a src='#wechat.png'"><img src="https://img.shields.io/static/v1?label=wechat&message=%E5%BE%AE%E4%BF%A1%E7%BE%A4&color=green"></a>
 <a src='#wechat.png'"><img src="https://img.shields.io/static/v1?label=公众号&message=微信公众号&color="></a>
 <a src="https://space.bilibili.com/478621088"><img src="https://img.shields.io/static/v1?label=bibili&message=哔哩哔哩&color=blue"></a>
 <a src="https://www.zhihu.com/people/shgopher"><img src="https://img.shields.io/static/v1?label=zhihu&message=知乎&color=blue"></a>
