@@ -5,13 +5,13 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，下面�
 <p align="center">
 <a src='#wechat.png'"><img src="https://img.shields.io/static/v1?label=wechat&message=%E5%BE%AE%E4%BF%A1%E7%BE%A4&color=green"></a>
 <a src='#wechat.png'"><img src="https://img.shields.io/static/v1?label=%E7%A7%91%E7%A7%91%E4%BA%BA%E7%A5%9E&message=%E5%85%AC%E4%BC%97%E5%8F%B7&color="></a>
-<a src="https://space.bilibili.com/478621088"><img src="https://img.shields.io/static/v1?label=bilibili&message=b&#x7AD9;&color=blue"></a>
-<a src="https://www.zhihu.com/people/shgopher"><img src="https://img.shields.io/static/v1?label=zhihu&message=&#x77E5;&#x4E4E;&color=blue"></a>
+<a src="https://space.bilibili.com/478621088"><img src="https://img.shields.io/static/v1?label=bilibili&message=b&#x7AD9&color=blue"></a>
+<a src="https://www.zhihu.com/people/shgopher"><img src="https://img.shields.io/static/v1?label=zhihu&message=&#x77E5;&#x4E4E&color=blue"></a>
 <a src="https://juejin.cn/user/2682464104362557"><img src="https://img.shields.io/static/v1?label=juejin&message=%E6%8E%98%E9%87%91&color=blue"></a>
 <a src="https://blog.csdn.net/zyfljxzby"><img src="https://img.shields.io/static/v1?label=csdn&message=CSDN&color=red"></a>
 <a src="https://www.jianshu.com/u/ceaf3687b2bc"><img src="https://img.shields.io/static/v1?label=jianshu&message=%E7%AE%80%E4%B9%A6&color=red"></a>
 <a src="https://www.toutiao.com/c/user/token/MS4wLjABAAAAIGeO1-kCUelF-G8GW3AvJlrEL7tiO24WHJmnX4nV1bs"><img src="https://img.shields.io/static/v1?label=toutiao&message=%E5%A4%B4%E6%9D%A1&color=red"></a>
-<a><img src="https://img.shields.io/static/v1?label=cnblogs&message=&#x535A;&#x5BA2;&#x56ED&color=red"></a>
+<a><img src="https://img.shields.io/static/v1?label=cnblogs&message=&#x535A;&#x5BA2&#x56ED&color=red"></a>
 <a src="https://my.oschina.net/shgopher"><img src="https://img.shields.io/static/v1?label=oschina&message=%E5%BC%80%E6%BA%90%E4%B8%AD%E5%9B%BD&color=green"></a>
 </p>
 
