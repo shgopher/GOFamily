@@ -13,5 +13,9 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，下面�
 <a href="https://my.oschina.net/shgopher" target="_blank"><img src="https://img.shields.io/static/v1?label=oschina&message=%E5%BC%80%E6%BA%90%E4%B8%AD%E5%9B%BD&color=green"></a>
 </p>
 
-![](./GOFamily.png)
-![](./wechat.png)
+<p id="#wechat.png" align="center">
+扫一扫添加我的公众号，回复 “加群”，可以加入微信群。
+<br>
+<br>
+<img src="./wechat.png">
+</p>
