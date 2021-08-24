@@ -12,5 +12,3 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，下面�
 <a target="_blank"><img src="https://img.shields.io/static/v1?label=cnblogs&message=%E5%8D%9A%E5%AE%A2%E5%9B%AD&color=red"></a>
 <a href="https://my.oschina.net/shgopher" target="_blank"><img src="https://img.shields.io/static/v1?label=oschina&message=%E5%BC%80%E6%BA%90%E4%B8%AD%E5%9B%BD&color=green"></a>
 </p>
-
-![](https://tva1.sinaimg.cn/large/7435fc79ly1gtsfkrp3eqj22vacn1e85.jpg)
