@@ -29,4 +29,6 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，下面�
 <img src="./wechat.png">
 </p>
 
-![](https://tva1.sinaimg.cn/large/7435fc79ly1gtsfkrp3eqj22vacn1e85.jpg)
+<p align="left">
+<img src="https://gitee.com/shgopher/img/raw/master/GOFamily-100.png" width="100%">
+</p>
