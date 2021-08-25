@@ -15,6 +15,12 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，下面�
 
 ![](./GOFamily.png)
 
+## 赞助商
+<a href="https://github.com/thomashuke"><img src="https://avatars.githubusercontent.com/u/18352236" width="100px"/></a>
+
+## 鸣谢
+<a href="https://github.com/thomashuke"><img src="https://avatars.githubusercontent.com/u/18352236" width="40px"/></a>
+
 ## 扫一扫添加我的公众号，回复 “加群”，可以加入微信群。
 
 <p id="wechat.png" align="center">
@@ -22,9 +28,3 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，下面�
 <br>
 <img src="./wechat.png">
 </p>
-
-## 赞助商
-<a href="https://github.com/thomashuke"><img src="https://avatars.githubusercontent.com/u/18352236" width="100px"/></a>
-## 鸣谢
-<a href="https://github.com/thomashuke"><img src="https://avatars.githubusercontent.com/u/18352236" width="40px"/></a>
-
