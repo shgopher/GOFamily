@@ -14,7 +14,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，下面�
 </p>
 
 <p align="left">
-<img src="https://gitee.com/shgopher/img/raw/master/GOFamily-100.png" width="100%">
+<img src="https://gitee.com/shgopher/img/raw/master/GOFamily1.png" width="100%">
 </p>
 
 ## 赞助商
