@@ -22,3 +22,9 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，下面�
 <br>
 <img src="./wechat.png">
 </p>
+
+## 赞助商
+<a src="https://github.com/thomashuke"><img src="https://avatars.githubusercontent.com/u/18352236" width="100px"/></a>
+## 鸣谢
+<a src="https://github.com/thomashuke"><img src="https://avatars.githubusercontent.com/u/18352236" width="40px"/></a>
+
