@@ -29,4 +29,4 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，下面�
 <img src="./wechat.png">
 </p>
 
-![](https://wx1.sinaimg.cn/large/7435fc79ly1gtsfkrp3eqj22vacn1e85.jpg)
+![](https://tva1.sinaimg.cn/large/7435fc79ly1gtsfkrp3eqj22vacn1e85.jpg)
