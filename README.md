@@ -9,7 +9,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，下面�
 <a href="https://blog.csdn.net/zyfljxzby" target="_blank"><img src="https://img.shields.io/static/v1?label=csdn&message=CSDN&color=red"></a>
 <a href="https://www.jianshu.com/u/ceaf3687b2bc" target="_blank"><img src="https://img.shields.io/static/v1?label=jianshu&message=%E7%AE%80%E4%B9%A6&color=red"></a>
 <a href="https://www.toutiao.com/c/user/token/MS4wLjABAAAAIGeO1-kCUelF-G8GW3AvJlrEL7tiO24WHJmnX4nV1bs" target="_blank"><img src="https://img.shields.io/static/v1?label=toutiao&message=%E5%A4%B4%E6%9D%A1&color=red"></a>
-<a target="_blank"><img src="https://img.shields.io/static/v1?label=cnblogs&message=%E5%8D%9A%E5%AE%A2%E5%9B%AD&color=red"></a>
+<a href ="https://www.cnblogs.com/shgopher" target="_blank"><img src="https://img.shields.io/static/v1?label=cnblogs&message=%E5%8D%9A%E5%AE%A2%E5%9B%AD&color=red"></a>
 <a href="https://my.oschina.net/shgopher" target="_blank"><img src="https://img.shields.io/static/v1?label=oschina&message=%E5%BC%80%E6%BA%90%E4%B8%AD%E5%9B%BD&color=green"></a>
 </p>
 
