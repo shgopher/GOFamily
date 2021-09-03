@@ -21,6 +21,11 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，下面�
 <img src="https://gitee.com/shgopher/img/raw/master/GOFamily1.png" width="100%">
 </p>
 
+## 面试宝典
+> 公众号后台回复 面试宝典 将得到超高清大图
+
+![](https://gitee.com/shgopher/img/raw/master/%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8.png)
+
 ## 赞助商
 <a href="https://github.com/thomashuke"><img src="https://avatars.githubusercontent.com/u/18352236" width="100px"/></a>
 
