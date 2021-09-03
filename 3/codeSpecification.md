@@ -235,6 +235,8 @@ func(*IntCount)Add(){}
 ## Map-Reduce
 我将map-filter-reduce模式称之为做菜理论，map的作用是将菜洗干净，filter的作用是将洗好的菜中，老的不新鲜的菜取出来扔掉，reduce的作用是将这些菜拌一拌变成一道佳肴。
 
+![](https://gitee.com/shgopher/img/raw/master/%E5%A4%A7%E7%9B%98%E9%B8%A1.png)
+
 - map 怎么进怎么出。
 - filter 怎么进怎么出，只是数量少了。
 - 多个进，一个出，要成品了。
@@ -296,7 +298,6 @@ func Filter(str []string,fn func(string)bool)[]string{
 	return ma
 }
 ```
-### Map-Reduce-Filter:
 
 ### interface{}泛型：
 
