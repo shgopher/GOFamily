@@ -237,9 +237,9 @@ func(*IntCount)Add(){}
 
 ![](https://gitee.com/shgopher/img/raw/master/%E5%A4%A7%E7%9B%98%E9%B8%A1.png)
 
-- map 怎么进怎么出。
-- filter 怎么进怎么出，只是数量少了。
-- 多个进，一个出，要成品了。
+- map: 怎么进怎么出。
+- filter: 怎么进怎么出，只是数量少了。
+- reduce: 多个进，一个出，要成品了。
 
 ### Map:
 
@@ -300,10 +300,65 @@ func Filter(str []string,fn func(string)bool)[]string{
 ```
 
 ### interface{}泛型：
+我们使用map函数为例
 
+```go
+func Map(data interface{}, fn interface{}) []interface{} {
+	dataR := reflect.ValueOf(data)
+	fnR := reflect.ValueOf(fn)
+	result := make([]interface{}, dataR.Len())
+	for i:= 0;i < dataR.Len();i++ {
+		result[i]= fnR.Call([]reflect.Value{dataR.Index(i)})[i].Interface()
+	}
+
+	return result
+}
+```
+调用的时候可以使用
+
+```go
+Map([]string{"1"}, func(i string)string {
+	return i + i
+})
+```
+or
+
+```go
+Map([]int{1}, func(i int)int {
+	return i*i
+})
+```
 ### go1.18 泛型：
+> go verison go 1.18+ ，目前可以使用 gotip来进行尝鲜体验
+
+在使用了泛型后我们的代码就可以更改为下面这种表达方式：
+
+```go
+func Map[T any](data []T, fn func(T)T) []T {
+	var ma []T
+	for _, value := range data {
+		ma = append(ma, fn(value))
+	}
+	return ma
+}
+```
+
+调用的时候就可以这样做：
+
+```go
+	Map([]string{"1"}, func(i string)string {
+		return i + i
+	})
+
+	Map([]int{1}, func(i int)int {
+		return i + i
+	})
+```
+
+不得不承认啊，泛型真香😂
 
 ## Go Generation
+
 ## 修饰器
 ## pipeline
 ## k8s visitor模式
