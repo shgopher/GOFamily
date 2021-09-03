@@ -1,9 +1,15 @@
 # go编程模式
+
 导读：
 - 面向接口编程
 - 错误处理编程模式
 - 函数式编程
-- 
+- “控制代码”独立模式
+- Map-Reduce
+- Go Generation
+- 修饰器
+- pipeline
+- k8s visitor模式
 
 
 ## 面向接口编程
@@ -178,9 +184,181 @@ func NewServer(addr string, port int, opions ...Option) *Server {
 
 ```
 这种模式非常的直观，而且new函数只需要一个，并且除了端口和地址，我们需要强制给定，其他的都有默认值，只有给具体的值时，才会进行二次的赋值，可以说这种方法非常的直观，简洁，并且高可扩展。
-## 委托和反转控制
+## “控制代码”独立模式
+这种编程模式的核心就是讲逻辑代码和控制代码分离，逻辑代码去使用控制代码去做事，控制代码相当于构造器一样的没有实际意义的辅助函数，这种写法拥有高度的可扩展性。
+```go
+type IntCout struct {
+	value map[int]bool
+}
+
+func (i *IntCout) Add(value int) {
+	i.value[value]=true
+}
+func(i *IntCout)Delete(value int){
+	delete(i.value,value)
+}
+
+
+```
+当我们想增加功能的时候：
+
+```go
+type AnotherIntCout struct {
+	intCount
+	something
+}
+//override
+func(a *AnotherIntCout)Add(){}
+func(a *AnotherIntCout)Del(){}
+func(a *AnotherIntCout)AnotherMethod(){}
+```
+这种办法其实就是控制代码侵入了逻辑代码，我们要做的事情就是，讲控制代码单拎出来，然后让他实现功能，逻辑代码嵌套控制代码，因为控制代码基本上是很稳定的，毕竟功能较少，而且不轻易改动，所以代码可以改成这样
+
+首先先讲控制代码单拎出来
+```go
+type Something struct{}
+func(*Something)AnotherMethod(){}
+```
+然后这个时候，让逻辑代码去继承这个控制代码
+
+```go
+type IntCout struct {
+	value map[int]bool
+	Something
+}
+// 重写这个逻辑代码
+func(*IntCount)Add(){}
+```
+
+使用这种方法，即便是逻辑代码再怎么改，控制代码丝毫不变，就跟你家灯随便换，但是开关不需要怎么动，而且可以更好的扩展更多的代码。
+
 ## Map-Reduce
+我将map-filter-reduce模式称之为做菜理论，map的作用是将菜洗干净，filter的作用是将洗好的菜中，老的不新鲜的菜取出来扔掉，reduce的作用是将这些菜拌一拌变成一道佳肴。
+
+![](https://gitee.com/shgopher/img/raw/master/%E5%A4%A7%E7%9B%98%E9%B8%A1.png)
+
+- map: 怎么进怎么出。
+- filter: 怎么进怎么出，只是数量少了。
+- reduce: 多个进，一个出，要成品了。
+
+### Map:
+
+map的意义就是数据预处理。前面的切片中的数据调用一个map函数，然后处理一下。
+
+```go
+func main() {
+	fmt.Println(MapStrToStr([]string{"A", "B"}, func(str string) string {
+		return str
+	}))
+
+	fmt.Println(MapStrToInt([]string{"1", "2"}, func(str string) int {
+		i, _ := strconv.ParseInt(str, 10, 0)
+		return int(i)
+	}))
+}
+// 
+func MapStrToStr(str []string, fn func(str string) string) []string {
+	var ma []string
+	for _, value := range str {
+		ma = append(ma, fn(value))
+	}
+	return ma
+}
+func MapStrToInt(str []string, fn func(str string) int) []int {
+	var ma []int
+	for _, value := range str {
+		ma = append(ma, fn(value))
+	}
+	return ma
+}
+
+```
+### Reduce:
+reduce的意义就跟你将切好的菜，融会贯通给它融合了做成一盘菜。所以说你看进入了一个str的slice，只出来了一个sum
+```go
+func Reduce(str []string,fn func(string)int)int{
+	sum := 0
+	for _,v := range str{
+		sum+= fn(v)
+	}
+	return sum
+}
+```
+所以说通常来说 map进去什么样子，出来还是那个基本造型，比如进去是一个切片出来还是个切片，但是reduce就是进去很多东西但是出来不一样了，例如这个例子，进去了很多slice，出来了一个东西sum。
+### Filter:
+filter就是摘菜，通过if fn方法，将可以使用的再形成一个新的slice输出。
+```go
+func Filter(str []string,fn func(string)bool)[]string{
+	ma := []string{}
+	for _,v := range str{
+		if fn(v) {
+			ma = append(ma,v)
+		}
+	}
+	return ma
+}
+```
+
+### interface{}泛型：
+我们使用map函数为例
+
+```go
+func Map(data interface{}, fn interface{}) []interface{} {
+	dataR := reflect.ValueOf(data)
+	fnR := reflect.ValueOf(fn)
+	result := make([]interface{}, dataR.Len())
+	for i:= 0;i < dataR.Len();i++ {
+		result[i]= fnR.Call([]reflect.Value{dataR.Index(i)})[i].Interface()
+	}
+
+	return result
+}
+```
+调用的时候可以使用
+
+```go
+Map([]string{"1"}, func(i string)string {
+	return i + i
+})
+```
+or
+
+```go
+Map([]int{1}, func(i int)int {
+	return i*i
+})
+```
+### go1.18 泛型：
+> go verison go 1.18+ ，目前可以使用 gotip来进行尝鲜体验
+
+在使用了泛型后我们的代码就可以更改为下面这种表达方式：
+
+```go
+func Map[T any](data []T, fn func(T)T) []T {
+	var ma []T
+	for _, value := range data {
+		ma = append(ma, fn(value))
+	}
+	return ma
+}
+```
+
+调用的时候就可以这样做：
+
+```go
+	Map([]string{"1"}, func(i string)string {
+		return i + i
+	})
+
+	Map([]int{1}, func(i int)int {
+		return i + i
+	})
+```
+
+不得不承认啊，泛型真香😂
+
 ## Go Generation
+
 ## 修饰器
 ## pipeline
 ## k8s visitor模式

@@ -1438,3 +1438,4 @@ func streamData(ctx context.Context,data ...interface{})chan  interface{}{
 	return done
 }
 ```
+> map-reduce的进阶版，在[go编程模式](../3/codeSpecification.md#Map-Reduce)这一个章节
