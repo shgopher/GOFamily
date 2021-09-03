@@ -6,7 +6,6 @@
 - 函数式编程
 - “控制代码”独立模式
 - Map-Reduce
-- Go Generation
 - 修饰器
 - pipeline
 - k8s visitor模式
@@ -328,8 +327,8 @@ Map([]int{1}, func(i int)int {
 	return i*i
 })
 ```
-### go1.18 泛型：
-> go verison go 1.18+ ，目前可以使用 gotip来进行尝鲜体验
+### go1.18+ 泛型：
+> go verison 1.18+
 
 在使用了泛型后我们的代码就可以更改为下面这种表达方式：
 
@@ -356,9 +355,80 @@ func Map[T any](data []T, fn func(T)T) []T {
 ```
 
 不得不承认啊，泛型真香😂
-
-## Go Generation
-
 ## 修饰器
+这种模式其实就是函数式编程的一种，它的主要思想就是传入一个函数，然后返回的还是一个函数，我们将传入的这个函数进行二次修饰，然后再返回，进而调用使用：
+
+```go
+func decorator(fn func(s string)string)func(string)string {
+	return func(s string) string {
+		return fn(s) + "。。。"
+	}
+}
+```
+
+调用：
+
+```go
+	hello  := func(s string)string {
+		return s
+	}
+
+	defn := decorator(hello)
+	defn("你好")
+	// print: 你好。。。
+```
 ## pipeline
+
+```go
+func A(des ...fn()){
+	for _,v := range des {
+		v()
+	}
+}
+
+// 调用的时候
+A(fn1,fn2,fn3,fn4)
+
+```
+这就是属于基本的pipeline模式了。
 ## k8s visitor模式
+
+k8s的visitor模式的意义就是将sturct数据结构和算法，解耦。
+
+
+```go
+package main
+
+func main() {
+	p := new(Peo)
+	p.year = 10
+	p.name = "a"
+	p.Did(Run)
+	// 这个时候，即便我们改变了p的值，那么这个算法 Run 也不会有任何的关联，他们俩完全解除耦合了
+	p.year = 100
+	p.Did(Run)
+}
+
+type Visitor func(Do)
+type Do interface {
+	Did(Visitor)
+}
+
+// 数据结构
+type Peo struct {
+	name string
+	year int
+}
+
+func (p *Peo) Did(v Visitor) {
+	v(p)
+}
+
+
+// 算法
+func Run(do Do) {
+	// 这里就是通过接口对象，来进行一系列的操作，真实的数据结构和这里的算法完全解除耦合
+	fmt.Println(do)
+}
+
+```
