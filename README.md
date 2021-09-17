@@ -1,107 +1,106 @@
-🔥 大厂 BAT 面试高频知识点，后端技术体系。包含了 [GO](#go语言的基本语法) , [网络](#作者的计算机知识项目)，[Redis](#作者的计算机知识项目) ，[MySQL](#作者的计算机知识项目) ，[消息队列](#作者的计算机知识项目) ，[高并发](#作者的计算机知识项目)，[微服务](#作者的计算机知识项目)，[缓存](#作者的计算机知识项目)，[操作系统](#作者的计算机知识项目)，[算法](#作者的计算机知识项目)，[LeetCode刷题](#作者的计算机知识项目) 等知识
+<p align="left">
+hey~，我是科科人神，目前就职于国内一家互联网公司，你们可以加我<a href="#wechat.png">微信</a>，交个朋友吧~
+</p>
+<br>
+<p align="center">
+<a href='#wechat.png'" target="_blank"><img src="https://img.shields.io/static/v1?label=%E7%A7%91%E7%A7%91%E4%BA%BA%E7%A5%9E&message=%E5%85%AC%E4%BC%97%E5%8F%B7&color="></a>
+<a href="https://www.youtube.com/channel/UCK8wjBe9sh4VHSowLQmWOzg" target="_blank"><img src="https://img.shields.io/static/v1?label=youtube&message=YouTube&color=red"></a>
+<a href="https://space.bilibili.com/478621088" target="_blank"><img src="https://img.shields.io/static/v1?label=bilibili&message=b%E7%AB%99&color=blue"></a>
+<a href="https://www.zhihu.com/people/shgopher" target="_blank"><img src="https://img.shields.io/static/v1?label=zhihu&message=%E7%9F%A5%E4%B9%8E&color=blue"></a>
+<a href="https://juejin.cn/user/2682464104362557" target="_blank"><img src="https://img.shields.io/static/v1?label=juejin&message=%E6%8E%98%E9%87%91&color=blue"></a>
+<br>
+<a href="https://blog.csdn.net/zyfljxzby" target="_blank"><img src="https://img.shields.io/static/v1?label=csdn&message=CSDN&color=red"></a>
+<a href="https://www.jianshu.com/u/ceaf3687b2bc" target="_blank"><img src="https://img.shields.io/static/v1?label=jianshu&message=%E7%AE%80%E4%B9%A6&color=red"></a>
+<a href="https://www.toutiao.com/c/user/token/MS4wLjABAAAAIGeO1-kCUelF-G8GW3AvJlrEL7tiO24WHJmnX4nV1bs" target="_blank"><img src="https://img.shields.io/static/v1?label=toutiao&message=%E5%A4%B4%E6%9D%A1&color=red"></a>
+<a href ="https://www.cnblogs.com/shgopher" target="_blank"><img src="https://img.shields.io/static/v1?label=cnblogs&message=%E5%8D%9A%E5%AE%A2%E5%9B%AD&color=red"></a>
+<a href="https://my.oschina.net/shgopher" target="_blank"><img src="https://img.shields.io/static/v1?label=oschina&message=%E5%BC%80%E6%BA%90%E4%B8%AD%E5%9B%BD&color=green"></a>
 
-# go语言从入门到熟练掌握
+</p>
 
-作者@[科科人神](https://github.com/shgopher/shgopher)
-
-![p](./gofamily.jpg)
-
-## 导图
 > 添加微信公众号：`科科人神`，回复：`go思维导图`获取作者多个go相关的**高清大图**,回复`go面试题`，获取经典go面试宝典。
-
-![https://github.com/shgopher/GOFamily](./go.png)
-
-
+# GO
 ## go语言的基本语法
-
-- [介绍go语言](./1/description-go.md)
-- [go语言的包管理工具](./1/gomod.md)
-- [go语言的基础组件](./1/int.md)
-- [go语言常用关键字](./1/for.md)
-- [go语言的条件和逻辑语句](./1/if.md)
-- [go语言的面向对象](./1/oop.md)
-- [go语言的错误处理](./1/error.md)
-- [go语言的测试](./1/testing.md)
+- [介绍go语言](./go/1/description-go.md)
+- [go语言的包管理工具](./go/1/gomod.md)
+- [go语言的基础组件](./go/1/int.md)
+- [go语言常用关键字](./go/1/for.md)
+- [go语言的条件和逻辑语句](./go/1/if.md)
+- [go语言的面向对象](./go/1/oop.md)
+- [go语言的错误处理](./go/1/error.md)
+- [go语言的测试](./go/1/testing.md)
 ## go语言高级用法
 ### 并发相关
-- [同步原语和锁](./2/mutex.md)
-- [context](./2/context.md)
-- [channel](./2/channel.md)
-- [定时器](./2/timer.md)
-- [运行时调度器G:M:P](./2/gmp.md)      
-- [网络轮询器netpool](./2/netpool.md)
-- [系统监控](./2/system-control.md)
-- [go语言的内存模型](./2/happens-before.md)
-- [go语言的并发模型](./2/csp.md)
+- [同步原语和锁](./go/2/mutex.md)
+- [context](./go/2/context.md)
+- [channel](./go/2/channel.md)
+- [定时器](./go/2/timer.md)
+- [运行时调度器G:M:P](./go/2/gmp.md)      
+- [网络轮询器netpool](./go/2/netpool.md)
+- [系统监控](./go/2/system-control.md)
+- [go语言的内存模型](./go/2/happens-before.md)
+- [go语言的并发模型](./go/2/csp.md)
 ### 内存管理相关
-- [内存分配](./2/tcmolloc.md)
-- [内存回收gc](./2/gc.md)  
-- [栈内存管理](./2/stack-mem.md)
+- [内存分配](./go/2/tcmolloc.md)
+- [内存回收gc](./go/2/gc.md)  
+- [栈内存管理](./go/2/stack-mem.md)
 ### 工程相关
-- [go语言的动态调试](./2/d-debug.md)
-- [go语言的性能优化](./2/better.md)
-- [cgo，unsafe非常见的操作能力](./2/cgo.md)
-- [go语言的反射](./2/reflect.md)
-- [静态代码扫描检查工具go lint](./2/golint.md)
-- [go语言项目中的压力测试](./2/hey.md)
-- [API测试软件postman](./2/postman.md)
-- [网络抓包工具wireshark](./2/wireshark.md)
+- [go语言的动态调试](./go/2/d-debug.md)
+- [go语言的性能优化](./go/2/better.md)
+- [cgo，unsafe非常见的操作能力](./go/2/cgo.md)
+- [go语言的反射](./go/2/reflect.md)
+- [静态代码扫描检查工具go lint](./go/2/golint.md)
+- [go语言项目中的压力测试](./go/2/hey.md)
+- [API测试软件postman](./go/2/postman.md)
+- [网络抓包工具wireshark](./go/2/wireshark.md)
 ## go语言编程模式
-- [go常用设计模式](./3/goPatterns.md)
-- [go项目工程规范](./3/goSubjectSpecification.md)
-- [go编程模式](./3/codeSpecification.md)
-- [优雅的go代码](./3/beautifulGo.md)
-- [go编码规范](./3/goProgrammingSpecification.md)
-- [go项目中的Makefile文件的规范](./3/makeFileSpecificaion.md)
+- [go常用设计模式](./go/3/goPatterns.md)
+- [go项目工程规范](./go/3/goSubjectSpecification.md)
+- [go编程模式](./go/3/codeSpecification.md)
+- [优雅的go代码](./go/3/beautifulGo.md)
+- [go编码规范](./go/3/goProgrammingSpecification.md)
+- [go项目中的Makefile文件的规范](./go/3/makeFileSpecificaion.md)
 ## Q&A
 - 
 ## 附录：go语言的标准库的简要用法
-- [net](./5/net.md)
-- [http](./5/http.md)
-- [rpc](./5/rpc.md)
-- [time](./5/time.md)
-- [io](./5/io.md)
-- [bufio](./5/bufio.md)
-- [container](./5/container.md)
-- [sql](./5/sql.md)
-- [crypto](./5/crypto.md)
-- [encoding](./5/encoding.md)
-- [flag](./5/flag.md)
-- [fmt](./5/fmt.md)
-- [os](./5/os.md)
-- [syscall](./5/syscall.md)
-- [text](./5/text.md)
-- [strconv](./5/strconv.md)
-- [sort](./5/sort.md)
-- [strings](./5/strings.md)
-- [atom](./5/atom.md)
-- [log](./5/log.md)
-- [json](./5/json.md)
-## 作者的计算机知识项目
-- [foo-lon](https://github.com/shgopher/foo-lon) : 系统设计以及分布式协议
-- [GOFamily](https://github.com/shgopher/GOFamily) :go语言从入门到熟练掌握 
-- [408Family](https://github.com/shgopher/408Family) : 算法和数据结构,设计模式，正则表达式，网络，操作系统，计算机组成原理
-- [DBFamily](https://github.com/shgopher/DBFamily) : 从零开始学习数据库知识
-- [study-k8s-docker](https://github.com/shgopher/study-k8s-docker) : 从零开始学习k8s和docker等容器化的知识
-- [hi-test](https://github.com/shgopher/hi-test) :从零开始学习关于软件测试，性能测试，软件工程的知识
-- [up](https://github.com/shgopher/up) : 从初级程序员向高级程序员迈进 --- 系统调优公开课
-- [repairman](https://github.com/shgopher/repairman) :程序员的必修课 --- 线上紧急故障排除
-- [Refactor](https://github.com/shgopher/refactor) : 高级软件工程师的必修课 -- 如何进行代码重构
-- [coder](https://github.com/shgopher/coder) : 关注程序员的职业发展，会分享比如如何升迁，如何面试，如何赚钱等知识。
+- [net](./go/5/net.md)
+- [http](./go/5/http.md)
+- [rpc](./go/5/rpc.md)
+- [time](./go/5/time.md)
+- [io](./go/5/io.md)
+- [bufio](./go/5/bufio.md)
+- [container](./go/5/container.md)
+- [sql](./go/5/sql.md)
+- [crypto](./go/5/crypto.md)
+- [encoding](./go/5/encoding.md)
+- [flag](./go/5/flag.md)
+- [fmt](./go/5/fmt.md)
+- [os](./go/5/os.md)
+- [syscall](./go/5/syscall.md)
+- [text](./go/5/text.md)
+- [strconv](./go/5/strconv.md)
+- [sort](./go/5/sort.md)
+- [strings](./go/5/strings.md)
+- [atom](./go/5/atom.md)
+- [log](./go/5/log.md)
+- [json](./go/5/json.md)  
 
-    
-## 关注我
+# 408
+# db
+# foolon
+# docker
+# refactor
+# test
+# repairman
+# up
+# coder
+# 扫一扫添加我的公众号，回复 “加群”，可以加入微信群。
 
-- 头条@[科科人神](https://www.toutiao.com/c/user/token/MS4wLjABAAAAIGeO1-kCUelF-G8GW3AvJlrEL7tiO24WHJmnX4nV1bs/)
+<p id="wechat.png" align="center">
+<br>
+<br>
+<img src="https://gitee.com/shgopher/img/raw/master/wechat.png" width="200px">
+</p>
 
-![p](./toutiao.png)
-
-- 微信公众号@科科人神
-
-![p](./wechat.jpg)
-
-- b站@[科科人神](https://space.bilibili.com/478621088)
-
-## star
+# star
 
 [![Stargazers over time](https://starchart.cc/shgopher/GOFamily.svg)](https://starchart.cc/shgopher/GOFamily)
