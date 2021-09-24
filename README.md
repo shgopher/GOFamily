@@ -17,20 +17,9 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，下面�
 
 </p>
 
-<p align="left">
-<img src="https://gitee.com/shgopher/img/raw/master/GOFamily1.png" width="100%">
-</p>
+## 程序员职业规划
 
-## 面试宝典
-> 公众号后台回复 面试宝典 将得到超高清大图
-
-![](https://gitee.com/shgopher/img/raw/master/%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8.png)
-
-## 赞助商
-<a href="https://github.com/thomashuke"><img src="https://avatars.githubusercontent.com/u/18352236" width="100px"/></a>
-
-## 鸣谢
-<a href="https://github.com/thomashuke"><img src="https://avatars.githubusercontent.com/u/18352236" width="40px"/></a>
+- [为什么说程序员是普通人弯道超车的最佳选择之一](https://mp.weixin.qq.com/s/igJgMb0JyhKYyCihug_O_w)
 
 ## 扫一扫添加我的公众号，回复 “加群”，可以加入微信群。
 
