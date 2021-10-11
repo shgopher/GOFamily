@@ -242,7 +242,16 @@ func Do(cook Cook){
 }
 ```
 ## 代理
+```go
+type Student struct {
+	name string
+}
 
+type ProxyStudent struct {
+	student *ProxyStudent
+}
+```
+这就是代理模式。
 ## 选项
 
 

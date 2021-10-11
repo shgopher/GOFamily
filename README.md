@@ -58,7 +58,10 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [go语言项目中的压力测试](./go/2/hey.md)
 - [API测试软件postman](./go/2/postman.md)
 - [网络抓包工具wireshark](./go/2/wireshark.md)
-## go语言编程模式
+---
+- [go语言编程模式](./go/3/pattern.md)
+- [go项目编程规范](./go/3/specification.md)
+---
 - [go常用设计模式](./go/3/goPatterns.md)
 - [go项目工程规范](./go/3/goSubjectSpecification.md)
 - [go编程模式](./go/3/codeSpecification.md)
