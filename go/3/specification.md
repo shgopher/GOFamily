@@ -188,8 +188,50 @@ git rebase -i 命令，可以合并commit，这样可以看起来更简洁一点
 |x,exec|执行其它shell命令|
 |d,drop|删除该commit|
 
-1
-3
+### 切换分支
+
+`git checkout `
+
+其中，如果是创建分支就是
+
+`git checkout -b xxxx`
+
+不加`-b` 就是切换的意思了，加了就是添加的意思。
+
+切换完分支以后别忘了用 `git log --oneline` 去查看一下当前的commit情况，其中 `--oneline` 就是把只取commit的tile，省略大部分详细内容，变成一行。类似这样的
+
+```bash
+9a713f8 Update README.md
+8859ec6 Merge pull request #13 from shgopher/n1
+b7a044e Update README.md
+f8028fb Update README.md
+f38197a Update README.md
+901eaf5 Update README.md
+70c49e4 Create README.md
+22d4f0f Delete README.md
+```
+
+如果不加那么就会变成这样
+
+```bash
+Author: 科科人神 <shgopher@aliyun.com>
+Date:   Wed Oct 13 20:18:44 2021 +0800
+
+    docs(go): test rebase
+    
+    docs(go): test rebase1
+    
+    docs(go): test rebase2
+
+commit 9e63c4f2c6af46d06a4ada2b4bdc4034247e4b1b
+Author: 科科人神 <shgopher@aliyun.com>
+Date:   Wed Oct 13 19:53:31 2021 +0800
+
+    docs(go): add some subject rules
+    
+    rules:  commit rules, README.md rules, doc file rules
+
+```
 ## 发布规范
 
 ## 目录规范
