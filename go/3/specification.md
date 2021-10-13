@@ -247,7 +247,13 @@ git commit -am "feat(go): add xxx"
 - 如果是只变更最近的一次 `git commit -amend`
 - 如果是变更好早之前的，那么就只能使用 `git rebase -i 父commit_id`这种方法了。这种方法变化commit信息后，变化的commit的id就会改变了，不是原来的id了。
 ### commit 信息自动化
+- commitizen-go 交互式的自动生成commit message
+- commit-msg 检查commit message，这个属于自己写脚本搞定的事情，
+- go-gitlint 检查历史提交的commit message是否符合规范
+- gsemver 语意化版本自动生成工具
+- git-chglog 根据commit msg 自动生成 CHANGELOG.md 文件
 
+fd
 ## 发布规范
 
 ## 目录规范
