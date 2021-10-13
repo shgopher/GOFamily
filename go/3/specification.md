@@ -174,7 +174,22 @@ This reerts commit k79380c8cfc8308a8a6e18f9yc8b8114febc9b48a
 - 只要有改动就提交commit
 - 按照每天的固定时间点提交commit
 
+git rebase -i 命令，可以合并commit，这样可以看起来更简洁一点。
+
+它的命令如下：
+
+|命令|目的|
+|:---:|:---:|
+|p,pick|不对该commit做任何处理|
+|r,reword|保留该commit，但是修改提交信息|
+|e,edit|保留该commit，但是rebase的时候会暂停，让你去修改这个commit|
+|s,squash|保留该commit，将这个commit合并到上一个commit|
+|f,fixup|相同于squash，但是这个commit信息不保留|
+|x,exec|执行其它shell命令|
+|d,drop|删除该commit|
+
 1
+3
 ## 发布规范
 
 ## 目录规范
