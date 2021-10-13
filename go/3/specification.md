@@ -54,10 +54,39 @@
 
 ![](https://gitee.com/shgopher/img/raw/master/%E6%96%87%E6%A1%A3%E8%A7%84%E8%8C%83.png)
 ### API接口规范
+API 作为一个文件夹进行存放内容，其中大概是包含了以下内容：
+
+- README.md 基本介绍
+- CHANGELOG.md 变更历史说明log
+- generic.md 保存通用的基本参数，返回参数，等通用数据
+- struct.md 列出文档中使用的数据结构
+- user.md secret.md policy.md restful资料
+- err_code.md 错误码的描述文件
+
+其中 user.md secret.md 存放的就是最重要的具体接口描述，它包含了以下[内容](https://github.com/googege/iam/blob/master/docs/guide/zh-CN/api/user.md)：
+
+- 接口的描述
+- 请求方法，比如 `GET` or  `POST`等，以及path
+- 输入参数
+- 输出参数
+- 请求的例子
 
 ## 版本规范
-
+标准是：主版本号.副版本号.修改版本号，例如 v1.13.2
+- 主版本号：大版本，假如是不再兼容，可以换大版本号，例如python 2 和 3，当主版本号更改的时候，副版本号和修改号必须清零。
+- 副版本号：偶数稳定，奇数开发，兼容性的修改，当副版本号更改的时候，修改号（bug号）必须清零
+- 修改号：兼容性的修复bug
 ## Commit规范
+commit遵循以下原则：
+
+1. 清晰的知道每一个commit的变更内容
+2. 可以基于commit进行过滤查找，比如git log --oneline --grep "^feat|^fix|^perf"
+3. 基于规范的 commit 生成 commit log
+4. 根据规范的某种类型的 commit 触发发布或者构建的自动化流程
+5. 根据commit的不同类型，可以自动生成版本号
+
+下面介绍一下angular的commit规范，此规范较为标准。
+
 
 ## 发布规范
 
@@ -70,3 +99,6 @@
 ## 日志规范
 
 ## 错误码规范 
+
+## 参考资料
+- [go语言项目开发实战](http://gk.link/a/10ADE)
