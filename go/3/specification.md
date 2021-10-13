@@ -232,6 +232,22 @@ Date:   Wed Oct 13 19:53:31 2021 +0800
     rules:  commit rules, README.md rules, doc file rules
 
 ```
+### 撤销之前的commit，并添加新的commit
+如果之前的commit过于多，那么也不用非要rebase，可以直接先取消，然后再添加。
+
+```bash
+git reset HEAD~3
+
+git add .
+
+git commit -am "feat(go): add xxx"
+```
+注意HEAD~3 就是取消的个数。
+### 变更commit信息
+- 如果是只变更最近的一次 `git commit -amend`
+- 如果是变更好早之前的，那么就只能使用 `git rebase -i 父commit_id`这种方法了。这种方法变化commit信息后，变化的commit的id就会改变了，不是原来的id了。
+### commit 信息自动化
+
 ## 发布规范
 
 ## 目录规范
