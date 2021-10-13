@@ -85,9 +85,96 @@ commit遵循以下原则：
 4. 根据规范的某种类型的 commit 触发发布或者构建的自动化流程
 5. 根据commit的不同类型，可以自动生成版本号
 
-下面介绍一下angular的commit规范，此规范较为标准。
+下面介绍一下Angular的commit规范，此规范较为标准。
+> `<>` 代表必选项，`[]`代表了可选项，空行是必须的，`:`后面的空格也是必须的，限制字符在50，72，或者100以内。
+```bash
+<type>[(optional scope)]: <subject description>
+// 空行
+[optional body]
+// 空行
+[optional footer]
 
+```
+示例：
 
+```bash
+fix(apiserver): test for kafka
+
+this is a test word
+
+this is a footer
+```
+### Header的不同类型：
+> Production: 新增功能类型，这种requests一定要好好review
+> Development类型，不改变功能，只是构建工具的改变等类似这种免测试的改变
+
+|类型|类别|说明|
+|:---:|:---:|:---:|
+|feat|production|新增功能|
+|fix|production|bug修复|
+|perf|production|提高代码的性能|
+|style|development|代码格式变化|
+|refactor|production|其它类型，例如简化代码，重命名变量，删除冗余代码等优化工作|
+|test|development|新能测试例子|
+|ci|development|持续集成或者部署相关|
+|docs|development|文档类的更新|
+|chore|development|其它类型，例如构建流程，依赖管理，或者辅助工具的改变等工作|
+
+快速定位commit的类型：
+
+![](https://gitee.com/shgopher/img/raw/master/angular-commit-header-type1.png)
+
+![](https://gitee.com/shgopher/img/raw/master/angular-commit-header-type2.png)
+
+### scope的意思
+大概可以理解为分类，比如不同的组建分类，不同的功能分类等。
+比如我们使用不同的功能作为scope，例如说：
+- docs
+- apiserver
+- changelog
+- readme
+### subject
+subject是这个commit的tile描述的东西，开头必须用动词，并且用一般现在时，结尾不要加标点符号
+### body
+body就是这个commit的具体描述了
+### footer
+footer并不是必须的，一般来说明不兼容的改动，和关闭的issue，如果是涉及到了不兼容的改动，一定要加上`BREAKING CHANG: `
+
+关闭的issue，新建一行，写上关闭的issue号码即可。
+
+例如：
+
+```bash
+fix(apiserver): change some xx
+
+change one ,change two, change three
+
+BREAKING CHANG: change xxxxxxxxxxxx
+
+Closes #1178
+```
+### 特殊commit
+如果当前的commit还原了之前的commit，那么应该这么写：
+
+```bash
+revert: 要还原的commit header
+
+This reverts commit hash值
+```
+
+举例：
+
+```bash
+revert: docs(docs): xxxxxx
+
+This reerts commit k79380c8cfc8308a8a6e18f9yc8b8114febc9b48a
+```
+### commit提交频率以及合并提交
+提交频率：
+- 只要有改动就提交commit
+- 按照每天的固定时间点提交commit
+
+1
 ## 发布规范
 
 ## 目录规范
