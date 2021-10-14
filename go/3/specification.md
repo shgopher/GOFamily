@@ -257,7 +257,42 @@ git commit -am "feat(go): add xxx"
 
 ## 目录规范
 ### go包目录规范
+直接所有文件放在root即可。比如[glog](https://github.com/golang/glog)，而且一般来说，不太复杂的go的包采用的这种方式。
 ### go项目目录规范
+go项目可以包括的内容：
+
+- 项目介绍：README.md。
+- 客户端：xxxctl。
+- API 文档。
+- 构建配置文件，CICD 配置文件。
+- CHANGELOG。
+- 项目配置文件。
+- kubernetes 部署定义文件（未来容器化是趋势，甚至会成为服务部署的事实标准，所以目录结构中需要有存放 kubernetes 定义文件的目录）。
+- Dockerfile 文件。
+- systemd/init 部署配置文件（物理机/虚拟机部署方式需要）。
+- 项目文档。
+- commit message 格式检查或者其他 githook。
+- 请求参数校验。
+- 命令行 flag。
+- 共享包：
+    - 外部项目可导入。
+    - 只有子项目可导入。
+- storage 接口。
+- 项目管理：Makefile，完成代码检查、构建、打包、测试、部署等。
+- 版权声明。
+- _output 目录（编译、构建产物）。
+- 引用的第三方包。
+- 脚本文件（可能会借助脚本，实现一些源码管理、构建、生成等功能）。
+- 测试文件。
+
+下面看一下具体的目录结构图：
+
+![](https://gitee.com/shgopher/img/raw/master/go-subject-complex-menu0.png)
+<br>
+![](https://gitee.com/shgopher/img/raw/master/go-subject-complex-menu1.png)
+<br>
+![](https://gitee.com/shgopher/img/raw/master/go-subject-complex-menu2.png)
+
 ## 代码规范
 
 ## 接口规范
@@ -268,3 +303,4 @@ git commit -am "feat(go): add xxx"
 
 ## 参考资料
 - [go语言项目开发实战](http://gk.link/a/10ADE)
+
