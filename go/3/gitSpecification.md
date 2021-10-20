@@ -25,6 +25,15 @@ git flow 工作流，拥有五种模式，分别是：
 - 还有普遍的 git commit ,git add 
 - tag功能的 git tag -a 
 
+通常来说，我们的开发流程是这样的：
+
+1. 在master主分支上先新建一个develop的分支
+2. 切换到develop分支，然后再新建一个开发分支，比如叫做feature/hello-world
+3. 在开发分支上开发代码，开发完成以后，再次fetch 远程代码，然后commit（通常可以合并commit：使用 git rebase -i <要修改的commit id 父id>），发布到GitHub。
+4. 提交一个requests，经过代码的review以后，经过上级领导merge到develop上
+5. 然后在develop上，这个时候将要发布版本了，那么就从这个时候的develop上新建一个分支是release/v1.11.0 类似这样的分支，然后在这个分支上开始测试工作，这个过程中可以修改，然后最终完成以后，merge到 develop和maser分支，
+6. 删除 feature分支和release分支
+
 ## forking
 > 适合开源项目
 
