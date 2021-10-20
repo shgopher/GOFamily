@@ -16,7 +16,16 @@ git flow 工作流，拥有五种模式，分别是：
 - feature 研发阶段用来作功能开发，通常来说是从develop上fork的，并且起名字是feature/xxx 这种方式，提交到develop分支
 - release 发布阶段的预发布分支，通常是fork 自 develop分支的，然后提交到master和develop分支
 - hotfix 紧急bug修复分支 ，从master分支进行fork的，然后提交到master和develop分支
+
+用到的git命令有：
+
+- 切换/添加分支的 git checkout  和 git checkout -b
+- push 功能的 ,添加tag push的 git push --tag,和push 分支的 git push origin (分支名称)
+- merge功能的 git merge --no-ff (来源分支)
+- 还有普遍的 git commit ,git add 
+- tag功能的 git tag -a 
+
 ## forking
 > 适合开源项目
 
-从远程仓库，fork一份到自己的仓库，
+从远程仓库，fork一份到自己的仓库，开发完成后，提requests
