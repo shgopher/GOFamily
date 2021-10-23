@@ -11,3 +11,33 @@
 ## 常见的开发流程
 ![](https://gitee.com/shgopher/img/raw/master/%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B.png)
 
+## 自动化流程 CI/CD 模式
+
+- CI: 持续集成
+- CD：持续交付
+- CD：持续部署
+
+> cd1 Continuous delivery
+> cd2 Continuous Deployment
+
+通过 持续集成，持续交付，和持续部署，诞生了最新的研发技术模式，DevOps --- 研发运维一体化模式
+
+## DevOps的分类
+- AIOps 
+
+    使用人工智能的方式，自动定位故障，并且自动修复故障的方法
+- ChatOps
+
+    使用聊天软件 + 人工智能机器人的方法，发送一条命令，然后机器人就可以自动做出一系列的动作
+- GitOps
+
+    使用git的方法，只要变更了git，那么就自动的做出运维的动作来
+- NoOps
+
+    不需要运维，由云厂商来干这件事儿。
+
+
+
+
+
+
