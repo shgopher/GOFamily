@@ -91,10 +91,10 @@ replace(
 
 最后我把项目中演示的图片放到最后，不过由于网络问题你不一定能看得到。
 
-![2.1.png](./resource/2.1.png)
+![2.1.png](https://gitee.com/shgopher/img/raw/master/gomod-2.1.png)
 
-![2.2.png](./resource/2.2.png)
+![2.2.png](https://gitee.com/shgopher/img/raw/master/gomod-2.2.png)
 
-![2.3.png](./resource/2.3.png)
+![2.3.png](https://gitee.com/shgopher/img/raw/master/gomod-2.3.png)
 
-![2.4.png](./resource/2.4.png)
+![2.4.png](https://gitee.com/shgopher/img/raw/master/gomod-2.4.png)
