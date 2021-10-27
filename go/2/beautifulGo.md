@@ -31,8 +31,32 @@
 ## 代码规范
 可以参考一下[uber的规范](https://github.com/imgoogege/uber_go_guide_cn)说明
 ## 代码质量
+
 - code review
 - 单元测试
+
+将代码从不可mock的状态更改为可mock的代码演示：
+```go
+// 不可mock
+
+type Student struct {
+
+}
+// SomeMethod 这里的a.Some() 是属于some的特有的方法，mock的时候是无法访问
+// 的，所以这里，应该把这个sturct和这个函数解耦
+func SomeMethod(a some)Student{
+    return a.Some()
+}
+
+// SomeMehod1 这里将struck改成一个接口，这样就解耦了
+type Server interface{
+    Some()Student
+}
+func SomeMethod1(s Server)Student{
+    s.Some()
+}
+```
+
 ## 编程哲学
 ## 软件设计方法
 
