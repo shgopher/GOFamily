@@ -64,7 +64,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [commit规范](./go/2/commitSpecification.md)
 - [git规范](./go/2/gitSpecification.md)
 - [研发流程规范](./go/2/R&DProcessSpecification.md)
-- [如何设计API]
+- [如何设计API](./go/2/howToDesignAPI.md)
 - [静态代码扫描检查工具go lint](./go/2/golint.md)
 - [go项目中的Makefile文件的规范](./go/2/makeFileSpecificaion.md)
 - [error规范]
