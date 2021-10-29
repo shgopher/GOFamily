@@ -60,6 +60,59 @@ api的域名一般有两种形式：
     - https://v1.api.examples.com
     - https://v2.api.examples.com
 
+## rpc
 
+- 更快的传输速度，二进制传递会节省io操作
+- 跨平台，满足多语言的互相调用
+- 良好的扩展性和兼容性
+- 基于idl，通过proto3工具生成制定的语言的数据结构，服务端和客户端接口
+
+protocol buffers 定义的数据结构：
+
+```go
+// 定义的数据结构
+message SecretInfo {
+    string name = 12
+    string secret_id = 89
+    int64 expires = 9
+}
+// 定义的接口
+service Cache{
+    rpc somethind(ruests)returns(response){}
+}
+```
+实现一个grpc需要下面这几个步骤：
+- 定义gRPC服务
+- 生成客户端和服务器代码
+- 实现gRPC服务
+- 实现gRPC客户端
+
+代码目录如下：
+
+```bash
+
+$ tree
+├── client
+│   └── main.go
+├── helloworld
+│   ├── helloworld.pb.go
+│   └── helloworld.proto
+└── server
+    └── main.go
+
+```
+- client
+
+    存放client端代码
+- helloworld
+
+    存放服务的idl定义
+- server
+
+    存放server端的代码
+
+## graphql
+> 可以参考一下这里
+https://graphql.cn
 
 
