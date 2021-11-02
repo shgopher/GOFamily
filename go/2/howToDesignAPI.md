@@ -111,6 +111,32 @@ $ tree
 
     存放server端的代码
 
+gRPC 支持四种类型的服务方法
+- 简单模式,客户端发起一次请求，服务端响应一个数据
+    ```go
+    service Hello{
+        rpc Hi(Hirequest)returns (HelloReply){}
+    }
+    ```
+- 服务端数据流模式，客户端发送一个请求，服务端返回数据流响应，客户端从流中读取数据直到空
+    ```go
+        service Hello{
+            rpc Hi(helloRuest) returns (stream HelloReply){}
+        }
+    ```
+- 客户端数据流模式,客户端将流发送给服务器，服务器全部处理这些数据后，返回一次响应
+    ```go
+        service Hello {
+            rpc Hi(stream HelloRequest) returns (HelloReplay){}
+        }
+    ```
+- 双向数据流模式,客户端和服务器都是发送流，互相发送流
+    ```go
+    service Hello {
+        rpc Hi(stream HelloRequest) returns (stream HelloReplay){}
+    }
+    ```
+
 ## graphql
 > 可以参考一下这里
 https://graphql.cn
