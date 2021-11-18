@@ -68,8 +68,8 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [如何设计makefile](./go/2/howToDesignMakefile.md)
 - [静态代码扫描检查工具go lint](./go/2/golint.md)
 - [go项目中的Makefile文件的规范](./go/2/makeFileSpecificaion.md)
-- [error规范]
-- [log规范]
+- [error规范](./go/2/errorSpecification.md)
+- [log规范](./go/2/logSpecification.md)
 - [优雅的go代码](./go/2/beautifulGo.md)
 - [go常用设计模式](./go/2/goPatterns.md)
 - [go编程模式](./go/2/codeSpecification.md)

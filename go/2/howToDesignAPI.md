@@ -141,4 +141,8 @@ gRPC 支持四种类型的服务方法
 > 可以参考一下这里
 https://graphql.cn
 
+## swagger api 文档生成模式
+
+swagger是通过定义注释，自动生成API的一种工具，通常可以使用 (go-swagger)[https://github.com/go-swagger/go-swagger] 这个工具包来完成这个任务。
+
 
