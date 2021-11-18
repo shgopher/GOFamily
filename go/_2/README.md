@@ -1,0 +1,16 @@
+# 简要概述
+- `error` : 包含错误处理相关问题
+- `log` : 包含日志相关问题
+- `testing` : 包含测试相关问题
+- `pattern` : 包含编程模式相关问题
+- `project` : 包含例如目录，commit，doc等相关工程规范
+- `api` : 包含api的相关知识
+- `makefile` : 包含makefile相关知识
+- `git` : 包含git技术的相关知识
+- `regrex` : 包含正则表达式的相关问题
+- `construct` : 包含构建工程的相关问题
+- `gomodule` : 包含go module的相关问题
+- `debug` : 包含debug的相关问题
+- `lint` : 包含lint工具，以及相关的最佳实践的相关问题
+- `devOps` : 包含devOps 研发流程的相关问题
+- `workflow` : 包含工作流的相关问题
