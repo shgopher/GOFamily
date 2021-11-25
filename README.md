@@ -64,11 +64,12 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [commit规范](./go/2/commitSpecification.md)
 - [git规范](./go/2/gitSpecification.md)
 - [研发流程规范](./go/2/R&DProcessSpecification.md)
-- [如何设计API]
+- [如何设计API](./go/2/howToDesignAPI.md)
+- [如何设计makefile](./go/2/howToDesignMakefile.md)
 - [静态代码扫描检查工具go lint](./go/2/golint.md)
 - [go项目中的Makefile文件的规范](./go/2/makeFileSpecificaion.md)
-- [error规范]
-- [log规范]
+- [error规范](./go/2/errorSpecification.md)
+- [log规范](./go/2/logSpecification.md)
 - [优雅的go代码](./go/2/beautifulGo.md)
 - [go常用设计模式](./go/2/goPatterns.md)
 - [go编程模式](./go/2/codeSpecification.md)
@@ -143,13 +144,18 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [短地址生成算法](./408/1/.md)
 - [朴素贝叶斯算法](./408/1/.md)
 - [抢红包算法](./408/1/redPacket.md)
-### 算法题
+### 算法题解题思路
 - [解题模版](./408/1/template.md)
 - [鸽巢理论](./408/1/pigeon.md)
 - [求连续子序列的值](./408/1/contiguousSubsequences.md)
 - [动态规划之股票问题](./408/1/dpStock.md)
-- [leetcode题解](./408/1/leetcode)
+### 算法题题解
+- 
+### 数据库题题解
+### 多线程题题解
+### shell脚本题题解
 ## 设计模式
+### 设计模式基础
 ### 创建型
 - [单例模式](./408/2/singleton.md)
 - [工厂模式](./408/2/factory.md)
@@ -185,11 +191,11 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 ## 操作系统
 ## 正则表达式
 ## 计算机组成原理
-# db
+# 数据库
 ## MySql
 ## Redis
 ## mongodb
-# foolon
+# 系统设计
 ## 分布式协议
 ### 分布式基础理论
 - 拜占庭将军问题
@@ -215,17 +221,46 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - 分布式追踪
 - 高可用的分布式
 - 分布式部署
-## istio
-## kafka
-## zookeeper
-# docker
-## docker
-## k8s
-# refactor
-# test
-# repairman
-# up
-# coder
+## 架构设计基础
+### rpc 服务框架 gRPC
+### API网关 tyk
+### 服务网格 istio
+### 注册中心 zookeeper
+### 消息队列 kafka
+## git 
+## 缓存
+## 大数据
+## 区块链
+## 云原生架构
+### 微服务
+### docker
+### k8s
+### devOps
+## 架构设计案例
+- 分布式ID生成器
+- 短网址系统
+- 信息流 News Feed
+- 定时任务调度器
+- API 限速器
+- 线程安全的hash map
+- 最近一个小时内，访问频率最高的10个ip
+- 负载均衡
+- key-value存储引擎
+- 网络爬虫
+- pageRank
+- 搜索引擎
+- 大数据
+    - 数据流采样
+    - 基数估计
+    - 频率估计
+    - top k 频繁项
+    - 范围查询
+    - 成员查询
+# 重构
+# 测试
+# 线上紧急故障排除
+# 系统调优
+# 程序员
 # 扫一扫添加我的公众号，回复 “加群”，可以加入微信群。
 
 <p id="wechat.png" align="center">
