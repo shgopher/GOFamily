@@ -258,11 +258,68 @@
 |max points on a line|||||
 |sparse matrix multiplication|||||
 ## 数据库操作的题目
+|题目|地址|类型|本地题解|
+|:---:|:---:|:---:|:---:|
+|组合两个表|[leetcode](https://leetcode-cn.com/problems/combine-two-tables)|||
+|查找重复的电子邮件|[leetcode](https://leetcode-cn.com/problems/duplicate-emails)|||
+|删除重复的电子邮件|[leetcode](https://leetcode-cn.com/problems/delete-duplicate-emails)|||
+|行程和用户|[leetcode](https://leetcode-cn.com/problems/trips-and-users)|||
+|第二高的薪水|[leetcode](https://leetcode-cn.com/problems/second-highest-salary)|||
+|第n高的薪水|[leetcode](https://leetcode-cn.com/problems/nth-highest-salary)|||
+|分数排名|[leetcode](https://leetcode-cn.com/problems/rank-scores)|||
+|连续出现的数字|[leetcode](https://leetcode-cn.com/problems/consecutive-numbers)|||
+|部门工资最高的员工|[leetcode](https://leetcode-cn.com/problems/department-highest-salary)|||
+|部门工资前三高的所有员工|[leetcode](https://leetcode-cn.com/problems/department-top-three-salaries)|||
 ## 多线程，并发，并行的题目
 |题目|地址|类型|本地题解|
 |:---:|:---:|:---:|:---:|
 |H20的生成|[leetcode](https://leetcode-cn.com/problems/building-h2o/)|信号量+循环栅栏|[h20.md](./chan/h20.md)|
-|交替打印abcd||chan任务编排|[abcd](./chan/abcd.md)|
+|交替打印abcd|[leetcode](https://leetcode-cn.com/problems/print-foobar-alternately)|chan任务编排|[abcd](./chan/abcd.md)|
+|哲学家进餐|[leetcode](https://leetcode-cn.com/problems/the-dining-philosophers)|||
+|按序打印|[leetcode](https://leetcode-cn.com/problems/print-in-order)|||
+|打印零和奇偶数|[leetcode](https://leetcode-cn.com/problems/print-zero-even-odd)|||
+|交替打印字符串|[leetcode](https://leetcode-cn.com/problems/fizz-buzz-multithreaded)|||
 ## shell脚本操作的题目
+|题目|地址|类型|本地题解|
+|:---:|:---:|:---:|:---:|
+|统计词频|[leetcode](https://leetcode-cn.com/problems/word-frequency)|||
+|有效的电话号码|[leetcode](https://leetcode-cn.com/problems/valid-phone-numbers)|||
+|转置文件|[leetcode](https://leetcode-cn.com/problems/transpose-file)|||
+|第十行|[leetcode](https://leetcode-cn.com/problems/tenth-line)|||
 ## 智力题
-
+|题目|地址|类型|本地题解|
+|:---:|:---:|:---:|:---:|
+|1000瓶药水找毒药||||
+|抢30||||
+|灯泡开关||||
+|烧绳子||||
+|圆环回到原点||||
+|两个玻璃球||||
+|切两刀构成三角形的概率||||
+|ab吃东西||||
+|排列11223344||||
+|打靶||||
+|有100只狼和1只羊||||
+|三个空瓶子||||
+|赛马问题||||
+|32个球，重量不一样，只有一个天平||||
+|一块金子问题||||
+|扑克牌大小王问题||||
+|2的10000次方对应于10进制的多少位||||
+|根据某天的数据库连接日志，求数据库的连接峰值||||
+|一段筷子分成三段，组成三角形的概率||||
+|两堆硬币||||
+|画圆问题||||
+|圆桌放硬币||||
+|水杯倒水||||
+|三门问题||||
+|两个盒子抽球||||
+|101金币找假币||||
+|掷不均匀骰子||||
+|选最快的马||||
+|通过蒙特卡洛估算pi||||
+|最少几只鹅||||
+|广告分配||||
+|狼吃羊||||
+|一个天平||||
+|砝码问题||||
