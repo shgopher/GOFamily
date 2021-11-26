@@ -95,7 +95,6 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [atom](./go/3/atom.md)
 - [log](./go/3/log.md)
 - [json](./go/3/json.md)  
-
 # 408
 ## 算法
 ### 数据结构
@@ -150,10 +149,34 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [求连续子序列的值](./408/1/contiguousSubsequences.md)
 - [动态规划之股票问题](./408/1/dpStock.md)
 ### 算法题题解
-- 
+> 算法题共260题，这里只显示一部分，点击[URL](./408/1/leetcode)可以查看更多
+
+- [2sum](./408/1/leetcode/algo/2sum.md)
+- [2sum ii](./408/1/leetcode/algo/2sum-ii.md)
+- [3sum](./408/1/leetcode/algo/3sum.md)
+- [3sum closest](./408/1/leetcode/algo/3sum-closest.md)
+- [3sum smaller](./408/1/leetcode/algo/3sum-smaller.md)
+- [4sum](./408/1/leetcode/algo/4sum.md)
+- [4sum ii](./408/1/leetcode/algo/4sum-ii.md)
+- [remove duplicates from sorted array](./408/1/leetcode/algo/remove-duplicates-from-sorted-array.md)
+- [remove duplicates from sorted array ii](./408/1/leetcode/algo/remove-duplicates-from-sorted-array-ii.md)
+- [longest consecutive sequence](./408/1/leetcode/algo/longest-consecutive-sequence.md)
 ### 数据库题题解
+> 点击[URL](./408/1/leetcode)可以查看更多
+
+- 
 ### 多线程题题解
+> 点击[URL](./408/1/leetcode)可以查看更多
+
+- 
 ### shell脚本题题解
+> 点击[URL](./408/1/leetcode)可以查看更多
+
+- 
+### 智力题
+> 点击[URL](./408/1/leetcode)可以查看更多
+
+- 
 ## 设计模式
 ### 设计模式基础
 ### 创建型

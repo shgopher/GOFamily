@@ -12,15 +12,15 @@
 |题目|地址|类型|本地题解|族|
 |:---:|:---:|:---:|:---:|:---:|
 |2sum|[leetcode](https://leetcode-cn.com/problems/two-sum/)|哈希表，数组|[2sum](./algo/2sum.md)|2sum,2sum II, 3sum,3sum closest,4sum,4sum ii|
-|2sumii|||||
-|3sum|||||
-|3sum closest|||||
-|3sum smaller|||||
-|4sum|||||
-|4sum ii|||||
-|remove duplicates from sorted array|||||
-|remove duplicates from sorted array ii|||||
-|longest consecutive sequence|||||
+|2sumii|||[2sum ii](./408/1/leetcode/algo/2sum-ii.md)||
+|3sum|||[3sum](./408/1/leetcode/algo/3sum.md)||
+|3sum closest|||[3sum closest](./408/1/leetcode/algo/3sum-closest.md)||
+|3sum smaller|||[3sum smaller](./408/1/leetcode/algo/3sum-smaller.md)||
+|4sum|||[4sum](./408/1/leetcode/algo/4sum.md)||
+|4sum ii|||[4sum ii](./408/1/leetcode/algo/4sum-ii.md)||
+|remove duplicates from sorted array|||[remove duplicates from sorted array](./408/1/leetcode/algo/remove-duplicates-from-sorted-array.md)||
+|remove duplicates from sorted array ii|||[remove duplicates from sorted array ii](./408/1/leetcode/algo/remove-duplicates-from-sorted-array-ii.md)||
+|longest consecutive sequence|||[longest consecutive sequence](./408/1/leetcode/algo/longest-consecutive-sequence.md)||
 |remove element|||||
 |move zeroes|||||
 |next permutation|||||
