@@ -2,12 +2,13 @@
 
 - 关于算法和数据结构的题目一共200道题左右，题目都比较经典，以及，题目不在多在于精，一题多解才是正确的选择，吃多嚼不烂。
 
-- 关于数据库的题目有
+- 关于数据库的题目有10几道题
 
-- 关于多线程（并发or并行）的题目有
+- 关于多线程（并发or并行）的题目有10题左右
 
-- 关于shell脚本的题目有
+- 关于shell脚本的题目有5题左右
 
+- 关注智力题的题目大概30多道题
 ## 算法题
 |题目|地址|类型|本地题解|族|
 |:---:|:---:|:---:|:---:|:---:|
@@ -260,66 +261,66 @@
 ## 数据库操作的题目
 |题目|地址|类型|本地题解|
 |:---:|:---:|:---:|:---:|
-|组合两个表|[leetcode](https://leetcode-cn.com/problems/combine-two-tables)|||
-|查找重复的电子邮件|[leetcode](https://leetcode-cn.com/problems/duplicate-emails)|||
-|删除重复的电子邮件|[leetcode](https://leetcode-cn.com/problems/delete-duplicate-emails)|||
-|行程和用户|[leetcode](https://leetcode-cn.com/problems/trips-and-users)|||
-|第二高的薪水|[leetcode](https://leetcode-cn.com/problems/second-highest-salary)|||
-|第n高的薪水|[leetcode](https://leetcode-cn.com/problems/nth-highest-salary)|||
-|分数排名|[leetcode](https://leetcode-cn.com/problems/rank-scores)|||
-|连续出现的数字|[leetcode](https://leetcode-cn.com/problems/consecutive-numbers)|||
-|部门工资最高的员工|[leetcode](https://leetcode-cn.com/problems/department-highest-salary)|||
-|部门工资前三高的所有员工|[leetcode](https://leetcode-cn.com/problems/department-top-three-salaries)|||
+|组合两个表|[leetcode](https://leetcode-cn.com/problems/combine-two-tables)||[combine tables](./sql/combine-two-tables.md)|
+|查找重复的电子邮件|[leetcode](https://leetcode-cn.com/problems/duplicate-emails)||[find emails](./sql/duplicate-emails.md)|
+|删除重复的电子邮件|[leetcode](https://leetcode-cn.com/problems/delete-duplicate-emails)||[delete emails](./sql/delete-duplicate-emails.md)|
+|行程和用户|[leetcode](https://leetcode-cn.com/problems/trips-and-users)||[trips users](./sql/trips-and-users.md)|
+|第二高的薪水|[leetcode](https://leetcode-cn.com/problems/second-highest-salary)||[second salary](./sql/second-highest-salary.md)|
+|第n高的薪水|[leetcode](https://leetcode-cn.com/problems/nth-highest-salary)||[n salary](./sql/nth-highest-salary.md)|
+|分数排名|[leetcode](https://leetcode-cn.com/problems/rank-scores)||[rank scores](./sql/rank-scores.md)|
+|连续出现的数字|[leetcode](https://leetcode-cn.com/problems/consecutive-numbers)||[consecutive numbers](./sql/consecutive-numbers.md)|
+|部门工资最高的员工|[leetcode](https://leetcode-cn.com/problems/department-highest-salary)||[highest salary](./sql/department-highest-salary.md)|
+|部门工资前三高的所有员工|[leetcode](https://leetcode-cn.com/problems/department-top-three-salaries)||[three salaries](./sql/department-top-three-salaries.md)|
 ## 多线程，并发，并行的题目
 |题目|地址|类型|本地题解|
 |:---:|:---:|:---:|:---:|
-|H20的生成|[leetcode](https://leetcode-cn.com/problems/building-h2o/)|信号量+循环栅栏|[h20.md](./chan/h20.md)|
+|H20的生成|[leetcode](https://leetcode-cn.com/problems/building-h2o/)|信号量+循环栅栏|[h20](./chan/h20.md)|
 |交替打印abcd|[leetcode](https://leetcode-cn.com/problems/print-foobar-alternately)|chan任务编排|[abcd](./chan/abcd.md)|
-|哲学家进餐|[leetcode](https://leetcode-cn.com/problems/the-dining-philosophers)|||
-|按序打印|[leetcode](https://leetcode-cn.com/problems/print-in-order)|||
-|打印零和奇偶数|[leetcode](https://leetcode-cn.com/problems/print-zero-even-odd)|||
-|交替打印字符串|[leetcode](https://leetcode-cn.com/problems/fizz-buzz-multithreaded)|||
+|哲学家进餐|[leetcode](https://leetcode-cn.com/problems/the-dining-philosophers)||[dining philosophers](./chan/the-dining-philosophers.md)|
+|按序打印|[leetcode](https://leetcode-cn.com/problems/print-in-order)||[print](./chan/print-in-order.md)|
+|打印零和奇偶数|[leetcode](https://leetcode-cn.com/problems/print-zero-even-odd)||[print zero](./chan/print-zero-even-odd.md)|
+|交替打印字符串|[leetcode](https://leetcode-cn.com/problems/fizz-buzz-multithreaded)||[multithreaded](./chan/fizz-buzz-multithreaded.md)|
 ## shell脚本操作的题目
 |题目|地址|类型|本地题解|
 |:---:|:---:|:---:|:---:|
-|统计词频|[leetcode](https://leetcode-cn.com/problems/word-frequency)|||
-|有效的电话号码|[leetcode](https://leetcode-cn.com/problems/valid-phone-numbers)|||
-|转置文件|[leetcode](https://leetcode-cn.com/problems/transpose-file)|||
-|第十行|[leetcode](https://leetcode-cn.com/problems/tenth-line)|||
+|统计词频|[leetcode](https://leetcode-cn.com/problems/word-frequency)||[word frequency](./shell/word-frequency.md)|
+|有效的电话号码|[leetcode](https://leetcode-cn.com/problems/valid-phone-numbers)||[phone numbers](./shell/valid-phone-numbers.md)|
+|转置文件|[leetcode](https://leetcode-cn.com/problems/transpose-file)||[transpose file](./shell/transpose-file.md)|
+|第十行|[leetcode](https://leetcode-cn.com/problems/tenth-line)||[transpose file](./shell/tenth-line.md)|
 ## 智力题
 |题目|地址|类型|本地题解|
 |:---:|:---:|:---:|:---:|
-|1000瓶药水找毒药||||
-|抢30||||
-|灯泡开关||||
-|烧绳子||||
-|圆环回到原点||||
-|两个玻璃球||||
-|切两刀构成三角形的概率||||
-|ab吃东西||||
-|排列11223344||||
-|打靶||||
-|有100只狼和1只羊||||
-|三个空瓶子||||
-|赛马问题||||
-|32个球，重量不一样，只有一个天平||||
-|一块金子问题||||
-|扑克牌大小王问题||||
-|2的10000次方对应于10进制的多少位||||
-|根据某天的数据库连接日志，求数据库的连接峰值||||
-|一段筷子分成三段，组成三角形的概率||||
-|两堆硬币||||
-|画圆问题||||
-|圆桌放硬币||||
-|水杯倒水||||
-|三门问题||||
-|两个盒子抽球||||
-|101金币找假币||||
-|掷不均匀骰子||||
-|选最快的马||||
-|通过蒙特卡洛估算pi||||
-|最少几只鹅||||
-|广告分配||||
-|狼吃羊||||
-|一个天平||||
-|砝码问题||||
+|1000瓶药水找毒药|||[找毒药](./iq/1.md)|
+|抢30|||[抢30](./iq/2.md)|
+|灯泡开关|||[地址](./iq/3.md)|
+|烧绳子|||[地址](./iq/4.md)|
+|圆环回到原点|||[地址](./iq/5.md)|
+|两个玻璃球|||[地址](./iq/6.md)|
+|切两刀构成三角形的概率|||[地址](./iq/7.md)|
+|ab吃东西|||[地址](./iq/8.md)|
+|排列11223344|||[地址](./iq/9.md)|
+|打靶|||[地址](./iq/10.md)|
+|有100只狼和1只羊|||[地址](./iq/11.md)|
+|三个空瓶子|||[地址](./iq/12.md)|
+|赛马问题|||[地址](./iq/13.md)|
+|32个球，重量不一样，只有一个天平|||[地址](./iq/14.md)|
+|一块金子问题|||[地址](./iq/15.md)|
+|扑克牌大小王问题|||[地址](./iq/16.md)|
+|2的10000次方对应于10进制的多少位|||[地址](./iq/17.md)|
+|根据某天的数据库连接日志，求数据库的连接峰值|||[地址](./iq/18.md)|
+|一段筷子分成三段，组成三角形的概率|||[地址](./iq/19.md)|
+|两堆硬币|||[地址](./iq/20.md)|
+|画圆问题|||[地址](./iq/21.md)|
+|圆桌放硬币|||[地址](./iq/22.md)|
+|水杯倒水|||[地址](./iq/23.md)|
+|三门问题|||[地址](./iq/24.md)|
+|两个盒子抽球|||[地址](./iq/25.md)|
+|101金币找假币|||[地址](./iq/26.md)|
+|掷不均匀骰子|||[地址](./iq/27.md)|
+|选最快的马|||[地址](./iq/28.md)|
+|通过蒙特卡洛估算pi|||[地址](./iq/29.md)|
+|最少几只鹅|||[地址](./iq/30.md)|
+|广告分配|||[地址](./iq/31.md)|
+|狼吃羊|||[地址](./iq/32.md)|
+|一个天平|||[地址](./iq/33.md)|
+|砝码问题|||[地址](./iq/34.md)|
