@@ -95,7 +95,6 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [atom](./go/3/atom.md)
 - [log](./go/3/log.md)
 - [json](./go/3/json.md)  
-
 # 408
 ## 算法
 ### 数据结构
@@ -150,10 +149,50 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [求连续子序列的值](./408/1/contiguousSubsequences.md)
 - [动态规划之股票问题](./408/1/dpStock.md)
 ### 算法题题解
-- 
+> 算法题共260题左右，这里只显示一部分，点击[URL](./408/1/leetcode)可以查看更多
+
+- [2sum](./408/1/leetcode/algo/2sum.md)
+- [2sum ii](./408/1/leetcode/algo/2sum-ii.md)
+- [3sum](./408/1/leetcode/algo/3sum.md)
+- [3sum closest](./408/1/leetcode/algo/3sum-closest.md)
+- [3sum smaller](./408/1/leetcode/algo/3sum-smaller.md)
+- [4sum](./408/1/leetcode/algo/4sum.md)
+- [4sum ii](./408/1/leetcode/algo/4sum-ii.md)
+- [remove duplicates from sorted array](./408/1/leetcode/algo/remove-duplicates-from-sorted-array.md)
+- [remove duplicates from sorted array ii](./408/1/leetcode/algo/remove-duplicates-from-sorted-array-ii.md)
+- [longest consecutive sequence](./408/1/leetcode/algo/longest-consecutive-sequence.md)
 ### 数据库题题解
+> 点击[URL](./408/1/leetcode)可以查看更多
+
+- [组合两个表](./408/1/leetcode/sql/combine-two-tables.md)
+- [查找重复的电子邮件](./408/1/leetcode/sql/duplicate-emails.md)
+- [删除重复的电子邮件](./408/1/leetcode/sql/delete-duplicate-emails.md)
+- [行程和用户](./408/1/leetcode/sql/trips-and-users.md)
+- [第二高的薪水](./408/1/leetcode/sql/second-highest-salary.md)
 ### 多线程题题解
+> 点击[URL](./408/1/leetcode)可以查看更多
+
+- [H20的生成](./408/1/leetcode/chan/h20.md)
+- [哲学家进餐](./408/1/leetcode/chan/the-dining-philosophers.md)
+- [按序打印](./408/1/leetcode/chan/print-in-order.md)
+- [交替打印abcd](./408/1/leetcode/chan/abcd.md)
+- [打印零和奇偶数](./408/1/leetcode/chan/print-zero-even-odd.md)
+- [交替打印字符串](./408/1/leetcode/chan/fizz-buzz-multithreaded.md)
 ### shell脚本题题解
+> 点击[URL](./408/1/leetcode)可以查看更多
+
+- [统计词频](./408/1/leetcode/shell/word-frequency.md)
+- [有效的电话号码](./408/1/leetcode/shell/valid-phone-numbers.md)
+- [转置文件](./408/1/leetcode/shell/transpose-file.md)
+- [第十行](./408/1/leetcode/shell/tenth-line.md)
+### 智力题
+> 点击[URL](./408/1/leetcode/)可以查看更多
+
+- [1000瓶药水找毒药](./408/1/leetcode/iq/1.md)
+- [抢30](./408/1/leetcode/iq/2.md)
+- [灯泡开关](./408/1/leetcode/iq/3.md)
+- [烧绳子](./408/1/leetcode/iq/4.md)
+- [圆环回到原点](./408/1/leetcode/iq/5.md)
 ## 设计模式
 ### 设计模式基础
 ### 创建型
@@ -249,6 +288,10 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - 网络爬虫
 - pageRank
 - 搜索引擎
+- 如何设计一个高并发的系统
+- 写一段代码，输出代码本身
+- 设计一个rpc框架
+- 设计一个排行榜
 - 大数据
     - 数据流采样
     - 基数估计
