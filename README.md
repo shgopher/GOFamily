@@ -22,7 +22,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - `go思维导图`, 获取作者总结的超详细的找工作面试秘籍，知识超级全面，并且以思维导图的方式更容易多维立体记忆。
 - `go面试题`, 获取经典go面试宝典。
 
-![](https://gitee.com/shgopher/img/raw/master/go.png)
+![](https://gitee.com/shgopher/img/raw/master/GOFamily.png)
 
 # GO
 ## go语言的基本语法
