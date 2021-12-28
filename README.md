@@ -19,10 +19,12 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 
 添加微信公众号：<a href="#wechat.png">科科人神</a>, 回复：
 
-- `go思维导图`, 获取作者总结的超详细的找工作面试秘籍，知识超级全面，并且以思维导图的方式更容易多维立体记忆。
-- `go面试题`, 获取经典go面试宝典。
+- `思维导图`, 获取作者总结的超详细的找工作面试秘籍，知识超级全面，并且以思维导图的方式更容易多维立体记忆。
+- `面试题`, 获取经典go面试大全。
 
-![](https://gitee.com/shgopher/img/raw/master/go.png)
+- `好友`, 可以添加作者的微信好友
+
+**本项目提供 [速记小册](./other/gold/)**
 
 # GO
 ## go语言的基本语法
@@ -150,17 +152,17 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [动态规划之股票问题](./408/1/dpStock.md)
 ### 算法题题解
 > 算法题共260题左右，这里只显示一部分，点击[URL](./408/1/leetcode)可以查看更多
+                             
+- [2sum](./408/1/leetcode/algo/1.md)
+- [2sum ii](./408/1/leetcode/algo/167.md)
+- [3sum](./408/1/leetcode/algo/15.md)
+- [3sum closest](./408/1/leetcode/algo/16.md)
+- [4sum](./408/1/leetcode/algo/18.md)
+- [4sum ii](./408/1/leetcode/algo/454.md)
+- [remove duplicates from sorted array](./408/1/leetcode/algo/26.md)
+- [remove duplicates from sorted array ii](./408/1/leetcode/algo/80.md)
+- [longest consecutive sequence](./408/1/leetcode/algo/128.md)
 
-- [2sum](./408/1/leetcode/algo/2sum.md)
-- [2sum ii](./408/1/leetcode/algo/2sum-ii.md)
-- [3sum](./408/1/leetcode/algo/3sum.md)
-- [3sum closest](./408/1/leetcode/algo/3sum-closest.md)
-- [3sum smaller](./408/1/leetcode/algo/3sum-smaller.md)
-- [4sum](./408/1/leetcode/algo/4sum.md)
-- [4sum ii](./408/1/leetcode/algo/4sum-ii.md)
-- [remove duplicates from sorted array](./408/1/leetcode/algo/remove-duplicates-from-sorted-array.md)
-- [remove duplicates from sorted array ii](./408/1/leetcode/algo/remove-duplicates-from-sorted-array-ii.md)
-- [longest consecutive sequence](./408/1/leetcode/algo/longest-consecutive-sequence.md)
 ### 数据库题题解
 > 点击[URL](./408/1/leetcode)可以查看更多
 
@@ -266,6 +268,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 ### 服务网格 istio
 ### 注册中心 zookeeper
 ### 消息队列 kafka
+### 分布式搜索引擎 es
 ## git 
 ## 缓存
 ## 大数据
@@ -304,6 +307,8 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 # 线上紧急故障排除
 # 系统调优
 # 程序员
+# 附录
+- [面试宝典](./other/gold/)
 # 扫一扫添加我的公众号，回复 “加群”，可以加入微信群。
 
 <p id="wechat.png" align="center">

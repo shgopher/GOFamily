@@ -1,1 +1,0 @@
-# Palindromic Substrings

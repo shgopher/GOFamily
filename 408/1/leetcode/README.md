@@ -1,8 +1,5 @@
 # 练习题说明
 
-- 关于算法和数据结构的题目一共200道题左右，题目都比较经典，以及，题目不在多在于精，一题多解才是正确的选择，吃多嚼不烂。
-
-
 - 关于数据库的题目有10几道题
 
 - 关于多线程（并发or并行）的题目有10题左右
@@ -11,254 +8,353 @@
 
 - 关注智力题的题目大概30多道题
 ## 算法题
-|题目|地址|类型|本地题解|族|
-|:---:|:---:|:---:|:---:|:---:|
-|2sum|[leetcode](https://leetcode-cn.com/problems/two-sum/)|哈希表，数组|[2sum](./algo/2sum.md)|2sum,2sum II, 3sum,3sum closest,4sum,4sum ii|
-|2sumii|||[2sum ii](./408/1/leetcode/algo/2sum-ii.md)||
-|3sum|||[3sum](./408/1/leetcode/algo/3sum.md)||
-|3sum closest|||[3sum closest](./408/1/leetcode/algo/3sum-closest.md)||
-|3sum smaller|||[3sum smaller](./408/1/leetcode/algo/3sum-smaller.md)||
-|4sum|||[4sum](./408/1/leetcode/algo/4sum.md)||
-|4sum ii|||[4sum ii](./408/1/leetcode/algo/4sum-ii.md)||
-|remove duplicates from sorted array|||[remove duplicates from sorted array](./408/1/leetcode/algo/remove-duplicates-from-sorted-array.md)||
-|remove duplicates from sorted array ii|||[remove duplicates from sorted array ii](./408/1/leetcode/algo/remove-duplicates-from-sorted-array-ii.md)||
-|longest consecutive sequence|||[longest consecutive sequence](./408/1/leetcode/algo/longest-consecutive-sequence.md)||
-|remove element|||||
-|move zeroes|||||
-|next permutation|||||
-|permutation sequence|||||
-|valid sudoku|||||
-|trapping rain water|||||
-|rotate image|||||
-|plus one|||||
-|climbing stairs|||||
-|set matrix zeroes|||||
-|gas station|||||
-|candy|||||
-|majority element|||||
-|majority element ii|||||
-|rotate array|||||
-|contains duplicate|||||
-|contains duplicate ii|||||
-|contains duplicate iii|||||
-|product of array except self|||||
-|game of life|||||
-|increasing triplet subsequence|||||
-|meeting rooms|||||
-|intersection of two arrays|||||
-|intersection of two arrays ii |||||
-|reverse linked list|||||
-|odd even linked list|||||
-|add two numbers|||||
-|add two numbers ii|||||
-|reverse linked list ii|||||
-|partition list|||||
-|remove duplicates from sorted list|||||
-|remove duplicates from sorted list ii|||||
-|rotate list|||||
-|remove nth node from end of list|||||
-|swap nodes in pairs|||||
-|reverse nodes in k-group|||||
-|copy list with random pointer|||||
-|linked list cycle|||||
-|linked list cycle ii|||||
-|reorder list|||||
-|LRU Cache|||||
-|LFU Cache|||||
-|All o(1) data structure|||||
-|palindrome linked list|||||
-|lntersection of two linked lists|||||
-|Valid Palindrome|||||
-|implement strStr()|||||
-|String to Integer(atoi)|||||
-|Longest Palindromic Substring|||||
-|Regular Expression Matching|||||
-|Wildcard Matching|||||
-|Longest Common Prefix|||||
-|Valid Number|||||
-|Integer to Roman|||||
-|Roman to Integer|||||
-|Count and Say|||||
-|Anagrams|||||
-|Valid Anagram|||||
-|Simplify Path|||||
-|Length of Last Word|||||
-|Isomorphic Strings|||||
-|Word Pattern|||||
-|Decode String|||||
-|Min Stack|||||
-|Valid Parentheses|||||
-|Longest Valid parentheses|||||
-|largest rectangle in histogram|||||
-|evaluate reverse polish notation|||||
-|implement stack using queues|||||
-|median of data stream|||||
-|implement queue using stacks|||||
-|moving average of data|||||
-|sliding window maximum|||||
-|binary tree preorder traversal|||||
-|binary tree inorder traversal|||||
-|binary tree postorder traversal|||||
-|binary tree level order traversal|||||
-|binary tree level order traversal ii|||||
-|binary tree right side view|||||
-|invert binary tree|||||
-|binary search tree iterator|||||
-|binary tree zigzag level order traversal|||||
-|recover binary search tree|||||
-|same tree|||||
-|symmetric tree|||||
-|balanced binary tree|||||
-|flatten binary tree to linked list|||||
-|populating next right|||||
-|pointers in each node ii|||||
-|construct binary tree from preorder and inorder traversal|||||
-|construct binary tree from inorder and postorder traversal|||||
-|unique binary search trees|||||
-|unique binary search trees ii|||||
-|validate binary search tree|||||
-|convert sorted array to binary search tree|||||
-|lca of bst|||||
-|kth smallest element in a bst|||||
-|minimum depth of binary tree|||||
-|maximum depth of binary tree|||||
-|path sum|||||
-|path sum ii|||||
-|binary tree maximum path sum|||||
-|populating next right pointers in each node|||||
-|sum root to leaf numbers|||||
-|lca of binary tree|||||
-|serialize and deserialize binary tree|||||
-|range sum query - mutable|||||
-|insertion sort list|||||
-|merge two sorted arrays|||||
-|merge two sorted lists|||||
-|merge k sorted lists|||||
-|sort colors|||||
-|kth largest element in an array|||||
-|first missing positive|||||
-|h-index|||||
-|maximum gap|||||
-|meeting rooms ii|||||
-|top k frequent elements|||||
-|top k frquent words|||||
-|largest number|||||
-|search for a range|||||
-|search insert position|||||
-|search in retated sorted array|||||
-|search in rotated sorted array ii|||||
-|search a 2d matrix|||||
-|search a 2d matrix ii|||||
-|find minimum in rotated sorted array|||||
-|find minimum in rotated sorted array ii|||||
-|median of two sorted arrays|||||
-|h-index ii|||||
-|random pock with weight|||||
-|subsets|||||
-|subsets ii|||||
-|permutations|||||
-|permutations ii|||||
-|combinations|||||
-|word ladder|||||
-|word ladder ii|||||
-|surrounded regions|||||
-|the maze|||||
-|the maze ii|||||
-|the maze iii|||||
-|additive number|||||
-|palindrome partitioning|||||
-|unique paths|||||
-|unique paths ii|||||
-|n-queens|||||
-|n-queens ii|||||
-|restore ip addresses|||||
-|combination sum|||||
-|combination sum ii|||||
-|combination sum iii|||||
-|generate patentheses|||||
-|sudoku solver|||||
-|word search|||||
-|android unlock patterns|||||
-|robot room cleaner|||||
-|pow(x,n)|||||
-|sqrt(x)|||||
-|jump game|||||
-|jump game ii|||||
-|best time to buy and sell stock|||||
-|best time to buy and sell stock ii|||||
-|longest substring without repeating characters|||||
-|container with most water|||||
-|patching array|||||
-|task scheduler|||||
-|triangle|||||
-|maximum subarray|||||
-|maximum product subarray|||||
-|longest increasing subsequence|||||
-|palindrome partitioning ii|||||
-|maximal rectangle|||||
-|best time to buy and sell stock iii|||||
-|best time to buy and sell stock iv|||||
-|best time to buy and sell stock with cooldown|||||
-|interleaving string|||||
-|scramble string|||||
-|minimum path sum|||||
-|edit distance|||||
-|decode ways|||||
-|distinct subsequences|||||
-|word break|||||
-|word break ii|||||
-|dungeon game|||||
-|house robber|||||
-|house robber ii|||||
-|house robber iii|||||
-|range sum query-immutable|||||
-|range sum query 2d-immutable|||||
-|frog jump|||||
-|partition equal subset sum|||||
-|ones and zeroes|||||
-|last stone weight ii|||||
-|clone graph|||||
-|graph valid tree|||||
-|network delay time|||||
-|path with maximum probability|||||
-|reverse bits|||||
-|repeated dna sequences|||||
-|number of 1bits|||||
-|gray code|||||
-|single number|||||
-|single number ii|||||
-|gingle number iii|||||
-|power of two|||||
-|missing number|||||
-|maximum product of word lengths|||||
-|bitwise and of numbers range|||||
-|power of three|||||
-|rectangle area|||||
-|happy number|||||
-|ugly number|||||
-|ugly number ii|||||
-|super ugly number|||||
-|fraction to recurring decimal|||||
-|factorial trailing zeroes|||||
-|reverse integer|||||
-|palindrome number|||||
-|insert interval|||||
-|merge intervals|||||
-|employee free time|||||
-|minimum window substring|||||
-|add binary|||||
-|add strings|||||
-|multiply strings|||||
-|substring with concatenation of all words|||||
-|pascal's triangle|||||
-|pascal's triangle ii|||||
-|spiral matrix|||||
-|spiral matrix ii|||||
-|zigzag conversion|||||
-|divide two integers|||||
-|text justification|||||
-|max points on a line|||||
-|sparse matrix multiplication|||||
+
+- 数组双指针    
+    - 🍎： 1  80 128 167  16  454   31 60 36  48 66 70 73 134 135 169 229 189 217 219 220 238 289 334 349 350 3sum smaller meeting rooms 136 121 122 88 118 11 384 69 162 33 127 433  41
+    - 二分搜索
+        - 34
+        - 704
+        - 354
+        - 392
+        - 793
+        - 875
+        - 1011
+    - 滑动窗口
+        - 3
+        - 76
+        - 438
+        - 567
+        - 239
+    - 其它
+        - 26
+        - 27
+        - 283
+        - 42
+        - 986
+        - 870
+        - 15
+        - 18
+- 链表双指针
+    - 🍎：206  328 2 445 86  82 61  24  138  
+      143  146  460 432   
+    - 19
+    - 21
+    - 23
+    - 141
+    - 142
+    - 160
+    - 876
+    - 25
+    - 83
+    - 92
+    - 234
+- 前缀和
+    - 303
+    - 304
+    - 560
+- 差分数组
+    - 370
+    - 1094
+    - 1109
+- 字符串
+    - 🍎： 344 709  541 7 917  387  680 438 151 557 
+    - 125
+    - 28
+    - 8
+    - 5
+    - 10
+    - 44
+    - 14
+    - 65
+    - 12
+    - 13
+    - 38
+    - 49
+    - 242
+    - 71
+    - 58
+    - 205
+    - 290
+    - 394
+- 队列和栈
+    - 🍎：155  150  84,295, moving average of data stream 496 856 84 641 622 
+    - 32
+    - 20
+    - 921
+    - 1541
+    - 225
+    - 232
+    - 22
+    - 239
+- 二叉堆
+    - 🍎：剑指0ffer 40 703 347  239
+
+    - 21
+    - 215
+    - 295
+- 数据结构设计题
+    - 146
+    - 341
+    - 380
+    - 460
+    - 895
+- 二叉树
+    - 🍎： 637  98 589 590  429  235 236
+        - 二叉树的遍历
+            - 144 94 145 102 107 199  173 103 99 100 101 110  117
+        - 二叉树的构建
+            -  
+        - 二叉搜索树
+            -    109 108  lca of bst
+        - 二叉树的递归
+            -  104 113 112 124  129 lca of binary tree 297
+            
+        - 线段树
+            - 307
+        - 字典树
+            - 208 212
+    - 105
+    - 106
+    - 654
+    - 111
+    - 114
+    - 116
+    - 226
+    - 222
+    - 297
+    - 341
+    - 652
+- 二叉搜索树
+    - 95
+    - 96
+    - 98
+    - 450
+    - 700
+    - 701
+    - 230
+    - 538
+    - 1038
+    - 1373
+- 哈希表
+    - 349
+    - 350 
+    - 242
+    - 771
+    - 49
+    - 438
+    - 146
+    - 380
+- 排序
+    - 🍎： 1122 242 56 493 
+
+    - 插入排序
+        - 147
+    - 归并排序
+        - 21
+        - 23
+        - merge two sorted arrays
+    - 快速排序
+        - 75
+        - 215
+    - 桶排序
+        - 41
+    - 计数排序
+        - 274
+    - 基数排序
+        - 164
+    - 堆排序
+        - meeting rooms ii
+        - 347
+        - 692
+    - 其它
+        - 179
+- 查找
+    - search for a range
+    - 35
+    - 81
+    - 153
+    - 154
+    - 4
+    - 275
+    - 528
+- 暴力枚举
+    - 78
+    - 90
+    - 46 
+    - 47
+    - 77
+- 图论算法
+    - 🍎： 133  graph valid tree  743  1514
+
+
+    - 图的遍历
+        - 797
+    - 二分图
+        - 785
+        - 886
+    - 环的检测/拓跋排序
+        - 207
+        - 210
+    - 并查集算法
+        - 547
+        - 200
+        - 120
+        - 130
+        - 990
+    - 最小生成树
+        - 261
+        - 1135
+        - 1584
+    - 最短路径
+        - 743
+        - 1514
+        - 1631
+- 分治算法
+    - 50
+    - 69
+- 贪心算法
+    - 55
+    - 45
+    - 121
+    - 122
+    - 3
+    - 11
+    - 330
+    - 621
+- 回溯算法
+    - 🍎：  79  212 547 52
+
+    - 22
+    - 37
+    - 46
+    - 77
+    - 78
+    - 51
+    - 494
+    - 698
+- dfs
+    - 🍎：306 131 62 63 51 52 93 39 40 216  22 37  79 
+            android unlock patterns  robot room cleanr
+    - 130
+    - 200
+    - 694
+    - 695
+    - 1020
+    - 1254
+    - 1905
+- bfs
+    - 🍎：127 126 130 ,the maze, the maze ii the maze iii
+
+    - 111
+    - 752
+    - 773
+- 动态规划
+    - 🍎： 746  62 63  91  10 152 
+        120   132 85  97 87 91 639  303 304 403  474 1049
+
+    - 一维动态规划
+        - 45
+        - 55
+        - 53
+        - 198
+        - 213
+        - 337
+        - 300
+        - 322
+        - 354
+    - 二维动态规划
+        - 10
+        - 64
+        - 72
+        - 121
+        - 122
+        - 123
+        - 188
+        - 309
+        - 714
+        - 174
+        - 312
+        - 416
+        - 494
+        - 514
+        - 518
+        - 583
+        - 712
+        - 1143
+        - 787
+        - 887
+        - 931
+    - 背包问题
+        - 416
+        - 494
+        - 518
+- 位运算
+    - 190
+    - 187
+    - 191
+    - 136 
+    - 137 
+    - 260
+    - 231
+    - 338
+    - 268
+    - 318
+    - 201
+    - 326
+    - 223
+- 数学题
+    - 77
+    - 78
+    - 134
+    - 136
+    - 191
+    - 231
+    - 172
+    - 793
+    - 204
+    - 268
+    - 292
+    - 319
+    - 877
+    - 295
+    - 372
+    - 382
+    - 398
+    - 391
+    - 509
+    - 645
+    - 710
+- 区间问题
+    - 56
+    - 986
+    - 1288
+    - 435
+    - 452
+    - 1024
+- 数论
+    - 202
+    - 263
+    - 264
+    - 313
+    - 166
+    - 172
+- 模拟题
+    - 7
+    - 9 
+    - 57
+    - 56
+    - 76
+    - 67
+    - 415
+    - 43
+    - 30
+    - 118
+    - 119
+    - 6
+    - 29
+    - 68
+    - 149
+
 ## 数据库操作的题目
 |题目|地址|类型|本地题解|
 |:---:|:---:|:---:|:---:|
@@ -289,6 +385,9 @@
 |转置文件|[leetcode](https://leetcode-cn.com/problems/transpose-file)||[transpose file](./shell/transpose-file.md)|
 |第十行|[leetcode](https://leetcode-cn.com/problems/tenth-line)||[transpose file](./shell/tenth-line.md)|
 ## 智力题
+> https://codetop.cc/discuss/logic
+
+
 |题目|地址|类型|本地题解|
 |:---:|:---:|:---:|:---:|
 |1000瓶药水找毒药|||[找毒药](./iq/1.md)|
@@ -325,25 +424,4 @@
 |狼吃羊|||[地址](./iq/32.md)|
 |一个天平|||[地址](./iq/33.md)|
 |砝码问题|||[地址](./iq/34.md)|
-
-- 关于数据库的题目有
-
-- 关于多线程（并发or并行）的题目有
-
-- 关于shell脚本的题目有
-
-## 算法题
-|题目|地址|类型|本地题解|族|
-|:---:|:---:|:---:|:---:|:---:|
-|2sum|[leetcode](https://leetcode-cn.com/problems/two-sum/)|哈希表，数组|2sum,2sum II, 3sum,3sum closest,4sum,4sum ii|
-||
-## 数据库操作的题目
-## 多线程，并发，并行的题目
-|题目|地址|类型|本地题解|
-|:---:|:---:|:---:|:---:|
-|H20的生成|[leetcode](https://leetcode-cn.com/problems/building-h2o/)|信号量+循环栅栏|[h20.md](./chan/h20.md)|
-|交替打印abcd||chan任务编排|[abcd](./chan/abcd.md)|
-## shell脚本操作的题目
-## 智力题
-
 
