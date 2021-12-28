@@ -80,7 +80,7 @@
     - 290
     - 394
 - 队列和栈
-    - 🍎：155  150  longest rectangle in histogram ,median of data stream, moving average of data stream 496 856 84 641 622 
+    - 🍎：155  150  84,295, moving average of data stream 496 856 84 641 622 
     - 32
     - 20
     - 921
