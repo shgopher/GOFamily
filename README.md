@@ -52,6 +52,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 ## 其它
 - [git](./other/git)
 - [devOps](./other/devOps)
+- [oAuth2.0](./other/auth)
 - [正则表达式](./other/正则表达式)
 - [重构技术](./other/)
 - [线上快速排障](./other/)
