@@ -351,7 +351,7 @@ func A(timeout time.Duration)int{
     select {
         case v := <-ch :
             return v
-        case time.After(timeout):
+        case <- time.After(timeout):
 
             return -1
     }
@@ -375,7 +375,7 @@ func A(timeout time.Duration)int{
     select {
         case v := <-ch :
             return v
-        case time.After(timeout):
+        case <- time.After(timeout):
 
             return -1
     }

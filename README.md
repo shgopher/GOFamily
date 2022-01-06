@@ -224,84 +224,126 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - 享元模式
 - 装饰模式
 - 桥接模式
-
 ### 其它
 ## 网络
-### 应用层
-### 传输层
+[.](./408/3/)
 ## 操作系统
+[.](./408/4/)
 ## 正则表达式
+[.](./408/5/)
 ## 计算机组成原理
+[.](./408/6/.keep.md)
 # 数据库
 ## MySql
+[.](./db/1/)
 ## Redis
+[.](./db/2/)
 ## mongodb
+[.](./db/3/)
 # 系统设计
-## 分布式协议
-### 分布式基础理论
-- 拜占庭将军问题
-- CAP理论
-- ACID理论
-- BASE理论
-### 分布式协议
-- paxos协议
-- Raft协议
-- gossip协议
-- pow 协议
-- quorumNWR协议
-- pbet协议
-- zookeeper中的协议
-- 一致性哈希在分布式中的应用
-### 分布式技术应用
-- 分布式计算
-- 分布式储存
-- 分布式通信
-- 分布式资源池化
-- 分布式协同
-- 分布式调度
-- 分布式追踪
-- 高可用的分布式
-- 分布式部署
 ## 架构设计基础
-### rpc 服务框架 gRPC
-### API网关 tyk
-### 服务网格 istio
-### 注册中心 zookeeper
-### 消息队列 kafka
-### 分布式搜索引擎 es
+### 系统架构总体概要
+- [远程服务调用](./foolon/1/1/rpc.md)
+- [事务](./foolon/1/1/transaction.md)
+- [透明多级分流系统](./foolon/1/1/transparent-multilevel-system.md)
+- [架构的安全性](./foolon/1/1/architecture-security.md)
+- [从类库到服务](./foolon/1/1/library-service.md)
+- [流量治理](./foolon/1/1/traffic-governance.md)
+- [可靠通信](./foolon/1/1/reliable-communication.md)
+- [可观测性](./foolon/1/1/observability.md)
+- [虚拟化容器](./foolon/1/1/virtualized-container.md)
+- [容器间网络](./foolon/1/1/inter-container-network.md)
+- [持久化存储](./foolon/1/1/persistent-storage.md)
+- [资源和调度](./foolon/1/1/resources-scheduling.md)
+- [服务网格](./foolon/1/1/service-mesh.md)
+### 架构设计体系化基础
+- [架构设计的目的](./foolon/1/2/architecture-design-purpose.md)
+- [复杂度来源](./foolon/1/2/sources-of-complexity.md)
+- [架构设计原则](./foolon/1/2/architecture-design-principles.md)
+- [架构设计流程](./foolon/1/2/architecture-design-process.md)
+- [高性能架构设计](./foolon/1/2/high-performance-architecture-design.md)
+- [高可用架构设计](./foolon/1/2/high-availability-architecture-design.md)
+- [可扩展架构设计](./foolon/1/2/scalable-architecture-design.md)
+- [架构设计理论总结](./foolon/1/2/architecture-design-theory-summary.md)
+## 分布式基础理论
+- [拜占庭将军问题](./foolon/2/byzantine-generals-question.md)
+- [CAP理论](./foolon/2/cap.md)
+- [ACID理论](./foolon/2/acid.md)
+- [BASE理论](./foolon/2/base.md)
+## 分布式协议
+- [paxos协议](./foolon/3/paxos.md)
+- [Raft协议](./foolon/3/raft.md)
+- [gossip协议](./foolon/3/gossip.md)
+- [pow 协议](./foolon/3/pow.md)
+- [quorumNWR协议](./foolon/3/quorum-NWR.md)
+- [pbet协议](./foolon/3/pbet.md)
+- [zookeeper协议](./foolon/3/zookeeper.md)
+- [一致性哈希在分布式中的应用](./foolon/3/consistent-hash.md)
+## 分布式技术应用
+- [分布式计算](./foolon/4/distributed-computing.md)
+- [分布式储存](./foolon/4/distributed-storage.md)
+- [分布式通信](./foolon/4/distributed-communication.md)
+- [分布式资源池化](./foolon/4/distributed-resource-pooling.md)
+- [分布式协同](./foolon/4/distributed-collaboration.md)
+- [分布式调度](./foolon/4/distributed-scheduling.md)
+- [分布式追踪](./foolon/4/distributed-track.md)
+- [高可用的分布式](./foolon/4/highly-available-distributed.md)
+- [分布式部署](./foolon/4/distributed-deploy.md)
+## rpc 服务框架 gRPC
+- [.](./foolon/5/)
+## API网关 tyk
+- [.](./foolon/6/)
+## 注册中心 zookeeper
+- [.](./foolon/7/)
+## 消息队列 kafka
+- [.](./foolon/8/)
+## 分布式搜索引擎 es
+- [.](./foolon/9/)
 ## git 
+- [.](./foolon/10/)
 ## 缓存
+- [.](./foolon/11/)
 ## 大数据
+- [.](./foolon/12/)
 ## 区块链
+- [.](./foolon/13/)
+## 人工智能
+- [.](./foolon/14/)
 ## 云原生架构
 ### 微服务
+- [.](./foolon/15/1/)
 ### docker
+- [.](./foolon/15/2/)
 ### k8s
+- [.](./foolon/15/3/)
+### 服务网格 istio
+- [.](./foolon/15/4/)
 ### devOps
+- [.](./foolon/15/5/)
 ## 架构设计案例
-- 分布式ID生成器
-- 短网址系统
-- 信息流 News Feed
-- 定时任务调度器
-- API 限速器
-- 线程安全的hash map
-- 最近一个小时内，访问频率最高的10个ip
-- 负载均衡
-- key-value存储引擎
-- 网络爬虫
-- pageRank
-- 搜索引擎
-- 如何设计一个高并发的系统
-- 写一段代码，输出代码本身
-- 设计一个rpc框架
-- 设计一个排行榜
+- [分布式ID生成器](./foolon/16/)
+- [短网址系统](./foolon/16/)
+- [信息流 News Feed](./foolon/16/)
+- [定时任务调度器](./foolon/16/)
+- [API 限速器](./foolon/16/)
+- [线程安全的hash map](./foolon/16/)
+- [最近一个小时内，访问频率最高的10个ip](./foolon/16/)
+- [负载均衡](./foolon/16/)
+- [key-value存储引擎](./foolon/16/)
+- [网络爬虫](./foolon/16/)
+- [pageRank](./foolon/16/)
+- [搜索引擎](./foolon/16/)
+- [如何设计一个高并发的系统](./foolon/16/)
+- [写一段代码，输出代码本身](./foolon/16/)
+- [设计一个rpc框架](./foolon/16/)
+- [设计一个排行榜](./foolon/16/)
 - 大数据
-    - 数据流采样
-    - 基数估计
-    - 频率估计
-    - top k 频繁项
-    - 范围查询
-    - 成员查询
+    - [数据流采样](./foolon/16/)
+    - [基数估计](./foolon/16/)
+    - [频率估计](./foolon/16/)
+    - [top k 频繁项](./foolon/16/)
+    - [范围查询](./foolon/16/)
+    - [成员查询](./foolon/16/)
 # 重构
 # 测试
 # 线上紧急故障排除
@@ -314,7 +356,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 <p id="wechat.png" align="center">
 <br>
 <br>
-<img src="https://gitee.com/shgopher/img/raw/master/wechat.png" width="200px">
+<img src="https://gitee.com/shgopher/img/raw/master/wechat.png" width="200px" alt="公众号搜：科科人神">
 </p>
                                                                              
 # star
