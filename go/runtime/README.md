@@ -1,0 +1,9 @@
+# runtime
+- 三色gc算法
+- 堆内存分配
+- 栈内存管理
+- 系统监控
+- G:M:P
+- time
+- netpool
+- cgo

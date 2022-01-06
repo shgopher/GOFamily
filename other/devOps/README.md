@@ -1,0 +1,3 @@
+# devOps
+- ci/cd
+- ops
