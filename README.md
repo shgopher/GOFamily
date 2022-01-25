@@ -76,7 +76,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 <p id="wechat.png" align="center">
 <br>
 <br>
-<img src="https://gitee.com/shgopher/img/raw/master/wechat.png" width="200px" alt="公众号搜：科科人神">
+<img src="./wechat.png" width="200px" alt="公众号搜：科科人神">
 </p>
                                                                              
 # star
