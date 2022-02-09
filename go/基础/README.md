@@ -1,7 +1,10 @@
 # 基础
-- slice
-- string
-- 数字类型
-- map
-- interface
-- 泛型
+- [slice](./slice)
+- [string](./string)
+- [数字类型](./数字类型)
+- [map](./map)
+- [函数/方法](./函数方法)
+- [interface](./interface)
+- [逻辑和判断语句](./逻辑和判断语句)
+- [关键字](./关键字)
+- [泛型](./泛型)
