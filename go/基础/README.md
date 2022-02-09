@@ -2,6 +2,7 @@
 - [slice](./slice)
 - [string](./string)
 - [数字类型](./数字类型)
+- [其它类型](./其它类型)
 - [map](./map)
 - [函数/方法](./函数方法)
 - [interface](./interface)
