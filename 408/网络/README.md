@@ -4,4 +4,9 @@
 - udp
 - http
 - 负载均衡
-- 多级分流系统
+- dns
+- 客户端缓存
+- 传输链路
+- cdn
+## 参考资料
+- https://icyfenix.cn/architect-perspective/general-architecture/diversion-system/

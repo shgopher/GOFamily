@@ -5,7 +5,7 @@
 - mysql
 ## nosql
 - redis
-  - 缓存
+- 服务器缓存
 - mongodb
 ## newsql
 - tidb
