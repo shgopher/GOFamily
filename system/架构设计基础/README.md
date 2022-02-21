@@ -13,16 +13,16 @@
 - 高性能
 - 高可用
 - 可扩展
-- 理论总结
+- 架构总体理论总结
 ## 分布式基础
 - 拜占庭将军问题
 - [事务](./分布式基础/事务/README.md)
 - paxos
 - raft
 - pow
-- quorumNWR
+- quorum-NWR
 - pbet
-- zookeeper
+- zookeeper 协议
 - 一致性hash
 - 分布式计算
 - 分布式存储
