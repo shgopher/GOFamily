@@ -36,3 +36,6 @@
 - [架构安全性](./安全性/架构安全性/README.md)
 - 对称式加密
 - 非对称式加密
+## 参考资料
+-  https://icyfenix.cn/architect-perspective/general-architecture/system-security/
+-  https://icyfenix.cn/architect-perspective/general-architecture/transaction/
