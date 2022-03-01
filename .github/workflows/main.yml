@@ -27,10 +27,10 @@ jobs:
       - name: Build
         run: |         
           npm run build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.first-test }}
-          deploy_key: ${{ secrets.ACCESS_TOKEN }}
-          publish_dir: .vuepress/dist
-          publish_branch: gh-pages
+      - name: Deploy Github-Pages
+         uses: JamesIves/github-pages-deploy-action@4.1.4
+         with:
+           github_token: ${{ secrets.first-test }}
+           deploy_key: ${{ secrets.ACCESS_TOKEN }}
+           branch: gh-pages
+           folder: .vuepress/dist
