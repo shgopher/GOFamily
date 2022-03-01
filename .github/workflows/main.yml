@@ -32,7 +32,7 @@ jobs:
           target_branch: gh-pages
           build_dir: .vuepress/dist
         env:
-          github_token: ${{ secrets.first_test }}
-          deploy_key: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.first_test }}
+          DEPLOY_KEY: ${{ secrets.ACCESS_TOKEN }}
 
 
