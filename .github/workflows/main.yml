@@ -1,0 +1,39 @@
+name: Vuepress Deployment
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
+      - name: Install Dependencies
+        run: |
+          cd vuepress
+          npm install
+      - name: Build
+        run: |
+          cd vuepress
+          npm run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.first-test }}
+          deploy_key: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: vuepress/docs/.vuepress/dist
+          publish_branch: gh-pages
+
