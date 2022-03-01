@@ -27,11 +27,10 @@ jobs:
           npm install
           npm run build
       - name: Deploy Github-Pages
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: JamesIves/github-pages-deploy-action@4.2.5
         with:
-          github_token: ${{ secrets.first-test }}
+          github_token: ${{ secrets.first_test }}
           deploy_key: ${{ secrets.ACCESS_TOKEN }}
-          target_branch: gh-pages
-          build_dir: .vuepress/dist
-        
+          branch: gh-pages
+          folder: .vuepress/dist
 
