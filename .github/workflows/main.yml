@@ -26,11 +26,10 @@ jobs:
           export TZ='Asia/Shanghai'
           npm install
           npm run build
-          echo "icyfenix.cn" >> .vuepress/dist/CNAME
       - name: Deploy Github-Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.first-test }}
           deploy_key: ${{ secrets.ACCESS_TOKEN }}
           branch: gh-pages
           folder: .vuepress/dist
