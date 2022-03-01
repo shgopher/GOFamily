@@ -27,10 +27,13 @@ jobs:
           npm install
           npm run build
       - name: Deploy Github-Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        uses: crazy-max/ghaction-github-pages@v2
         with:
+          target_branch: gh-pages
+          build_dir: .vuepress/dist
+        env:
+          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           github_token: ${{ secrets.first-test }}
           deploy_key: ${{ secrets.ACCESS_TOKEN }}
-          branch: gh-pages
-          folder: .vuepress/dist
+        
 
