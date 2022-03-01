@@ -1,39 +1,37 @@
-name: Vuepress Deployment
+name: Generate Github-Pages from markdown files
 
 on:
   push:
-    branches:
-      - release
+    branches: [ release ]
+#  pull_request:
+#    branches: [ master ]
 
 jobs:
-  pages:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+
     steps:
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
       - uses: actions/checkout@v2
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - name: Cache NPM dependencies
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-npm-cache
-          restore-keys: |
-            ${{ runner.OS }}-npm-cache
-      - name: Install Dependencies
+
+      - name: Run Export
         run: |
-          cd vuepress
+          export TZ='Asia/Shanghai'
           npm install
-      - name: Build
-        run: |
-          cd vuepress
           npm run build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+          echo "icyfenix.cn" >> .vuepress/dist/CNAME
+      - name: Deploy Github-Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          github_token: ${{ secrets.first-test }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           deploy_key: ${{ secrets.ACCESS_TOKEN }}
-          publish_dir: vuepress/docs/.vuepress/dist
-          publish_branch: gh-pages
+          branch: gh-pages
+          folder: .vuepress/dist
 
