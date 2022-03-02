@@ -10,6 +10,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     ['link', {rel: 'shortcut icon', type: "image/x-icon", href: `/favicon.ico`}]
   ],
   host: 'localhost',
+  base:'/GOFamily/',
   port: 8080,
   dest: '.vuepress/dist',
   plugins:[
