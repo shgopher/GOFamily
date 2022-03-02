@@ -22,7 +22,6 @@
   "devDependencies": {
     "@vuepress/plugin-container": "^2.0.0-beta.36",
     "@vuepress/plugin-prismjs": "^2.0.0-beta.36",
-    "@vuepress/plugin-search": "^2.0.0-beta.36",
     "github-buttons": "^2.21.1",
     "vuepress": "^2.0.0-beta.36"
   }

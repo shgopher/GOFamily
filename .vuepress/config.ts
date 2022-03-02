@@ -44,16 +44,6 @@ export default defineUserConfig<DefaultThemeOptions>({
         preloadLanguages:['markdown', 'jsdoc', 'yaml'],
       }
     ],
-    [
-      '@vuepress/plugin-search',
-      {
-        locales:{
-          '/':{
-            placeholder: '搜索一下',
-          }
-        },
-      }
-    ]
   ],
   markdown: {
     anchor: false,
@@ -252,21 +242,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               ]
             }
         ]
-    },
-    {
-      text:'408',
-      children:[
-        {}
-      ]
-    },
-    {
-      text:'系统设计',
-    },
-    {
-      text:'技术方向',
-    },
-    {
-      text:'其它内容',
     },
     ],
   },
