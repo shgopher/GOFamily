@@ -8,16 +8,14 @@ export default defineUserConfig<DefaultThemeOptions>({
   description: '🔥 go 后端程序员宝典，包含了：算法，数据库，网络操作系统，分布式，系统设计等一揽子知识体系',
   head: [
     ['link', {rel: 'shortcut icon', type: "image/x-icon", href: `/GOFamily/favicon.ico`}],
+    ['script',{src:'https://www.googletagmanager.com/gtag/js?id=G-GFKQEFHX3B'}],
     ['script',{
-      src:`<!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFKQEFHX3B"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
+      src:
+      `window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
       
-        gtag('config', 'G-GFKQEFHX3B');
-      </script>`
+        gtag('config', 'G-GFKQEFHX3B');`
     }]
   ],
   host: 'localhost',
