@@ -4,12 +4,12 @@
 
 "@babel/parser@^7.16.4":
   version "7.17.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/@babel/parser/-/parser-7.17.3.tgz#b07702b982990bf6fdc1da5049a23fece4c5c3d0"
+  resolved "https://repo.huaweicloud.com/repository/npm/@babel/parser/-/parser-7.17.3.tgz"
   integrity sha512-7yJPvPV+ESz2IUTPbOL+YkIGyCqOyNIzdguKQuJGnH7bg1WTIifuM21YqokFt/THWh1AkCRn9IgoykTRCBVpzA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
-  resolved "https://repo.huaweicloud.com/repository/npm/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
+  resolved "https://repo.huaweicloud.com/repository/npm/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
   integrity sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==
   dependencies:
     "@nodelib/fs.stat" "2.0.5"
@@ -17,12 +17,12 @@
 
 "@nodelib/fs.stat@2.0.5", "@nodelib/fs.stat@^2.0.2":
   version "2.0.5"
-  resolved "https://repo.huaweicloud.com/repository/npm/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz#5bd262af94e9d25bd1e71b05deed44876a222e8b"
+  resolved "https://repo.huaweicloud.com/repository/npm/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz"
   integrity sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A==
 
 "@nodelib/fs.walk@^1.2.3":
   version "1.2.8"
-  resolved "https://repo.huaweicloud.com/repository/npm/@nodelib/fs.walk/-/fs.walk-1.2.8.tgz#e95737e8bb6746ddedf69c556953494f196fe69a"
+  resolved "https://repo.huaweicloud.com/repository/npm/@nodelib/fs.walk/-/fs.walk-1.2.8.tgz"
   integrity sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
@@ -30,31 +30,31 @@
 
 "@types/debug@^4.1.7":
   version "4.1.7"
-  resolved "https://repo.huaweicloud.com/repository/npm/@types/debug/-/debug-4.1.7.tgz#7cc0ea761509124709b8b2d1090d8f6c17aadb82"
+  resolved "https://repo.huaweicloud.com/repository/npm/@types/debug/-/debug-4.1.7.tgz"
   integrity sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==
   dependencies:
     "@types/ms" "*"
 
 "@types/fs-extra@^9.0.13":
   version "9.0.13"
-  resolved "https://repo.huaweicloud.com/repository/npm/@types/fs-extra/-/fs-extra-9.0.13.tgz#7594fbae04fe7f1918ce8b3d213f74ff44ac1f45"
+  resolved "https://repo.huaweicloud.com/repository/npm/@types/fs-extra/-/fs-extra-9.0.13.tgz"
   integrity sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==
   dependencies:
     "@types/node" "*"
 
 "@types/hash-sum@^1.0.0":
   version "1.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/@types/hash-sum/-/hash-sum-1.0.0.tgz#838f4e8627887d42b162d05f3d96ca636c2bc504"
+  resolved "https://repo.huaweicloud.com/repository/npm/@types/hash-sum/-/hash-sum-1.0.0.tgz"
   integrity sha512-FdLBT93h3kcZ586Aee66HPCVJ6qvxVjBlDWNmxSGSbCZe9hTsjRKdSsl4y1T+3zfujxo9auykQMnFsfyHWD7wg==
 
 "@types/linkify-it@*":
   version "3.0.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/@types/linkify-it/-/linkify-it-3.0.2.tgz#fd2cd2edbaa7eaac7e7f3c1748b52a19143846c9"
+  resolved "https://repo.huaweicloud.com/repository/npm/@types/linkify-it/-/linkify-it-3.0.2.tgz"
   integrity sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==
 
 "@types/markdown-it@^12.2.3":
   version "12.2.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/@types/markdown-it/-/markdown-it-12.2.3.tgz#0d6f6e5e413f8daaa26522904597be3d6cd93b51"
+  resolved "https://repo.huaweicloud.com/repository/npm/@types/markdown-it/-/markdown-it-12.2.3.tgz"
   integrity sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==
   dependencies:
     "@types/linkify-it" "*"
@@ -62,27 +62,27 @@
 
 "@types/mdurl@*":
   version "1.0.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/@types/mdurl/-/mdurl-1.0.2.tgz#e2ce9d83a613bacf284c7be7d491945e39e1f8e9"
+  resolved "https://repo.huaweicloud.com/repository/npm/@types/mdurl/-/mdurl-1.0.2.tgz"
   integrity sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==
 
 "@types/ms@*":
   version "0.7.31"
-  resolved "https://repo.huaweicloud.com/repository/npm/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
+  resolved "https://repo.huaweicloud.com/repository/npm/@types/ms/-/ms-0.7.31.tgz"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
 "@types/node@*":
   version "16.11.26"
-  resolved "https://repo.huaweicloud.com/repository/npm/@types/node/-/node-16.11.26.tgz#63d204d136c9916fb4dcd1b50f9740fe86884e47"
+  resolved "https://repo.huaweicloud.com/repository/npm/@types/node/-/node-16.11.26.tgz"
   integrity sha512-GZ7bu5A6+4DtG7q9GsoHXy3ALcgeIHP4NnL0Vv2wu0uUB/yQex26v0tf6/na1mm0+bS9Uw+0DFex7aaKr2qawQ==
 
 "@vitejs/plugin-vue@^2.1.0":
   version "2.2.4"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vitejs/plugin-vue/-/plugin-vue-2.2.4.tgz#ab8b199ca82496b05d2654c5f34ffcf9b947243d"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vitejs/plugin-vue/-/plugin-vue-2.2.4.tgz"
   integrity sha512-ev9AOlp0ljCaDkFZF3JwC/pD2N4Hh+r5srl5JHM6BKg5+99jiiK0rE/XaRs3pVm1wzyKkjUy/StBSoXX5fFzcw==
 
 "@vue/compiler-core@3.2.31":
   version "3.2.31"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vue/compiler-core/-/compiler-core-3.2.31.tgz#d38f06c2cf845742403b523ab4596a3fda152e89"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vue/compiler-core/-/compiler-core-3.2.31.tgz"
   integrity sha512-aKno00qoA4o+V/kR6i/pE+aP+esng5siNAVQ422TkBNM6qA4veXiZbSe8OTXHXquEi/f6Akc+nLfB4JGfe4/WQ==
   dependencies:
     "@babel/parser" "^7.16.4"
@@ -92,7 +92,7 @@
 
 "@vue/compiler-dom@3.2.31":
   version "3.2.31"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vue/compiler-dom/-/compiler-dom-3.2.31.tgz#b1b7dfad55c96c8cc2b919cd7eb5fd7e4ddbf00e"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vue/compiler-dom/-/compiler-dom-3.2.31.tgz"
   integrity sha512-60zIlFfzIDf3u91cqfqy9KhCKIJgPeqxgveH2L+87RcGU/alT6BRrk5JtUso0OibH3O7NXuNOQ0cDc9beT0wrg==
   dependencies:
     "@vue/compiler-core" "3.2.31"
@@ -100,7 +100,7 @@
 
 "@vue/compiler-sfc@3.2.31", "@vue/compiler-sfc@^3.2.28":
   version "3.2.31"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vue/compiler-sfc/-/compiler-sfc-3.2.31.tgz#d02b29c3fe34d599a52c5ae1c6937b4d69f11c2f"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vue/compiler-sfc/-/compiler-sfc-3.2.31.tgz"
   integrity sha512-748adc9msSPGzXgibHiO6T7RWgfnDcVQD+VVwYgSsyyY8Ans64tALHZANrKtOzvkwznV/F4H7OAod/jIlp/dkQ==
   dependencies:
     "@babel/parser" "^7.16.4"
@@ -116,7 +116,7 @@
 
 "@vue/compiler-ssr@3.2.31":
   version "3.2.31"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vue/compiler-ssr/-/compiler-ssr-3.2.31.tgz#4fa00f486c9c4580b40a4177871ebbd650ecb99c"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vue/compiler-ssr/-/compiler-ssr-3.2.31.tgz"
   integrity sha512-mjN0rqig+A8TVDnsGPYJM5dpbjlXeHUm2oZHZwGyMYiGT/F4fhJf/cXy8QpjnLQK4Y9Et4GWzHn9PS8AHUnSkw==
   dependencies:
     "@vue/compiler-dom" "3.2.31"
@@ -124,12 +124,12 @@
 
 "@vue/devtools-api@^6.0.0", "@vue/devtools-api@^6.0.0-beta.21.1":
   version "6.0.12"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vue/devtools-api/-/devtools-api-6.0.12.tgz#7b57cce215ae9f37a86984633b3aa3d595aa5b46"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vue/devtools-api/-/devtools-api-6.0.12.tgz"
   integrity sha512-iO/4FIezHKXhiDBdKySCvJVh8/mZPxHpiQrTy+PXVqJZgpTPTdHy4q8GXulaY+UKEagdkBb0onxNQZ0LNiqVhw==
 
 "@vue/reactivity-transform@3.2.31":
   version "3.2.31"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vue/reactivity-transform/-/reactivity-transform-3.2.31.tgz#0f5b25c24e70edab2b613d5305c465b50fc00911"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vue/reactivity-transform/-/reactivity-transform-3.2.31.tgz"
   integrity sha512-uS4l4z/W7wXdI+Va5pgVxBJ345wyGFKvpPYtdSgvfJfX/x2Ymm6ophQlXXB6acqGHtXuBqNyyO3zVp9b1r0MOA==
   dependencies:
     "@babel/parser" "^7.16.4"
@@ -140,14 +140,14 @@
 
 "@vue/reactivity@3.2.31":
   version "3.2.31"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vue/reactivity/-/reactivity-3.2.31.tgz#fc90aa2cdf695418b79e534783aca90d63a46bbd"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vue/reactivity/-/reactivity-3.2.31.tgz"
   integrity sha512-HVr0l211gbhpEKYr2hYe7hRsV91uIVGFYNHj73njbARVGHQvIojkImKMaZNDdoDZOIkMsBc9a1sMqR+WZwfSCw==
   dependencies:
     "@vue/shared" "3.2.31"
 
 "@vue/runtime-core@3.2.31":
   version "3.2.31"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vue/runtime-core/-/runtime-core-3.2.31.tgz#9d284c382f5f981b7a7b5971052a1dc4ef39ac7a"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vue/runtime-core/-/runtime-core-3.2.31.tgz"
   integrity sha512-Kcog5XmSY7VHFEMuk4+Gap8gUssYMZ2+w+cmGI6OpZWYOEIcbE0TPzzPHi+8XTzAgx1w/ZxDFcXhZeXN5eKWsA==
   dependencies:
     "@vue/reactivity" "3.2.31"
@@ -155,7 +155,7 @@
 
 "@vue/runtime-dom@3.2.31":
   version "3.2.31"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vue/runtime-dom/-/runtime-dom-3.2.31.tgz#79ce01817cb3caf2c9d923f669b738d2d7953eff"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vue/runtime-dom/-/runtime-dom-3.2.31.tgz"
   integrity sha512-N+o0sICVLScUjfLG7u9u5XCjvmsexAiPt17GNnaWHJUfsKed5e85/A3SWgKxzlxx2SW/Hw7RQxzxbXez9PtY3g==
   dependencies:
     "@vue/runtime-core" "3.2.31"
@@ -164,7 +164,7 @@
 
 "@vue/server-renderer@3.2.31", "@vue/server-renderer@^3.2.28":
   version "3.2.31"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vue/server-renderer/-/server-renderer-3.2.31.tgz#201e9d6ce735847d5989403af81ef80960da7141"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vue/server-renderer/-/server-renderer-3.2.31.tgz"
   integrity sha512-8CN3Zj2HyR2LQQBHZ61HexF5NReqngLT3oahyiVRfSSvak+oAvVmu8iNLSu6XR77Ili2AOpnAt1y8ywjjqtmkg==
   dependencies:
     "@vue/compiler-ssr" "3.2.31"
@@ -172,12 +172,12 @@
 
 "@vue/shared@3.2.31", "@vue/shared@^3.2.28":
   version "3.2.31"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vue/shared/-/shared-3.2.31.tgz#c90de7126d833dcd3a4c7534d534be2fb41faa4e"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vue/shared/-/shared-3.2.31.tgz"
   integrity sha512-ymN2pj6zEjiKJZbrf98UM2pfDd6F2H7ksKw7NDt/ZZ1fh5Ei39X5tABugtT03ZRlWd9imccoK0hE8hpjpU7irQ==
 
 "@vuepress/bundler-vite@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/bundler-vite/-/bundler-vite-2.0.0-beta.36.tgz#2e0940ca8ac8911e7f8a407b417cf2723aab4ce9"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/bundler-vite/-/bundler-vite-2.0.0-beta.36.tgz"
   integrity sha512-wIWbBhLtGotQ1zJGkCHFllKmmpqG2FhcIhoUPY8/VESOmKyUrE6Mbbsk5g8Un0kFbhiF3eFYP1eUxbZttbbpkA==
   dependencies:
     "@vitejs/plugin-vue" "^2.1.0"
@@ -198,7 +198,7 @@
 
 "@vuepress/cli@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/cli/-/cli-2.0.0-beta.36.tgz#bfd8ff08434e7249bdf28577ba9c21294f110b45"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/cli/-/cli-2.0.0-beta.36.tgz"
   integrity sha512-tGhC4OgdgOOoXGw79HFAJz5y9t9YRNdSsgkMRJvCAv9f257X+M/Ex/Qh3hfcnge+OBuMj63JLDB0FDRQWeJFUA==
   dependencies:
     "@vuepress/core" "2.0.0-beta.36"
@@ -210,7 +210,7 @@
 
 "@vuepress/client@2.0.0-beta.35":
   version "2.0.0-beta.35"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/client/-/client-2.0.0-beta.35.tgz#943b3b84e882a1b0c5e50b46dc1f12df557e71a2"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/client/-/client-2.0.0-beta.35.tgz"
   integrity sha512-oQj+fDvfDDJ+fPpcVVRJLeVX1QmnLCcpLBxPBVhqMD0WAFkj+sCBaeq0sQc5CwDaNysDcN71ACeuEpLDOEtCgQ==
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.21.1"
@@ -220,7 +220,7 @@
 
 "@vuepress/core@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/core/-/core-2.0.0-beta.36.tgz#934c9b40ed2fbc622d9a652a9bda63cbd48c02d0"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/core/-/core-2.0.0-beta.36.tgz"
   integrity sha512-RBj2Tkgt2f7NMCfox1iKgd6V87X5qj8G/cpJm7R65IielaXkNGGKjgidOrLKRCA3X0c/COwmaBrdiFxJtOtIRw==
   dependencies:
     "@vuepress/client" "2.0.0-beta.35"
@@ -232,7 +232,7 @@
 
 "@vuepress/markdown@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/markdown/-/markdown-2.0.0-beta.36.tgz#cb2765c2736c5257dbefc425480d146330bd60c9"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/markdown/-/markdown-2.0.0-beta.36.tgz"
   integrity sha512-Amvo7YuSbMZIfj24kwXDen81RsjliXTDvhv+R14aH4NbH9rpwKzTTtbmjWH6O/upqikDYIXhlozHjr1nEf1qHw==
   dependencies:
     "@types/markdown-it" "^12.2.3"
@@ -245,7 +245,7 @@
 
 "@vuepress/plugin-active-header-links@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-active-header-links/-/plugin-active-header-links-2.0.0-beta.36.tgz#6ec2953c27f6ce9dbbfdcdcef3f847f8b5ac927d"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-active-header-links/-/plugin-active-header-links-2.0.0-beta.36.tgz"
   integrity sha512-jeH1sieF1M/2M33JoUXe5RuRcdlGvUqMIq2wGdnwfXZn7YzcZtM8bmmhgpZw5yTuW6mT59b5SwEINptkZDKtUw==
   dependencies:
     "@vuepress/client" "2.0.0-beta.35"
@@ -257,7 +257,7 @@
 
 "@vuepress/plugin-back-to-top@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-back-to-top/-/plugin-back-to-top-2.0.0-beta.36.tgz#33b310e0b73e281aa0afcb16e261c180f2761f0a"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-back-to-top/-/plugin-back-to-top-2.0.0-beta.36.tgz"
   integrity sha512-BwWa/EeKvboG22m4HmnCEfs/RcPtQ5pL5uVss8+POLgDSICKDGhuHrQiH/DtgqbceXZCryNlJhLkNXQ6TxcR+A==
   dependencies:
     "@vuepress/core" "2.0.0-beta.36"
@@ -267,7 +267,7 @@
 
 "@vuepress/plugin-container@2.0.0-beta.36", "@vuepress/plugin-container@^2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-container/-/plugin-container-2.0.0-beta.36.tgz#b5a553a8999500eb92f628329a69e5777ea90f53"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-container/-/plugin-container-2.0.0-beta.36.tgz"
   integrity sha512-65DjPd2RHnbk8wvyPimalC7K+dHbb41fWH8bPdJL6EhFPBCdplXmDHjR8sLU/15HGrF8ms8PRJ0nKRv5WUEsrw==
   dependencies:
     "@types/markdown-it" "^12.2.3"
@@ -280,7 +280,7 @@
 
 "@vuepress/plugin-external-link-icon@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-external-link-icon/-/plugin-external-link-icon-2.0.0-beta.36.tgz#5d37b58fdba3268ac56bb5848aef98ee48f2501e"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-external-link-icon/-/plugin-external-link-icon-2.0.0-beta.36.tgz"
   integrity sha512-t8UHhvxT7Zwwv+bV+jKZ1fnTKxk6FHOQ9ydGnGWje7YTL097FppSrWFdMRFVTWBfqRKkrSOx5gB2LIz2pELWvA==
   dependencies:
     "@vuepress/client" "2.0.0-beta.35"
@@ -291,7 +291,7 @@
 
 "@vuepress/plugin-git@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-git/-/plugin-git-2.0.0-beta.36.tgz#ac0d8e00916ed7049ffc47490d3a64213d84a519"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-git/-/plugin-git-2.0.0-beta.36.tgz"
   integrity sha512-Q2fIaExIZTZHWcJzelRMSf41yvfLUto2vFB9sMmpgRZ+vqFpPwruyR7XGmBxHMiSIjBFPbjAPadgB3hpoDKyiQ==
   dependencies:
     "@vuepress/core" "2.0.0-beta.36"
@@ -299,7 +299,7 @@
 
 "@vuepress/plugin-medium-zoom@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-medium-zoom/-/plugin-medium-zoom-2.0.0-beta.36.tgz#534760a5c794d9b60768b6d5ae5bcf190aad8889"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-medium-zoom/-/plugin-medium-zoom-2.0.0-beta.36.tgz"
   integrity sha512-5qarMKNvypwYgo/ojOGSAKqug9mlmkzzaHGqX9w2rObYB0kCyV1CuqFOqd0Eg/3vif3B0fDOVgEIomjvgc8rQw==
   dependencies:
     "@vuepress/client" "2.0.0-beta.35"
@@ -310,7 +310,7 @@
 
 "@vuepress/plugin-nprogress@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-nprogress/-/plugin-nprogress-2.0.0-beta.36.tgz#fa7b1903f74ea48a27cb3b00cad605a4bab4930d"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-nprogress/-/plugin-nprogress-2.0.0-beta.36.tgz"
   integrity sha512-PFDFdvWQvvkGCiYi2jiCiRggP984yAYyZtSuK9eX3A9itYi0Qp+ck10tc+7cGQc1B97zg3FHVyA0BJcXUJwiJQ==
   dependencies:
     "@vuepress/client" "2.0.0-beta.35"
@@ -322,7 +322,7 @@
 
 "@vuepress/plugin-palette@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-palette/-/plugin-palette-2.0.0-beta.36.tgz#72dfa8c79f987ca03e6705515fe2b48754125ca4"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-palette/-/plugin-palette-2.0.0-beta.36.tgz"
   integrity sha512-37D1uwX1j91niSu6f//26azS18FSD3g93NJs8LM3HAim4XtzCRaFSnI90MNG2++4Aelx2SSx86M4OjVdb1oCKw==
   dependencies:
     "@vuepress/core" "2.0.0-beta.36"
@@ -331,7 +331,7 @@
 
 "@vuepress/plugin-prismjs@2.0.0-beta.36", "@vuepress/plugin-prismjs@^2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-prismjs/-/plugin-prismjs-2.0.0-beta.36.tgz#6344880364ba828919569519cb7312792546f8c9"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-prismjs/-/plugin-prismjs-2.0.0-beta.36.tgz"
   integrity sha512-xQ+Qa8ODt3K5blEZa2THTmXFO5/RrBjAgkk0u1JmPdVB8FoQAjdSaxZIs9vTBwCMCIexd6c3cC+MaPT2OVrgdA==
   dependencies:
     "@vuepress/core" "2.0.0-beta.36"
@@ -339,7 +339,7 @@
 
 "@vuepress/plugin-theme-data@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-theme-data/-/plugin-theme-data-2.0.0-beta.36.tgz#298fd9b160de886d003705615dbeee8ca2712a2b"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/plugin-theme-data/-/plugin-theme-data-2.0.0-beta.36.tgz"
   integrity sha512-1Fxj7F0rIARYa/gQmsUql3f7wPF3ML4Fs6kcPHXYll7ZNDLR1OBw9HIGJ7lW4qx37f6YfYs2RjefAuwkVFUn/A==
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.21.1"
@@ -351,14 +351,14 @@
 
 "@vuepress/shared@2.0.0-beta.35":
   version "2.0.0-beta.35"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/shared/-/shared-2.0.0-beta.35.tgz#3a717903f18a2c5cbf9e456ac93d904bb8ebd3bf"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/shared/-/shared-2.0.0-beta.35.tgz"
   integrity sha512-sU+ekNDv22YG16B1XmZyMD+A94QbAUgTp5FTs+X2POU9UQCIZCuFhgTM9TfAnSgD/6lnbp2Aljwg5fJAidPQmw==
   dependencies:
     "@vue/shared" "^3.2.28"
 
 "@vuepress/theme-default@2.0.0-beta.36":
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/theme-default/-/theme-default-2.0.0-beta.36.tgz#4b792f10c784526747c447e30e0d71cf77b4a083"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/theme-default/-/theme-default-2.0.0-beta.36.tgz"
   integrity sha512-3QqRL96MzKDamHo5bw9ldO2DHTxE+nwEHv1u2PsZusyMRoxyP1h2wPFHPhGaR+fhxFC9Ou9dOq4Ay2xiIU1piA==
   dependencies:
     "@vuepress/client" "2.0.0-beta.35"
@@ -383,7 +383,7 @@
 
 "@vuepress/utils@2.0.0-beta.35":
   version "2.0.0-beta.35"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/utils/-/utils-2.0.0-beta.35.tgz#439000c65012b014736fd6bb7e787e22da840bd3"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vuepress/utils/-/utils-2.0.0-beta.35.tgz"
   integrity sha512-359RVp8T5w+OB/rKy3DYBFqrH98IDWxiB2pf1Z9vgUA54p5xWBbvmh5GwIAfz1PDjpC5BOIk1b1/03VgcJSZFg==
   dependencies:
     "@types/debug" "^4.1.7"
@@ -400,7 +400,7 @@
 
 "@vueuse/core@^7.5.4":
   version "7.7.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vueuse/core/-/core-7.7.0.tgz#ddc5bbc910fbe0e2eda2cc823998dcf4a13265b4"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vueuse/core/-/core-7.7.0.tgz"
   integrity sha512-DS8+dg758CiWnswebYHjS05PqTtc1ZLomsDlkFjG/KC0iFRgFIsGC66AAGuSXLqWCoirp2xN6N2mkrp1aHdI7A==
   dependencies:
     "@vueuse/shared" "7.7.0"
@@ -408,26 +408,26 @@
 
 "@vueuse/shared@7.7.0":
   version "7.7.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/@vueuse/shared/-/shared-7.7.0.tgz#4fa97e68f987c8a10bf075de0e57b986da9f1b38"
+  resolved "https://repo.huaweicloud.com/repository/npm/@vueuse/shared/-/shared-7.7.0.tgz"
   integrity sha512-ANzMcUnjuUPJ9nWqMAqYt8p0qon6AH5pP5/V/0RSWkwCIWZwi57ujIaxizzMwnJECUF/73BmsRmpvvtokCIrKw==
   dependencies:
     vue-demi "*"
 
 ansi-regex@^5.0.1:
   version "5.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
+  resolved "https://repo.huaweicloud.com/repository/npm/ansi-regex/-/ansi-regex-5.0.1.tgz"
   integrity sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==
 
 ansi-styles@^4.1.0:
   version "4.3.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/ansi-styles/-/ansi-styles-4.3.0.tgz#edd803628ae71c04c85ae7a0906edad34b648937"
+  resolved "https://repo.huaweicloud.com/repository/npm/ansi-styles/-/ansi-styles-4.3.0.tgz"
   integrity sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==
   dependencies:
     color-convert "^2.0.1"
 
 anymatch@~3.1.2:
   version "3.1.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/anymatch/-/anymatch-3.1.2.tgz#c0557c096af32f106198f4f4e2a383537e378716"
+  resolved "https://repo.huaweicloud.com/repository/npm/anymatch/-/anymatch-3.1.2.tgz"
   integrity sha512-P43ePfOAIupkguHUycrc4qJ9kz8ZiuOUijaETwX7THt0Y/GNK7v0aa8rY816xWjZ7rJdA5XdMcpVFTKMq+RvWg==
   dependencies:
     normalize-path "^3.0.0"
@@ -435,24 +435,24 @@ anymatch@~3.1.2:
 
 argparse@^1.0.7:
   version "1.0.10"
-  resolved "https://repo.huaweicloud.com/repository/npm/argparse/-/argparse-1.0.10.tgz#bcd6791ea5ae09725e17e5ad988134cd40b3d911"
+  resolved "https://repo.huaweicloud.com/repository/npm/argparse/-/argparse-1.0.10.tgz"
   integrity sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==
   dependencies:
     sprintf-js "~1.0.2"
 
 argparse@^2.0.1:
   version "2.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
+  resolved "https://repo.huaweicloud.com/repository/npm/argparse/-/argparse-2.0.1.tgz"
   integrity sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
 
 array-union@^2.1.0:
   version "2.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/array-union/-/array-union-2.1.0.tgz#b798420adbeb1de828d84acd8a2e23d3efe85e8d"
+  resolved "https://repo.huaweicloud.com/repository/npm/array-union/-/array-union-2.1.0.tgz"
   integrity sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==
 
 autoprefixer@^10.4.2:
   version "10.4.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/autoprefixer/-/autoprefixer-10.4.2.tgz#25e1df09a31a9fba5c40b578936b90d35c9d4d3b"
+  resolved "https://repo.huaweicloud.com/repository/npm/autoprefixer/-/autoprefixer-10.4.2.tgz"
   integrity sha512-9fOPpHKuDW1w/0EKfRmVnxTDt8166MAnLI3mgZ1JCnhNtYWxcJ6Ud5CO/AVOZi/AvFa8DY9RTy3h3+tFBlrrdQ==
   dependencies:
     browserslist "^4.19.1"
@@ -464,17 +464,17 @@ autoprefixer@^10.4.2:
 
 base64-js@^1.3.1:
   version "1.5.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
+  resolved "https://repo.huaweicloud.com/repository/npm/base64-js/-/base64-js-1.5.1.tgz"
   integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
 
 binary-extensions@^2.0.0:
   version "2.2.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
+  resolved "https://repo.huaweicloud.com/repository/npm/binary-extensions/-/binary-extensions-2.2.0.tgz"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
 bl@^4.1.0:
   version "4.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/bl/-/bl-4.1.0.tgz#451535264182bec2fbbc83a62ab98cf11d9f7b3a"
+  resolved "https://repo.huaweicloud.com/repository/npm/bl/-/bl-4.1.0.tgz"
   integrity sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==
   dependencies:
     buffer "^5.5.0"
@@ -483,14 +483,14 @@ bl@^4.1.0:
 
 braces@^3.0.1, braces@~3.0.2:
   version "3.0.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/braces/-/braces-3.0.2.tgz#3454e1a462ee8d599e236df336cd9ea4f8afe107"
+  resolved "https://repo.huaweicloud.com/repository/npm/braces/-/braces-3.0.2.tgz"
   integrity sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==
   dependencies:
     fill-range "^7.0.1"
 
 browserslist@^4.19.1:
   version "4.19.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/browserslist/-/browserslist-4.19.3.tgz#29b7caad327ecf2859485f696f9604214bedd383"
+  resolved "https://repo.huaweicloud.com/repository/npm/browserslist/-/browserslist-4.19.3.tgz"
   integrity sha512-XK3X4xtKJ+Txj8G5c30B4gsm71s69lqXlkYui4s6EkKxuv49qjYlY6oVd+IFJ73d4YymtM3+djvvt/R/iJwwDg==
   dependencies:
     caniuse-lite "^1.0.30001312"
@@ -501,7 +501,7 @@ browserslist@^4.19.1:
 
 buffer@^5.5.0:
   version "5.7.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/buffer/-/buffer-5.7.1.tgz#ba62e7c13133053582197160851a8f648e99eed0"
+  resolved "https://repo.huaweicloud.com/repository/npm/buffer/-/buffer-5.7.1.tgz"
   integrity sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==
   dependencies:
     base64-js "^1.3.1"
@@ -509,17 +509,17 @@ buffer@^5.5.0:
 
 cac@^6.7.12:
   version "6.7.12"
-  resolved "https://repo.huaweicloud.com/repository/npm/cac/-/cac-6.7.12.tgz#6fb5ea2ff50bd01490dbda497f4ae75a99415193"
+  resolved "https://repo.huaweicloud.com/repository/npm/cac/-/cac-6.7.12.tgz"
   integrity sha512-rM7E2ygtMkJqD9c7WnFU6fruFcN3xe4FM5yUmgxhZzIKJk4uHl9U/fhwdajGFQbQuv43FAUo1Fe8gX/oIKDeSA==
 
 caniuse-lite@^1.0.30001297, caniuse-lite@^1.0.30001312:
   version "1.0.30001312"
-  resolved "https://repo.huaweicloud.com/repository/npm/caniuse-lite/-/caniuse-lite-1.0.30001312.tgz#e11eba4b87e24d22697dae05455d5aea28550d5f"
+  resolved "https://repo.huaweicloud.com/repository/npm/caniuse-lite/-/caniuse-lite-1.0.30001312.tgz"
   integrity sha512-Wiz1Psk2MEK0pX3rUzWaunLTZzqS2JYZFzNKqAiJGiuxIjRPLgV6+VDPOg6lQOUxmDwhTlh198JsTTi8Hzw6aQ==
 
 chalk@^4.1.0, chalk@^4.1.2:
   version "4.1.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
+  resolved "https://repo.huaweicloud.com/repository/npm/chalk/-/chalk-4.1.2.tgz"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
   dependencies:
     ansi-styles "^4.1.0"
@@ -527,7 +527,7 @@ chalk@^4.1.0, chalk@^4.1.2:
 
 "chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.3:
   version "3.5.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
+  resolved "https://repo.huaweicloud.com/repository/npm/chokidar/-/chokidar-3.5.3.tgz"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
   dependencies:
     anymatch "~3.1.2"
@@ -542,41 +542,41 @@ chalk@^4.1.0, chalk@^4.1.2:
 
 cli-cursor@^3.1.0:
   version "3.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/cli-cursor/-/cli-cursor-3.1.0.tgz#264305a7ae490d1d03bf0c9ba7c925d1753af307"
+  resolved "https://repo.huaweicloud.com/repository/npm/cli-cursor/-/cli-cursor-3.1.0.tgz"
   integrity sha512-I/zHAwsKf9FqGoXM4WWRACob9+SNukZTd94DWF57E4toouRulbCxcUh6RKUEOQlYTHJnzkPMySvPNaaSLNfLZw==
   dependencies:
     restore-cursor "^3.1.0"
 
 cli-spinners@^2.5.0:
   version "2.6.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/cli-spinners/-/cli-spinners-2.6.1.tgz#adc954ebe281c37a6319bfa401e6dd2488ffb70d"
+  resolved "https://repo.huaweicloud.com/repository/npm/cli-spinners/-/cli-spinners-2.6.1.tgz"
   integrity sha512-x/5fWmGMnbKQAaNwN+UZlV79qBLM9JFnJuJ03gIi5whrob0xV0ofNVHy9DhwGdsMJQc2OKv0oGmLzvaqvAVv+g==
 
 clone@^1.0.2:
   version "1.0.4"
-  resolved "https://repo.huaweicloud.com/repository/npm/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
+  resolved "https://repo.huaweicloud.com/repository/npm/clone/-/clone-1.0.4.tgz"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
 color-convert@^2.0.1:
   version "2.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/color-convert/-/color-convert-2.0.1.tgz#72d3a68d598c9bdb3af2ad1e84f21d896abd4de3"
+  resolved "https://repo.huaweicloud.com/repository/npm/color-convert/-/color-convert-2.0.1.tgz"
   integrity sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==
   dependencies:
     color-name "~1.1.4"
 
 color-name@~1.1.4:
   version "1.1.4"
-  resolved "https://repo.huaweicloud.com/repository/npm/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
+  resolved "https://repo.huaweicloud.com/repository/npm/color-name/-/color-name-1.1.4.tgz"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
 connect-history-api-fallback@^1.6.0:
   version "1.6.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/connect-history-api-fallback/-/connect-history-api-fallback-1.6.0.tgz#8b32089359308d111115d81cad3fceab888f97bc"
+  resolved "https://repo.huaweicloud.com/repository/npm/connect-history-api-fallback/-/connect-history-api-fallback-1.6.0.tgz"
   integrity sha512-e54B99q/OUoH64zYYRf3HBP5z24G38h5D3qXu23JGRoigpX5Ss4r9ZnDk3g0Z8uQC2x2lPaJ+UlWBc1ZWBWdLg==
 
 cross-spawn@^7.0.3:
   version "7.0.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
+  resolved "https://repo.huaweicloud.com/repository/npm/cross-spawn/-/cross-spawn-7.0.3.tgz"
   integrity sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==
   dependencies:
     path-key "^3.1.0"
@@ -585,7 +585,7 @@ cross-spawn@^7.0.3:
 
 css-tree@~2.0.4:
   version "2.0.4"
-  resolved "https://repo.huaweicloud.com/repository/npm/css-tree/-/css-tree-2.0.4.tgz#be44314f17e9ac85fe894a5888941782e1123c29"
+  resolved "https://repo.huaweicloud.com/repository/npm/css-tree/-/css-tree-2.0.4.tgz"
   integrity sha512-b4IS9ZUMtGBiNjzYbcj9JhYbyei99R3ai2CSxlu8GQDnoPA/P+NU85hAm0eKDc/Zp660rpK6tFJQ2OSdacMHVg==
   dependencies:
     mdn-data "2.0.23"
@@ -593,235 +593,235 @@ css-tree@~2.0.4:
 
 csso@^5.0.1:
   version "5.0.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/csso/-/csso-5.0.2.tgz#74b585e8a5acd655132ae80d9ca32fb126e0b0bb"
+  resolved "https://repo.huaweicloud.com/repository/npm/csso/-/csso-5.0.2.tgz"
   integrity sha512-llFAe1UfFHy38ziX+YrPMGkn5MxdjzYtz0drvgnjRY/tLPmBRxotYTGO51BsKe9voQA074pEb0udV+piXH4scQ==
   dependencies:
     css-tree "~2.0.4"
 
 csstype@^2.6.8:
   version "2.6.19"
-  resolved "https://repo.huaweicloud.com/repository/npm/csstype/-/csstype-2.6.19.tgz#feeb5aae89020bb389e1f63669a5ed490e391caa"
+  resolved "https://repo.huaweicloud.com/repository/npm/csstype/-/csstype-2.6.19.tgz"
   integrity sha512-ZVxXaNy28/k3kJg0Fou5MiYpp88j7H9hLZp8PDC3jV0WFjfH5E9xHb56L0W59cPbKbcHXeP4qyT8PrHp8t6LcQ==
 
 debug@^4.3.3:
   version "4.3.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
+  resolved "https://repo.huaweicloud.com/repository/npm/debug/-/debug-4.3.3.tgz"
   integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
   dependencies:
     ms "2.1.2"
 
 defaults@^1.0.3:
   version "1.0.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/defaults/-/defaults-1.0.3.tgz#c656051e9817d9ff08ed881477f3fe4019f3ef7d"
+  resolved "https://repo.huaweicloud.com/repository/npm/defaults/-/defaults-1.0.3.tgz"
   integrity sha1-xlYFHpgX2f8I7YgUd/P+QBnz730=
   dependencies:
     clone "^1.0.2"
 
 dir-glob@^3.0.1:
   version "3.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/dir-glob/-/dir-glob-3.0.1.tgz#56dbf73d992a4a93ba1584f4534063fd2e41717f"
+  resolved "https://repo.huaweicloud.com/repository/npm/dir-glob/-/dir-glob-3.0.1.tgz"
   integrity sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==
   dependencies:
     path-type "^4.0.0"
 
 electron-to-chromium@^1.4.71:
   version "1.4.75"
-  resolved "https://repo.huaweicloud.com/repository/npm/electron-to-chromium/-/electron-to-chromium-1.4.75.tgz#d1ad9bb46f2f1bf432118c2be21d27ffeae82fdd"
+  resolved "https://repo.huaweicloud.com/repository/npm/electron-to-chromium/-/electron-to-chromium-1.4.75.tgz"
   integrity sha512-LxgUNeu3BVU7sXaKjUDD9xivocQLxFtq6wgERrutdY/yIOps3ODOZExK1jg8DTEg4U8TUCb5MLGeWFOYuxjF3Q==
 
 entities@~2.1.0:
   version "2.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/entities/-/entities-2.1.0.tgz#992d3129cf7df6870b96c57858c249a120f8b8b5"
+  resolved "https://repo.huaweicloud.com/repository/npm/entities/-/entities-2.1.0.tgz"
   integrity sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==
 
 envinfo@^7.8.1:
   version "7.8.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/envinfo/-/envinfo-7.8.1.tgz#06377e3e5f4d379fea7ac592d5ad8927e0c4d475"
+  resolved "https://repo.huaweicloud.com/repository/npm/envinfo/-/envinfo-7.8.1.tgz"
   integrity sha512-/o+BXHmB7ocbHEAs6F2EnG0ogybVVUdkRunTT2glZU9XAaGmhqskrvKwqXuDfNjEO0LZKWdejEEpnq8aM0tOaw==
 
 esbuild-android-arm64@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-android-arm64/-/esbuild-android-arm64-0.13.15.tgz#3fc3ff0bab76fe35dd237476b5d2b32bb20a3d44"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-android-arm64/-/esbuild-android-arm64-0.13.15.tgz"
   integrity sha512-m602nft/XXeO8YQPUDVoHfjyRVPdPgjyyXOxZ44MK/agewFFkPa8tUo6lAzSWh5Ui5PB4KR9UIFTSBKh/RrCmg==
 
 esbuild-android-arm64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-android-arm64/-/esbuild-android-arm64-0.14.23.tgz#c89b3c50b4f47668dcbeb0b34ee4615258818e71"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-android-arm64/-/esbuild-android-arm64-0.14.23.tgz"
   integrity sha512-k9sXem++mINrZty1v4FVt6nC5BQCFG4K2geCIUUqHNlTdFnuvcqsY7prcKZLFhqVC1rbcJAr9VSUGFL/vD4vsw==
 
 esbuild-darwin-64@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-darwin-64/-/esbuild-darwin-64-0.13.15.tgz#8e9169c16baf444eacec60d09b24d11b255a8e72"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-darwin-64/-/esbuild-darwin-64-0.13.15.tgz"
   integrity sha512-ihOQRGs2yyp7t5bArCwnvn2Atr6X4axqPpEdCFPVp7iUj4cVSdisgvEKdNR7yH3JDjW6aQDw40iQFoTqejqxvQ==
 
 esbuild-darwin-64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-darwin-64/-/esbuild-darwin-64-0.14.23.tgz#1c131e8cb133ed935ca32f824349a117c896a15b"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-darwin-64/-/esbuild-darwin-64-0.14.23.tgz"
   integrity sha512-lB0XRbtOYYL1tLcYw8BoBaYsFYiR48RPrA0KfA/7RFTr4MV7Bwy/J4+7nLsVnv9FGuQummM3uJ93J3ptaTqFug==
 
 esbuild-darwin-arm64@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-darwin-arm64/-/esbuild-darwin-arm64-0.13.15.tgz#1b07f893b632114f805e188ddfca41b2b778229a"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-darwin-arm64/-/esbuild-darwin-arm64-0.13.15.tgz"
   integrity sha512-i1FZssTVxUqNlJ6cBTj5YQj4imWy3m49RZRnHhLpefFIh0To05ow9DTrXROTE1urGTQCloFUXTX8QfGJy1P8dQ==
 
 esbuild-darwin-arm64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-darwin-arm64/-/esbuild-darwin-arm64-0.14.23.tgz#3c6245a50109dd84953f53d7833bd3b4f0e8c6fa"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-darwin-arm64/-/esbuild-darwin-arm64-0.14.23.tgz"
   integrity sha512-yat73Z/uJ5tRcfRiI4CCTv0FSnwErm3BJQeZAh+1tIP0TUNh6o+mXg338Zl5EKChD+YGp6PN+Dbhs7qa34RxSw==
 
 esbuild-freebsd-64@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-freebsd-64/-/esbuild-freebsd-64-0.13.15.tgz#0b8b7eca1690c8ec94c75680c38c07269c1f4a85"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-freebsd-64/-/esbuild-freebsd-64-0.13.15.tgz"
   integrity sha512-G3dLBXUI6lC6Z09/x+WtXBXbOYQZ0E8TDBqvn7aMaOCzryJs8LyVXKY4CPnHFXZAbSwkCbqiPuSQ1+HhrNk7EA==
 
 esbuild-freebsd-64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-freebsd-64/-/esbuild-freebsd-64-0.14.23.tgz#0cdc54e72d3dd9cd992f9c2960055e68a7f8650c"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-freebsd-64/-/esbuild-freebsd-64-0.14.23.tgz"
   integrity sha512-/1xiTjoLuQ+LlbfjJdKkX45qK/M7ARrbLmyf7x3JhyQGMjcxRYVR6Dw81uH3qlMHwT4cfLW4aEVBhP1aNV7VsA==
 
 esbuild-freebsd-arm64@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-freebsd-arm64/-/esbuild-freebsd-arm64-0.13.15.tgz#2e1a6c696bfdcd20a99578b76350b41db1934e52"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-freebsd-arm64/-/esbuild-freebsd-arm64-0.13.15.tgz"
   integrity sha512-KJx0fzEDf1uhNOZQStV4ujg30WlnwqUASaGSFPhznLM/bbheu9HhqZ6mJJZM32lkyfGJikw0jg7v3S0oAvtvQQ==
 
 esbuild-freebsd-arm64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-freebsd-arm64/-/esbuild-freebsd-arm64-0.14.23.tgz#1d11faed3a0c429e99b7dddef84103eb509788b2"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-freebsd-arm64/-/esbuild-freebsd-arm64-0.14.23.tgz"
   integrity sha512-uyPqBU/Zcp6yEAZS4LKj5jEE0q2s4HmlMBIPzbW6cTunZ8cyvjG6YWpIZXb1KK3KTJDe62ltCrk3VzmWHp+iLg==
 
 esbuild-linux-32@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-32/-/esbuild-linux-32-0.13.15.tgz#6fd39f36fc66dd45b6b5f515728c7bbebc342a69"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-32/-/esbuild-linux-32-0.13.15.tgz"
   integrity sha512-ZvTBPk0YWCLMCXiFmD5EUtB30zIPvC5Itxz0mdTu/xZBbbHJftQgLWY49wEPSn2T/TxahYCRDWun5smRa0Tu+g==
 
 esbuild-linux-32@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-32/-/esbuild-linux-32-0.14.23.tgz#fd9f033fc27dcab61100cb1eb1c936893a68c841"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-32/-/esbuild-linux-32-0.14.23.tgz"
   integrity sha512-37R/WMkQyUfNhbH7aJrr1uCjDVdnPeTHGeDhZPUNhfoHV0lQuZNCKuNnDvlH/u/nwIYZNdVvz1Igv5rY/zfrzQ==
 
 esbuild-linux-64@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-64/-/esbuild-linux-64-0.13.15.tgz#9cb8e4bcd7574e67946e4ee5f1f1e12386bb6dd3"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-64/-/esbuild-linux-64-0.13.15.tgz"
   integrity sha512-eCKzkNSLywNeQTRBxJRQ0jxRCl2YWdMB3+PkWFo2BBQYC5mISLIVIjThNtn6HUNqua1pnvgP5xX0nHbZbPj5oA==
 
 esbuild-linux-64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-64/-/esbuild-linux-64-0.14.23.tgz#c04c438514f1359ecb1529205d0c836d4165f198"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-64/-/esbuild-linux-64-0.14.23.tgz"
   integrity sha512-H0gztDP60qqr8zoFhAO64waoN5yBXkmYCElFklpd6LPoobtNGNnDe99xOQm28+fuD75YJ7GKHzp/MLCLhw2+vQ==
 
 esbuild-linux-arm64@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-arm64/-/esbuild-linux-arm64-0.13.15.tgz#3891aa3704ec579a1b92d2a586122e5b6a2bfba1"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-arm64/-/esbuild-linux-arm64-0.13.15.tgz"
   integrity sha512-bYpuUlN6qYU9slzr/ltyLTR9YTBS7qUDymO8SV7kjeNext61OdmqFAzuVZom+OLW1HPHseBfJ/JfdSlx8oTUoA==
 
 esbuild-linux-arm64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-arm64/-/esbuild-linux-arm64-0.14.23.tgz#d1b3ab2988ab0734886eb9e811726f7db099ab96"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-arm64/-/esbuild-linux-arm64-0.14.23.tgz"
   integrity sha512-c4MLOIByNHR55n3KoYf9hYDfBRghMjOiHLaoYLhkQkIabb452RWi+HsNgB41sUpSlOAqfpqKPFNg7VrxL3UX9g==
 
 esbuild-linux-arm@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-arm/-/esbuild-linux-arm-0.13.15.tgz#8a00e99e6a0c6c9a6b7f334841364d8a2b4aecfe"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-arm/-/esbuild-linux-arm-0.13.15.tgz"
   integrity sha512-wUHttDi/ol0tD8ZgUMDH8Ef7IbDX+/UsWJOXaAyTdkT7Yy9ZBqPg8bgB/Dn3CZ9SBpNieozrPRHm0BGww7W/jA==
 
 esbuild-linux-arm@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-arm/-/esbuild-linux-arm-0.14.23.tgz#df7558b6a5076f5eb9fd387c8704f768b61d97fb"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-arm/-/esbuild-linux-arm-0.14.23.tgz"
   integrity sha512-x64CEUxi8+EzOAIpCUeuni0bZfzPw/65r8tC5cy5zOq9dY7ysOi5EVQHnzaxS+1NmV+/RVRpmrzGw1QgY2Xpmw==
 
 esbuild-linux-mips64le@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-mips64le/-/esbuild-linux-mips64le-0.13.15.tgz#36b07cc47c3d21e48db3bb1f4d9ef8f46aead4f7"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-mips64le/-/esbuild-linux-mips64le-0.13.15.tgz"
   integrity sha512-KlVjIG828uFPyJkO/8gKwy9RbXhCEUeFsCGOJBepUlpa7G8/SeZgncUEz/tOOUJTcWMTmFMtdd3GElGyAtbSWg==
 
 esbuild-linux-mips64le@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-mips64le/-/esbuild-linux-mips64le-0.14.23.tgz#bb4c47fccc9493d460ffeb1f88e8a97a98a14f8b"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-mips64le/-/esbuild-linux-mips64le-0.14.23.tgz"
   integrity sha512-kHKyKRIAedYhKug2EJpyJxOUj3VYuamOVA1pY7EimoFPzaF3NeY7e4cFBAISC/Av0/tiV0xlFCt9q0HJ68IBIw==
 
 esbuild-linux-ppc64le@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-ppc64le/-/esbuild-linux-ppc64le-0.13.15.tgz#f7e6bba40b9a11eb9dcae5b01550ea04670edad2"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-ppc64le/-/esbuild-linux-ppc64le-0.13.15.tgz"
   integrity sha512-h6gYF+OsaqEuBjeesTBtUPw0bmiDu7eAeuc2OEH9S6mV9/jPhPdhOWzdeshb0BskRZxPhxPOjqZ+/OqLcxQwEQ==
 
 esbuild-linux-ppc64le@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-ppc64le/-/esbuild-linux-ppc64le-0.14.23.tgz#a332dbc8a1b4e30cfe1261bfaa5cef57c9c8c02a"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-ppc64le/-/esbuild-linux-ppc64le-0.14.23.tgz"
   integrity sha512-7ilAiJEPuJJnJp/LiDO0oJm5ygbBPzhchJJh9HsHZzeqO+3PUzItXi+8PuicY08r0AaaOe25LA7sGJ0MzbfBag==
 
 esbuild-linux-riscv64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-riscv64/-/esbuild-linux-riscv64-0.14.23.tgz#85675f3f931f5cd7cfb238fd82f77a62ffcb6d86"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-riscv64/-/esbuild-linux-riscv64-0.14.23.tgz"
   integrity sha512-fbL3ggK2wY0D8I5raPIMPhpCvODFE+Bhb5QGtNP3r5aUsRR6TQV+ZBXIaw84iyvKC8vlXiA4fWLGhghAd/h/Zg==
 
 esbuild-linux-s390x@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-s390x/-/esbuild-linux-s390x-0.14.23.tgz#a526282a696e6d846f4c628f5315475518c0c0f0"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-linux-s390x/-/esbuild-linux-s390x-0.14.23.tgz"
   integrity sha512-GHMDCyfy7+FaNSO8RJ8KCFsnax8fLUsOrj9q5Gi2JmZMY0Zhp75keb5abTFCq2/Oy6KVcT0Dcbyo/bFb4rIFJA==
 
 esbuild-netbsd-64@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-netbsd-64/-/esbuild-netbsd-64-0.13.15.tgz#a2fedc549c2b629d580a732d840712b08d440038"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-netbsd-64/-/esbuild-netbsd-64-0.13.15.tgz"
   integrity sha512-3+yE9emwoevLMyvu+iR3rsa+Xwhie7ZEHMGDQ6dkqP/ndFzRHkobHUKTe+NCApSqG5ce2z4rFu+NX/UHnxlh3w==
 
 esbuild-netbsd-64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-netbsd-64/-/esbuild-netbsd-64-0.14.23.tgz#8e456605694719aa1be4be266d6cd569c06dfaf5"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-netbsd-64/-/esbuild-netbsd-64-0.14.23.tgz"
   integrity sha512-ovk2EX+3rrO1M2lowJfgMb/JPN1VwVYrx0QPUyudxkxLYrWeBxDKQvc6ffO+kB4QlDyTfdtAURrVzu3JeNdA2g==
 
 esbuild-openbsd-64@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-openbsd-64/-/esbuild-openbsd-64-0.13.15.tgz#b22c0e5806d3a1fbf0325872037f885306b05cd7"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-openbsd-64/-/esbuild-openbsd-64-0.13.15.tgz"
   integrity sha512-wTfvtwYJYAFL1fSs8yHIdf5GEE4NkbtbXtjLWjM3Cw8mmQKqsg8kTiqJ9NJQe5NX/5Qlo7Xd9r1yKMMkHllp5g==
 
 esbuild-openbsd-64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-openbsd-64/-/esbuild-openbsd-64-0.14.23.tgz#f2fc51714b4ddabc86e4eb30ca101dd325db2f7d"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-openbsd-64/-/esbuild-openbsd-64-0.14.23.tgz"
   integrity sha512-uYYNqbVR+i7k8ojP/oIROAHO9lATLN7H2QeXKt2H310Fc8FJj4y3Wce6hx0VgnJ4k1JDrgbbiXM8rbEgQyg8KA==
 
 esbuild-sunos-64@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-sunos-64/-/esbuild-sunos-64-0.13.15.tgz#d0b6454a88375ee8d3964daeff55c85c91c7cef4"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-sunos-64/-/esbuild-sunos-64-0.13.15.tgz"
   integrity sha512-lbivT9Bx3t1iWWrSnGyBP9ODriEvWDRiweAs69vI+miJoeKwHWOComSRukttbuzjZ8r1q0mQJ8Z7yUsDJ3hKdw==
 
 esbuild-sunos-64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-sunos-64/-/esbuild-sunos-64-0.14.23.tgz#a408f33ea20e215909e20173a0fd78b1aaad1f8e"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-sunos-64/-/esbuild-sunos-64-0.14.23.tgz"
   integrity sha512-hAzeBeET0+SbScknPzS2LBY6FVDpgE+CsHSpe6CEoR51PApdn2IB0SyJX7vGelXzlyrnorM4CAsRyb9Qev4h9g==
 
 esbuild-windows-32@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-windows-32/-/esbuild-windows-32-0.13.15.tgz#c96d0b9bbb52f3303322582ef8e4847c5ad375a7"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-windows-32/-/esbuild-windows-32-0.13.15.tgz"
   integrity sha512-fDMEf2g3SsJ599MBr50cY5ve5lP1wyVwTe6aLJsM01KtxyKkB4UT+fc5MXQFn3RLrAIAZOG+tHC+yXObpSn7Nw==
 
 esbuild-windows-32@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-windows-32/-/esbuild-windows-32-0.14.23.tgz#b9005bbff54dac3975ff355d5de2b5e37165d128"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-windows-32/-/esbuild-windows-32-0.14.23.tgz"
   integrity sha512-Kttmi3JnohdaREbk6o9e25kieJR379TsEWF0l39PQVHXq3FR6sFKtVPgY8wk055o6IB+rllrzLnbqOw/UV60EA==
 
 esbuild-windows-64@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-windows-64/-/esbuild-windows-64-0.13.15.tgz#1f79cb9b1e1bb02fb25cd414cb90d4ea2892c294"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-windows-64/-/esbuild-windows-64-0.13.15.tgz"
   integrity sha512-9aMsPRGDWCd3bGjUIKG/ZOJPKsiztlxl/Q3C1XDswO6eNX/Jtwu4M+jb6YDH9hRSUflQWX0XKAfWzgy5Wk54JQ==
 
 esbuild-windows-64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-windows-64/-/esbuild-windows-64-0.14.23.tgz#2b5a99befeaca6aefdad32d738b945730a60a060"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-windows-64/-/esbuild-windows-64-0.14.23.tgz"
   integrity sha512-JtIT0t8ymkpl6YlmOl6zoSWL5cnCgyLaBdf/SiU/Eg3C13r0NbHZWNT/RDEMKK91Y6t79kTs3vyRcNZbfu5a8g==
 
 esbuild-windows-arm64@0.13.15:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-windows-arm64/-/esbuild-windows-arm64-0.13.15.tgz#482173070810df22a752c686509c370c3be3b3c3"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-windows-arm64/-/esbuild-windows-arm64-0.13.15.tgz"
   integrity sha512-zzvyCVVpbwQQATaf3IG8mu1IwGEiDxKkYUdA4FpoCHi1KtPa13jeScYDjlW0Qh+ebWzpKfR2ZwvqAQkSWNcKjA==
 
 esbuild-windows-arm64@0.14.23:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-windows-arm64/-/esbuild-windows-arm64-0.14.23.tgz#edc560bbadb097eb45fc235aeacb942cb94a38c0"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild-windows-arm64/-/esbuild-windows-arm64-0.14.23.tgz"
   integrity sha512-cTFaQqT2+ik9e4hePvYtRZQ3pqOvKDVNarzql0VFIzhc0tru/ZgdLoXd6epLiKT+SzoSce6V9YJ+nn6RCn6SHw==
 
 esbuild@^0.13.12:
   version "0.13.15"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild/-/esbuild-0.13.15.tgz#db56a88166ee373f87dbb2d8798ff449e0450cdf"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild/-/esbuild-0.13.15.tgz"
   integrity sha512-raCxt02HBKv8RJxE8vkTSCXGIyKHdEdGfUmiYb8wnabnaEmHzyW7DCHb5tEN0xU8ryqg5xw54mcwnYkC4x3AIw==
   optionalDependencies:
     esbuild-android-arm64 "0.13.15"
@@ -844,7 +844,7 @@ esbuild@^0.13.12:
 
 esbuild@^0.14.14:
   version "0.14.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/esbuild/-/esbuild-0.14.23.tgz#95e842cb22bc0c7d82c140adc16788aac91469fe"
+  resolved "https://repo.huaweicloud.com/repository/npm/esbuild/-/esbuild-0.14.23.tgz"
   integrity sha512-XjnIcZ9KB6lfonCa+jRguXyRYcldmkyZ99ieDksqW/C8bnyEX299yA4QH2XcgijCgaddEZePPTgvx/2imsq7Ig==
   optionalDependencies:
     esbuild-android-arm64 "0.14.23"
@@ -869,22 +869,22 @@ esbuild@^0.14.14:
 
 escalade@^3.1.1:
   version "3.1.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
+  resolved "https://repo.huaweicloud.com/repository/npm/escalade/-/escalade-3.1.1.tgz"
   integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
 esprima@^4.0.0:
   version "4.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
+  resolved "https://repo.huaweicloud.com/repository/npm/esprima/-/esprima-4.0.1.tgz"
   integrity sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==
 
 estree-walker@^2.0.2:
   version "2.0.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
+  resolved "https://repo.huaweicloud.com/repository/npm/estree-walker/-/estree-walker-2.0.2.tgz"
   integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
 
 execa@^5.1.1:
   version "5.1.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/execa/-/execa-5.1.1.tgz#f80ad9cbf4298f7bd1d4c9555c21e93741c411dd"
+  resolved "https://repo.huaweicloud.com/repository/npm/execa/-/execa-5.1.1.tgz"
   integrity sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==
   dependencies:
     cross-spawn "^7.0.3"
@@ -899,14 +899,14 @@ execa@^5.1.1:
 
 extend-shallow@^2.0.1:
   version "2.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/extend-shallow/-/extend-shallow-2.0.1.tgz#51af7d614ad9a9f610ea1bafbb989d6b1c56890f"
+  resolved "https://repo.huaweicloud.com/repository/npm/extend-shallow/-/extend-shallow-2.0.1.tgz"
   integrity sha1-Ua99YUrZqfYQ6huvu5idaxxWiQ8=
   dependencies:
     is-extendable "^0.1.0"
 
 fast-glob@^3.2.9:
   version "3.2.11"
-  resolved "https://repo.huaweicloud.com/repository/npm/fast-glob/-/fast-glob-3.2.11.tgz#a1172ad95ceb8a16e20caa5c5e56480e5129c1d9"
+  resolved "https://repo.huaweicloud.com/repository/npm/fast-glob/-/fast-glob-3.2.11.tgz"
   integrity sha512-xrO3+1bxSo3ZVHAnqzyuewYT6aMFHRAd4Kcs92MAonjwQZLsK9d0SF1IyQ3k5PoirxTW0Oe/RqFgMQ6TcNE5Ew==
   dependencies:
     "@nodelib/fs.stat" "^2.0.2"
@@ -917,26 +917,26 @@ fast-glob@^3.2.9:
 
 fastq@^1.6.0:
   version "1.13.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/fastq/-/fastq-1.13.0.tgz#616760f88a7526bdfc596b7cab8c18938c36b98c"
+  resolved "https://repo.huaweicloud.com/repository/npm/fastq/-/fastq-1.13.0.tgz"
   integrity sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==
   dependencies:
     reusify "^1.0.4"
 
 fill-range@^7.0.1:
   version "7.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/fill-range/-/fill-range-7.0.1.tgz#1919a6a7c75fe38b2c7c77e5198535da9acdda40"
+  resolved "https://repo.huaweicloud.com/repository/npm/fill-range/-/fill-range-7.0.1.tgz"
   integrity sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==
   dependencies:
     to-regex-range "^5.0.1"
 
 fraction.js@^4.1.2:
   version "4.1.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/fraction.js/-/fraction.js-4.1.3.tgz#be65b0f20762ef27e1e793860bc2dfb716e99e65"
+  resolved "https://repo.huaweicloud.com/repository/npm/fraction.js/-/fraction.js-4.1.3.tgz"
   integrity sha512-pUHWWt6vHzZZiQJcM6S/0PXfS+g6FM4BF5rj9wZyreivhQPdsh5PpE25VtSNxq80wHS5RfY51Ii+8Z0Zl/pmzg==
 
 fs-extra@^10.0.0:
   version "10.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/fs-extra/-/fs-extra-10.0.1.tgz#27de43b4320e833f6867cc044bfce29fdf0ef3b8"
+  resolved "https://repo.huaweicloud.com/repository/npm/fs-extra/-/fs-extra-10.0.1.tgz"
   integrity sha512-NbdoVMZso2Lsrn/QwLXOy6rm0ufY2zEOKCDzJR/0kBsb0E6qed0P3iYK+Ath3BfvXEeu4JhEtXLgILx5psUfag==
   dependencies:
     graceful-fs "^4.2.0"
@@ -945,34 +945,34 @@ fs-extra@^10.0.0:
 
 fsevents@~2.3.2:
   version "2.3.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
+  resolved "https://repo.huaweicloud.com/repository/npm/fsevents/-/fsevents-2.3.2.tgz"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
 function-bind@^1.1.1:
   version "1.1.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
+  resolved "https://repo.huaweicloud.com/repository/npm/function-bind/-/function-bind-1.1.1.tgz"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
 get-stream@^6.0.0:
   version "6.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/get-stream/-/get-stream-6.0.1.tgz#a262d8eef67aced57c2852ad6167526a43cbf7b7"
+  resolved "https://repo.huaweicloud.com/repository/npm/get-stream/-/get-stream-6.0.1.tgz"
   integrity sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==
 
 github-buttons@^2.21.1:
   version "2.21.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/github-buttons/-/github-buttons-2.21.1.tgz#9e55eb83b70c9149a21c235db2e971c53d4d98a2"
+  resolved "https://repo.huaweicloud.com/repository/npm/github-buttons/-/github-buttons-2.21.1.tgz"
   integrity sha512-n9bCQ8sj+5oX1YH5NeyWGbAclRDtHEhMBzqw2ctsWpdEHOwVgfruRu0VIVy01Ah10dd/iFajMHYU71L7IBWBOw==
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
+  resolved "https://repo.huaweicloud.com/repository/npm/glob-parent/-/glob-parent-5.1.2.tgz"
   integrity sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==
   dependencies:
     is-glob "^4.0.1"
 
 globby@^11.0.4:
   version "11.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/globby/-/globby-11.1.0.tgz#bd4be98bb042f83d796f7e3811991fbe82a0d34b"
+  resolved "https://repo.huaweicloud.com/repository/npm/globby/-/globby-11.1.0.tgz"
   integrity sha512-jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==
   dependencies:
     array-union "^2.1.0"
@@ -984,12 +984,12 @@ globby@^11.0.4:
 
 graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   version "4.2.9"
-  resolved "https://repo.huaweicloud.com/repository/npm/graceful-fs/-/graceful-fs-4.2.9.tgz#041b05df45755e587a24942279b9d113146e1c96"
+  resolved "https://repo.huaweicloud.com/repository/npm/graceful-fs/-/graceful-fs-4.2.9.tgz"
   integrity sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==
 
 gray-matter@^4.0.3:
   version "4.0.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/gray-matter/-/gray-matter-4.0.3.tgz#e893c064825de73ea1f5f7d88c7a9f7274288798"
+  resolved "https://repo.huaweicloud.com/repository/npm/gray-matter/-/gray-matter-4.0.3.tgz"
   integrity sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==
   dependencies:
     js-yaml "^3.13.1"
@@ -999,105 +999,105 @@ gray-matter@^4.0.3:
 
 has-flag@^4.0.0:
   version "4.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/has-flag/-/has-flag-4.0.0.tgz#944771fd9c81c81265c4d6941860da06bb59479b"
+  resolved "https://repo.huaweicloud.com/repository/npm/has-flag/-/has-flag-4.0.0.tgz"
   integrity sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==
 
 has@^1.0.3:
   version "1.0.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/has/-/has-1.0.3.tgz#722d7cbfc1f6aa8241f16dd814e011e1f41e8796"
+  resolved "https://repo.huaweicloud.com/repository/npm/has/-/has-1.0.3.tgz"
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
 
 hash-sum@^2.0.0:
   version "2.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/hash-sum/-/hash-sum-2.0.0.tgz#81d01bb5de8ea4a214ad5d6ead1b523460b0b45a"
+  resolved "https://repo.huaweicloud.com/repository/npm/hash-sum/-/hash-sum-2.0.0.tgz"
   integrity sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==
 
 human-signals@^2.1.0:
   version "2.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
+  resolved "https://repo.huaweicloud.com/repository/npm/human-signals/-/human-signals-2.1.0.tgz"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
 ieee754@^1.1.13:
   version "1.2.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
+  resolved "https://repo.huaweicloud.com/repository/npm/ieee754/-/ieee754-1.2.1.tgz"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
 ignore@^5.2.0:
   version "5.2.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/ignore/-/ignore-5.2.0.tgz#6d3bac8fa7fe0d45d9f9be7bac2fc279577e345a"
+  resolved "https://repo.huaweicloud.com/repository/npm/ignore/-/ignore-5.2.0.tgz"
   integrity sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==
 
 immutable@^4.0.0:
   version "4.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/immutable/-/immutable-4.0.0.tgz#b86f78de6adef3608395efb269a91462797e2c23"
+  resolved "https://repo.huaweicloud.com/repository/npm/immutable/-/immutable-4.0.0.tgz"
   integrity sha512-zIE9hX70qew5qTUjSS7wi1iwj/l7+m54KWU247nhM3v806UdGj1yDndXj+IOYxxtW9zyLI+xqFNZjTuDaLUqFw==
 
 inherits@^2.0.3, inherits@^2.0.4:
   version "2.0.4"
-  resolved "https://repo.huaweicloud.com/repository/npm/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
+  resolved "https://repo.huaweicloud.com/repository/npm/inherits/-/inherits-2.0.4.tgz"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
 is-binary-path@~2.1.0:
   version "2.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/is-binary-path/-/is-binary-path-2.1.0.tgz#ea1f7f3b80f064236e83470f86c09c254fb45b09"
+  resolved "https://repo.huaweicloud.com/repository/npm/is-binary-path/-/is-binary-path-2.1.0.tgz"
   integrity sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==
   dependencies:
     binary-extensions "^2.0.0"
 
 is-core-module@^2.8.1:
   version "2.8.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/is-core-module/-/is-core-module-2.8.1.tgz#f59fdfca701d5879d0a6b100a40aa1560ce27211"
+  resolved "https://repo.huaweicloud.com/repository/npm/is-core-module/-/is-core-module-2.8.1.tgz"
   integrity sha512-SdNCUs284hr40hFTFP6l0IfZ/RSrMXF3qgoRHd3/79unUTvrFO/JoXwkGm+5J/Oe3E/b5GsnG330uUNgRpu1PA==
   dependencies:
     has "^1.0.3"
 
 is-extendable@^0.1.0:
   version "0.1.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/is-extendable/-/is-extendable-0.1.1.tgz#62b110e289a471418e3ec36a617d472e301dfc89"
+  resolved "https://repo.huaweicloud.com/repository/npm/is-extendable/-/is-extendable-0.1.1.tgz"
   integrity sha1-YrEQ4omkcUGOPsNqYX1HLjAd/Ik=
 
 is-extglob@^2.1.1:
   version "2.1.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
+  resolved "https://repo.huaweicloud.com/repository/npm/is-extglob/-/is-extglob-2.1.1.tgz"
   integrity sha1-qIwCU1eR8C7TfHahueqXc8gz+MI=
 
 is-glob@^4.0.1, is-glob@~4.0.1:
   version "4.0.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/is-glob/-/is-glob-4.0.3.tgz#64f61e42cbbb2eec2071a9dac0b28ba1e65d5084"
+  resolved "https://repo.huaweicloud.com/repository/npm/is-glob/-/is-glob-4.0.3.tgz"
   integrity sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==
   dependencies:
     is-extglob "^2.1.1"
 
 is-interactive@^1.0.0:
   version "1.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/is-interactive/-/is-interactive-1.0.0.tgz#cea6e6ae5c870a7b0a0004070b7b587e0252912e"
+  resolved "https://repo.huaweicloud.com/repository/npm/is-interactive/-/is-interactive-1.0.0.tgz"
   integrity sha512-2HvIEKRoqS62guEC+qBjpvRubdX910WCMuJTZ+I9yvqKU2/12eSL549HMwtabb4oupdj2sMP50k+XJfB/8JE6w==
 
 is-number@^7.0.0:
   version "7.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
+  resolved "https://repo.huaweicloud.com/repository/npm/is-number/-/is-number-7.0.0.tgz"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
 
 is-stream@^2.0.0:
   version "2.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/is-stream/-/is-stream-2.0.1.tgz#fac1e3d53b97ad5a9d0ae9cef2389f5810a5c077"
+  resolved "https://repo.huaweicloud.com/repository/npm/is-stream/-/is-stream-2.0.1.tgz"
   integrity sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==
 
 is-unicode-supported@^0.1.0:
   version "0.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/is-unicode-supported/-/is-unicode-supported-0.1.0.tgz#3f26c76a809593b52bfa2ecb5710ed2779b522a7"
+  resolved "https://repo.huaweicloud.com/repository/npm/is-unicode-supported/-/is-unicode-supported-0.1.0.tgz"
   integrity sha512-knxG2q4UC3u8stRGyAVJCOdxFmv5DZiRcdlIaAQXAbSfJya+OhopNotLQrstBhququ4ZpuKbDc/8S6mgXgPFPw==
 
 isexe@^2.0.0:
   version "2.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
+  resolved "https://repo.huaweicloud.com/repository/npm/isexe/-/isexe-2.0.0.tgz"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
 js-yaml@^3.13.1:
   version "3.14.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/js-yaml/-/js-yaml-3.14.1.tgz#dae812fdb3825fa306609a8717383c50c36a0537"
+  resolved "https://repo.huaweicloud.com/repository/npm/js-yaml/-/js-yaml-3.14.1.tgz"
   integrity sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==
   dependencies:
     argparse "^1.0.7"
@@ -1105,7 +1105,7 @@ js-yaml@^3.13.1:
 
 jsonfile@^6.0.1:
   version "6.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/jsonfile/-/jsonfile-6.1.0.tgz#bc55b2634793c679ec6403094eb13698a6ec0aae"
+  resolved "https://repo.huaweicloud.com/repository/npm/jsonfile/-/jsonfile-6.1.0.tgz"
   integrity sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==
   dependencies:
     universalify "^2.0.0"
@@ -1114,24 +1114,24 @@ jsonfile@^6.0.1:
 
 kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
+  resolved "https://repo.huaweicloud.com/repository/npm/kind-of/-/kind-of-6.0.3.tgz"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
 klona@^2.0.4:
   version "2.0.5"
-  resolved "https://repo.huaweicloud.com/repository/npm/klona/-/klona-2.0.5.tgz#d166574d90076395d9963aa7a928fabb8d76afbc"
+  resolved "https://repo.huaweicloud.com/repository/npm/klona/-/klona-2.0.5.tgz"
   integrity sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==
 
 linkify-it@^3.0.1:
   version "3.0.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/linkify-it/-/linkify-it-3.0.3.tgz#a98baf44ce45a550efb4d49c769d07524cc2fa2e"
+  resolved "https://repo.huaweicloud.com/repository/npm/linkify-it/-/linkify-it-3.0.3.tgz"
   integrity sha512-ynTsyrFSdE5oZ/O9GEf00kPngmOfVwazR5GKDq6EYfhlpFug3J2zybX56a2PRRpc9P+FuSoGNAwjlbDs9jJBPQ==
   dependencies:
     uc.micro "^1.0.1"
 
 log-symbols@^4.1.0:
   version "4.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/log-symbols/-/log-symbols-4.1.0.tgz#3fbdbb95b4683ac9fc785111e792e558d4abd503"
+  resolved "https://repo.huaweicloud.com/repository/npm/log-symbols/-/log-symbols-4.1.0.tgz"
   integrity sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==
   dependencies:
     chalk "^4.1.0"
@@ -1139,29 +1139,29 @@ log-symbols@^4.1.0:
 
 magic-string@^0.25.7:
   version "0.25.7"
-  resolved "https://repo.huaweicloud.com/repository/npm/magic-string/-/magic-string-0.25.7.tgz#3f497d6fd34c669c6798dcb821f2ef31f5445051"
+  resolved "https://repo.huaweicloud.com/repository/npm/magic-string/-/magic-string-0.25.7.tgz"
   integrity sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==
   dependencies:
     sourcemap-codec "^1.4.4"
 
 markdown-it-anchor@^8.4.1:
   version "8.4.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/markdown-it-anchor/-/markdown-it-anchor-8.4.1.tgz#29e560593f5edb80b25fdab8b23f93ef8a91b31e"
+  resolved "https://repo.huaweicloud.com/repository/npm/markdown-it-anchor/-/markdown-it-anchor-8.4.1.tgz"
   integrity sha512-sLODeRetZ/61KkKLJElaU3NuU2z7MhXf12Ml1WJMSdwpngeofneCRF+JBbat8HiSqhniOMuTemXMrsI7hA6XyA==
 
 markdown-it-container@^3.0.0:
   version "3.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/markdown-it-container/-/markdown-it-container-3.0.0.tgz#1d19b06040a020f9a827577bb7dbf67aa5de9a5b"
+  resolved "https://repo.huaweicloud.com/repository/npm/markdown-it-container/-/markdown-it-container-3.0.0.tgz"
   integrity sha512-y6oKTq4BB9OQuY/KLfk/O3ysFhB3IMYoIWhGJEidXt1NQFocFK2sA2t0NYZAMyMShAGL6x5OPIbrmXPIqaN9rw==
 
 markdown-it-emoji@^2.0.0:
   version "2.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/markdown-it-emoji/-/markdown-it-emoji-2.0.0.tgz#3164ad4c009efd946e98274f7562ad611089a231"
+  resolved "https://repo.huaweicloud.com/repository/npm/markdown-it-emoji/-/markdown-it-emoji-2.0.0.tgz"
   integrity sha512-39j7/9vP/CPCKbEI44oV8yoPJTpvfeReTn/COgRhSpNrjWF3PfP/JUxxB0hxV6ynOY8KH8Y8aX9NMDdo6z+6YQ==
 
 markdown-it@^12.3.2:
   version "12.3.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/markdown-it/-/markdown-it-12.3.2.tgz#bf92ac92283fe983fe4de8ff8abfb5ad72cd0c90"
+  resolved "https://repo.huaweicloud.com/repository/npm/markdown-it/-/markdown-it-12.3.2.tgz"
   integrity sha512-TchMembfxfNVpHkbtriWltGWc+m3xszaRD0CZup7GFFhzIgQqxIfn3eGj1yZpfuflzPvfkt611B2Q/Bsk1YnGg==
   dependencies:
     argparse "^2.0.1"
@@ -1172,32 +1172,32 @@ markdown-it@^12.3.2:
 
 mdn-data@2.0.23:
   version "2.0.23"
-  resolved "https://repo.huaweicloud.com/repository/npm/mdn-data/-/mdn-data-2.0.23.tgz#dfb6c41e50a0edb808cf340973ab29321b70808e"
+  resolved "https://repo.huaweicloud.com/repository/npm/mdn-data/-/mdn-data-2.0.23.tgz"
   integrity sha512-IonVb7pfla2U4zW8rc7XGrtgq11BvYeCxWN8HS+KFBnLDE7XDK9AAMVhRuG6fj9BBsjc69Fqsp6WEActEdNTDQ==
 
 mdurl@^1.0.1:
   version "1.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
+  resolved "https://repo.huaweicloud.com/repository/npm/mdurl/-/mdurl-1.0.1.tgz"
   integrity sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=
 
 medium-zoom@^1.0.6:
   version "1.0.6"
-  resolved "https://repo.huaweicloud.com/repository/npm/medium-zoom/-/medium-zoom-1.0.6.tgz#9247f21ca9313d8bbe9420aca153a410df08d027"
+  resolved "https://repo.huaweicloud.com/repository/npm/medium-zoom/-/medium-zoom-1.0.6.tgz"
   integrity sha512-UdiUWfvz9fZMg1pzf4dcuqA0W079o0mpqbTnOz5ip4VGYX96QjmbM+OgOU/0uOzAytxC0Ny4z+VcYQnhdifimg==
 
 merge-stream@^2.0.0:
   version "2.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
+  resolved "https://repo.huaweicloud.com/repository/npm/merge-stream/-/merge-stream-2.0.0.tgz"
   integrity sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==
 
 merge2@^1.3.0, merge2@^1.4.1:
   version "1.4.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/merge2/-/merge2-1.4.1.tgz#4368892f885e907455a6fd7dc55c0c9d404990ae"
+  resolved "https://repo.huaweicloud.com/repository/npm/merge2/-/merge2-1.4.1.tgz"
   integrity sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==
 
 micromatch@^4.0.4:
   version "4.0.4"
-  resolved "https://repo.huaweicloud.com/repository/npm/micromatch/-/micromatch-4.0.4.tgz#896d519dfe9db25fce94ceb7a500919bf881ebf9"
+  resolved "https://repo.huaweicloud.com/repository/npm/micromatch/-/micromatch-4.0.4.tgz"
   integrity sha512-pRmzw/XUcwXGpD9aI9q/0XOwLNygjETJ8y0ao0wdqprrzDa4YnxLcz7fQRZr8voh8V10kGhABbNcHVk5wHgWwg==
   dependencies:
     braces "^3.0.1"
@@ -1205,61 +1205,61 @@ micromatch@^4.0.4:
 
 mimic-fn@^2.1.0:
   version "2.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
+  resolved "https://repo.huaweicloud.com/repository/npm/mimic-fn/-/mimic-fn-2.1.0.tgz"
   integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
 
 ms@2.1.2:
   version "2.1.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
+  resolved "https://repo.huaweicloud.com/repository/npm/ms/-/ms-2.1.2.tgz"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
 nanoid@^3.3.1:
   version "3.3.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/nanoid/-/nanoid-3.3.1.tgz#6347a18cac88af88f58af0b3594b723d5e99bb35"
+  resolved "https://repo.huaweicloud.com/repository/npm/nanoid/-/nanoid-3.3.1.tgz"
   integrity sha512-n6Vs/3KGyxPQd6uO0eH4Bv0ojGSUvuLlIHtC3Y0kEO23YRge8H9x1GCzLn28YX0H66pMkxuaeESFq4tKISKwdw==
 
 neo-async@^2.6.2:
   version "2.6.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
+  resolved "https://repo.huaweicloud.com/repository/npm/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
 node-releases@^2.0.2:
   version "2.0.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/node-releases/-/node-releases-2.0.2.tgz#7139fe71e2f4f11b47d4d2986aaf8c48699e0c01"
+  resolved "https://repo.huaweicloud.com/repository/npm/node-releases/-/node-releases-2.0.2.tgz"
   integrity sha512-XxYDdcQ6eKqp/YjI+tb2C5WM2LgjnZrfYg4vgQt49EK268b6gYCHsBLrK2qvJo4FmCtqmKezb0WZFK4fkrZNsg==
 
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
+  resolved "https://repo.huaweicloud.com/repository/npm/normalize-path/-/normalize-path-3.0.0.tgz"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
 
 normalize-range@^0.1.2:
   version "0.1.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
+  resolved "https://repo.huaweicloud.com/repository/npm/normalize-range/-/normalize-range-0.1.2.tgz"
   integrity sha1-LRDAa9/TEuqXd2laTShDlFa3WUI=
 
 npm-run-path@^4.0.1:
   version "4.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/npm-run-path/-/npm-run-path-4.0.1.tgz#b7ecd1e5ed53da8e37a55e1c2269e0b97ed748ea"
+  resolved "https://repo.huaweicloud.com/repository/npm/npm-run-path/-/npm-run-path-4.0.1.tgz"
   integrity sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==
   dependencies:
     path-key "^3.0.0"
 
 nprogress@^0.2.0:
   version "0.2.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  resolved "https://repo.huaweicloud.com/repository/npm/nprogress/-/nprogress-0.2.0.tgz"
   integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
 
 onetime@^5.1.0, onetime@^5.1.2:
   version "5.1.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/onetime/-/onetime-5.1.2.tgz#d0e96ebb56b07476df1dd9c4806e5237985ca45e"
+  resolved "https://repo.huaweicloud.com/repository/npm/onetime/-/onetime-5.1.2.tgz"
   integrity sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==
   dependencies:
     mimic-fn "^2.1.0"
 
 ora@^5.4.1:
   version "5.4.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/ora/-/ora-5.4.1.tgz#1b2678426af4ac4a509008e5e4ac9e9959db9e18"
+  resolved "https://repo.huaweicloud.com/repository/npm/ora/-/ora-5.4.1.tgz"
   integrity sha512-5b6Y85tPxZZ7QytO+BQzysW31HJku27cRIlkbAXaNx+BdcVi+LlRFmVXzeF6a7JCwJpyw5c4b+YSVImQIrBpuQ==
   dependencies:
     bl "^4.1.0"
@@ -1274,44 +1274,44 @@ ora@^5.4.1:
 
 path-key@^3.0.0, path-key@^3.1.0:
   version "3.1.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/path-key/-/path-key-3.1.1.tgz#581f6ade658cbba65a0d3380de7753295054f375"
+  resolved "https://repo.huaweicloud.com/repository/npm/path-key/-/path-key-3.1.1.tgz"
   integrity sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==
 
 path-parse@^1.0.7:
   version "1.0.7"
-  resolved "https://repo.huaweicloud.com/repository/npm/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
+  resolved "https://repo.huaweicloud.com/repository/npm/path-parse/-/path-parse-1.0.7.tgz"
   integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
 
 path-type@^4.0.0:
   version "4.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
+  resolved "https://repo.huaweicloud.com/repository/npm/path-type/-/path-type-4.0.0.tgz"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
 picocolors@^1.0.0:
   version "1.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
+  resolved "https://repo.huaweicloud.com/repository/npm/picocolors/-/picocolors-1.0.0.tgz"
   integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
 
 picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3:
   version "2.3.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
+  resolved "https://repo.huaweicloud.com/repository/npm/picomatch/-/picomatch-2.3.1.tgz"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
 postcss-csso@^6.0.0:
   version "6.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/postcss-csso/-/postcss-csso-6.0.0.tgz#ff3ec8ce0694d797b75f7f7e10c4ac5a35e7780f"
+  resolved "https://repo.huaweicloud.com/repository/npm/postcss-csso/-/postcss-csso-6.0.0.tgz"
   integrity sha512-LsrU+LVR0mNIYauoTEbYVC81i+yXcGWa9kqW6Lvm+gYUZTaNTJmJT6Dbv+fqT8gOnwXAH1RV+5RXvAVoRtwO+g==
   dependencies:
     csso "^5.0.1"
 
 postcss-value-parser@^4.2.0:
   version "4.2.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
+  resolved "https://repo.huaweicloud.com/repository/npm/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
 postcss@^8.1.10, postcss@^8.4.5, postcss@^8.4.6:
   version "8.4.7"
-  resolved "https://repo.huaweicloud.com/repository/npm/postcss/-/postcss-8.4.7.tgz#f99862069ec4541de386bf57f5660a6c7a0875a8"
+  resolved "https://repo.huaweicloud.com/repository/npm/postcss/-/postcss-8.4.7.tgz"
   integrity sha512-L9Ye3r6hkkCeOETQX6iOaWZgjp3LL6Lpqm6EtgbKrgqGGteRMNb9vzBfRL96YOSu8o7x3MfIH9Mo5cPJFGrW6A==
   dependencies:
     nanoid "^3.3.1"
@@ -1320,17 +1320,17 @@ postcss@^8.1.10, postcss@^8.4.5, postcss@^8.4.6:
 
 prismjs@^1.26.0:
   version "1.27.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/prismjs/-/prismjs-1.27.0.tgz#bb6ee3138a0b438a3653dd4d6ce0cc6510a45057"
+  resolved "https://repo.huaweicloud.com/repository/npm/prismjs/-/prismjs-1.27.0.tgz"
   integrity sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==
 
 queue-microtask@^1.2.2:
   version "1.2.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
+  resolved "https://repo.huaweicloud.com/repository/npm/queue-microtask/-/queue-microtask-1.2.3.tgz"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
 readable-stream@^3.4.0:
   version "3.6.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/readable-stream/-/readable-stream-3.6.0.tgz#337bbda3adc0706bd3e024426a286d4b4b2c9198"
+  resolved "https://repo.huaweicloud.com/repository/npm/readable-stream/-/readable-stream-3.6.0.tgz"
   integrity sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==
   dependencies:
     inherits "^2.0.3"
@@ -1339,14 +1339,14 @@ readable-stream@^3.4.0:
 
 readdirp@~3.6.0:
   version "3.6.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/readdirp/-/readdirp-3.6.0.tgz#74a370bd857116e245b29cc97340cd431a02a6c7"
+  resolved "https://repo.huaweicloud.com/repository/npm/readdirp/-/readdirp-3.6.0.tgz"
   integrity sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
   dependencies:
     picomatch "^2.2.1"
 
 resolve@^1.22.0:
   version "1.22.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/resolve/-/resolve-1.22.0.tgz#5e0b8c67c15df57a89bdbabe603a002f21731198"
+  resolved "https://repo.huaweicloud.com/repository/npm/resolve/-/resolve-1.22.0.tgz"
   integrity sha512-Hhtrw0nLeSrFQ7phPp4OOcVjLPIeMnRlr5mcnVuMe7M/7eBn98A3hmFRLoFo3DLZkivSYwhRUJTyPyWAk56WLw==
   dependencies:
     is-core-module "^2.8.1"
@@ -1355,7 +1355,7 @@ resolve@^1.22.0:
 
 restore-cursor@^3.1.0:
   version "3.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/restore-cursor/-/restore-cursor-3.1.0.tgz#39f67c54b3a7a58cea5236d95cf0034239631f7e"
+  resolved "https://repo.huaweicloud.com/repository/npm/restore-cursor/-/restore-cursor-3.1.0.tgz"
   integrity sha512-l+sSefzHpj5qimhFSE5a8nufZYAM3sBSVMAPtYkmC+4EH2anSGaEMXSD0izRQbu9nfyQ9y5JrVmp7E8oZrUjvA==
   dependencies:
     onetime "^5.1.0"
@@ -1363,31 +1363,31 @@ restore-cursor@^3.1.0:
 
 reusify@^1.0.4:
   version "1.0.4"
-  resolved "https://repo.huaweicloud.com/repository/npm/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
+  resolved "https://repo.huaweicloud.com/repository/npm/reusify/-/reusify-1.0.4.tgz"
   integrity sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
 
 rollup@^2.59.0, rollup@^2.66.0:
   version "2.68.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/rollup/-/rollup-2.68.0.tgz#6ccabfd649447f8f21d62bf41662e5caece3bd66"
+  resolved "https://repo.huaweicloud.com/repository/npm/rollup/-/rollup-2.68.0.tgz"
   integrity sha512-XrMKOYK7oQcTio4wyTz466mucnd8LzkiZLozZ4Rz0zQD+HeX4nUK4B8GrTX/2EvN2/vBF/i2WnaXboPxo0JylA==
   optionalDependencies:
     fsevents "~2.3.2"
 
 run-parallel@^1.1.9:
   version "1.2.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/run-parallel/-/run-parallel-1.2.0.tgz#66d1368da7bdf921eb9d95bd1a9229e7f21a43ee"
+  resolved "https://repo.huaweicloud.com/repository/npm/run-parallel/-/run-parallel-1.2.0.tgz"
   integrity sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==
   dependencies:
     queue-microtask "^1.2.2"
 
 safe-buffer@~5.2.0:
   version "5.2.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
+  resolved "https://repo.huaweicloud.com/repository/npm/safe-buffer/-/safe-buffer-5.2.1.tgz"
   integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
 
 sass-loader@^12.4.0:
   version "12.6.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/sass-loader/-/sass-loader-12.6.0.tgz#5148362c8e2cdd4b950f3c63ac5d16dbfed37bcb"
+  resolved "https://repo.huaweicloud.com/repository/npm/sass-loader/-/sass-loader-12.6.0.tgz"
   integrity sha512-oLTaH0YCtX4cfnJZxKSLAyglED0naiYfNG1iXfU5w1LNZ+ukoA5DtyDIN5zmKVZwYNJP4KRc5Y3hkWga+7tYfA==
   dependencies:
     klona "^2.0.4"
@@ -1395,7 +1395,7 @@ sass-loader@^12.4.0:
 
 sass@^1.49.0:
   version "1.49.9"
-  resolved "https://repo.huaweicloud.com/repository/npm/sass/-/sass-1.49.9.tgz#b15a189ecb0ca9e24634bae5d1ebc191809712f9"
+  resolved "https://repo.huaweicloud.com/repository/npm/sass/-/sass-1.49.9.tgz"
   integrity sha512-YlYWkkHP9fbwaFRZQRXgDi3mXZShslVmmo+FVK3kHLUELHHEYrCmL1x6IUjC7wLS6VuJSAFXRQS/DxdsC4xL1A==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
@@ -1404,7 +1404,7 @@ sass@^1.49.0:
 
 section-matter@^1.0.0:
   version "1.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/section-matter/-/section-matter-1.0.0.tgz#e9041953506780ec01d59f292a19c7b850b84167"
+  resolved "https://repo.huaweicloud.com/repository/npm/section-matter/-/section-matter-1.0.0.tgz"
   integrity sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==
   dependencies:
     extend-shallow "^2.0.1"
@@ -1412,123 +1412,123 @@ section-matter@^1.0.0:
 
 shebang-command@^2.0.0:
   version "2.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/shebang-command/-/shebang-command-2.0.0.tgz#ccd0af4f8835fbdc265b82461aaf0c36663f34ea"
+  resolved "https://repo.huaweicloud.com/repository/npm/shebang-command/-/shebang-command-2.0.0.tgz"
   integrity sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==
   dependencies:
     shebang-regex "^3.0.0"
 
 shebang-regex@^3.0.0:
   version "3.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
+  resolved "https://repo.huaweicloud.com/repository/npm/shebang-regex/-/shebang-regex-3.0.0.tgz"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
 signal-exit@^3.0.2, signal-exit@^3.0.3:
   version "3.0.7"
-  resolved "https://repo.huaweicloud.com/repository/npm/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
+  resolved "https://repo.huaweicloud.com/repository/npm/signal-exit/-/signal-exit-3.0.7.tgz"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
 slash@^3.0.0:
   version "3.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
+  resolved "https://repo.huaweicloud.com/repository/npm/slash/-/slash-3.0.0.tgz"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
 "source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.1, source-map-js@^1.0.2:
   version "1.0.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
+  resolved "https://repo.huaweicloud.com/repository/npm/source-map-js/-/source-map-js-1.0.2.tgz"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
 source-map@^0.6.1:
   version "0.6.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
+  resolved "https://repo.huaweicloud.com/repository/npm/source-map/-/source-map-0.6.1.tgz"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
 sourcemap-codec@^1.4.4:
   version "1.4.8"
-  resolved "https://repo.huaweicloud.com/repository/npm/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
+  resolved "https://repo.huaweicloud.com/repository/npm/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz"
   integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
 
 sprintf-js@~1.0.2:
   version "1.0.3"
-  resolved "https://repo.huaweicloud.com/repository/npm/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
+  resolved "https://repo.huaweicloud.com/repository/npm/sprintf-js/-/sprintf-js-1.0.3.tgz"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
 string_decoder@^1.1.1:
   version "1.3.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/string_decoder/-/string_decoder-1.3.0.tgz#42f114594a46cf1a8e30b0a84f56c78c3edac21e"
+  resolved "https://repo.huaweicloud.com/repository/npm/string_decoder/-/string_decoder-1.3.0.tgz"
   integrity sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==
   dependencies:
     safe-buffer "~5.2.0"
 
 strip-ansi@^6.0.0:
   version "6.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
+  resolved "https://repo.huaweicloud.com/repository/npm/strip-ansi/-/strip-ansi-6.0.1.tgz"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
   dependencies:
     ansi-regex "^5.0.1"
 
 strip-bom-string@^1.0.0:
   version "1.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/strip-bom-string/-/strip-bom-string-1.0.0.tgz#e5211e9224369fbb81d633a2f00044dc8cedad92"
+  resolved "https://repo.huaweicloud.com/repository/npm/strip-bom-string/-/strip-bom-string-1.0.0.tgz"
   integrity sha1-5SEekiQ2n7uB1jOi8ABE3IztrZI=
 
 strip-final-newline@^2.0.0:
   version "2.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/strip-final-newline/-/strip-final-newline-2.0.0.tgz#89b852fb2fcbe936f6f4b3187afb0a12c1ab58ad"
+  resolved "https://repo.huaweicloud.com/repository/npm/strip-final-newline/-/strip-final-newline-2.0.0.tgz"
   integrity sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==
 
 supports-color@^7.1.0:
   version "7.2.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/supports-color/-/supports-color-7.2.0.tgz#1b7dcdcb32b8138801b3e478ba6a51caa89648da"
+  resolved "https://repo.huaweicloud.com/repository/npm/supports-color/-/supports-color-7.2.0.tgz"
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
   dependencies:
     has-flag "^4.0.0"
 
 supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
+  resolved "https://repo.huaweicloud.com/repository/npm/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
 to-regex-range@^5.0.1:
   version "5.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/to-regex-range/-/to-regex-range-5.0.1.tgz#1648c44aae7c8d988a326018ed72f5b4dd0392e4"
+  resolved "https://repo.huaweicloud.com/repository/npm/to-regex-range/-/to-regex-range-5.0.1.tgz"
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
 
 toml@^3.0.0:
   version "3.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/toml/-/toml-3.0.0.tgz#342160f1af1904ec9d204d03a5d61222d762c5ee"
+  resolved "https://repo.huaweicloud.com/repository/npm/toml/-/toml-3.0.0.tgz"
   integrity sha512-y/mWCZinnvxjTKYhJ+pYxwD0mRLVvOtdS2Awbgxln6iEnt4rk0yBxeSBHkGJcPucRiG0e55mwWp+g/05rsrd6w==
 
 ts-debounce@^4.0.0:
   version "4.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/ts-debounce/-/ts-debounce-4.0.0.tgz#33440ef64fab53793c3d546a8ca6ae539ec15841"
+  resolved "https://repo.huaweicloud.com/repository/npm/ts-debounce/-/ts-debounce-4.0.0.tgz"
   integrity sha512-+1iDGY6NmOGidq7i7xZGA4cm8DAa6fqdYcvO5Z6yBevH++Bdo9Qt/mN0TzHUgcCcKv1gmh9+W5dHqz8pMWbCbg==
 
 uc.micro@^1.0.1, uc.micro@^1.0.5:
   version "1.0.6"
-  resolved "https://repo.huaweicloud.com/repository/npm/uc.micro/-/uc.micro-1.0.6.tgz#9c411a802a409a91fc6cf74081baba34b24499ac"
+  resolved "https://repo.huaweicloud.com/repository/npm/uc.micro/-/uc.micro-1.0.6.tgz"
   integrity sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==
 
 universalify@^2.0.0:
   version "2.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
+  resolved "https://repo.huaweicloud.com/repository/npm/universalify/-/universalify-2.0.0.tgz"
   integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
 
 upath@^2.0.1:
   version "2.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/upath/-/upath-2.0.1.tgz#50c73dea68d6f6b990f51d279ce6081665d61a8b"
+  resolved "https://repo.huaweicloud.com/repository/npm/upath/-/upath-2.0.1.tgz"
   integrity sha512-1uEe95xksV1O0CYKXo8vQvN1JEbtJp7lb7C5U9HMsIp6IVwntkH/oNUzyVNQSd4S1sYk2FpSSW44FqMc8qee5w==
 
 util-deprecate@^1.0.1:
   version "1.0.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
+  resolved "https://repo.huaweicloud.com/repository/npm/util-deprecate/-/util-deprecate-1.0.2.tgz"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
 vite@^2.7.13:
-  version "2.8.6"
-  resolved "https://repo.huaweicloud.com/repository/npm/vite/-/vite-2.8.6.tgz#32d50e23c99ca31b26b8ccdc78b1d72d4d7323d3"
-  integrity sha512-e4H0QpludOVKkmOsRyqQ7LTcMUDF3mcgyNU4lmi0B5JUbe0ZxeBBl8VoZ8Y6Rfn9eFKYtdXNPcYK97ZwH+K2ug==
+  version "2.8.5"
+  resolved "https://repo.huaweicloud.com/repository/npm/vite/-/vite-2.8.5.tgz"
+  integrity sha512-C/7EGNa1ugWejol6nOcd/0d8PR70Nzd+XXwsPbnNOfzZw0NN2xyXfmw/GNDHgr5fcaTSO4gjxCJCrwNhQUMhmA==
   dependencies:
     esbuild "^0.14.14"
     postcss "^8.4.6"
@@ -1539,19 +1539,19 @@ vite@^2.7.13:
 
 vue-demi@*:
   version "0.12.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/vue-demi/-/vue-demi-0.12.1.tgz#f7e18efbecffd11ab069d1472d7a06e319b4174c"
+  resolved "https://repo.huaweicloud.com/repository/npm/vue-demi/-/vue-demi-0.12.1.tgz"
   integrity sha512-QL3ny+wX8c6Xm1/EZylbgzdoDolye+VpCXRhI2hug9dJTP3OUJ3lmiKN3CsVV3mOJKwFi0nsstbgob0vG7aoIw==
 
 vue-router@^4.0.12:
   version "4.0.13"
-  resolved "https://repo.huaweicloud.com/repository/npm/vue-router/-/vue-router-4.0.13.tgz#47f06e2f8ff6120bfff3c27ade1356cc9de7d870"
+  resolved "https://repo.huaweicloud.com/repository/npm/vue-router/-/vue-router-4.0.13.tgz"
   integrity sha512-LmXrC+BkDRLak+d5xTMgUYraT3Nj0H/vCbP+7usGvIl9Viqd1UP6AsP0i69pSbn9O0dXK/xCdp4yPw21HqV9Jw==
   dependencies:
     "@vue/devtools-api" "^6.0.0"
 
 vue@^3.2.28:
   version "3.2.31"
-  resolved "https://repo.huaweicloud.com/repository/npm/vue/-/vue-3.2.31.tgz#e0c49924335e9f188352816788a4cca10f817ce6"
+  resolved "https://repo.huaweicloud.com/repository/npm/vue/-/vue-3.2.31.tgz"
   integrity sha512-odT3W2tcffTiQCy57nOT93INw1auq5lYLLYtWpPYQQYQOOdHiqFct9Xhna6GJ+pJQaF67yZABraH47oywkJgFw==
   dependencies:
     "@vue/compiler-dom" "3.2.31"
@@ -1562,7 +1562,7 @@ vue@^3.2.28:
 
 vuepress-vite@2.0.0-beta.36:
   version "2.0.0-beta.36"
-  resolved "https://repo.huaweicloud.com/repository/npm/vuepress-vite/-/vuepress-vite-2.0.0-beta.36.tgz#50e4e2c11ff4e057f725ba42de81d9ac50be4b45"
+  resolved "https://repo.huaweicloud.com/repository/npm/vuepress-vite/-/vuepress-vite-2.0.0-beta.36.tgz"
   integrity sha512-KbN7HDhaCLVB7/YmJDydQClUjMBybLtBpB376mi5fD16RFBzHwMGI7zopb4lu7Nmj2BnvLI9kpottv9zuOJYLQ==
   dependencies:
     "@vuepress/bundler-vite" "2.0.0-beta.36"
@@ -1579,14 +1579,14 @@ vuepress@^2.0.0-beta.36:
 
 wcwidth@^1.0.1:
   version "1.0.1"
-  resolved "https://repo.huaweicloud.com/repository/npm/wcwidth/-/wcwidth-1.0.1.tgz#f0b0dcf915bc5ff1528afadb2c0e17b532da2fe8"
+  resolved "https://repo.huaweicloud.com/repository/npm/wcwidth/-/wcwidth-1.0.1.tgz"
   integrity sha1-8LDc+RW8X/FSivrbLA4XtTLaL+g=
   dependencies:
     defaults "^1.0.3"
 
 which@^2.0.1:
   version "2.0.2"
-  resolved "https://repo.huaweicloud.com/repository/npm/which/-/which-2.0.2.tgz#7c6a8dd0a636a0327e10b59c9286eee93f3f51b1"
+  resolved "https://repo.huaweicloud.com/repository/npm/which/-/which-2.0.2.tgz"
   integrity sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==
   dependencies:
     isexe "^2.0.0"

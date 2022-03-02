@@ -9,13 +9,15 @@ export default defineUserConfig<DefaultThemeOptions>({
   head: [
     ['link', {rel: 'shortcut icon', type: "image/x-icon", href: `/GOFamily/favicon.ico`}],
     ['script',{
-      src: `var _hmt = _hmt || [];
-      (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?45951f610a1fa82985715b79291a8de9";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-      })();`
+      src:`<!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFKQEFHX3B"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'G-GFKQEFHX3B');
+      </script>`
     }]
   ],
   host: 'localhost',
