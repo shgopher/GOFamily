@@ -9,7 +9,13 @@ export default defineUserConfig<DefaultThemeOptions>({
   head: [
     ['link', {rel: 'shortcut icon', type: "image/x-icon", href: `/GOFamily/favicon.ico`}],
     ['script',{
-      src:'https://cdn.jsdelivr.net/npm/vue-baidu-analytics/dist/vue-baidu-analytics.min.js'
+      src: `var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?45951f610a1fa82985715b79291a8de9";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();`
     }]
   ],
   host: 'localhost',
