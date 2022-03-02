@@ -243,6 +243,242 @@ export default defineUserConfig<DefaultThemeOptions>({
             }
         ]
     },
+    {
+      text:'408',
+      children:[
+          {
+            text:'算法和数据结构',
+              link:'/408/算法',
+              collapsible:false,
+              children:[
+                
+              ]
+          },
+          {
+            text:'网络',
+              link:'/408/网络',
+              collapsible:false,
+              children:[
+                
+              ]
+          },
+          {
+            text:'操作系统',
+              link:'/408/操作系统',
+              collapsible:false,
+              children:[
+                
+              ]
+          },
+          {
+            text:'数据库',
+              link:'/408/数据库',
+              collapsible:false,
+              children:[
+                
+              ]
+          },
+          {
+            text:'设计模式',
+              link:'/408/设计模式',
+              collapsible:false,
+              children:[
+                
+              ]
+          },
+          {
+            text:'计算机组成原理',
+              link:'/408/组成原理',
+              collapsible:false,
+              children:[
+                
+              ]
+          },
+      ]
+    },
+    {
+      text:'系统设计',
+      children:[
+        {
+          text:'架构设计基础',
+            link:'/system/架构设计基础',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'容器',
+            link:'/system/容器',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'网关',
+            link:'/system/网关',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'消息队列',
+            link:'/system/消息队列',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'rpc',
+            link:'/system/rpc',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'搜索引擎',
+            link:'/system/搜索引擎',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'实战',
+            link:'/system/实战',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+      ]
+    },
+    {
+      text:'技术方向',
+      children:[
+        {
+          text:'后端',
+            link:'/tech/后端开发',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'前端',
+            link:'/tech/前端开发',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+      ]
+    },
+    {
+      text:'其它',
+      children:[
+        {
+          text:'测试',
+            link:'/other/测试',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'正则表达式',
+            link:'/other/正则表达式',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'git',
+            link:'/other/git',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'auth',
+            link:'/other/auth',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'devOps',
+            link:'/other/devOps',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'重构技术',
+            link:'/other/重构技术',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'程序员',
+            link:'/other/程序员',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'ddd',
+            link:'/other/ddd',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'okr',
+            link:'/other/okr',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'性能优化技术',
+            link:'/other/性能优化技术',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'debug 技术',
+            link:'/other/debug',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+        {
+          text:'线上快速排障',
+            link:'/other/线上快速排障',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
+      ]
+    }
     ],
   },
 })
