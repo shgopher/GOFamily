@@ -9,14 +9,15 @@ export default defineUserConfig<DefaultThemeOptions>({
   head: [
     ['link', {rel: 'shortcut icon', type: "image/x-icon", href: `/GOFamily/favicon.ico`}],
     ['script',{src:'https://www.googletagmanager.com/gtag/js?id=G-GFKQEFHX3B'}],
-    ['script',{
-      src:
-      `window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-      
-        gtag('config', 'G-GFKQEFHX3B');`
-    }]
+    ['script',{},
+    `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-GFKQEFHX3B');
+    
+    `]
   ],
   host: 'localhost',
   base:'/GOFamily/',
