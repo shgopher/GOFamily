@@ -73,6 +73,15 @@ export default defineUserConfig<DefaultThemeOptions>({
       {
         text: '首页', link: '/'
       }, 
+      {
+        text:'Github',link:'https://github.com/shgopher/GOFamily',
+      },
+      {
+        text:'微信公众号',link:'/#wechat.png',
+      },
+      {
+        text:'作者',link:'https://github.com/shgopher',
+      },
     ],
     sidebar:[
       {
@@ -248,6 +257,10 @@ export default defineUserConfig<DefaultThemeOptions>({
                 {
                   text:'go web包',
                   link:'/go/工程/web',
+                },
+                {
+                  text:'go 标准库',
+                  link:'/go/工程/go标准库',
                 },
               ]
             }
