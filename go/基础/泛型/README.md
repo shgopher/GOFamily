@@ -15,7 +15,7 @@ type st interface{
 ```
 这里 st约束拥有int和string，请注意这里的st是约束，不是泛型类型
 
-go内置了很多约束，比如说 any 和 comparable ，意思是任何类型和可以比较的类型。
+go内置了很多约束，比如说 any 和 comparable ，意思是任何类型和可以比较的类型。以后应该会有一个新的内置约束的包叫做`package constraints` 例如any comparable ，Ordered 等等约束都会内置到标准库中
 
 约束不仅仅可以单独写出来，还可以内置于函数内部。
 
@@ -24,14 +24,14 @@ func Age[T int| string,B float64| string](i T,j B){}
 ```
 这种形式下，T 和 B 的约束就是仅限此函数使用 
 
-下面我们看一种形式，这种情况下约束的不仅仅是string和int，而是包含了底层是他们的所有数据，比如说 `type DD int` 也符合这个约束
+下面我们看一种形式，这种情况下约束的不仅仅是string和int，而是包含了底层是他们的所有数据，比如说 `type DD int` 也符合这个约束，请记住只能使用在底层类型上，如果使用`~DD`是不被允许的
 
 ```go
 type st interface{
 	~string | ~int
 }
 ```
-于此同时，约束也不仅仅是基础类型，约束的内容是方法也是可以的（那就是普通的interface了）
+于此同时，约束也不仅仅是基础类型，约束的内容是方法也是可以的
 
 ```go
 
@@ -52,6 +52,89 @@ type Stringer interface {
 
 ```
 所有说在引入泛型之后，go的interface的功能其实是扩充了，也可以将泛型中的约束就称之为接口也没问题。
+
+我们说到interface相当于是被扩充了，那么约束的时候可以即有方法又有类型吗？
+
+```go
+type anys interface {
+	int
+	me()
+}
+```
+答案也是不行，要么是只有类型要么是只有方法
+
+这是只有方法的例子
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var a A
+	var dd DD[A]
+	dd.TT(a)
+}
+
+type A struct{}
+
+func (a A) me() {}
+
+type anys interface {
+	me()
+}
+
+type DD[T anys] []T
+
+func (dd *DD[T]) TT(t T) {
+	fmt.Println(t, len(*dd))
+}
+```
+
+约束跟接口是一样的也是可以嵌套的
+
+```go
+type ComparableHasher interface {
+	comparable
+	Hash() uintptr
+}
+
+// or
+
+type ImpossibleConstraint interface {
+	comparable
+	[]int
+}
+```
+这里的意义就是 and的意思 就是说这个约束是**可以比较的**还是必须得支持`hash()uintptr` 这个函数,不过有个界定，就可以嵌套的只能是内置的约束，自定义的无法嵌套
+
+
+```go
+//无法运行
+type ans interface{
+
+	int | string
+}
+type ImpossibleConstraint interface {
+	ans
+	[]int
+}
+```
+解释一下，我们知道使用`|`表示约束的类型是或的意思，那么如果使用嵌套，就是和的意思，使用any或者comparable都是有意义的，比如说在一个方法的约束里，嵌入了一个comparable，意思就是实现这个方法的并且是可以比较的类型，就会满足这个约束，而自定义的通常不满足这些意义，比如说 一个约束里面是`int | string` 再嵌套一个 `float64` 这就是说 `int ｜ string` 得同时再满足 `float64`显然这是不可能的。
+
+那么这里有一个疑问，可以给约束嵌入泛型吗？例如
+
+```go
+type EmbeddedParameter[T any] interface {
+	T 
+}
+
+```
+`cannot embed a type parameter` 答案是否定的，go不允许这么做。不过如果约束里面是方法就可以这么做，比如说
+
+```go
+type EmbeddedParameter[T any] interface {
+	me() T 
+```
 
 ## 使用方法
 下面展示一下go泛型的基本使用方法
