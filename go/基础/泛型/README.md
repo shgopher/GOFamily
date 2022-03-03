@@ -31,6 +31,27 @@ type st interface{
 	~string | ~int
 }
 ```
+于此同时，约束也不仅仅是基础类型，约束的内容是方法也是可以的（那就是普通的interface了）
+
+```go
+
+func ConcatTo[S Stringer, P Plusser](s []S, p []P) []string {
+	r := make([]string, len(s))
+	for i, v := range s {
+		r[i] = p[i].Plus(v.String())
+	}
+	return r
+}
+
+type Plusser interface {
+	Plus(string) string
+}
+type Stringer interface {
+	String() string
+}
+
+```
+所有说在引入泛型之后，go的interface的功能其实是扩充了，也可以将泛型中的约束就称之为接口也没问题。
 
 ## 使用方法
 下面展示一下go泛型的基本使用方法
@@ -75,6 +96,9 @@ import "fmt"
 
 func main() {
 	new(Age[int]).Post(12)
+
+	var dd DD[int]
+	dd.TT(12)
 }
 
 type Age[T any] struct {
@@ -83,6 +107,12 @@ type Age[T any] struct {
 
 func (a *Age[T]) Post(t T) {
 	fmt.Println(a.I, t)
+}
+
+type DD[T any] []T
+
+func(dd *DD[T])TT(t T){
+	fmt.Println(t,len(*dd))
 }
 ```
 在 age 结构体声明的时候，声明了一个泛型 T ，在struct体内就可以使用这个T，值得注意的是，这个结构体方法内部仅可以使用定义在这个结构体对象上的泛型
