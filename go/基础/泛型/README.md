@@ -23,6 +23,15 @@ go内置了很多约束，比如说 any 和 comparable ，意思是任何类型�
 func Age[T int| string,B float64| string](i T,j B){}
 ```
 这种形式下，T 和 B 的约束就是仅限此函数使用 
+
+下面我们看一种形式，这种情况下约束的不仅仅是string和int，而是包含了底层是他们的所有数据，比如说 `type DD int` 也符合这个约束
+
+```go
+type st interface{
+	~string | ~int
+}
+```
+
 ## 使用方法
 下面展示一下go泛型的基本使用方法
 ```go
@@ -102,3 +111,4 @@ func (a *Age[T])Post[B any](t T,b B) {
 - https://coolshell.cn/articles/21615.html
 - https://go.dev/doc/tutorial/generics
 - https://colobu.com/2021/08/30/how-is-go-generic-implemented/
+- https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md
