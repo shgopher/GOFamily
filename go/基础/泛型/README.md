@@ -3,16 +3,17 @@
 - 约束
 - 使用方法
 - 实现原理 
+- 跟其它语言的泛型进行对比
 
 > 泛型需满足 `go1.18+`
 ## 约束
-go使用interface作为约束，约束的意思是约束了这个泛型都具有哪些具体的实际类型。
+go使用interface作为约束，约束的意思是约束了这个泛型都具有哪些实际类型。
 ```go
-type T interface{
+type st interface{
   int | string
 }
 ```
-这里将 T 类型约束为 int 或者是 string
+这里 st约束拥有int和string，请注意这里的st是约束，不是泛型类型
 
 go内置了很多约束，比如说 any 和 comparable ，意思是任何类型和可以比较的类型。
 
@@ -93,6 +94,8 @@ func (a *Age[T])Post[B any](t T,b B) {
 所以将两者结合在一起或许是最好的选择。
 
 这种方法是这样的，如果类型的内存分配器/垃圾回收器呈现的方式一致的情况下，只给它生成一份代码，然后给它一个字典来区分不同的具体行为，可以最大限度的平衡速度和体积
+## 跟其它语言的泛型进行对比
+
 ## 参考资料
 - https://coolshell.cn/articles/21615.html
 - https://go.dev/doc/tutorial/generics
