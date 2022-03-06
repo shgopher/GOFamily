@@ -4,6 +4,7 @@
 - 使用方法
 - 实现原理 
 - 跟其它语言的泛型进行对比
+- 用例子学泛型
 
 > 泛型需满足 `go1.18+`
 ## 约束
@@ -220,6 +221,187 @@ func (a *Age[T])Post[B any](t T,b B) {
 - c语言：本身不具有泛型，需要程序员去实现一个泛型，实现复杂，但是不增加语言的复杂度（换言之只增加了程序员的）
 - c++和rust：跟go基本保持一种方式，就是增加编译器的工作量
 - Java：将泛型装箱为object，在装箱和拆箱擦除泛型的过程中，程序执行效率会变低
+## 用例子学泛型
+理论学习完了，不使用例子进行复习的话会忘的很快的。跟着我看几个例子吧
+
+***例子一：*** 最基础的函数泛型 `map-filter-reduce`
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	vM := Map[int]([]int{1, 2, 3, 4, 5}, func(i int) int {
+
+		return i + i
+	})
+	fmt.Printf("map的结果是：%v", vM)
+	vF := Filter[int]([]int{1, 2, 3, 4, 5}, func(t int) bool {
+		if t > 2 {
+			return true
+		}
+		return false
+	})
+	fmt.Printf("filter的结果是:%v", vF)
+	vR := Reduce[Value, *Result]([]Value{
+		{name: "tt", year: 1},
+		{name: "bb", year: 2},
+		{name: "7i", year: 3},
+		{name: "8i", year: 4},
+		{name: "u4i", year: 5},
+		{name: "uei", year: 6},
+		{name: "uwi", year: 7},
+		{name: "uti", year: 8},
+	}, &Result{}, func(r *Result, v Value) *Result {
+		r.value = r.value + v.year
+		return r
+	})
+	fmt.Println("reduce的结果是：", vR.value)
+
+}
+
+// Map:类似于洗菜，进去的菜和出来的菜不一样了所以需要两种种类
+func Map[T1, T2 any](arr []T1, f func(T1) T2) []T2 {
+	result := make([]T2, len(arr))
+	for k, v := range arr {
+		result[k] = f(v)
+	}
+	return result
+}
+
+// Filter:类似于摘菜，进去的菜和出来的菜是一种，不过量减少了
+func Filter[T any](arr []T, f func(T) bool) []T {
+	var result []T
+	for _, v := range arr {
+		if f(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+// Reduce:类似于做菜，将菜做成一道料理，所以需要两种类型
+func Reduce[T1, T2 any](arr []T1, zero T2, f func(T2, T1) T2) T2 {
+	result := zero
+	for _, v := range arr {
+		result = f(result, v)
+	}
+	return result
+}
+
+type Value struct {
+	name string
+	year int
+}
+type Result struct {
+	value int
+}
+```
+
+`map的结果是：[2 4 6 8 10] filter的结果是:[3 4 5] reduce的结果是： 36`
+
+***例子二：*** 方法上的泛型 `sets`
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+	// 这里 Sets的具体类型和Make的具体类型都是int,所以可以正常赋值
+	var s Sets[int] = Make[int]()
+	//
+	s.Add(1)
+	s.Add(2)
+	fmt.Println(s)
+	fmt.Println(s.Contains(3))
+	fmt.Println(s.Len())
+	s.Iterate(func(i int) {
+		fmt.Println(i)
+	})
+	fmt.Println(s)
+	s.Delete(2)
+	fmt.Println(s)
+}
+
+// Sets 一个key  存储对象
+type Sets[T comparable] map[T]struct{}
+
+// Make 实例化一个map
+func Make[D comparable]() Sets[D] {
+	// 泛型就像一个管道一样，只要实例化的时候管子里的东西一致，那么就是一根管子
+	return make(Sets[D])
+}
+
+// Add 向这个sets添加内容
+func (s Sets[T]) Add(t T) {
+	s[t] = struct{}{}
+}
+
+// delete ,从这个sets中删除内容
+func (s Sets[T]) Delete(t T) {
+	delete(s, t)
+}
+
+//  Contains 播报t是否属于这个sets
+func (s Sets[T]) Contains(t T) bool {
+	_, ok := s[t]
+	return ok
+}
+
+//Len sets拥有的长度
+
+func (s Sets[T]) Len() int {
+	return len(s)
+}
+
+// Iterate 迭代器，并且给予每个元素功能
+
+func (s Sets[T]) Iterate(f func(T)) {
+	for k := range s {
+		f(k)
+	}
+}
+```
+`map[1:{} 2:{}]
+false
+2
+1
+2
+map[1:{} 2:{}]
+map[1:{}]
+`
+
+***例子三：*** 外部定义的约束 `实现一个sort接口类型`
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, 世界")
+}
+// ~ 代表只要底层满足这些类型也可以算满足约束
+type Ordered interface {
+	~int | ~int8 | ~int16 | ~int32 | ~int64 | ~uintptr |
+		~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 |
+		~float32 | ~float64 | ~string
+}
+type orderedSlice[T Ordered] []T
+
+func (s orderedSlice[T]) Len() int           { return len(s) }
+func (s orderedSlice[T]) Less(i, j int) bool { return s[i] < s[j] }
+func (s orderedSlice[T]) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+func OrderedSlice[T Ordered](s []T) {
+	sort.Sort(orderedSlice[T](s))
+}
+```
 ## 参考资料
 - https://coolshell.cn/articles/21615.html
 - https://go.dev/doc/tutorial/generics
