@@ -54,42 +54,6 @@ type Stringer interface {
 ```
 所有说在引入泛型之后，go的interface的功能其实是扩充了，也可以将泛型中的约束就称之为接口也没问题。
 
-我们说到interface相当于是被扩充了，那么约束的时候可以即有方法又有类型吗？
-
-```go
-type anys interface {
-	int
-	me()
-}
-```
-答案也是不行，要么是只有类型要么是只有方法
-
-这是只有方法的例子
-```go
-package main
-
-import "fmt"
-
-func main() {
-	var a A
-	var dd DD[A]
-	dd.TT(a)
-}
-
-type A struct{}
-
-func (a A) me() {}
-
-type anys interface {
-	me()
-}
-
-type DD[T anys] []T
-
-func (dd *DD[T]) TT(t T) {
-	fmt.Println(t, len(*dd))
-}
-```
 
 约束跟接口是一样的也是可以嵌套的
 
@@ -106,23 +70,23 @@ type ImpossibleConstraint interface {
 	[]int
 }
 ```
-这里的意义就是 and的意思 就是说这个约束是**可以比较的**还是必须得支持`hash()uintptr` 这个函数,不过有个界定，就可以嵌套的只能是内置的约束，自定义的无法嵌套
+这里的意义就是 **and**的意思 就是说这个约束是可以比较的还是必须得支持`hash()uintptr` 
 
+下面这种方法也是可以的
 
 ```go
-//无法运行
-type ans interface{
-
-	int | string
-}
-type ImpossibleConstraint interface {
-	ans
-	[]int
+type NumericAbs[T any] interface {
+	~int | ~int8 | ~int16 | ~int32 | ~int64 |
+		~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~uintptr |
+		~float32 | ~float64 |
+		~complex64 | ~complex128
+	Abs() T
 }
 ```
-解释一下，我们知道使用`|`表示约束的类型是或的意思，那么如果使用嵌套，就是和的意思，使用any或者comparable都是有意义的，比如说在一个方法的约束里，嵌入了一个comparable，意思就是实现这个方法的并且是可以比较的类型，就会满足这个约束，而自定义的通常不满足这些意义，比如说 一个约束里面是`int | string` 再嵌套一个 `float64` 这就是说 `int ｜ string` 得同时再满足 `float64`显然这是不可能的。
+上面的类型意思是满足数字类型，下面的意思是满足这个方法，所以最终实现这个约束，就是一个对象是数字类型，并且实现了这个接口
 
-那么这里有一个疑问，可以给约束嵌入泛型吗？例如
+
+那么这里有一个疑问，给约束嵌入泛型,应该如何操作
 
 ```go
 type EmbeddedParameter[T any] interface {
@@ -130,13 +94,50 @@ type EmbeddedParameter[T any] interface {
 }
 
 ```
-`cannot embed a type parameter` 答案是否定的，go不允许这么做。不过如果约束里面是方法就可以这么做，比如说
+`cannot embed a type parameter` 这种方法，go不允许这么做。因为T已经是泛型了，而约束里的类型应该是实际类型，所以T不能这么用，
+
+不过如果约束里面是方法就可以这么做，这是因为T 这里只是方法的一个参数，比如说
 
 ```go
 type EmbeddedParameter[T any] interface {
+	~int | ~uint 
 	me() T 
 ```
+如果想使用这种约束，可以这么使用
 
+```go
+func Abs[T EmbeddedParameter[T]](t T)T{}
+```
+解释一下，中括号里面泛型的两个T表达的意思是不一样的，后面的T表达的是 约束里的泛型，表示 any，前面的T表示的是满足后面的这个约束的类型T
+
+> 请注意，type a[T any] interface 这种写法有可能在go1.18还不支持
+
+当使用了泛型之后，是无法使用断言的，这是非法的，那么如果一定要在运行时的时候去判断类型怎么办呢？答案就是转变成`interface{}`即可，因为我们知道任何对象都已经实现了空接口，那么就可以被空接口去转化
+
+```go
+func GeneralAbsDifference[T Numeric](a, b T) T {
+	switch (interface{})(a).(type) {
+	case int, int8, int16, int32, int64,
+		uint, uint8, uint16, uint32, uint64, uintptr,
+		float32, float64:
+		return OrderedAbsDifference(a, b) 
+	case complex64, complex128:
+		return ComplexAbsDifference(a, b) 
+	}
+}
+```
+
+下面看一下别名的真实类型是泛型的情况
+
+```go
+type A[T any] []T
+
+type AliasA = A // 错误 ❌
+
+type AliasA = A[int] // 正确
+```
+
+其中错误的问题是 别名不能直接使用泛型类型 `cannot use generic type A[T any] without instantiation`，它需要泛型的实例化
 ## 使用方法
 下面展示一下go泛型的基本使用方法
 ```go
@@ -209,6 +210,44 @@ func (a *Age[T])Post[B any](t T,b B) {
 } 
 ```
 `syntax error: method must have no type parameters`
+
+接下来我们看一下，如何使用 `type a[T any] interface{} 有类型也有方法`的泛型结构
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var d DDD
+	var i DDD
+	d = 1
+	i = 2
+	io := AbsDifference[DDD](d, i)
+	fmt.Println(io)
+}
+
+type DDD int
+
+func (ddd DDD) Abs() DDD {
+	return ddd + ddd
+}
+
+type NumericAbs[T any] interface {
+	~int | ~int8 | ~int16 | ~int32 | ~int64 |
+		~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~uintptr |
+		~float32 | ~float64 |
+		~complex64 | ~complex128
+	Abs() T
+}
+
+// AbsDifference computes the absolute value of the difference of
+// a and b, where the absolute value is determined by the Abs method.
+func AbsDifference[T NumericAbs[T]](a, b T) T {
+	d := a - b
+	return d.Abs()
+}
+```
 ## 实现原理
 泛型的第一种方法是在编译这个泛型时，使用一个字典，里面包含了这个泛型函数的全部类型信息，然后当运行时，使用函数实例化的时候从这个字典中取出信息进行实例化即可，这种方法会导致执行性能下降，一个实例化类型`int, x=y`可能通过寄存器复制就可以了，但是泛型必须通过内存了（因为需要map进行赋值），不过好处就是不浪费空间
 
@@ -224,7 +263,7 @@ func (a *Age[T])Post[B any](t T,b B) {
 ## 用例子学泛型
 理论学习完了，不使用例子进行复习的话会忘的很快的。跟着我看几个例子吧
 
-***例子一：*** 最基础的函数泛型 `map-filter-reduce`
+***例子一：*** 函数泛型 `map-filter-reduce`
 
 ```go
 package main
