@@ -5,10 +5,11 @@
 - 实现原理 
 - 跟其它语言的泛型进行对比
 - 用例子学泛型
+- issues
 
 > 泛型需满足 `go1.18+`
 ## 约束
-go使用interface作为约束，约束的意思是约束了这个泛型都具有哪些实际类型。
+go使用interface作为约束，约束的意思是约束了这个泛型都具有哪些实际类型。所以可以理解为，go将interface的职责给扩展了，让接口不仅仅作为接口 --- 解耦的，抽象化的结构体，还具有了约束，对于类型的约束作用。
 ```go
 type st interface{
   int | string
@@ -52,7 +53,7 @@ type Stringer interface {
 }
 
 ```
-所有说在引入泛型之后，go的interface的功能其实是扩充了，也可以将泛型中的约束就称之为接口也没问题。
+所有说这里就可以看出来，在引入泛型之后，go的interface的功能扩充了。
 
 
 约束跟接口是一样的也是可以嵌套的
@@ -108,7 +109,20 @@ type EmbeddedParameter[T any] interface {
 ```go
 func Abs[T EmbeddedParameter[T]](t T)T{}
 ```
-解释一下，中括号里面泛型的两个T表达的意思是不一样的，后面的T表达的是 约束里的泛型，表示 any，前面的T表示的是满足后面的这个约束的类型T
+解释一下，中括号里面泛型的两个T表达的意思是不一样的，后面的T表达的是 约束里的泛型，表示 any，前面的T表示的是满足后面的这个约束的类型T，但是这里注意，后面T虽然之前定义的时候是any但是这里被改变了，改变为了必须满足约束 `EmbeddedParameter`的类型，如果说的通俗点，从any变成了，满足 `int ｜ uint and 实现 me()T方法 `后文会有代码进行解释。
+
+当然了，后面的T没有也行，如果没有后面的T就是相当于不改变后面的T的约束类型了
+
+```go
+type Differ[T1 any] interface {
+	Diff(T1) int
+}
+
+func IsClose[T2 Differ](a, b T2) bool {
+	return a.Diff(b) < 2
+}
+
+```
 
 当结构体中使用泛型的时候，泛型可以直接作为嵌入使用
 ```go
@@ -267,7 +281,7 @@ func AbsDifference[T NumericAbs[T]](a, b T) T {
 ## 跟其它语言的泛型进行对比
 - c语言：本身不具有泛型，需要程序员去实现一个泛型，实现复杂，但是不增加语言的复杂度（换言之只增加了程序员的）
 - c++和rust：跟go基本保持一种方式，就是增加编译器的工作量
-- Java：将泛型装箱为object，在装箱和拆箱擦除泛型的过程中，程序执行效率会变低
+- Java：将泛型装箱为object，在装箱和拆箱擦除类型的过程中，程序执行效率会变低
 ## 用例子学泛型
 理论学习完了，不使用例子进行复习的话会忘的很快的。跟着我看几个例子吧
 
@@ -449,6 +463,87 @@ func OrderedSlice[T Ordered](s []T) {
 	sort.Sort(orderedSlice[T](s))
 }
 ```
+## issues
+***问题一：*** 关于泛型中的零值
+
+在go里面对泛型的零值并没有一个所谓的泛型零值可以使用，需要根据不同的实践去实现，比如
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	
+}
+
+type Aget[T any] struct {
+	t *T
+}
+// 根据实际判断，如果a的t不等于nil再返回，如果是nil就返回一个T类型的nil（意思就是只声明）
+func (a *Aget[T]) Approach() T {
+	if a.t != nil { 
+		return *a.t
+	}
+	var r T
+	return r
+}
+
+```
+实际上目前（1.18还没发布），还没一个确切的泛型的零值，那么我们要做的只能是按照实际来具体分析，按照提案，以后有可能使用`return ...` `return _` `return ` `return nil` `return T{}` 这些都是可能的结果，我个人比较喜欢 `return T{}` 来表示泛型的零值，或许在go1.19或者go2的时候能实现，拭目以待吧。
+
+***问题二：*** 无法识别使用了底层数据的其它类型
+
+```go
+type Float interface {
+	~float32 | ~float64
+}
+
+func NewtonSqrt[T Float](v T) T {
+	var iterations int
+	switch (interface{})(v).(type) {
+	case float32:
+		iterations = 4
+	case float64:
+		iterations = 5
+	default:
+		panic(fmt.Sprintf("unexpected type %T", v))
+	}
+	// Code omitted.
+}
+
+type MyFloat float32
+
+var G = NewtonSqrt(MyFloat(64))
+```
+这里约束 Float拥有的约束类型是 `~float32` 和 `float64`当在switch中定义了float32和flaot64时，无法识别下面的新类型 MyFloat即使它的底层时 float32 ，go的提议是以后在switch中使用 `case ~float32:` 来解决这个问题，目前尚未解决这个问题
+
+***问题三：*** 即便约束一致，类型也是不同的
+
+```go
+func Copy[T1, T2 any](dst []T1, src []T2) int {
+	for i, x := range src {
+		if i > len(dst) {
+			return i
+		}
+		dst[i] = T1(x) // x 是 T2类型 不能直接转化为 T1类型
+	}
+	return len(src)
+}
+
+```
+T1,和T2 虽然都是any的约束，但是啊，它不是一个类型啊！
+
+```go
+Copy[int,string]() // 这种情况下，你能说可以直接转化吗？？？
+```
+这种代码可以更改一下
+
+```go
+dst[i]= (interface{})(x).(T1)
+```
+确认是一种类型以后才能转化
+
 ## 参考资料
 - https://coolshell.cn/articles/21615.html
 - https://go.dev/doc/tutorial/generics
