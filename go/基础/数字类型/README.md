@@ -55,7 +55,53 @@ f := float64(i)
 ```
 ***问题二：*** 能说说`uintptr`和`unsafe.Pointer`的区别吗
 
+- `unsafe.Pointer`是通用指针类型，它不能参与计算
+- `uintptr`是指针运算的工具，但是它不能持有指针对象（意思就是它跟指针对象不能互相转换）
+- `unsafe.Pointer`和`uintptr`可以相互转换，`unsafe.Pointer`和指针对象可以相互转换，但是`uintptr`和指针对象不能相互转换
+- unsafe.Pointer是指针对象进行运算（也就是uintptr）的桥梁
+
+```go
+package main
+
+import (
+	"fmt"
+	"unsafe"
+)
+
+func main() {
+	// 指针对象
+	v := new(int)
+	// 将指针对象转化为通用指针类型
+	vp := unsafe.Pointer(v)
+	// 将通用指针类型转换为指针对象
+	vo := (*int)(vp)
+
+	//将通用指针对象转化为uintptr
+	uv := uintptr(vp)
+	//将uintptr转换为通用指针对象
+	vpp := unsafe.Pointer(uv)
+	fmt.Println(v, vp, vo, uv, vpp)
+
+	// 对指针对象的地址进行计算
+	t := new(string)
+	// 首先先将t转化为unsafe.Pointer类型
+	pt := unsafe.Pointer(t)
+	// 然后将pointer再转化为 uintptr
+	rt := uintptr(pt)
+	//进行计算
+	npt := rt + uintptr(1)
+  // 计算完毕后，再将uintptr转化为unsafe.Pointer再转换为*string类型
+	nt := (*string)(unsafe.Pointer(npt))
+	fmt.Println(t, pt, rt, npt, nt)
+}
+
+```
+
 ***问题三：*** rune和byte的区别
+
+rune是int32，byte是uint8，相比byte来说，rune可以容纳的字符个数要多很多，所以utf8编码的字符使用rune，而ascii使用byte
+
+> unicode是一种字符编码，让每个字符和一个数字对应起来，仅此而已，至于这个数字如何存储它就不管了。utf8就是定义了如何具体存储这个编码数字的一种方法
 
 ## 参考资料
 - https://zhuanlan.zhihu.com/p/145220416
