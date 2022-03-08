@@ -109,10 +109,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                   link:'/go/基础/map',
                 },
                 {
-                  text:'其它类型',
-                  link:'/go/基础/其它类型',
-                },
-                {
                   text:'关键字',
                   link:'/go/基础/关键字',
                 },
@@ -131,6 +127,10 @@ export default defineUserConfig<DefaultThemeOptions>({
                 {
                   text:'泛型',
                   link:'/go/基础/泛型',
+                },
+                {
+                  text:'其他内容',
+                  link:'/go/基础/其他内容',
                 },
               ]
             },
