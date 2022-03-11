@@ -3,7 +3,7 @@
 ## docker
 ## k8s
 ## istio
-## ebpf & cilium
+## cilium
 ## dapr
 ## 参考资料
 - 

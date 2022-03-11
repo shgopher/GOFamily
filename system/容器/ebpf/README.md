@@ -1,3 +1,0 @@
-# ebpf
-## ebpf
-## cilium

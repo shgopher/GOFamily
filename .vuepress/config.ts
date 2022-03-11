@@ -399,6 +399,14 @@ export default defineUserConfig<DefaultThemeOptions>({
               
             ]
         },
+        {
+          text:'云技术',
+            link:'/tech/云技术',
+            collapsible:false,
+            children:[
+              
+            ]
+        },
       ]
     },
     {
