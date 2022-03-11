@@ -96,12 +96,71 @@ func (t) get() {}
 
 - 接收表达式的结果值
 
+我们看一道面试题：
+
+这道题就是因为中间变量无法获取地址造成的bug
+
+```go
+package main
+
+func main() {
+	// 此处go会自动调用值的指针来运行 SetName 但是因为 return Dog{name} 是一个临时的值，所以无法获取到指针
+	New("nihao").SetName("monster")
+
+}
+
+func New(name string) Dog {
+	return Dog{name}
+}
+
+type Dog struct {
+	name string
+}
+
+func (d *Dog) SetName(n string) {
+	d.name = n
+}
+```
+
+我们可以这么改
+
+```go
+package main
+
+func main() {
+	
+a := 	New("nihao")
+a. SetName("monster")
+
+}
+
+func New(name string) Dog {
+	return Dog{name}
+}
+
+type Dog struct {
+	name string
+}
+
+func (d *Dog) SetName(n string) {
+	d.name = n
+}
+
+```
+
+
+另外 自增 ++ 自减 -- 左边的表达式都必须是可寻址的类型，否则也是无法操作的。
+> 字典字面量和字典变量索引表达式的结果值 是个例外 例如 ma["12"] ++ 
+
+在赋值语句中，赋值操作符左边的表达式的结果值必须可寻址的，但是对字典的索引结果值也是可以的
 
 总结一下：
 
-- `常量` + string 这种无法更改的数据无法寻址
+- `常量` + string 这种无法更改的数据无法寻址，函数通常来说也可以算作“常量”，应该它就是一段代码，不可更改
 - `结果值` 因为其无法更改所以寻址将没有意义
 - `中间值`或者`临时对象` 比如说 &（a + b） 这类临时的变量的内存地址没有意义
+- `不安全的操作` 比如map中的k-v 经常要从一个哈希桶迁移到另一个桶，所以你获取地址，它经常会改变，外界还不得而知，所以获取到这个key-value的地址是不安全的
 
+## 参考资料
 
-
+- https://time.geekbang.org/column/article/18042
