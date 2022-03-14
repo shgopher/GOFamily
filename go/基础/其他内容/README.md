@@ -3,7 +3,7 @@
 
 |引用类型|值类型|
 |:---:|:---:|
-|slice, interface, chan, map|array, func, struct, 数字类型, bool|
+|slice, interface, chan, map, func|array, struct, 数字类型, bool|
 
 ## 全局变量和局部变量
 
@@ -96,7 +96,7 @@ func (t) get() {}
 
 - 接收表达式的结果值
 
-我们看一道面试题：
+我们看一道**面试题**：
 
 这道题就是因为中间变量无法获取地址造成的bug
 
