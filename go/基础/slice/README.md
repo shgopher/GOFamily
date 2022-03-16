@@ -36,6 +36,13 @@ output:`6, 6, 3, 4`
 ## 切片数组的底层数据结构
 严格意义来说，go的切片不存在扩容，如果切片想要的数据量大于底层数组的容量时，那么系统会做两件事，开辟新的数组，给这个数组生成新的切片，之前的数组和切片并没有任何的改变，而且如果没有被引用了，还会被gc掉
 
+切片的底层数据结构
+
+slice的扩容规律
+
+slice的边界检查消除以及优化
+
+
 ## issues
 `问题一：` ***如果有多个切片指向了同一个底层数组，那么你认为应该注意些什么***
 
@@ -83,8 +90,15 @@ a := struct{}{}
 	fmt.Println(unsafe.Sizeof(a)) // 0
 ```
 
-## 参考资料
+`问题四：` ***slice和array的不同使用场景是什么***
 
+`问题五：` ***padding（填充）是干什么的***
+
+这主要牵涉到内存对齐
+
+
+## 参考资料
 - https://draveness.me/golang/
+- https://www.jianshu.com/p/9ea2fba64f06
 - https://chai2010.cn/advanced-go-programming-book
 - https://blog.csdn.net/kevin_tech/article/details/122138489
