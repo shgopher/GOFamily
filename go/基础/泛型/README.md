@@ -86,18 +86,65 @@ type NumericAbs[T any] interface {
 ```
 上面的类型意思是满足数字类型，下面的意思是满足这个方法，所以最终实现这个约束，就是一个对象是数字类型，并且实现了这个接口
 
-
-那么这里有一个疑问，给约束嵌入泛型,应该如何操作
-
+当结构体中使用泛型的时候，泛型不能直接作为嵌入使用
 ```go
-type EmbeddedParameter[T any] interface {
-	T 
+type Lockable[T any] struct {
+	T // 正确的方法应该是 T T
+	mu sync.Mutex
 }
 
 ```
-`cannot embed a type parameter` 这种方法，go不允许这么做。因为T已经是泛型了，而约束里的类型应该是实际类型，所以T不能这么用，
+错误提示： `embedded field type cannot be a (pointer to a) type parameter`
 
-不过如果约束里面是方法就可以这么做，这是因为T 这里只是方法的一个参数，比如说
+我们再看一下当泛型结构体嵌入到其它结构体中如何使用
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println("Hello, 世界")
+}
+
+type A[T any] struct {
+	T T
+}
+
+type B[T any] struct {
+	// 这里也可以使用 A[T] 前者是输入了实际类型，
+	//后者虽然输入的是泛型类型T，但是同样属于一个具体类型
+	A[C] 
+	T T
+}
+
+type C struct {
+}
+```
+
+可以看出关键点，泛型结构体被嵌入其它结构体的时候，泛型要给实际的类型才可以
+
+这句解释是跟方法中的泛型做对比的
+
+```go
+type A[T any] struct{}
+
+func(a A[T])Get(){}
+```
+我们知道方法里的泛型是使用这种方法，方法里的泛型是可以直接从struct定义的地方继承这个泛型T的，但是结构体的嵌套或者使用，就不能继承了，所以得给实际的类型不然就会报错  `embedded field type cannot be a (pointer to a) type parameter`
+
+约束里的泛型同样不能直接嵌入使用
+
+```go
+type B[T any] interface {
+	T
+}
+```
+错误提示： `cannot embed a type parameter`
+
+只有泛型类型是方法的参数时才可以这么做，比如说
 
 ```go
 type EmbeddedParameter[T any] interface {
@@ -123,16 +170,6 @@ func IsClose[T2 Differ](a, b T2) bool {
 }
 
 ```
-
-当结构体中使用泛型的时候，泛型可以直接作为嵌入使用
-```go
-type Lockable[T any] struct {
-	T // 这种方法目前的版本有可能不支持，不支持的话可以使用 t T 的方式
-	mu sync.Mutex
-}
-```
-
-> 请注意，type a[T any] interface{} 这种写法有可能在go1.18还不支持
 
 当使用了泛型之后，是无法使用断言的，这是非法的，那么如果一定要在运行时的时候去判断类型怎么办呢？答案就是转变成`interface{}`即可，因为我们知道任何对象都已经实现了空接口，那么就可以被空接口去转化
 
