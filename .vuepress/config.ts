@@ -144,20 +144,12 @@ export default defineUserConfig<DefaultThemeOptions>({
                   link:'/go/并发/并发模型',
                 },
                 {
-                  text:'并发模型',
-                  link:'/go/并发/并发模型',
-                },
-                {
-                  text:'并发原语',
-                  link:'/go/并发/并发原语',
-                },
-                {
                   text:'内存模型',
                   link:'/go/并发/内存模型',
                 },
                 {
-                  text:'atomic',
-                  link:'/go/并发/atomic',
+                  text:'并发原语',
+                  link:'/go/并发/并发原语',
                 },
                 {
                   text:'channel',
@@ -166,6 +158,10 @@ export default defineUserConfig<DefaultThemeOptions>({
                 {
                   text:'context',
                   link:'/go/并发/context',
+                },
+                {
+                  text:'atomic',
+                  link:'/go/并发/atomic',
                 },
               ]
             },
