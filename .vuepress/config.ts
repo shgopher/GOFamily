@@ -258,6 +258,10 @@ export default defineUserConfig<DefaultThemeOptions>({
                   text:'go 标准库',
                   link:'/go/工程/go标准库',
                 },
+                {
+                  text:'go项目组织形式',
+                  link:'/go/工程/项目组织形式',
+                },
               ]
             }
         ]

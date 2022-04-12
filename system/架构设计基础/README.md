@@ -6,6 +6,7 @@
 - 链路追踪
 - 聚合度量
 ## 系统设计基础
+- 架构演进历史
 - 架构设计目的
 - 复杂度来源
 - 架构设计原则
@@ -39,3 +40,4 @@
 ## 参考资料
 -  https://icyfenix.cn/architect-perspective/general-architecture/system-security/
 -  https://icyfenix.cn/architect-perspective/general-architecture/transaction/
+-  https://mp.weixin.qq.com/s/JJpy1Qj32BWx1AioLJswgA
