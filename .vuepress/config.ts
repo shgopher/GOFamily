@@ -91,21 +91,178 @@ export default defineUserConfig<DefaultThemeOptions>({
               text:'基础',
               link:'/go/基础',
               collapsible:false,
+              children:[
+                {
+                  text:'数字类型',
+                  link:'/go/基础/数字类型',
+                },
+                {
+                  text:'slice',
+                  link:'/go/基础/slice',
+                },
+                {
+                  text:'string',
+                  link:'/go/基础/string',
+                },
+                {
+                  text:'map',
+                  link:'/go/基础/map',
+                },
+                {
+                  text:'关键字',
+                  link:'/go/基础/关键字',
+                },
+                {
+                  text:'函数方法',
+                  link:'/go/基础/函数方法',
+                },
+                {
+                  text:'接口',
+                  link:'/go/基础/interface',
+                },
+                {
+                  text:'逻辑和判断语句',
+                  link:'/go/基础/逻辑和判断语句',
+                },
+                {
+                  text:'泛型',
+                  link:'/go/基础/泛型',
+                },
+                {
+                  text:'其他内容',
+                  link:'/go/基础/其他内容',
+                },
+              ]
             },
             {
               text:'并发',
               link:'/go/并发',
               collapsible:false,
+              children:[
+                {
+                  text:'并发模型',
+                  link:'/go/并发/并发模型',
+                },
+                {
+                  text:'内存模型',
+                  link:'/go/并发/内存模型',
+                },
+                {
+                  text:'并发原语',
+                  link:'/go/并发/并发原语',
+                },
+                {
+                  text:'channel',
+                  link:'/go/并发/channel',
+                },
+                {
+                  text:'context',
+                  link:'/go/并发/context',
+                },
+                {
+                  text:'atomic',
+                  link:'/go/并发/atomic',
+                },
+              ]
             },
             {
-              text:'runtime',
+              text:'运行时',
               link:'/go/runtime',
-              collapsible:false,  
+              collapsible:false,
+              children:[
+                  {
+                    text:'G:M:P',
+                    link:'/go/runtime/gmp',
+                  },
+                  {
+                    text:'netpool',
+                    link:'/go/runtime/netpool',
+                  },
+                  {
+                    text:'栈内存管理',
+                    link:'/go/runtime/栈内存管理',
+                  },
+                  {
+                    text:'堆内存分配',
+                    link:'/go/runtime/堆内存分配',
+                  },
+                  {
+                    text:'系统监控',
+                    link:'/go/runtime/系统监控',
+                  },
+                  {
+                    text:'三色gc算法',
+                    link:'/go/runtime/三色gc算法',
+                  },
+                  {
+                    text:'定时器',
+                    link:'/go/runtime/定时器',
+                  },
+                  
+                ]
             },
             {
               text:'工程',
               link:'/go/工程',
               collapsible:false,
+              children:[
+                {
+                  text:'包管理工具',
+                  link:'/go/工程/包管理工具',
+                },
+                {
+                  text:'测试',
+                  link:'/go/工程/测试',
+                },
+                {
+                  text:'错误处理',
+                  link:'/go/工程/错误处理',
+                },
+                {
+                  text:'动态调试',
+                  link:'/go/工程/动态调试',
+                },
+                {
+                  text:'反射',
+                  link:'/go/工程/反射',
+                },
+                {
+                  text:'go自带命令',
+                  link:'/go/工程/命令',
+                },
+                {
+                  text:'性能剖析',
+                  link:'/go/工程/性能剖析',
+                },
+                {
+                  text:'优秀第三方包',
+                  link:'/go/工程/优秀第三方包',
+                },
+                {
+                  text:'cgo',
+                  link:'/go/工程/cgo',
+                },
+                {
+                  text:'golint',
+                  link:'/go/工程/golint',
+                },
+                {
+                  text:'wasm in go',
+                  link:'/go/工程/wasm',
+                },
+                {
+                  text:'go web包',
+                  link:'/go/工程/web',
+                },
+                {
+                  text:'go 标准库',
+                  link:'/go/工程/go标准库',
+                },
+                {
+                  text:'go项目组织形式',
+                  link:'/go/工程/项目组织形式',
+                },
+              ]
             }
         ]
     },
