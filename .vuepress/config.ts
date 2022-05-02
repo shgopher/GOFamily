@@ -262,6 +262,10 @@ export default defineUserConfig<DefaultThemeOptions>({
                   text:'go项目组织形式',
                   link:'/go/工程/项目组织形式',
                 },
+                {
+                  text:'go命名惯例',
+                  link:'/go/工程/go命名惯例',
+                },
               ]
             }
         ]
@@ -509,7 +513,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             ]
         },
       ]
-    }
+    },
     ],
   },
 })
