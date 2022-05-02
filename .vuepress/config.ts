@@ -93,6 +93,22 @@ export default defineUserConfig<DefaultThemeOptions>({
               collapsible:false,
               children:[
                 {
+                  text:'变量声明',
+                  link:'/go/基础/变量声明',
+                },
+                {
+                  text:'常量声明',
+                  link:'/go/基础/常量声明',
+                },
+                {
+                  text:'零值',
+                  link:'/go/基础/零值',
+                },
+                {
+                  text:'复合字面量',
+                  link:'/go/基础/复合字面量',
+                },
+                {
                   text:'数字类型',
                   link:'/go/基础/数字类型',
                 },
