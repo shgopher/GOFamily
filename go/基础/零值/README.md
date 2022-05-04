@@ -93,7 +93,7 @@ s[0] = 1 // 错误 ❌
 var m map[int]int
 m[1] = 12 // 错误 ❌
 ```
-
+再看互斥锁的案例
 ```go
 var mu sync.Mutex
 mu.Lock()
@@ -126,5 +126,5 @@ func foo(mu sync.Mutex) {
 这个问题的解释是这样的：互斥锁是带有状态的，就是说，当你复制的时候本来是a的状态，然后复制过去还是a的状态，但是这是一个新的对象了按道理应该是初始状态，所以就会出现错误，这也是传说中的重入锁(go不支持)，因为go的互斥锁是带有状态的，所以这种复制的方法就会出现错误。
 
 ## 参考资料
-- https://github.com/golang/go/blob/037b209ae3e0453004a4d57e152aa522c56f79e4/src/bytes/buffer.go#L20
+- https://github.com/golang/go/blob/037b209ae3e0453004a4d57e152aa522c56f79e4/src/bytes/buffer.go#L117
 - 图书:go语言精进之路
