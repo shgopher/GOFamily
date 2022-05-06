@@ -20,38 +20,79 @@ init函数在一个包内的执行顺序：对同一个 `go` 文件的 `init()` 
 
 ## go可比较类型
 
-- 整数类型，bool，string 可比较
-- 数组和结构体，需要具体的内容type一致才能比较
-- 引用类型，除了slice，其它都是只能比较这些类型的地址
-- slice 切片完全无法比较
-- 接口比较的时候 , 只有这两个变量的动态类型 , 动态值都相等的时候 , 才是相等,或者两个接口值都是nil值（就是声明一下没有被实际赋值）
+- 数字类型，bool，string ，指针，通道，可比较
+	- `a := make(chan []int)` 即使是这样的内部含有不可比较的通道变量本身也是可以比较的。	
+- 内部字段都必须是可比较类型的数组和结构体可以比较
+- 切片，map变量无法参与比较（但是变量的指针可以，因为指针可以比较）
 - func 无法比较
+- 接口类型是可比较类型
+	- 空接口类型的实例是可以比较的，结果为true (俩实例都是nil，并且类型一样，所以相等)
+	- 空接口的实例比较，赋值后（任何类型都可以赋值给空接口），会判断值的类型是否相等（比如说是否都是int类型赋值给了空接口），再判断相同类型的值是否相等，只有都满足才是true
+	- 带有方法的接口，方法一样（证明类型一致），结果是true
+	- 带有方法的接口，当被赋值以后（就是实现了方法，并且赋值给接口），只要赋值给俩接口类型的是相同的类型，那么就是true，否则是false
+		```go
+		func main() {
+			var a A
+			var a1 A
+			var b B
+			var c B // 如果 var c C 下面的结果就是false 
+			a = b
+			a1 = c
+			fmt.Println(a == a1) // true
+		}
 
-***对接口的解释***
+		type A interface {
+			d()
+		}	
 
+		type B int
+
+		func (b B) d() {}
+
+		type C int
+
+		func (c C) d() {}
+
+		```
+	- 一个含有方法的接口实例和一个空的接口实例比较，并且双方实例均未赋值，那么两者相等。但是，对空接口赋值以后双方不想等
+		```go
+		package main
+
+		import "fmt"
+
+		func main() {
+			var a A
+			var b B
+			fmt.Println(a == b) // true
+
+		}
+
+		type A interface {
+			d()
+		}
+
+		type B interface{}
+
+		```
+
+接口是可以作为map的key值的，因为接口可以比较
 ```go
-
 package main
 
 import "fmt"
 
 func main() {
-	var t1 t
-	var t2 t
-	fmt.Println(a(t1) == a(t2))
+	b := map[interface{}]int{}
+	var s Some
+	b[s] = 1
+	fmt.Println(b[s])
 
 }
 
-type a interface {
-	get()
+type Some interface {
+	methods()
 }
-
-type t struct{}
-
-func (t) get() {}
-
 ```
-其中t就是它的动态类型，t的值就是动态类型的值
 ## go可寻址类型
 
 以下内容是**不可寻址**的量
