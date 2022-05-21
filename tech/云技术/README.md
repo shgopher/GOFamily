@@ -4,7 +4,7 @@
 
 微服务的实践之一 阿里云
 
-![](./微服务实践-阿里云.jpeg)
+![](./alicloud.jpeg)
 
 ## 参考资料
 - https://mp.weixin.qq.com/s/rycwKZs-bTf90Aw2vUiLfg

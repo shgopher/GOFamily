@@ -1,7 +1,4 @@
-import { defineConfig } from "vuepress/config";
-
-
-export default defineConfig({
+module.exports = {
   // 站点配置
 
   title: 'GOFamily - go 后端程序员宝典',
@@ -349,38 +346,38 @@ export default defineConfig({
         children: [
           {
             title:'算法',
-            path:'/408/并发/',
+            // path:'/408/并发/',
             collapsable:true,
             children:[],
           },
           {
             title:'网络',
             collapsable:true,
-            path:'/408/网络/',
+            //path:'/408/网络/',
             children:[],
           },
           {
             title:'数据库',
             collapsable:true,
-            path:'/408/数据库/',
+            // path:'/408/数据库/',
             children:[],
           },
           {
             title:'操作系统',
             collapsable:true,
-            path:'/408/操作系统/',
+            // path:'/408/操作系统/',
             children:[],
           },
           {
             title:'设计模式',
             collapsable:true,
-            path:'/408/设计模式/',
+            // path:'/408/设计模式/',
             children:[],
           },
           {
             title:'组成原理',
             collapsable:true,
-            path:'/408/组成原理/',
+            // path:'/408/组成原理/',
             children:[],
           },
         ],
@@ -402,5 +399,4 @@ export default defineConfig({
       },
     ],
   },
-})
-
+}
