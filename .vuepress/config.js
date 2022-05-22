@@ -4,7 +4,7 @@ module.exports = {
   title: 'GOFamily - go 后端程序员宝典',
   description: '🔥 go 后端程序员宝典，包含了：算法，数据库，网络操作系统，分布式，系统设计等一揽子知识体系',
   head: [
-    ['link', {rel: 'shortcut icon', type: "image/x-icon", href: `/GOFamily/favicon.ico`}],
+    ['link', {rel: 'shortcut icon', type: "image/x-icon", href: `/favicon.ico`}],
   ],
   host: 'localhost',
   base:'/GOFamily/',
@@ -63,6 +63,7 @@ module.exports = {
     ],
     ['@vuepress/back-to-top'],
     ['@vuepress/nprogress'],
+    'vuepress-plugin-baidu-autopush',
   ],
   markdown: {
     anchor: {permalink: false},

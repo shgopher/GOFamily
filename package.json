@@ -24,6 +24,7 @@
     "moment": "^2.24.0",
     "puppeteer": "^1.11.0",
     "vuepress": "^1.4.0",
+    "vuepress-plugin-baidu-autopush": "^1.0.1",
     "vuepress-plugin-comment": "^0.7.3"
   }
 }
