@@ -10523,6 +10523,11 @@ vuepress-plugin-baidu-autopush@^1.0.1:
   resolved "https://repo.huaweicloud.com/repository/npm/vuepress-plugin-baidu-autopush/-/vuepress-plugin-baidu-autopush-1.0.1.tgz#e5042170f05a585c4a38f876e01ff4706cd82fbe"
   integrity sha512-KVQkrmMgPY+GG8dtI2wcRxUv1n2h5DM8aFs75ltsSlFBSS9C/vfLb2LmywXAsoCXk2EHya2p66cpn7BxofK+Mw==
 
+vuepress-plugin-baidu-tongji-analytics@^1.0.2:
+  version "1.0.2"
+  resolved "https://repo.huaweicloud.com/repository/npm/vuepress-plugin-baidu-tongji-analytics/-/vuepress-plugin-baidu-tongji-analytics-1.0.2.tgz#7ac884c7c31213e9458cac76f6ac79775a74d8aa"
+  integrity sha512-nrlExfAGnLhnniLdK4XAup2o2ZeE/lGT8jLJMAmFCD7AvDvf6Dl2hZ6LSK/8lS0p7ByUUCY4NGagqeqLn8N5mQ==
+
 vuepress-plugin-comment@^0.7.3:
   version "0.7.3"
   resolved "https://repo.huaweicloud.com/repository/npm/vuepress-plugin-comment/-/vuepress-plugin-comment-0.7.3.tgz#2cff36b8f90896a7f88d494d78458398b1510249"

@@ -64,6 +64,9 @@ module.exports = {
     ['@vuepress/back-to-top'],
     ['@vuepress/nprogress'],
     'vuepress-plugin-baidu-autopush',
+    ['vuepress-plugin-baidu-tongji-analytics', {
+      key: '45951f610a1fa82985715b79291a8de9'
+    }],
   ],
   markdown: {
     anchor: {permalink: false},
