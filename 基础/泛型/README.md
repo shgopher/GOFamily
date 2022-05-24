@@ -590,3 +590,4 @@ dst[i]= (interface{})(x).(T1)
 - https://colobu.com/2021/08/30/how-is-go-generic-implemented/
 - https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md
 - https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/generics
+- https://mp.weixin.qq.com/s/zKnh_iPm8skxWv3rxaOscw

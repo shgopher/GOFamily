@@ -88,6 +88,32 @@ module.exports = {
         text: '首页', link: '/'
       }, 
       {
+        text:"系列教程",
+        ariaLabel: 'Menu',
+        items:[
+          {
+            text:"GOFamily 【go语言教程】",
+            link:"https://shgopher.github.io/GOFamily/",
+          },
+          {
+            text:"408  【基础408知识教程】",
+            link:"https://shgopher.github.io/408/",
+          },
+          {
+            text:"luban  【系统设计教程】",
+            link:"https://shgopher.github.io/luban/",
+          },
+          {
+            text:"dingdang  【工具教程】",
+            link:"https://shgopher.github.io/dingdang/",
+          },
+          {
+            text:"god  【给程序员写的书】",
+            link:"https://shgopher.github.io/god/",
+          },
+        ]
+      },
+      {
         text:'微信公众号',link:'/#wechat.png',
       },
       {
@@ -340,63 +366,6 @@ module.exports = {
             ],
           },
         ]
-      },
-      {
-        title: '408',
-        collapsable: false,
-        children: [
-          {
-            title:'算法',
-            // path:'/408/并发/',
-            collapsable:true,
-            children:[],
-          },
-          {
-            title:'网络',
-            collapsable:true,
-            //path:'/408/网络/',
-            children:[],
-          },
-          {
-            title:'数据库',
-            collapsable:true,
-            // path:'/408/数据库/',
-            children:[],
-          },
-          {
-            title:'操作系统',
-            collapsable:true,
-            // path:'/408/操作系统/',
-            children:[],
-          },
-          {
-            title:'设计模式',
-            collapsable:true,
-            // path:'/408/设计模式/',
-            children:[],
-          },
-          {
-            title:'组成原理',
-            collapsable:true,
-            // path:'/408/组成原理/',
-            children:[],
-          },
-        ],
-      },
-      {
-        title: '架构设计',
-        collapsable: false,
-        children: [],
-      },
-      {
-        title: '技术方向',
-        collapsable: false,
-        children: [],
-      },
-      {
-        title: '其它',
-        collapsable: false,
-        children: [],
       },
     ],
   },
