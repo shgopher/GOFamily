@@ -88,9 +88,6 @@ module.exports = {
         text: '首页', link: '/'
       }, 
       {
-        text:'Github',link:'https://github.com/shgopher/GOFamily',
-      },
-      {
         text:'微信公众号',link:'/#wechat.png',
       },
       {
