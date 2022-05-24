@@ -122,251 +122,241 @@ module.exports = {
     ], 
     sidebar:[
       {
-        title: 'GO',
+        title: '基础',
         collapsable: false,
         children: [
           {
-            title:"基础",
-            collapsable: true,
-            path:'/go/基础/',
-            children: [
-              {
-                title: '变量声明',
-                path: '/go/基础/变量声明/',
-                collapsable: false,
-              },
-              {
-                title: '常量声明',
-                path: '/go/基础/常量声明/',
-                collapsable: false,
-              },
-              {
-                title: '零值',
-                path: '/go/基础/零值/',
-                collapsable: false,
-              },
-              {
-                title: '复合字面量',
-                path: '/go/基础/复合字面量/',
-                collapsable: false,
-              },
-              {
-                title: '数字类型',
-                path: '/go/基础/数字类型/',
-                collapsable: false,
-              },
-              {
-                title: 'slice',
-                path: '/go/基础/slice/',
-                collapsable: false,
-              },
-              {
-                title: 'string',
-                path: '/go/基础/string/',
-                collapsable: false,
-              },
-              {
-                title: 'map',
-                path: '/go/基础/map/',
-                collapsable: false,
-              },
-              {
-                title: '函数方法',
-                path: '/go/基础/函数方法/',
-                collapsable: false,
-              },
-              {
-                title: 'interface',
-                path: '/go/基础/interface/',
-                collapsable: false,
-              },
-              {
-                title: '逻辑和判断语句',
-                path: '/go/基础/逻辑和判断语句/',
-                collapsable: false,
-              },
-              {
-                title: '关键字',
-                path: '/go/基础/关键字/',
-                collapsable: false,
-              },
-              {
-                title: '泛型',
-                path: '/go/基础/泛型/',
-                collapsable: false,
-              },
-              {
-                title: '其他内容',
-                path: '/go/基础/其他内容/',
-                collapsable: false,
-              }
-            ]
+            title: '变量声明',
+            path: '/基础/变量声明/',
+            collapsable: false,
           },
           {
-            title: '并发',
-            collapsable: true,
-            path:'/go/并发/',
-            children:[
-                {
-                  title: '并发原语',
-                  collapsable: false,
-                  path:'/go/并发/并发原语/',
-                },
-                {
-                  title: 'channel',
-                  collapsable: false,
-                  path:'/go/并发/channel/',
-                },
-                {
-                  title: 'atomic',
-                  collapsable: false,
-                  path:'/go/并发/atomic/',
-                },
-                {
-                  title: 'context',
-                  collapsable: false,
-                  path:'/go/并发/context/',
-                },
-                {
-                  title: '并发模型',
-                  collapsable: false,
-                  path:'/go/并发/并发模型/',
-                },
-                {
-                  title: '内存模型',
-                  collapsable: false,
-                  path:'/go/并发/内存模型/',
-                },
-
-            ],
+            title: '常量声明',
+            path: '/基础/常量声明/',
+            collapsable: false,
           },
           {
-            title: 'runtime',
-            collapsable: true,
-            path:'/go/runtime/',
-            children:[
-              {
-                title: '三色gc算法',
-                collapsable: false,
-                path:'/go/runtime/三色gc算法/',
-              },
-              {
-                title: '堆内存分配',
-                collapsable: false,
-                path:'/go/runtime/堆内存分配/',
-              },
-              {
-                title: '栈内存管理',
-                collapsable: false,
-                path:'/go/runtime/栈内存管理/',
-              },
-              {
-                title: '系统监控',
-                collapsable: false,
-                path:'/go/runtime/系统监控/',
-              },
-              {
-                title: 'G:M:P',
-                collapsable: false,
-                path:'/go/runtime/gmp/',
-              },
-              {
-                title: '定时器',
-                collapsable: false,
-                path:'/go/runtime/定时器/',
-              },
-              {
-                title: 'netpool',
-                collapsable: false,
-                path:'/go/runtime/netpool/',
-              }
-            ],
+            title: '零值',
+            path: '/基础/零值/',
+            collapsable: false,
           },
           {
-            title: '工程',
-            collapsable: true,
-            path:'/go/工程/',
-            children:[
-              {
-                title: '测试',
-                collapsable: false,
-                path:'/go/工程/测试/',
-              },
-              {
-                title: '性能剖析',
-                collapsable: false,
-                path:'/go/工程/性能剖析/',
-              },
-              {
-                title: '包管理工具',
-                collapsable: false,
-                path:'/go/工程/包管理工具/',
-              },
-              {
-                title: '动态调试',
-                collapsable: false,
-                path:'/go/工程/动态调试/',
-              },
-              {
-                title: '错误处理',
-                collapsable: false,
-                path:'/go/工程/错误处理/',
-              }, 
-              {
-                title: 'cgo',
-                collapsable: false,
-                path:'/go/工程/cgo/',
-              },
-              {
-                title: 'golint',
-                collapsable: false,
-                path:'/go/工程/golint/',
-              },
-              {
-                title: '反射',
-                collapsable: false,
-                path:'/go/工程/反射/',
-              },
-              {
-                title: 'web',
-                collapsable: false,
-                path:'/go/工程/web/',
-              },
-              {
-                title: 'wasm',
-                collapsable: false,
-                path:'/go/工程/wasm/',
-              },
-              {
-                title: '命令',
-                collapsable: false,
-                path:'/go/工程/命令/',
-              },
-              {
-                title: '优秀第三方包',
-                collapsable: false,
-                path:'/go/工程/优秀第三方包/',
-              },
-              {
-                title: 'go标准库',
-                collapsable: false,
-                path:'/go/工程/go标准库/',
-              },
-              {
-                title: '项目组织形式',
-                collapsable: false,
-                path:'/go/工程/项目组织形式/',
-              },
-              {
-                title: 'go命名惯例',
-                collapsable: false,
-                path:'/go/工程/go命名惯例/',
-              },
-
-            ],
+            title: '复合字面量',
+            path: '/基础/复合字面量/',
+            collapsable: false,
           },
+          {
+            title: '数字类型',
+            path: '/基础/数字类型/',
+            collapsable: false,
+          },
+          {
+            title: 'slice',
+            path: '/基础/slice/',
+            collapsable: false,
+          },
+          {
+            title: 'string',
+            path: '/基础/string/',
+            collapsable: false,
+          },
+          {
+            title: 'map',
+            path: '/基础/map/',
+            collapsable: false,
+          },
+          {
+            title: '函数方法',
+            path: '/基础/函数方法/',
+            collapsable: false,
+          },
+          {
+            title: 'interface',
+            path: '/基础/interface/',
+            collapsable: false,
+          },
+          {
+            title: '逻辑和判断语句',
+            path: '/基础/逻辑和判断语句/',
+            collapsable: false,
+          },
+          {
+            title: '关键字',
+            path: '/基础/关键字/',
+            collapsable: false,
+          },
+          {
+            title: '泛型',
+            path: '/基础/泛型/',
+            collapsable: false,
+          },
+          {
+            title: '其他内容',
+            path: '/基础/其他内容/',
+            collapsable: false,
+          }
         ]
       },
+      {
+        title: '并发',
+        collapsable: false,
+        children:[
+          {
+            title: '并发原语',
+            collapsable: false,
+            path:'/并发/并发原语/',
+          },
+          {
+            title: 'channel',
+            collapsable: false,
+            path:'/并发/channel/',
+          },
+          {
+            title: 'atomic',
+            collapsable: false,
+            path:'/并发/atomic/',
+          },
+          {
+            title: 'context',
+            collapsable: false,
+            path:'/并发/context/',
+          },
+          {
+            title: '并发模型',
+            collapsable: false,
+            path:'/并发/并发模型/',
+          },
+          {
+            title: '内存模型',
+            collapsable: false,
+            path:'/并发/内存模型/',
+          },
+
+      ],
+      },
+      {
+        title: 'runtime',
+        collapsable: false,
+        children:[
+          {
+            title: '三色gc算法',
+            collapsable: false,
+            path:'/runtime/三色gc算法/',
+          },
+          {
+            title: '堆内存分配',
+            collapsable: false,
+            path:'/runtime/堆内存分配/',
+          },
+          {
+            title: '栈内存管理',
+            collapsable: false,
+            path:'/runtime/栈内存管理/',
+          },
+          {
+            title: '系统监控',
+            collapsable: false,
+            path:'/runtime/系统监控/',
+          },
+          {
+            title: 'G:M:P',
+            collapsable: false,
+            path:'/runtime/gmp/',
+          },
+          {
+            title: '定时器',
+            collapsable: false,
+            path:'/runtime/定时器/',
+          },
+          {
+            title: 'netpool',
+            collapsable: false,
+            path:'/runtime/netpool/',
+          }
+        ],
+      },
+      {
+        title: '工程',
+      collapsable: false,
+      children:[
+        {
+          title: '测试',
+          collapsable: false,
+          path:'/工程/测试/',
+        },
+        {
+          title: '性能剖析',
+          collapsable: false,
+          path:'/工程/性能剖析/',
+        },
+        {
+          title: '包管理工具',
+          collapsable: false,
+          path:'/工程/包管理工具/',
+        },
+        {
+          title: '动态调试',
+          collapsable: false,
+          path:'/工程/动态调试/',
+        },
+        {
+          title: '错误处理',
+          collapsable: false,
+          path:'/工程/错误处理/',
+        }, 
+        {
+          title: 'cgo',
+          collapsable: false,
+          path:'/工程/cgo/',
+        },
+        {
+          title: 'golint',
+          collapsable: false,
+          path:'/工程/golint/',
+        },
+        {
+          title: '反射',
+          collapsable: false,
+          path:'/工程/反射/',
+        },
+        {
+          title: 'web',
+          collapsable: false,
+          path:'/工程/web/',
+        },
+        {
+          title: 'wasm',
+          collapsable: false,
+          path:'/工程/wasm/',
+        },
+        {
+          title: '命令',
+          collapsable: false,
+          path:'/工程/命令/',
+        },
+        {
+          title: '优秀第三方包',
+          collapsable: false,
+          path:'/工程/优秀第三方包/',
+        },
+        {
+          title: 'go标准库',
+          collapsable: false,
+          path:'/工程/go标准库/',
+        },
+        {
+          title: '项目组织形式',
+          collapsable: false,
+          path:'/工程/项目组织形式/',
+        },
+        {
+          title: 'go命名惯例',
+          collapsable: false,
+          path:'/工程/go命名惯例/',
+        },
+
+      ],
+    }
     ],
   },
 }
