@@ -86,7 +86,30 @@ module.exports = {
     nav: [
       {
         text: '首页', link: '/'
-      }, 
+      },
+      {
+        text:"推荐项目",
+        ariaLabel: 'project',
+        items:[
+          {
+            text:"hui 【web框架】",
+            link:"https://github.com/shgopher/hui",
+          },
+          {
+            text:"key  【服务授权系统】",
+            link:"https://github.com/shgopher/key",
+          },
+          {
+            text:"ka  【秒杀服务】",
+            link:"https://github.com/shgopher/ka",
+          },
+          {
+            text:"go-short 【短链接服务】",
+            link:"https://github.com/shgopher/go-key",
+          },
+        ]
+      } 
+      ,
       {
         text:"系列教程",
         ariaLabel: 'Menu',
