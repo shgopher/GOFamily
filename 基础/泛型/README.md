@@ -591,3 +591,4 @@ dst[i]= (interface{})(x).(T1)
 - https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md
 - https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/generics
 - https://mp.weixin.qq.com/s/zKnh_iPm8skxWv3rxaOscw
+- https://mp.weixin.qq.com/s/BFsoQPvrog_sMKMTEofZyQ
