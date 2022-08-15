@@ -79,6 +79,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 
 ## 参考资料
 - [go.dev](https://go.dev)
+- [go src](https://github.com/golang/go)
 - [the go programming language](https://www.gopl.io/)
 - [GO 语言精进之路](https://book.douban.com/subject/35720729/)
 - [Go 语言设计与实现](https://draveness.me/golang/)

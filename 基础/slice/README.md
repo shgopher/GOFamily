@@ -166,10 +166,7 @@ a := struct{}{}
 
 如果数据是固定的，可以用数组，否则还是切片更加灵活，实际上绝大多数情况下还是切片更好用
 ## 参考资料
-- https://draveness.me/golang/
 - https://www.jianshu.com/p/9ea2fba64f06
 - https://chai2010.cn/advanced-go-programming-book
 - https://blog.csdn.net/kevin_tech/article/details/122138489
 - https://blog.csdn.net/weixin_39927993/article/details/112099007
-- 书籍：go语言精进之路
-- 极客时间专栏：go核心36讲

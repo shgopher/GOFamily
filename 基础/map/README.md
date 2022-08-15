@@ -218,8 +218,5 @@ func main() {
 可以使用cap重新生成一个map，然后使用遍历的方式将老的map数据导入到新的小的map中，如果你知道数据不会再次增大的情况下是可以这么做的。
 
 ## 参考资料
-- 书籍：go语言精进之路
 - https://github.com/golang/go/
-- https://time.geekbang.org/column/article/14123
 - https://blog.csdn.net/EDDYCJY/article/details/120465701
-- https://draveness.me/golang/docs/part2-foundation/ch03-datastructure/golang-hashmap/#33-%E5%93%88%E5%B8%8C%E8%A1%A8

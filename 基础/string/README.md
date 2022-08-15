@@ -273,6 +273,3 @@ go为某几种特别的情况优化了string和slice转换必须拷贝的情况�
 - string(b) 用在map的key中 `ma[string(b)]++` 
 - string(b) 在字符串的拼接句子中 "a" + string(b)
 - for-range中的string到[]byte的转换
-## 参考资料
-- 图书: go精进之路
-- https://draveness.me/golang/docs/part2-foundation/ch03-datastructure/golang-string/

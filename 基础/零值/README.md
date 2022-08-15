@@ -127,4 +127,3 @@ func foo(mu sync.Mutex) {
 
 ## 参考资料
 - https://github.com/golang/go/blob/037b209ae3e0453004a4d57e152aa522c56f79e4/src/bytes/buffer.go#L117
-- 图书:go语言精进之路
