@@ -137,7 +137,7 @@ module.exports = {
         ]
       },
       {
-        text:'微信公众号',link:'/#wechat.png',
+        text:'微信公众号',link:'#wechat.png',
       },
       {
         text:'作者',link:'https://shgopher.github.io/',
