@@ -77,6 +77,17 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [go项目组织形式](./工程/项目组织形式)
 - [go命名惯例](./工程/go命名惯例)
 
+## 参考资料
+- [go.dev](https://go.dev)
+- [the go programming language](https://www.gopl.io/)
+- [GO 语言精进之路](https://book.douban.com/subject/35720729/)
+- [Go 语言设计与实现](https://draveness.me/golang/)
+- [Go 语言编程模式实战](https://time.geekbang.org/opencourse/intro/100069501)
+- [Go 并发编程实战课](https://time.geekbang.org/column/intro/100061801)
+- [Go 语言项目开发实战](https://time.geekbang.org/column/intro/100079601)
+- [Go 语言核心 36 讲](https://time.geekbang.org/column/intro/100013101)
+- [手把手带你写一个 Web 框架](https://time.geekbang.org/column/intro/100090601)
+
 ## 扫一扫添加我的公众号，回复 “加群”，可以加入微信群。
 
 <p id="wechat.png" align="center">
