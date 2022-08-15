@@ -29,7 +29,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 ## 推荐项目
 - [ ] [hui](https://github.com/shgopher/hui) 一个简洁好用效率高的web框架
 - [ ] [key](https://github.com/shgopher/key) 一个服务授权系统
-- [x] [short](https://github.com/shgopher/go-short) 一个简单的短链接服务
+- [x] [short](https://github.com/shgopher/short) 一个简单的短链接服务
 - [ ] [go-short](https://github.com/shgopher/go-short) 一个微服务架构的短链接服务
 - [ ] [ka](https://github.com/shgopher/ka) 一个效率非常高的秒杀服务                             
 ## 基础
