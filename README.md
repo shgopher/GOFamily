@@ -23,13 +23,14 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 ## 系列教程
 - [x] [GOFamily](https://github.com/shgopher/GOFamily/) 一本为go后端程序员打造的教程
 - [x] [408](https://github.com/shgopher/408/) 一本主要以408知识为主的基础课程
-- [ ] [luban](https://github.com/shgopher/luban/) 一本用鲁班的名字命名，主要讲解系统设计的书籍
-- [ ] [dingdang](https://github.com/shgopher/dingdang/) 叮当，是一本讲解各种工具的书
-- [ ] [god](https://github.com/shgopher/god/) 给程序员写的教程，主要关于学习，副业，买房，面试等内容，程序员才是真神！
+- [x] [luban](https://github.com/shgopher/luban/) 一本用鲁班的名字命名，主要讲解系统设计的书籍
+- [x] [dingdang](https://github.com/shgopher/dingdang/) 叮当，是一本讲解各种工具的书
+- [x] [god](https://github.com/shgopher/god/) 给程序员写的教程，主要关于学习，副业，买房，面试等内容，程序员才是真神！
 ## 推荐项目
 - [ ] [hui](https://github.com/shgopher/hui) 一个简洁好用效率高的web框架
 - [ ] [key](https://github.com/shgopher/key) 一个服务授权系统
-- [ ] [go-short](https://github.com/shgopher/go-short) 一个超级好用的短链接服务
+- [x] [short](https://github.com/shgopher/go-short) 一个简单的短链接服务
+- [ ] [go-short](https://github.com/shgopher/go-short) 一个微服务架构的短链接服务
 - [ ] [ka](https://github.com/shgopher/ka) 一个效率非常高的秒杀服务                             
 ## 基础
 - [变量声明](./基础/变量声明)
