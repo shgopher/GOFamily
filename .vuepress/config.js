@@ -310,9 +310,9 @@ module.exports = {
           path:'/工程/性能剖析/',
         },
         {
-          title: '包管理工具',
+          title: '包及其构建工具',
           collapsable: false,
-          path:'/工程/包管理工具/',
+          path:'/工程/包及其构建工具/',
         },
         {
           title: '动态调试',

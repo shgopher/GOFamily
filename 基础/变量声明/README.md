@@ -5,8 +5,14 @@ var (
  a string
  b int32 = 1
 )
-var c map[int]string
-d := 12
+
+var c map[int]string //包级变量
+
+func hi(){
+  d := 12
+  var c map[int]string // 函数级变量
+}
+
 ```
 可以说声明的方式很多，在一个项目中应该尽量保证声明方式的一致性，可以大大减少理解代码的心志。
 
