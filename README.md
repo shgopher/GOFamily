@@ -17,7 +17,9 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 
 - `好友`, 可以添加作者的微信好友
 
-![](./GOFamily.png)                             
+![](./GOFamily.png)
+## 视频教程
+- [x] [《go语言从入门到实践》](https://github.com/shgopher/bestGO)
 ## 系列教程
 - [x] [GOFamily](https://github.com/shgopher/GOFamily/) 一本为go后端程序员打造的教程
 - [ ] [408](https://github.com/shgopher/408/) 一本主要以408知识为主的基础课程
