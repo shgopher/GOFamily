@@ -165,15 +165,19 @@ go: go.mod file not found in current directory or any parent directory.
 	or run 'go help get' or 'go help install'.
 ```
 
-所以这个时候应该使用的是 go install 
+所以这个时候应该使用的是 go install 。
 
-讲解GOPROXY。
+GOPROXY 是go的代理服务器。go之前使用GitHub，gitlab等托管平台，goproxy命令可以设置一个集中式的代理服务，比如`export GOPROXY = https://goproxy.cn,direct` ，`export GOPROXY = https://proxy.golang.org,direct` ，其中前者是国内常用的代理服务器，后者是 go 官方的代理服务器；`,direct`的意思是，**直接**使用代理服务器的内容，如果代理服务器出现404或者410错误的时候就去使用源地址的内容。这也是逗号符号的含义，即：仅仅 出现在前面的服务器404和410错误的时候才会去选择逗号后面的服务，如果想设置只要发生错误就使用后者的命令，那么可以使用`|`, 例如使用`go env -w GOPROXY= https://proxy.golang.org|https://goproxy.cn|direct`，这里有个小知识，因为`｜` 在unix-like 操作系统中通常还表示通道的含义，就是前面的输出等于后面的输入，所以我们需要将这个符号进行转义才能正常使用：`go env -w GOPROXY= https://proxy.golang.org\|https://goproxy.cn\|direct`
+
 
 讲解GOSUMDB。
+
+讲解 GOPRIVATE
 
 配置私有的GOPROXY。
 
 设置 workspace。
+
 
 
 
