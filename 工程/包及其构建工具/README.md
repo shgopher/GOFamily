@@ -39,6 +39,14 @@ import (
   app1  "github.com/googege/app"
 )
 ```
+除此之外还有只使用包中的init函数的 `_` 方式 
+
+```go
+// 该导包方式仅仅导入了td的init函数
+import(
+	_ "github.com/shgopher/td"
+)
+```
 
 ## go module 构建工具
 - go111MODULE
