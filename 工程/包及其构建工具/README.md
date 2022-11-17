@@ -199,36 +199,52 @@ GOSUMDB 是为了校验本地缓存的包跟go.sum取的包校验和是否一致
 ```bash
 export GOPRIVATE = github.com/shgopher/privateFiles
 ```
-除了设置这个命令之外，还需要设置一个密钥用来访问GitHub上的私有仓库:
-1. 将主机公钥（～/.ssh/id_rsa.pub）添加到github.com的ssh keys中。
+除了设置这个命令之外，还需要设置一个密钥用来访问GitHub上的私有仓库
 
-	```bash
-		#我们谈一下如果生成公钥：
-		## 在～/.ssh/ 路径下
-		ssh-keygen -t rsa -C "个人邮箱"
-		## 将这个id_rsa.pub中的公钥 添加到GitHub中的ssh keys 中
-	```
-	这种方式是自己保留私钥，把公钥给GitHub，我们还可以通过GitHub自己生成公钥和私钥，然后我们保留的是公钥，GitHub保留私钥，如果按照这种方式：
-	```bash
-		# 在GitHub personal access tokens中申请即可，然后配置在～/.netrc
+使用ssh或者是GitHub personal access tokens
 
-		machine github.com
-		login shgopher
-		password 你的 personal access tokens
-	```
-2. 在~/.gitconfig中添加
-	```bash
-	[url "ssh://git@github.com"]
-		insteadOf = https://github.com
-	```
-	如果是本地服务器那么就是
-	```bash
-	[url "ssh://git@local.com"]
-		insteadOf = https://git.local.com
-	```
+使用ssh，将主机公钥（～/.ssh/id_rsa.pub）添加到github.com的ssh keys中。
 
+```bash
+	#我们谈一下如果生成公钥：
+	## 在～/.ssh/ 路径下
+	ssh-keygen -t rsa -C "个人邮箱"
+	## 将这个id_rsa.pub中的公钥 添加到GitHub中的ssh keys 中
+```
+如果使用ssh的方式获取代码，那么在~/.gitconfig中添加(这一步其实就是一个映射：保持你的日常习惯的情况下，使用了ssh)
+```bash
 
-其实这个命令的意义就是绕过代理服务器直达目标。
+[url "ssh://git@github.com"]
+	insteadOf = https://github.com
+```
+如果是本地服务器那么就是
+```bash
+[url "ssh://git@local.com"]
+	insteadOf = https://git.local.com
+```
+不过要注意一下，如果使用ssh 那么远程的服务就得变更名称，因为通常我们的GitHub给我们的都是https的方式，使用ssh的话就是：
+```bash
+ git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
+```
+从ssh更改为https就是
+
+```go
+git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+```
+
+使用 GitHub personal access token的方式
+```bash
+# 在GitHub personal access tokens中申请即可，然后配置在～/.netrc
+
+machine github.com
+login shgopher
+password 你的 personal access tokens
+```
+
+更多关于GitHub访问的信息可以访问[这里](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-ssh-to-https)
+
+我个人建议直接使用 GitHub的 personal access	tokens（仅支持https） 这种令牌的方式代替密码，并且使用https即可，最简单最好用，
+
 
 
 
