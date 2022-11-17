@@ -167,12 +167,72 @@ go: go.mod file not found in current directory or any parent directory.
 
 所以这个时候应该使用的是 go install 。
 
-GOPROXY 是go的代理服务器。go之前使用GitHub，gitlab等托管平台，goproxy命令可以设置一个集中式的代理服务，比如`export GOPROXY = https://goproxy.cn,direct` ，`export GOPROXY = https://proxy.golang.org,direct` ，其中前者是国内常用的代理服务器，后者是 go 官方的代理服务器；`,direct`的意思是，**直接**使用代理服务器的内容，如果代理服务器出现404或者410错误的时候就去使用源地址的内容。这也是逗号符号的含义，即：仅仅 出现在前面的服务器404和410错误的时候才会去选择逗号后面的服务，如果想设置只要发生错误就使用后者的命令，那么可以使用`|`, 例如使用`go env -w GOPROXY= https://proxy.golang.org|https://goproxy.cn|direct`，这里有个小知识，因为`｜` 在unix-like 操作系统中通常还表示通道的含义，就是前面的输出等于后面的输入，所以我们需要将这个符号进行转义才能正常使用：`go env -w GOPROXY= https://proxy.golang.org\|https://goproxy.cn\|direct`
+GOPROXY 是go的代理服务器。go之前使用GitHub，gitlab等托管平台，goproxy命令可以设置一个集中式的代理服务，比如
+
+```bash
+export GOPROXY = https://goproxy.cn,direct 
+
+export GOPROXY = https://proxy.golang.org,direct
+
+```
+
+其中前者是国内常用的代理服务器，后者是 go 官方的代理服务器；`direct` 的意思是，**直接**使用代理服务器的内容，`,` 的意思是前面的服务器**只有**出现404和410错误的时候才会去选择逗号后面的服务，如果想设置只要发生错误就使用后者的命令，那么可以使用`|`, 例如使用
+
+```bash
+go env -w GOPROXY=https://proxy.golang.org|https://goproxy.cn|direct`
+```
+
+这里有个小知识，因为`｜` 在unix-like 操作系统中通常还表示通道的含义，就是前面的输出等于后面的输入，所以我们需要将这个符号进行转义才能正常使用：
+
+```bash
+go env -w GOPROXY= https://proxy.golang.org\|https://goproxy.cn\|direct
+
+```
 
 
-讲解GOSUMDB。
 
-讲解 GOPRIVATE
+GOSUMDB 是为了校验本地缓存的包跟go.sum取的包校验和是否一致。如果不一致就会报错，如果一个新的包，它未进入go.sum，在一切运行正确的情况下，go会通过GOSUMDB配置的数据库去查询这个包的校验和，查询出结果后和下载的包进行比对，正确的情况下存入go.sum；如果一个已经缓存的包，每次run build的时候都会将缓存的包文件校验跟go.sum进行比对来保证正确性。
+
+当然，如果你不想使用GOSUMDB，使用`go env -w GOSUMDB=off` 即可。
+
+我们讲解了如果配置公有的代理服务器 GOPROXY，文件校验和数据库GOSUMDB，接下来我们谈一下如果我们想使用一个私有的包，比如一个GitHub上的私有包，一个本地git服务器上的包，我们使用GOPRIVATE，它的目的就是绕过GOPROXY和GOSUMDB，因为是私有的所以在代理服务器和文件校验和数据库都不会有它的记录，我们可以这么设置
+```bash
+export GOPRIVATE = github.com/shgopher/privateFiles
+```
+除了设置这个命令之外，还需要设置一个密钥用来访问GitHub上的私有仓库:
+1. 将主机公钥（～/.ssh/id_rsa.pub）添加到github.com的ssh keys中。
+
+	```bash
+		#我们谈一下如果生成公钥：
+		## 在～/.ssh/ 路径下
+		ssh-keygen -t rsa -C "个人邮箱"
+		## 将这个id_rsa.pub中的公钥 添加到GitHub中的ssh keys 中
+	```
+	这种方式是自己保留私钥，把公钥给GitHub，我们还可以通过GitHub自己生成公钥和私钥，然后我们保留的是公钥，GitHub保留私钥，如果按照这种方式：
+	```bash
+		# 在GitHub personal access tokens中申请即可，然后配置在～/.netrc
+
+		machine github.com
+		login shgopher
+		password 你的 personal access tokens
+	```
+2. 在~/.gitconfig中添加
+	```bash
+	[url "ssh://git@github.com"]
+		insteadOf = https://github.com
+	```
+	如果是本地服务器那么就是
+	```bash
+	[url "ssh://git@local.com"]
+		insteadOf = https://git.local.com
+	```
+
+
+其实这个命令的意义就是绕过代理服务器直达目标。
+
+
+
+
 
 配置私有的GOPROXY。
 
