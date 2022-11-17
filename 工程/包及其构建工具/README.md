@@ -39,14 +39,38 @@ import (
   app1  "github.com/googege/app"
 )
 ```
-除此之外还有只使用包中的init函数的 `_` 方式 
+除此之外还有只使用包中的init函数的 `_` 方式，它会计算包级变量的初始化表达式和执行导入包的init初始化函数，意思就是跟init函数有关的内容都会被计算，并且导入进去。
 
 ```go
-// 该导包方式仅仅导入了td的init函数
-import(
-	_ "github.com/shgopher/td"
+package main
+
+import (
+	"fmt"
+	"image"
+	"image/jpeg"
+	_ "image/png"
+	"io"
+	"os"
 )
+
+func main() {
+	if err := toJPEG(os.Stdin, os.Stdout); err != nil {
+		fmt.Fprintf(os.Stderr, "jpeg: %v\n", err)
+		os.Exit(1)
+	}
+}
+
+func toJPEG(in io.Reader, out io.Writer) error {
+	img, kind, err := image.Decode(in)
+	if err != nil {
+		return err
+	}
+	fmt.Fprintln(os.Stderr, "Input format =", kind)
+	return jpeg.Encode(out, img, &jpeg.Options{Quality: 95})
+}
+
 ```
+比如这个例子，image.Decode会查询注册表，看看注册表里都有谁，这个时候我们引入的_ iumage/png 的init函数就是将png中实现了接口的具体数据导入到了注册表中，所以说这里只需要导入这个init函数即可。
 
 ## go module 构建工具
 - go111MODULE
