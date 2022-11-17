@@ -1,4 +1,13 @@
 # go包管理工具
+- go导包的过程
+- go 包的版本管理
+- go 包的最小版本原则
+- go module 命令的使用
+	- go get / go install
+	- GOPROXY
+	- GOSUMDB
+	- go 使用私有服务器
+	- workspace
 ## go语言的包导入过程
 - go编译快的原因
 - go程序的构建过程
@@ -64,6 +73,11 @@ module github.com/shgopher/hello
 
 go 1.19
 
+replace (
+	// 后面指向的要么是相对路径例如 ../shgopher/.com/net
+	// 要么一定要在后面加上版本，并且是可以获取到的包
+	golang.org/x/net v1.1.2 => shgopher.com/net v1.4.5
+)
 require (
   github.com/apache/thrift v0.13.0
   github.com/bytedance/gopkg v0.0.0-20220531084716-665b4f21126f
@@ -89,7 +103,7 @@ require (
 
 1. 使用 git version 命名的版本 `v0.13.0 `
 2. 项目没有使用 version 命名，go官方使用最新的文件，并且给予了它一个临时的版本号 `v0.0.0-20220531084716-665b4f21126f`
-3. 当项目的版本超过1.x的时候，go推荐使用再加上一个/v2 的方式进行命名，但是实际上它的包名称仍然是gin-jwt，并且1.x和2.x的包可以同时引入项目中，因为他们算两个包，只需要重命名即可。
+3. 当项目的版本超过1.x的时候，go推荐使用再加上一个/v2 的方式进行命名，但是实际上它的包名称仍然是gin-jwt，并且1.x和2.x的包可以同时引入项目中，因为他们算两个包，只需要重命名即可。版本2和版本1的module后面写的也不一样，比如一个是`module github.com/shgopher/collie`版本2就是 `module github.com/shgopher/collie/v2` 不过虽然最后结尾的是v2 但是package 后面写的仍然是collie
 4. 也可以使用yaml.v3 的方式进行命名，因为路径名称并不是包的名称，所以这种方式也有不少项目使用
 
 第二个require，全部都是间接引用的包名称，go也会一并下载到本地缓存，go会使用 `～/go/pkg/mod/包名称@版本号` 的地方去保存下载下来的包。
@@ -129,9 +143,7 @@ require (
 
 go包采用“最小版本”选择的理念。举个例子，我的项目hello，直接引入了c包和d包，然后c和d又分别引入了e包，那么最后本项目使用的 c,d,e 包采用的是哪个版本呢？
 
-我们详细说明一下，假设我们使用的cde都是@latest，那么每次build的时候，都会去下载最新的包；如果我们使用了具体的版本，假设我们在go.mod 中给定的c d 分别是 v0.1.0 v1.0.1 但是呢，c存在多个版本，比如现在有 v0.1.1 v0.2.1 那么根据最小版本的选择问题，go会选择一个符合v0.1.0 的最小版本，即：>=v0.1.0 ,所以此处会选用v0.1.1 ,也就是说go的版本的隐藏含义是大于等于选最小，很多别的语言都是大于等于选最大，例如rust，但是强调一下，**这个大于等于选最大或者最小说的是一个版本的情况下，超过版本号的时候，算俩包（例如v1.1.0 和 v2.1.0 就算俩大版本了）**，而且我们在改变版本的时候应该先把缓存给清除了`go clean -modcache`，接下来我们的cd包分别引入了e包，假如e存在 v1.1.0 v1.2.0 v1.3.0 v1.4.0 ,c d 分别引入的是 v1.1.0 v1.3.0 那么go会合并请求，并且依然采用最小版本的方式即：最终只选用e包的v1.3.0 这一个版本的包引入，总结一下：单个包，使用 >= 的最小值引入，多个包引入同一个包的情况，使用满足他们共同条件下的最小值。
-
-go module 还有 go.sum 这个文件，它存储的是包的一些基础信息，最重要的是对于一个包求hash值，记录这个hash，在每次build的时候对于缓存的包和go.sum中的hash值做对比，来规避恶意更改，go.sum 会在项目的更新换代过程中保存多个版本的包信息。
+我们详细说明一下，假设我们使用的cde都是@latest，那么每次build的时候，都会去下载最新的包；如果我们使用了具体的版本，假设我们在go.mod 中给定的c d 分别是 v0.1.0 v1.0.1 但是呢，c存在多个版本，比如现在有 v0.1.1 v0.2.1 那么根据最小版本的选择问题，go会选择一个符合v0.1.0 的最小版本，即：>=v0.1.0 ,所以此处会选用v0.1.1 ,也就是说go的版本的隐藏含义是大于等于选最小，很多别的语言都是大于等于选最大，例如rust，但是强调一下，**这个大于等于选最大或者最小说的是一个版本的情况下，超过版本号的时候，算俩包（例如v1.1.0 和 v2.1.0 就算俩大版本了，所以说他们是俩包都不为过）**，而且我们在改变版本的时候应该先把缓存给清除了`go clean -modcache`，接下来我们的cd包分别引入了e包，假如e存在 v1.1.0 v1.2.0 v1.3.0 v1.4.0 ,c d 分别引入的是 v1.1.0 v1.3.0 那么go会合并请求，并且依然采用最小版本的方式即：最终只选用e包的v1.3.0 这一个版本的包引入，总结一下：单个包，使用 >= 的最小值引入，多个包引入同一个包的情况，使用满足他们共同条件下的最小值。
 
 使用go mod tidy 可以对这个项目的包进行梳理，比如使用latest的包会重新比对，然后下载最新版本的包，比如在require中明确引入的包，但是在实际上线前发现没有继续使用这个包了，那么使用go mod tidy 也可以删除这个包，这个命令类似于 “刷新” 这个概念。
 
@@ -188,16 +200,17 @@ go env -w GOPROXY=https://proxy.golang.org|https://goproxy.cn|direct`
 go env -w GOPROXY= https://proxy.golang.org\|https://goproxy.cn\|direct
 
 ```
+go module 还有 go.sum 这个文件，它存储的是包的一些基础信息，最重要的是对于一个包求hash值，记录这个hash，在每次build的时候对于缓存的包和go.sum中的hash值做对比，来规避恶意更改，go.sum 会在项目的更新换代过程中保存多个版本的包信息。
 
-
-
-GOSUMDB 是为了校验本地缓存的包跟go.sum取的包校验和是否一致。如果不一致就会报错，如果一个新的包，它未进入go.sum，在一切运行正确的情况下，go会通过GOSUMDB配置的数据库去查询这个包的校验和，查询出结果后和下载的包进行比对，正确的情况下存入go.sum；如果一个已经缓存的包，每次run build的时候都会将缓存的包文件校验跟go.sum进行比对来保证正确性。
+GOSUMDB命令指向的服务就是保存公有包的校验和的数据库。一个新的包，在一切运行正确的情况下，go会通过GOSUMDB配置的数据库去查询这个包的校验和，查询出结果后和下载的包进行比对，正确的情况下存入go.sum；如果一个已经缓存的包，每次run build的时候都会将缓存的包文件校验跟go.sum进行比对来保证正确性。
 
 当然，如果你不想使用GOSUMDB，使用`go env -w GOSUMDB=off` 即可。
 
 我们讲解了如果配置公有的代理服务器 GOPROXY，文件校验和数据库GOSUMDB，接下来我们谈一下如果我们想使用一个私有的包，比如一个GitHub上的私有包，一个本地git服务器上的包，我们使用GOPRIVATE，它的目的就是绕过GOPROXY和GOSUMDB，因为是私有的所以在代理服务器和文件校验和数据库都不会有它的记录，我们可以这么设置
 ```bash
-export GOPRIVATE = github.com/shgopher/privateFiles
+# 意思是这个路径下的所有包都不会经过代理服务器了。
+# 这个命令支持多个路径使用逗号分隔
+export GOPRIVATE = shgopher.com,shgopher.io,*.api.shgopher.com
 ```
 除了设置这个命令之外，还需要设置一个密钥用来访问GitHub上的私有仓库
 
@@ -240,26 +253,79 @@ machine github.com
 login shgopher
 password 你的 personal access tokens
 ```
+通常在macOS中，git输入的username和令牌会自动的缓存，不用设置这个配置文件。
 
 更多关于GitHub访问的信息可以访问[这里](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-ssh-to-https)
 
 我个人建议直接使用 GitHub的 personal access	tokens（仅支持https） 这种令牌的方式代替密码，并且使用https即可，最简单最好用，
+另外如果你的令牌更新了，假设是Macos的情况下，可以去钥匙串访问中的互联网密码种类中去更新令牌
 
+如果我们引入的包是不支持https协议的，那么我们可以设置 `GOINSECURE = private.res.com` 来使用这种私有库。
 
+go仅仅支持https和http标准端口的带有域名的包，比如我们使用ip，或者端口不是80和443，那么设置GOPROXY和GOPRIVATE GOINSECURE 都没用了。
 
+比如类似这种:
 
+```go
+import 192.168.1.1:9090/test/t
+```
+这种直接使用ip的方式不能写到go的代码中，所以我们可以使用git的insteadof功能来改变一下，使用一个正常的url去改变掉这个ip
 
+```go
+# ~/.gitconfig
+[url "132.148.1.1:9090/test/t"]
+	insteadof="shgopher.com/test/t"
+```
+这个时候你引入的时候写 shgopher.com/test/t 就可以了，它会自己找192.168.1.1:9090/test/t 真实值去代理，并且shgopher.com/test/t也要加入到GOPRIVATE中才可以。
 
-配置私有的GOPROXY。
+这个时候有个问题，就是如果shgopher.com 没有配置版本管理软件，例如git这种，go是无法获取数据的，go一般会存储一些网站，例如GitHub，gitlab，所以它看到类似github.com/xxx/的地址就去找使用git，或者你手动写上git，比如shgopher/d/x.git go也会明白你使用的git，go还能发送请求的方式去获取你使用的版本软件，比如 golang.org/x/net go就会请求 https://golang.org/x/net?go-get=1 这个服务提供了一个html：
 
-设置 workspace。
+```html
+<head>
+<meta name="go-import" content="golang/x/net git https://go.googlesource.com/net">
+<meta name="go-source" content="golang.org/x/net https://github.com/golang/net">
+<head>
+```
+这表示这个golang.org/x/net 的包实际是通过git的方式从https://go.googlesource.com/net获取的。
 
+我们可以让shgopher.com?go-get=1 返回一个html，在里面设置为 content="shgopher.com/test/t git 132.148.1.1:9090/test/t"。
 
+老老实实的使用go推荐的导包方式，即便是私有包也好好的安排一个git版本服务器，仅限内部使用的话，配置好GOPRIVATE并且使用ssh公钥和私钥或者GPG的方式加密获取包。
 
+配置私有的GOPROXY，你不能总想着靠别人，如果想搭建一个属于自己的goproxy服务器，那么可以使用 https://github.com/goproxy/goproxy 这个项目
 
+go推出了仅用于本地开发的workspace，我们来介绍一下这个功能，比如说我们要在一个项目中你引入一个还未公开到公共仓库的包github.com/shgopher/hui，那么在这个时候就需要workspace了。
+```go
+package main
 
+import(
+	"github.com/shgopher/hui"
+)
+```
+很显然这个包还未发布，所以不可能引入，在之前通常使用replace的方式，但是又了workspace以后，不到特定的场景就不需要使用replace，比如尚未发布的包这种场景用workspace最好用。
 
+使用go work init 来创建一个工作区，go.work 形如：
+```go
+//go.work
+go1.19
+
+use(
+	. //go.work当前路径是可以省略的
+	/Users/ddd/src/go/hui
+)
+
+```
+go.work 可以设置在需要工作区的路径的父路径 (如果父路径没有就会一直忘外寻找直到 根路径 ) ，工作区中的命令会向外部去寻找go.work，所以我们通常可以在需要workspace的地方的父路行下设置go.work，并且设置为绝对路径这样简单高效,记住，路径是不包含子路径的，比如本来是/workspace/go1 但是你设置的是/workspace 那么就是错的，它会寻找/workspace中有没有go.mod 它以go.mod 作为寻找对象。当然了一个包的子包（例如/workspace/go1/a）无需再写进去go.work中，它跟外部的包是一个包。
+
+```go
+use(
+	/workspace/a
+	/workspace/b
+	/workspace/c
+)
+```
+
+在工作区同样可以设置replace，但是级别没有go.mod中的高，会被go.mod 覆盖。
 
 ## 参考资料
-- https://dev.to/gophers/what-are-go-workspaces-and-how-do-i-use-them-1643
-- https://zhuanlan.zhihu.com/p/432763448
+- https://go.dev/blog/get-familiar-with-workspaces
