@@ -72,6 +72,19 @@ func toJPEG(in io.Reader, out io.Writer) error {
 ```
 比如这个例子，image.Decode会查询注册表，看看注册表里都有谁，这个时候我们引入的_ iumage/png 的init函数就是将png中实现了接口的具体数据导入到了注册表中，所以说这里只需要导入这个init函数即可。
 
+另外还有一种导入包的奇妙用法，就是
+
+```go
+	. "fmt"
+
+	func main(){
+		println("hi")
+	}
+```
+它的意思是省略包名，很蠢，不要这么用。
+
+## 导包的顺序
+
 ## go module 构建工具
 - go111MODULE
 - GOPROXY 
