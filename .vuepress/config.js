@@ -300,6 +300,11 @@ module.exports = {
       collapsable: false,
       children:[
         {
+          title: '包及其构建工具',
+          collapsable: false,
+          path:'/工程/包及其构建工具/',
+        },
+        {
           title: '测试',
           collapsable: false,
           path:'/工程/测试/',
@@ -308,11 +313,6 @@ module.exports = {
           title: '性能剖析',
           collapsable: false,
           path:'/工程/性能剖析/',
-        },
-        {
-          title: '包及其构建工具',
-          collapsable: false,
-          path:'/工程/包及其构建工具/',
         },
         {
           title: '动态调试',
