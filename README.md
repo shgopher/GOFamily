@@ -73,28 +73,6 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [优雅的go代码](./go/2/beautifulGo.md)
 - [go常用设计模式](./go/2/goPatterns.md)
 - [go编程模式](./go/2/codeSpecification.md)
-## 附录：go语言的标准库的简要用法
-- [net](./go/3/net.md)
-- [http](./go/3/http.md)
-- [rpc](./go/3/rpc.md)
-- [time](./go/3/time.md)
-- [io](./go/3/io.md)
-- [bufio](./go/3/bufio.md)
-- [container](./go/3/container.md)
-- [sql](./go/3/sql.md)
-- [crypto](./go/3/crypto.md)
-- [encoding](./go/3/encoding.md)
-- [flag](./go/3/flag.md)
-- [fmt](./go/3/fmt.md)
-- [os](./go/3/os.md)
-- [syscall](./go/3/syscall.md)
-- [text](./go/3/text.md)
-- [strconv](./go/3/strconv.md)
-- [sort](./go/3/sort.md)
-- [strings](./go/3/strings.md)
-- [atom](./go/3/atom.md)
-- [log](./go/3/log.md)
-- [json](./go/3/json.md)  
 # 408
 ## 算法
 ### 数据结构
@@ -143,85 +121,24 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [短地址生成算法](./408/1/.md)
 - [朴素贝叶斯算法](./408/1/.md)
 - [抢红包算法](./408/1/redPacket.md)
-### 算法题解题思路
-- [解题模版](./408/1/template.md)
-- [鸽巢理论](./408/1/pigeon.md)
-- [求连续子序列的值](./408/1/contiguousSubsequences.md)
-- [动态规划之股票问题](./408/1/dpStock.md)
-### 算法题题解
-> 算法题共260题左右，这里只显示一部分，点击[URL](./408/1/leetcode)可以查看更多
-                             
-- [2sum](./408/1/leetcode/algo/1.md)
-- [2sum ii](./408/1/leetcode/algo/167.md)
-- [3sum](./408/1/leetcode/algo/15.md)
-- [3sum closest](./408/1/leetcode/algo/16.md)
-- [4sum](./408/1/leetcode/algo/18.md)
-- [4sum ii](./408/1/leetcode/algo/454.md)
-- [remove duplicates from sorted array](./408/1/leetcode/algo/26.md)
-- [remove duplicates from sorted array ii](./408/1/leetcode/algo/80.md)
-- [longest consecutive sequence](./408/1/leetcode/algo/128.md)
 
-### 数据库题题解
-> 点击[URL](./408/1/leetcode)可以查看更多
-
-- [组合两个表](./408/1/leetcode/sql/combine-two-tables.md)
-- [查找重复的电子邮件](./408/1/leetcode/sql/duplicate-emails.md)
-- [删除重复的电子邮件](./408/1/leetcode/sql/delete-duplicate-emails.md)
-- [行程和用户](./408/1/leetcode/sql/trips-and-users.md)
-- [第二高的薪水](./408/1/leetcode/sql/second-highest-salary.md)
-### 多线程题题解
-> 点击[URL](./408/1/leetcode)可以查看更多
-
-- [H20的生成](./408/1/leetcode/chan/h20.md)
-- [哲学家进餐](./408/1/leetcode/chan/the-dining-philosophers.md)
-- [按序打印](./408/1/leetcode/chan/print-in-order.md)
-- [交替打印abcd](./408/1/leetcode/chan/abcd.md)
-- [打印零和奇偶数](./408/1/leetcode/chan/print-zero-even-odd.md)
-- [交替打印字符串](./408/1/leetcode/chan/fizz-buzz-multithreaded.md)
-### shell脚本题题解
-> 点击[URL](./408/1/leetcode)可以查看更多
-
-- [统计词频](./408/1/leetcode/shell/word-frequency.md)
-- [有效的电话号码](./408/1/leetcode/shell/valid-phone-numbers.md)
-- [转置文件](./408/1/leetcode/shell/transpose-file.md)
-- [第十行](./408/1/leetcode/shell/tenth-line.md)
-### 智力题
-> 点击[URL](./408/1/leetcode/)可以查看更多
-
-- [1000瓶药水找毒药](./408/1/leetcode/iq/1.md)
-- [抢30](./408/1/leetcode/iq/2.md)
-- [灯泡开关](./408/1/leetcode/iq/3.md)
-- [烧绳子](./408/1/leetcode/iq/4.md)
-- [圆环回到原点](./408/1/leetcode/iq/5.md)
 ## 设计模式
 ### 设计模式基础
 ### 创建型
 - [单例模式](./408/2/singleton.md)
 - [工厂模式](./408/2/factory.md)
-- 创建者模式
-- 原型模式
-- 对象池
+
 ### 结构型
-- 中介者模式
-- 观察者模式
-- 命令模式
-- 迭代器模式
+
 - [模版模式](./408/2/template.md)
 - [策略模式](./408/2/strategy.md)
-- 状态模式
-- 备忘录模式
-- 解释器模式
-- 职责链模式
+
 - 访问者模式
 ### 行为型
-- 外观模式
-- 适配器模式
+
 - [选项模式](./408/2/options.md)
 - [代理模式](./408/2/proxy.md)
-- 组合模式
-- 享元模式
-- 装饰模式
-- 桥接模式
+
 
 # 系统设计
 ## 架构设计基础
