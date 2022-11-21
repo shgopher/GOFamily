@@ -330,9 +330,9 @@ module.exports = {
           path:'/工程/cgo/',
         },
         {
-          title: 'golint',
+          title: '代码检查',
           collapsable: false,
-          path:'/工程/golint/',
+          path:'/工程/代码检查/',
         },
         {
           title: '反射',

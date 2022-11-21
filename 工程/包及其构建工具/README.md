@@ -205,7 +205,7 @@ replace (
 
 我们一个一个解释，首先 最开头的是 这个包的路径名称，实际上go会使用 `git clone https://github.com/shgopher/hello.git ` 的方式下载包，当然，假设你不使用GitHub的git作为项目的存储位置，使用自建的也是OK的，比如 `module shgopher.com/hello` 只要同样配置了git服务器都可以，因为底层都是使用的 `git clone https://xxx.com/xx.git` 模式。
 
-接下来的 `go 1.19` 是这个项目使用的go的大版本，比如你使用的是 `1.19.1` ， `1.19.2` ， 上面写的都是`go 1.19` 。
+接下来的 `go 1.19` 是这个项目使用的go的大版本，比如你使用的是 `1.19.1` ， `1.19.2` ， 上面写的都是`go 1.19`，比如你使用 `go mod edit -go=1.19 `来更新此项目使用的go版本的时候，只能写到minor，而不能加上patch（minor和patch下文有说）。
 
 接下里有两个require，其中 第一个require指的是直接引入的包，后面的require是间接引用的包。意思就是你引用的包，它引入的包。
 
