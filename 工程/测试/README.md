@@ -8,6 +8,7 @@ go中的测试一共分为如下类型
 - 子测试/子基准测试
 - main函数测试
 - [模糊测试](./模糊测试.md)
+- mock
 ## testing/fstest 包
 - 文件系统的测试
 ## testing/iotest 包
@@ -19,3 +20,4 @@ go中的测试一共分为如下类型
 - http 服务端测试
 ## 参考资料
 - https://mp.weixin.qq.com/s/41ux7cA-GXYTfeS5juP3wA
+- https://github.com/golang/mock

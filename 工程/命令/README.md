@@ -48,3 +48,16 @@ gofmt的目的是标准化go语言的代码，增加代码的亲切感，消除�
 
 这个工具都会一一管理，少了加上，多了取消掉
 
+## go build
+## go install
+## go get
+## go clean
+## go doc godoc
+## go run
+## go test
+## go list
+## go fix go tool fix
+## go vet / go tool vet
+## go tool pprof
+## go tool cgo
+## go env
