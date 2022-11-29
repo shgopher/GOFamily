@@ -186,6 +186,16 @@ module.exports = {
             collapsable: false,
           },
           {
+            title: '求值顺序',
+            path: '/基础/求值顺序/',
+            collapsable: false,
+          },
+          {
+            title: '作用域',
+            path: '/基础/作用域/',
+            collapsable: false,
+          },
+          {
             title: '函数方法',
             path: '/基础/函数方法/',
             collapsable: false,
@@ -222,6 +232,16 @@ module.exports = {
         collapsable: false,
         children:[
           {
+            title: '内存模型',
+            collapsable: false,
+            path:'/并发/内存模型/',
+          },
+          {
+            title: '并发模型',
+            collapsable: false,
+            path:'/并发/并发模型/',
+          },
+          {
             title: '并发原语',
             collapsable: false,
             path:'/并发/并发原语/',
@@ -241,16 +261,8 @@ module.exports = {
             collapsable: false,
             path:'/并发/context/',
           },
-          {
-            title: '并发模型',
-            collapsable: false,
-            path:'/并发/并发模型/',
-          },
-          {
-            title: '内存模型',
-            collapsable: false,
-            path:'/并发/内存模型/',
-          },
+          
+         
 
       ],
       },
@@ -310,11 +322,6 @@ module.exports = {
           path:'/工程/测试/',
         },
         {
-          title: '性能剖析',
-          collapsable: false,
-          path:'/工程/性能剖析/',
-        },
-        {
           title: '动态调试',
           collapsable: false,
           path:'/工程/动态调试/',
@@ -350,6 +357,11 @@ module.exports = {
           path:'/工程/wasm/',
         },
         {
+          title: 'ioc',
+          collapsable: false,
+          path:'/工程/ioc/',
+        },
+        {
           title: '命令',
           collapsable: false,
           path:'/工程/命令/',
@@ -374,6 +386,11 @@ module.exports = {
           collapsable: false,
           path:'/工程/go命名惯例/',
         },
+        {
+          title: 'go语言规范',
+          collapsable: false,
+          path:'/工程/go语言规范/',
+        }, 
 
       ],
     }
