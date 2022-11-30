@@ -1,5 +1,5 @@
 # 代码检查工具
-代码检查通常会被配置再cicd中，用于自动检查代码的质量，本次我们介绍三个用于代码检查的工具
+代码检查通常会被配置再CI中，用于自动检查代码的质量，本次我们介绍三个用于代码检查的工具
 - go vet / go tool vet
 - golangci-lint
 - govulncheck
@@ -117,4 +117,5 @@ Vulnerability #2: GO-2022-0493
 ```
 信息中包括了你引用的某些包出现的一些漏洞，在fix中有修复的信息，可以把你引用的包进行一个升级。
 ## 参考资料
-- - https://go.dev/blog/vuln
+-  https://go.dev/blog/vuln
+- https://time.geekbang.org/column/article/390401

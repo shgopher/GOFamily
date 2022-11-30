@@ -40,8 +40,8 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [并发模型](./并发/并发模型)
 - [并发原语](./并发/并发原语)
 - [channel](./并发/channel)
-- [atomic](./并发/atomic)
 - [context](./并发/context)
+- [atomic](./并发/atomic)
 ## runtime
 - [三色gc算法](./runtime/三色gc算法)
 - [堆内存分配](./runtime/堆内存分配)
