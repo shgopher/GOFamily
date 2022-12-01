@@ -124,10 +124,13 @@ func main() {
 
 go 不直接提供cpu 屏障，来保证编译器或者cpu保证顺序性，而是使用不同架构的内存屏障指令来实现统一的并发原语。
 
-上文说到，在一个goroutine中，happens- before 其实就等于代码书写的顺序，这一点是严格成立的。
+### 单个 goroutine
+上文说到，**在一个goroutine中，happens- before 其实就等于代码书写的顺序，这一点是严格成立的**。
 
 ### init函数
-go语言的初始化是在单一的goroutine中执行的，也就是main goroutine ，**p 包导入了q包，那么q的init函数一定 happens  before p的任何初始化代码**。
+go语言的初始化是在单一的goroutine中执行的，也就是main goroutine 。
+
+**p 包导入了q包，那么q的init函数一定 happens  before p的任何初始化代码**。
 
 这里有点像树，导入的过程，以及初始化的过程，会形成一个多叉树，从最底层的树开始进行初始化，逐步的忘上层走，先进后出，栈一样的感觉，并且相同的包只会导入一次，进而也只会初始化一次，比如q包被第三层导入了，在第五层也导入了，那么这个包在从底层往上走的过程中，只会在第五层先全局变量后init函数的初始化一次。这导入的包全部初始化一遍之后，才开始进行main包的mian函数，然后进而去运行接下来的逻辑。
 ```go
@@ -165,12 +168,121 @@ func main(){
 从单个goroutine的happens- before的关系来看， a = “hi” 一定 happens- before go f（） ，从新goroutine的开辟来说，go f（） 一定happens- before fmt.Println 所以这个代码中，hi一定能被输出。
 
 ### channel
+go语言有一句经典名言，不要使用共享内存来通信（sync.Mutex）而应该采用通信的方式来共享内存，这个后者说的就是channel，channel是同步操作的首选。
+
+- 往channel中发数据，happens - before 从这个channel 接收数据**完成**。注意这里说的是接收完成，**没说**发数据happens- before 这个channel 接受数据开始的时候。
+
+```go
+var c = make(chan int ,10)
+var a string 
+
+func f() {
+  a = "hi" //这里是同步操作
+  c <-0  // 这里因为有了同步操作，所以 a = “hi” 在main goroutine看 也是 a= “hi” happens- before c <- 0
+}
+func main(){
+  go f()
+  <-c // 这里只要收到数据了，那么 c <- 0 肯定已经运行了，并且发送完毕了。
+  print(a) 
+}
+```
+
+- close 一个channel 一定 happens- before 从关闭的channel 中读取一个零值。我们都知道可以从一个closed 的一个channel中读取零值是可以的，这里说明的是读零值这个过程一定在关闭这个操作之后。
+
+- 一个 unbuffered 的channle，读的准备好一定 happens-before 发准备好，意思是说，只有收数据准备好了，才能发，否则就会一直卡在发那个地方。
+
+- 一个容量大于0为m的channel，第n个接收，一定happens- before 第n+m的发送，意思是说，如果容量满了，必须先拿出来一个才能往里面再塞进去一个。比如：n=1 m=2 ，第一个接收一定happens- before 第三个发送，因为容量一共是2，要想往里面塞进去第三个，**必须拿出来一个并且拿出来这个操作完毕了**，才能发送第三个。
+
 ### Mutex/RWMutex
+
+- 第n次的unlock 一定happends- before 第n+1 次 lock方法的返回
+意思是说，只有先解锁才能再次加锁。
+- 读写锁虽然有两把锁，但是不能同时使用，必须等待一个锁解锁后，另一个锁才能上锁，比如读锁解锁后才能再次上读锁，或者才能上写锁。
+
+互斥锁可以由 a goroutine 上锁， b goroutine 解锁
+
+```go
+var mu sync.Mutex
+var s string
+
+func f(){
+  s = "hi"
+  mu.Unlock() // 这里拥有了一个同步原语，所以 s = hi 一定发生在 mu.unlock() 之前。（相当于在一段锁的内部）
+}
+func main() {
+  mu.Lock()
+  go f()
+  mu.unlock() // 这里的unlock 一定发生在  另一个goroutine 中f 的 mu.Unlock() 之后。
+  print(s)
+}
+```
+
 ### WaitGroup
+- wait 方法等到计数值归零才能返回（运行完毕）
 ### Once
+- 对于once.Do(f) f 一定会在do 方法返回之前执行。
+```go
+var s string
+var once sync.Once
+
+func f(){
+  time.Sleep(time.Second)
+  s = "hi"
+}
+func main(){
+  once.Do(f)
+  print(s) // 这里 f 的执行完毕 一定在 Do()返回之前,所以一定能输出 s = hi
+}
+```
 ### atomic 
-### 其它延伸的并发原语
-## 总结
+按照 atomic load / store 顺序 来保证 happens - before 不过go官方并没有严格定义，直到目前为止并没有严格定义。
+
+```go
+
+func main() {
+  var a, b int32 = 0, 0
+
+  go func() {
+    atomic.StoreInt32(&a, 1)
+    atomic.StoreInt32(&b, 1)
+  }()
+
+  for atomic.LoadInt32(&b) == 0{
+    runtime.Gosched()
+  }
+    fmt.Println(atomic.LoadInt32(&a))
+}
+```
+## issues
+
+`使用channel实现一个互斥锁`
+
+我们利用 channel 发送数据 happens- before 收到数据完毕 这个特性来实现互斥锁。
+```go
+type Locker struct {
+	ch  chan struct{}
+}
+// 初始状态是已经有一个
+func NewLocker()*Locker{
+	ch := make(chan struct{},1)
+	ch <- struct{}{}
+	return &Locker{
+		ch: ch,
+	}
+}
+// lock 从缓存是1编程0，从chan中取出来数据
+func (l *Locker) Lock()  {
+	<- l.ch
+}
+// unlock 将缓存从0变成1，向ch中放入数据。
+func (l *Locker) Unlock() {
+	l.ch <- struct{}{}
+}
+```
+
+一个小小的经验：channel 拥有buffer比没有buffer常用很多。
+
+完结。
 
 
 
