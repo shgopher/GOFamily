@@ -119,6 +119,10 @@ func main() {
 }
 
 ```
+>there is no guarantee that the write to done will ever be observed by main, **since there are no synchronization events between the two threads**. The loop in main is not guaranteed to finish."
+
+这一句是 go blog中对于这代代码的描述，重点是说，这俩线程中，没有存在同步原语，所以无法做到从main goroutine 去观测到 r 的状态，也就是说，在goroutine中只要存在了同步原语，那么就可以把两个goroutine当作正常的语句来看。
+
 这里有两点无法确认，第一：主 goroutine 无法**确认** r 的状态，这里指的就是 **可观测性**，因为这里是非同步操作，所以主 goroutine的读无法观测到 `go set（）` 这里 `r = d` 这里的写，注意是无法完全确认，通常来说这段代码是可以运行的，我说的是通常，第二 无法保证 `d.data` 一定会运行，所以有可能输出的是空字符串，这里说的就是因为编译优化导致的指令重排。
 ## happens-before
 
@@ -177,7 +181,9 @@ var c = make(chan int ,10)
 var a string 
 
 func f() {
-  a = "hi" //这里是同步操作
+  //这里之所以a = hi 发生在 c <-0 之前，就是因为这个goroutine和main goroutine 存在同步原语，
+  //只要存在，那么代码就会按照程序员写的顺序执行，并不会进行重排。
+  a = "hi" 
   c <-0  // 这里因为有了同步操作，所以 a = “hi” 在main goroutine看 也是 a= “hi” happens- before c <- 0
 }
 func main(){
