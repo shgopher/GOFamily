@@ -17,10 +17,15 @@ func main() {
 	m = map[string]int{} // or m = make(map[string]int,100)
 	// 插入数据
 	m["hello"] = 1
-	// 查找数据获取数据
 	if v, ok := m["hello"]; ok {
 		fmt.Println(v)
 	}
+	// 查找数据获取数据
+	// 在初始化的时候无法初始化两个一样的key，这个检查是编译器就开始的
+	m = map[string]int{"a":1,"a":2} // error
+	// 在初始化的时候无法初始化两个一样的key，但是如果是一个变量的话是可以的，
+	// 因为编译器时无法获取变量的值的，所以这种方式通过。
+	m = map[string]int{a:1,a:2} // 这样是正确的。
 	// 遍历数据
 	for k, v := range m {
 		fmt.Println(k, ":", v)
@@ -69,7 +74,7 @@ map的语法在运行时会转化为另一套对应关系，这个转化是在�
 ```go
 m := make(map[string]int, 10) -> m := runtime.makemap(maptype, 10, m)// maptype 下文有解释
 
-v := m["hello"] -> v := runtime.mapaccess1(maptype,m , "hello") 
+v := m["hello"] -> v := runtime.mapaccess1(maptype,m , "hello")  // 这里实际上引入的是 "hello"的 指针
 
 v,ok := m["hello"] -> v,ok := runtime.mapacess2(maptype,m , "hello")
 
