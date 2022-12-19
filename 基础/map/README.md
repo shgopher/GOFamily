@@ -20,7 +20,6 @@ func main() {
 	if v, ok := m["hello"]; ok {
 		fmt.Println(v)
 	}
-	// 查找数据获取数据
 	// 在初始化的时候无法初始化两个一样的key，这个检查是编译器就开始的
 	m = map[string]int{"a":1,"a":2} // error
 	// 在初始化的时候无法初始化两个一样的key，但是如果是一个变量的话是可以的，
