@@ -28,7 +28,6 @@ func f() int {
 
 输出 10 4 6 6
 
-小知识，这种求值很容易把人绕晕，实际项目切勿这么写。
 
 ## 普通求值顺序
 这包括了，函数，方法，channel中的求值顺序。
@@ -77,7 +76,7 @@ func main(){
 然后对 f(1) f(2) 求值； f(3) 不会求值,因为f（2）已经满足了要求。
 
 在select case中，如果case中存在表达式，最开始会依次计算所有的表达式，只有一种除外，收case中，位于左侧的表达式，它会在接受数据之前才会计算，然后赋值。
- 
+
 ## 参考资料
 - https://go.dev/ref/spec#Order_of_evaluation
 - https://book.douban.com/subject/35720728/ 132页 - 142页
