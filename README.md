@@ -79,12 +79,16 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [ ] [luban](https://github.com/shgopher/luban/) 一本用鲁班的名字命名，主要讲解系统设计的书籍
 - [ ] [dingdang](https://github.com/shgopher/dingdang/) 叮当，是一本讲解各种工具的书
 - [ ] [god](https://github.com/shgopher/god/) 给程序员写的教程，主要关于学习，副业，买房，面试等内容，程序员才是真神！
-## 推荐项目
+## 作者写的项目
 - [ ] [hui](https://github.com/shgopher/hui) 一个简洁好用效率高的web框架
-- [ ] [key](https://github.com/shgopher/key) 一个服务授权系统
+- [ ] [zhongli](https://github.com/shgopher/zhongli) 一个高效易用的 rpc 框架
+- [ ] [yelan](https://github.com/shgopher/yelan) 一个利用k8s基本原理去写的区块链服务
+- [ ] [retuo](https://github.com/shgopher/retuo) 一个分布式爬虫服务
+- [ ] [ka](https://github.com/shgopher/ka) 一个效率非常高的秒杀服务
+- [ ] [key](https://github.com/shgopher/key) 一个微服务架构的服务授权系统
 - [x] [short](https://github.com/shgopher/short) 一个简单的短链接服务
 - [ ] [go-short](https://github.com/shgopher/go-short) 一个微服务架构的短链接服务
-- [ ] [ka](https://github.com/shgopher/ka) 一个效率非常高的秒杀服务
+
 ## 参考资料
 - [go.dev](https://go.dev)
 - [go src](https://github.com/golang/go)
@@ -97,6 +101,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [Go 语言项目开发实战](https://time.geekbang.org/column/intro/100079601)
 - [Go 语言核心 36 讲](https://time.geekbang.org/column/intro/100013101)
 - [手把手带你写一个 Web 框架](https://time.geekbang.org/column/intro/100090601)
+- [Google资深工程师深度讲解Go语言](https://coding.imooc.com/class/chapter/180.html#Anchor)
 
 ## 扫一扫添加我的公众号，回复 “加群”，可以加入微信群。
 
