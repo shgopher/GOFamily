@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-28 01:33:50
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-02-03 17:09:29
+ * @LastEditTime: 2023-02-03 17:13:54
  * @FilePath: /GOFamily/基础/作用域/README.md
  * @Description: 
  * 
@@ -127,7 +127,7 @@ for i:=0;i<10;i++ {
 
 {
   i:=0
-  for i<10;i++ {
+  for ;i<10;i++ {
 
   }
 }
