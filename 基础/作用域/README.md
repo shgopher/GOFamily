@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-28 01:33:50
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-02-03 16:38:07
+ * @LastEditTime: 2023-02-03 17:09:29
  * @FilePath: /GOFamily/基础/作用域/README.md
  * @Description: 
  * 
@@ -88,16 +88,28 @@ func main(){
 ## if
 if包含了一个隐式的代码块：
 ```go
+c := 12
 if a:=1;a<2 {
   println(a)
+}else if b:=3;b < c {
+  println(b)
+}else {
+  println(a,b)
 }
 ```
 其实等于：
 ```go
+  c:= 12
 {
   a:=1
   if a<2{
     println(a)
+  }
+  b := 3
+  else if b < c {
+    println(b)
+  }else {
+    println(a,b)
   }
 }
 ```
