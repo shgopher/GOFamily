@@ -1,3 +1,13 @@
+<!--
+ * @Author: shgopher shgopher@gmail.com
+ * @Date: 2022-11-28 01:33:50
+ * @LastEditors: shgopher shgopher@gmail.com
+ * @LastEditTime: 2023-02-03 16:38:07
+ * @FilePath: /GOFamily/基础/作用域/README.md
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by shgopher shgopher@gmail.com, All Rights Reserved. 
+-->
 # 作用域
 
 先给出两个经典的案例：
@@ -31,7 +41,7 @@ func main() {
 ```
 因为 i属于loop级别，通常来说for执行过程是快于新开辟一个goroutine的，所以导致这是个goroutine输出的都是最后一个i，即都输出10
 
-根据go 1.20的表述，以后这个loop级别的变量非常有可能会被修改成局部变量。如果没有被修改，我们可以开辟一个局部变量
+根据go 1.20的表述，以后这个loop级别的变量**非常有可能**会被修改成局部变量。如果没有被修改，我们可以开辟一个局部变量
 
 ```go
 func main() {
@@ -93,10 +103,54 @@ if a:=1;a<2 {
 ```
 
 所以，在if中的大括号里，是可以输出a的值的。
-
-
-
-
 ## for
-## switch 
-## select
+for循环的作用域可以使用下面的两种方式展现。
+
+```go
+for i:=0;i<10;i++ {
+
+}
+
+// 等价于
+
+{
+  i:=0
+  for i<10;i++ {
+
+  }
+}
+```
+这里需要注意一下，一旦go在后续的版本中修改了loop级变量这个设定，这个等价就不成立了。上文有讲。
+
+```go
+for k,v := range slice {
+
+}
+// 等价于
+{
+  k,v := 0,0
+  for k,v = range slice {
+
+  }
+}
+```
+## switch && select
+这两种结构的等价是相同的，都是case级。
+
+```go
+switch expression:
+case list1:
+case list2:
+default:
+
+等价于
+
+switch expression:
+case list1:
+{}
+case list2:
+{}
+default:
+{}
+```
+select 稍微有点不同,因为select中的case是可以新建一个变量的，除了我们说的每一个case是一个作用域之外，case上新建的这个变量也只是属于下面这个小的作用域。
