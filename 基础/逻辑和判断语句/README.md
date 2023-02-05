@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-02-06 00:51:34
+ * @LastEditTime: 2023-02-06 01:30:01
  * @FilePath: /GOFamily/基础/逻辑和判断语句/README.md
  * @Description: 
  * 
@@ -168,5 +168,53 @@ func a(v any) {
 
 这段代码使用的就是 判断type的断言模式，固定用法就是` value.(type) ` 前面是要判断的 value ，后面是固定用法 type，必须是这个单词才行。
 
-我再带你回忆一下普通的断言，`a.(int)` 除了在switch中的断言方式之外，普通的断言就跟这段代码是一致的，一个 any 类型（interface{}）后面跟具体的类型。
+我再带你回忆一下普通的断言，`a.(int)` 除了在switch中的断言方式，普通的断言就跟这段代码是一致的，一个 any 类型（interface{}）后面跟具体的类型。
 
+经过上面的初步介绍，接下来，我们深入看一下 for range 的一些底层原理
+## 汇总一下 for 和for range中最容易迷惑的几段代码
+
+第一段代码：
+
+```go
+func main() {
+  arr := []int {1,2,3}
+  for range arr {
+    arr = append(arr,v)
+  }
+  fmt.Println(arr) 
+}
+```
+这段代码for循环不会一直循环，原因是，arr会在range一个复制一份儿，这个复制体的len在最初的range中的开头已经确定是3，后面继续追加的arr，并不会改变这个最初读取的 `len == 3 ` 这个结果。
+
+
+第二段代码：
+
+```go
+arr := []int{1,2,3}
+result := [] *int{}
+for ,v := range arr {
+result = append(result, &v)
+}
+```
+这段代码是存在bug的，&v，首先，根据作用域可知道，这个v是loop级作用域，那么这个result中存在的&v 就是同一个值，所以这个代码是错误的。
+
+改正的方式就是放入正确的切片中数据的指针即可：
+
+```go
+arr := []int{1,2,3}
+result := [] *int{}
+for k := range arr {
+result = append(result, &arr[k])
+}
+```
+
+第三段代码：
+
+```go
+for i,_ := range result {
+
+  result[i] = 0
+}
+```
+
+这是一段对int 切片进行归零的方法，很多人会觉得这要循环一次会非常浪费时间，其实不会，因为在编译器中，它不会真的循环，编译器会优化这个操作，直接给它内存清零。
