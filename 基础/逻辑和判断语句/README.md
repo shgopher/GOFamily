@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-02-06 01:30:01
+ * @LastEditTime: 2023-02-07 07:25:17
  * @FilePath: /GOFamily/基础/逻辑和判断语句/README.md
  * @Description: 
  * 
@@ -90,7 +90,34 @@ for _,v := range sliceValue{}
 	println(number) // 5
 ```
 
-这里number输出的是5，因为我们 append 添加的长度是原切片的长度，但是循环体中存储的len，还是最初的长度5，所以只能循环5次。在老的for-range中还有一个容易出bug的事情,比如range后面跟一个数组，因为处理的时候是数组的复制品，所以 `array[k] = v` 是无法更改老的数组的，除非使用数组的切片，或者数组的指针，但是最新的go中这个bug已经修复了，即便后面跟的是数组，那么也会默认去调用数组的指针。
+这里number输出的是5，因为我们 append 添加的长度是原切片的长度，但是循环体中存储的len，还是最初的长度5，所以只能循环5次。
+
+for-range中还有一个容易出bug的事情,比如range后面跟一个数组，因为range的时候实际上是数组的复制品，看下面这段代码：
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var a = [5]int{1, 2, 3, 4, 5}
+	var r [5]int
+	fmt.Println(a)
+
+	for i, v := range a {
+		if i == 0 {
+			a[1] = 12
+			a[2] = 13
+		}
+		r[i] = v
+	}
+
+	fmt.Println(r, a)
+
+}
+```
+
+本来期望的r值是 1 12 13 4 5 ，因为在i == 0 时就更改了 数组a 的值，但是最终输出的却是 1 2 3 4 5，原因很简单，因为v读取的是a 这个数组的复制品，也就是说，实际上这个代码的隐藏含义是 ` range  a'` 这里的 `a'` 就是a的复制品，所以更改了 a，a的复制品也不会被改变，解决方法就是取这个数组的切片就可以了，这样即便是复制了，也只是复制了一份儿指针而已。
 
 ### string
 如果for-range中后面接的是string，每次迭代不是按照byte来进行的，而是按照rune来进行，比如 `"你好"` 每次的迭代输出的就是 你 和 好，而不是byte
@@ -178,7 +205,7 @@ func a(v any) {
 ```go
 func main() {
   arr := []int {1,2,3}
-  for range arr {
+  for _,v :=  range arr {
     arr = append(arr,v)
   }
   fmt.Println(arr) 
