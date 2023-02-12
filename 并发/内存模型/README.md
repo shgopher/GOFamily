@@ -218,7 +218,7 @@ func f(){
 func main() {
   mu.Lock()
   go f()
-  mu.unlock() // 这里的unlock 一定发生在  另一个goroutine 中f 的 mu.Unlock() 之后。
+  mu.Lock() // 这里的lock 一定发生在  另一个goroutine 中f 的 mu.Unlock() 之后。
   print(s)
 }
 ```
