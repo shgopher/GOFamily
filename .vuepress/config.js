@@ -42,25 +42,25 @@ module.exports = {
         'ga': 'G-GFKQEFHX3B'
       }
     ],
-    [
-      'vuepress-plugin-comment',
-      {
-        choosen: 'gitalk',
-        options: {
-          clientID: '4865a323784f55266cab',
-          clientSecret: '16cadc307e5b93bcdc81cf7285098e08342d792e',
-          repo: 'GOFamily',
-          owner: 'shgopher',
-          admin: ['shgopher'],
-          labels: ["Gitalk", "Comment"],
-          id: '<%- ("gofamily" + (frontmatter.to.path || window.location.pathname)).slice(-50) %>',
-          title: '「Comment」<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>',
-          body: '<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>',
-          distractionFreeMode: false,
-          pagerDirection: 'last',
-        }
-      }
-    ],
+    // [
+    //   'vuepress-plugin-comment',
+    //   {
+    //     choosen: 'gitalk',
+    //     options: {
+    //       clientID: '4865a323784f55266cab',
+    //       clientSecret: '16cadc307e5b93bcdc81cf7285098e08342d792e',
+    //       repo: 'GOFamily',
+    //       owner: 'shgopher',
+    //       admin: ['shgopher'],
+    //       labels: ["Gitalk", "Comment"],
+    //       id: '<%- ("gofamily" + (frontmatter.to.path || window.location.pathname)).slice(-50) %>',
+    //       title: '「Comment」<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>',
+    //       body: '<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>',
+    //       distractionFreeMode: false,
+    //       pagerDirection: 'last',
+    //     }
+    //   }
+    // ],
     ['@vuepress/back-to-top'],
     ['@vuepress/nprogress'],
     'vuepress-plugin-baidu-autopush',
