@@ -31,7 +31,7 @@ var Get0 = func(i int) int {
 ```
 
 ## 函数的初始化顺序
-![](./go程序初始化顺序.svg)
+![](./gofunc.svg)
 
 ## init 函数
 ## defer 函数
