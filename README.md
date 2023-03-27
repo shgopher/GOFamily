@@ -102,3 +102,6 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 ## star
                                                                              
 [![Stargazers over time](https://starchart.cc/shgopher/GOFamily.svg)](https://starchart.cc/shgopher/GOFamily)
+
+## 证书
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">知识共享署名 3.0 未本地化版本许可协议</a>进行许可。
