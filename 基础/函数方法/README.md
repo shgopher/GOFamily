@@ -417,9 +417,97 @@ func Get(){
 }
 ```
 
-
 ## 变长参数
+举个变长参数函数的例子：
+```go
+func Println(a ...any) (n int, err error) {
+	return Fprintln(os.Stdout, a...)
+}
+```
 
+我们平时使用的 `fmt.Println(...any)` 就是标准的变长参数的例子。
+
+它的组织形式就是 `...` + `类型` ，比如 `...int` `...string`
+
+1. 一个函数的参数中只能有一个变长参数，且必须为最后一位
+2. 变长参数在函数内部以slice的方式存在
+3. 变长参数只能接受两种形式的值，其一就是多个同样类型的值，例如`fmt.Println("hi","there",12)`，或者直接接受一个`slice... ` ，例如 `fmt.Println([]any{1, 2, "hi"}...)`，并且，这两种用法不能混用，比如 `fmt.Println(1,2,[]any{1,2}...)` 这种混写的方法错误。
+
+any类型和string类型是绝对的不同的两种类型，因为any是interface{}的别名 （`type any = interface{}`），string类型虽然实现了空接口，但是它不是空接口类型，如果要转换成空接口，必须显式的转换:
+
+```go
+func main() {
+	a := []int{12,3}
+	b := any(a)
+	fmt.Println(b)
+}
+```
+
+***go语言在 append 字符串到[]byte 的时候提供了一个语法糖***
+  
+`func append(slice []Type, elems ...Type) []Type `  
+
+```go
+ func main() {
+	a := []byte{1, 3, 4}
+	var b string = "ee"
+	a = append(a, b...)
+}
+```
+这种语法糖只适用于 append 内置函数。底层应该是帮你把字符串转化为了 `[]byte()`
+
+```go
+func main() {
+    // 类似这种转换
+	a := []byte{1, 3, 4}
+	var b string = "ee"
+	c := []byte(b)
+	a = append(a, c...)
+}
+```
+
+如果自己实现一个的时候不进行转换就会报错。
+
+```go
+func get(...byte){
+
+}
+func main(){
+
+  get("123"...)
+}
+// ❌
+//cannot use "123" (untyped string constant)
+// as []byte value in argument to get
+
+```
+
+### 使用变长函数去模拟重载函数
+重载函数就是同一个作用域下，可以有相同名称的函数，只不过他们的参数不同，go语言是不支持这种类型的函数的。
+
+类似这种
+```go
+func main(){}
+func get(){}
+func get(s string){}
+```
+如果真的想使用这种重载函数，我们可以使用这种方法来间接实现：
+```go
+func Get(s string, args ...any) {
+	for _, v := range args {
+		switch v.(type) {
+		case int8, int, int16:
+			fmt.Println(vi)
+		case string:
+			
+		}
+	}
+}
+
+```
+### 使用变长函数去实现默认参数
+
+### 使用变长函数去实现功能选项模式
 
 ## 函数式编程
 函数就是一个普通的类型，它跟int，string，拥有相同的地位，所以你会发现函数式编程在go语言的代码里运用的很广泛。
