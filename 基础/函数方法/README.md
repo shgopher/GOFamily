@@ -843,16 +843,169 @@ func main() {
 
 ***配置选项问题***
 
+***最基础的方法就是全部暴露出去***
 
+```go
+type Server struct {
+  Addr string
+  Port int
+  Protocol string
+}
+
+func NewDefalutServer(addr string,port int,protocol string) *Server {
+  return &Server{
+    addr,
+    port,
+    protocol,
+  }
+}
+
+func NewPortServer(addr string)*Server {
+  return &Server{
+    addr,
+    "8080",
+    "tcp",
+  }
+}
+```
+
+直接暴露这是一种最基础的方案，这种方法可扩展性很差。
+
+如果想改进，完全可以把非固定的字段单独的封装在一个struct中，比如这种写法：
+
+```go
+type Server struct {
+  Addr string
+  options *Options
+  
+}
+type Options struct {
+  Port string
+  Protocol string
+}
+
+func NewServer(addr string, options *Options) *Server {
+  return &Server{
+    addr,
+    options,
+  }
+}
+```
+
+还有一种场景是这样的，我们输出的API是一定的，但是我们的配置信息，因为是共同使用的，它可能会越来越多，这个时候改如何处理呢？
+
+***设置一个固定的struct，以及一个可共用的opintions struct***
+
+```go
+type Server struct {
+  Addr string
+  Port int
+  Protocol string
+}
+
+type Options struct{
+  Addr string
+  Port int
+  Protocol string
+
+}
+ // 这种写法，API内容不变，共同的options即便是变化了也无关紧要。
+func NewServer(options *Options) *Server {
+  var addr string
+  var port int
+  var protocol string
+
+  if options != nil {
+    addr = options.Addr
+    port = options.Port
+    protocol = options.Protocol
+  }
+
+  return &Server{
+    addr,
+    port,
+    protocol,
+  }
+}
+```
+
+***我们还可以使用链式调用的方式去写这种参数***
+```go
+type Server struct {
+  Addr string
+  Port int
+  Protocol string
+}
+type ServerBulder struct {
+  Server
+}
+func(sb *ServerBulder) Build(addr string) *ServerBulder {
+  sb.Addr = addr
+  return sb
+}
+func(sb *ServerBulder) BuildWithPort(port int) *ServerBulder {
+  sb.Port = port
+  return sb
+}
+func(sb *ServerBulder) BuildWithProtocol(protocol string)*ServerBulder {
+  sb.Protocol = protocol
+  return sb
+}
+func(sb *ServerBulder) Run()Server{
+  return sb.Server
+}
+``` 
+
+***functional Options --- 功能选项模式***
+
+首先是定义一个函数类型
+```go
+type Options func(*Server)
+
+type Server struct {
+  Addr string
+  Port int
+  Protocol string
+}
+```
+
+我们使用函数式的方式去定义一组函数
+
+```go
+
+func Port(port int) Options {
+  return func(s *Server) {
+    s.Port = port
+  }
+}
+func Protocol(protocol string) Options {
+  retrun func(s *Server) {
+    s.Protocol = protocol
+  }
+}
+
+func NewServer(addr string, ...Options) *Server {
+  serv := Server{
+    addr,
+    "8080",
+    "tcp",
+  }
+  for _, opt := range options {
+    opt(&serv)
+  }
+}
+```
+
+如你所见，使用了函数作为返回值，函数作为参数，变长函数以及闭包等知识，去完成了 “functional options” 这种函数式编程的模式。
 
 这里还有关于函数式编程其它相关内容：
 
-- 委托和反转控制
-- map-reduce
-- go generation
-- 修饰器
-- pipeline
-- k8s visitor
+- [委托和反转控制](./0.md)
+- [map-reduce](./1.md)
+- [go generation](./2.md)
+- [修饰器](./3.md)
+- [pipeline](./4.md)
+- [k8s visitor](./5.md)
 
 ## 方法集合决定接口的实现
 
