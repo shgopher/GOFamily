@@ -21,7 +21,14 @@
 
 ## 接口提供程序的可测试性
 
+## issues
+***interface如何判断nil***
 
+***eface 和 iface的区别***
+
+***如何查找interface中的方法***
+
+***interface 设计的优缺点***
 ## 参考资料
 - https://book.douban.com/subject/35720728/ 246页 - 286页 
 - https://mp.weixin.qq.com/s/6_ygmyd64LP7rlkrOh-kRQ

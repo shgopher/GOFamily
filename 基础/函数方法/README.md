@@ -506,8 +506,58 @@ func Get(s string, args ...any) {
 
 ```
 ### 使用变长函数去实现默认参数
+```go
+func main() {
+	CheckIn("shgopher", 12, "男")
+  CheckIn("jackie",20,"男","上海")
+}
 
-### 使用变长函数去实现功能选项模式
+type Contents struct {
+	Name    string
+	Age     int
+	Sex     string
+	Address string
+}
+
+func CheckIn(arges ...any) (*Contents, error) {
+	c := &Contents{
+		Address: "Beijing ",
+	}
+	for k, v := range arges {
+		switch k {
+		case 0:
+			name, ok := v.(string)
+			if !ok {
+				return nil, fmt.Errorf("name is not a string")
+			}
+			c.Name = name
+		case 1:
+			age, ok := v.(int)
+			if !ok {
+				return nil, fmt.Errorf("age is not a int")
+			}
+			c.Age = age
+		case 2:
+			sex, ok := v.(string)
+			if !ok {
+				return nil, fmt.Errorf("sex is not a string")
+			}
+			c.Sex = sex
+		case 3:
+			address, ok := v.(string)
+			if !ok {
+				return nil, fmt.Errorf("address is not a string")
+			}
+			c.Address = address
+		default:
+			return nil, fmt.Errorf("unknown argument")
+		}
+	}
+	return c, nil
+}
+```
+这段代码的意思就是先给定一个默认值，比如这里地址是默认值的，也即是它是可选的内容，鉴于这段代码标识的意义，这个可省略的一定是在最后一位的。
+
 
 ## 函数式编程
 函数就是一个普通的类型，它跟int，string，拥有相同的地位，所以你会发现函数式编程在go语言的代码里运用的很广泛。
@@ -530,20 +580,279 @@ func Get(s string, f func(string) int) (int, error) {
 }
 ```
 
+函数作为 go 语言中的一等公民，拥有以下特征：
+- 在源码的顶层正常的创建函数
+- 函数可以存在于函数内部
+- 函数可以作为类型
+- 函数可以赋值给一个变量
+- 函数可以作为参数
+- 函数可以作为返回值，并且拥有闭包
+
+```go
+// 在源码的顶层正常的创建函数
+// main.go
+
+func main() {}
+```
+```go
+// 函数可以存在于函数内部
+
+fun Get(){
+  var a = func(s string){println(s)}
+}
+```
+```go
+// 函数可以作为类型
+type A func(s string) int
+
+```
+```go
+//  函数可以赋值给一个变量
+
+func main() {}
+var a = func(s string){println(s)}
+```
+```go
+// 函数可以作为参数
+
+func main() {
+	Get("hello", func(s string) int {
+		println(s)
+		return len(s)
+	})
+}
+
+func Get(s string, f1 func(string) int) int {
+	return f1(s)
+}
+```
+```go
+// 函数可以作为返回值，并且拥有闭包
+package main
+
+import "fmt"
+
+func main() {
+
+	g := Get()
+	fmt.Println(g("hello"))
+	fmt.Println(g("world"))
+	fmt.Println(g("--------------------------------"))
+	fmt.Println(g("hi"))
+	fmt.Println(g("你好"))
+}
+
+func Get() func(string) int {
+	i := 0
+	return func(s string) int {
+		println(s)
+		i++
+		return i
+	}
+}
+//out
+//hello
+// 1
+// world
+// 2
+// --------------------------------
+// 3
+// hi
+// 4
+// 你好
+// 5
+
+```
+***函数跟整型类型一样需要显示转换***
+```go
+func main() {
+  http.ListenAndServer(":8080", http.HandlerFunc(hi))
+}
+
+func hi(w http.ResponseWriter, r *http.Request) {
+  fmt.Fprintf(w, "hi")
+}
+
+```
+这是正确的用法，不能因为 hi 跟 http.HandlerFunc 底层一样，就认为它俩相等，实际上是不等于的关系，需要显式的转换一下。
+
+接下来让我们看一下刚才代码的底层原理实现：
+
+```go
+type b interface{
+  add(int,int)int
+}
+
+type b1 func(int,int)int
+
+func(b b1)add(x,y int)int{
+  return b(x,y)
+}
+
+func t (x,y int)int{
+  return x+y
+}
+
+func main() {
+  var bb b = b1(t)
+  bb.add(1,2)
+}
+```
+
+下面有一个小知识，在 return 的时候，引用类型(slice map func,interface,chan)是不需要显式转换的，只有非引用类型比如int，bool string strcuct 这种需要。
+
+```go
+// 不需要显示的转换
+
+// 函数类型
+type b func(string) int
+
+func get2() b {
+	return func(s string) int {
+    println(s)
+		return len(s)
+	}
+}
+// 当然你如果显式的转换一下也是没有问题的
+func get3() b {
+	return b(func(s string) int {
+		return len(s)
+	})
+}
+
+// interface
+package main
+
+func main() {
+	var h hi = NewHi()
+	h.get()
+}
+
+type hi interface {
+	get()
+}
+type hey struct{}
+
+func (hey) get() {
+	println("hi")
+}
+
+func NewHi() hi {
+	return hey{}
+}
+
+// 必须显示的转换
+
+// 整数类型
+type a int
+
+func get1() int{
+	var a1 a
+	a1 = 12
+	return int(a1)
+}
+
+// struct 也需要显示的转换
+type b struct {
+  i int
+}
+
+type b1 b
+
+func get7()b1{
+  return b1{i:1}
+}
+
+// 或者是
+
+func get8() b1 {
+  return b1(b{i:1})
+}
+
+```
+### 函数式编程的实际应用
+***柯里化函数***
+
+概念：接受多个参数的函数，变成接受一个单一参数的函数，并且返回接受剩余参数以及返回值的新函数。
+
+```go
+func sum(x, y, c int) int {
+	return x + y + c
+}
+
+func partialSum(x int) func(int, int) int {
+	return func(y, c int) int {
+		return sum(x, y, c)
+	}
+}
+
+func main() {
+	t1 := partialSum(1)
+	t2 := partialSum(2)
+	t3 := partialSum(3)
+	fmt.Println(t1(4, 5))
+	fmt.Println(t2(6, 7))
+	fmt.Println(t3(8, 9))
+}
+
+```
+***函子***
+
+概念：functor（函子）本身是一个容器（slice map channel），容器类型实现一个方法，该方法接受一个函数类型参数，并且每一个容器参数都要被这个函数去改变，这里会得到一个新的functor，原有的容器没有任何的影响。
+
+```go
+package main
+
+import "fmt"
+
+type IntSliceFunctor interface {
+	Fmap(func(int) int) IntSliceFunctor
+}
+
+type IntSliceFunctorImpl struct {
+	ints []int
+}
+
+func (f IntSliceFunctorImpl) Fmap(f1 func(int) int) IntSliceFunctor {
+	newInts := make([]int, len(f.ints))
+	for i, v := range f.ints {
+		newInts[i] = f1(v)
+	}
+	return IntSliceFunctorImpl{newInts}
+}
+
+func NewIntSliceFunctorImpl(ints []int) IntSliceFunctor {
+	return IntSliceFunctorImpl{ints}
+}
+
+func main() {
+	i := NewIntSliceFunctorImpl([]int{1, 3, 4})
+	m1 := i.Fmap(func(i int) int {
+		return i * 2
+	})
+	m1p := i.Fmap(func(i int) int {
+		return i * 20
+	})
+	m2 := m1.Fmap(func(i int) int {
+		return i * 20
+	})
+	fmt.Println(m1, m1p, m2)
+}
+
+```
+
+***配置选项问题***
+
+
 
 这里还有关于函数式编程其它相关内容：
 
-### 委托和反转控制
-
-### map-reduce
-
-### go generation
-
-### 修饰器
-
-### pipeline
-
-### k8s visitor
+- 委托和反转控制
+- map-reduce
+- go generation
+- 修饰器
+- pipeline
+- k8s visitor
 
 ## 方法集合决定接口的实现
 

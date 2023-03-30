@@ -3,7 +3,7 @@
 
 |引用类型|值类型|
 |:---:|:---:|
-|slice, interface, chan, map, func|array, struct, 数字类型, bool|
+|slice, interface, chan, map, func, 指针|array, struct, 数字类型, bool|
 
 ## 全局变量和局部变量
 
