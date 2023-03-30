@@ -211,11 +211,6 @@ module.exports = {
             collapsable: false,
           },
           {
-            title: '关键字',
-            path: '/基础/关键字/',
-            collapsable: false,
-          },
-          {
             title: '泛型',
             path: '/基础/泛型/',
             collapsable: false,
