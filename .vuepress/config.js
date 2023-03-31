@@ -171,6 +171,11 @@ module.exports = {
             collapsable: false,
           },
           {
+            title: '结构体',
+            path: '/基础/结构体/',
+            collapsable: false,
+          },
+          {
             title: 'slice',
             path: '/基础/slice/',
             collapsable: false,
