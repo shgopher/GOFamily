@@ -720,7 +720,10 @@ func get3() b {
 	})
 }
 
-// interface
+// interface 看似也可以解释这个问题
+// 但是本质上是不同的，interface是实现，
+// 并不是底层 type a int 这种类型
+// 实际上 动态类型实现接口以后，就等于接口类型那个类型了。
 package main
 
 func main() {
@@ -978,6 +981,7 @@ func Port(port int) Options {
     s.Port = port
   }
 }
+
 func Protocol(protocol string) Options {
   retrun func(s *Server) {
     s.Protocol = protocol
@@ -999,8 +1003,9 @@ func NewServer(addr string, ...Options) *Server {
 如你所见，使用了函数作为返回值，函数作为参数，变长函数以及闭包等知识，去完成了 “functional options” 这种函数式编程的模式。
 
 这里还有关于函数式编程其它相关内容：
+> 这里的 主要内容来自 酷壳 coolshell.cn
 
-- [委托和反转控制](./0.md)
+- [反转控制](./0.md)
 - [map-reduce](./1.md)
 - [go generation](./2.md)
 - [修饰器](./3.md)
