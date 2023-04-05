@@ -1007,7 +1007,6 @@ func NewServer(addr string, ...Options) *Server {
 
 - [反转控制](./0.md)
 - [map-reduce](./1.md)
-- [go generation](./2.md)
 - [修饰器](./3.md)
 - [pipeline](./4.md)
 - [k8s visitor](./5.md)
