@@ -663,7 +663,7 @@ func Get() func(string) int {
 // 5
 
 ```
-***函数跟整型类型一样需要显示转换***
+***在实现接口的时候函数需要显示转换***
 ```go
 func main() {
   http.ListenAndServer(":8080", http.HandlerFunc(hi))
@@ -674,7 +674,9 @@ func hi(w http.ResponseWriter, r *http.Request) {
 }
 
 ```
-这是正确的用法，不能因为 hi 跟 http.HandlerFunc 底层一样，就认为它俩相等，实际上是不等于的关系，需要显式的转换一下。
+这是正确的用法，不能因为 hi 跟 http.HandlerFunc 底层一样，就认为它俩相等，因为http.HandlerFunc实现了接口，并不代表 hi实现了接口。
+
+实际上是不等于的关系，需要显式的转换一下。
 
 接下来让我们看一下刚才代码的底层原理实现：
 
@@ -699,12 +701,12 @@ func main() {
 }
 ```
 
-下面有一个小知识，在 return 的时候，引用类型(slice map func,interface,chan)是不需要显式转换的，只有非引用类型比如int，bool string strcuct 这种需要。
+在非实现接口的时候。直接使用，以及return 的时候，引用类型(slice map func,interface,chan)是不需要显式转换的，只有非引用类型比如int，bool string strcuct 这种需要。
 
 ```go
 // 不需要显示的转换
 
-// 函数类型
+// 函数类型 return 
 type b func(string) int
 
 func get2() b {
@@ -713,6 +715,19 @@ func get2() b {
 		return len(s)
 	}
 }
+
+// 函数类型 直接使用
+
+func main() {
+	get(func(int)string{
+		return "hello"
+	})
+}
+
+type N func(int)string
+
+func get(n N){}
+
 // 当然你如果显式的转换一下也是没有问题的
 func get3() b {
 	return b(func(s string) int {
