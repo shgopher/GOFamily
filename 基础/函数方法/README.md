@@ -1025,6 +1025,7 @@ func NewServer(addr string, ...Options) *Server {
 - [修饰器](./3.md)
 - [pipeline](./4.md)
 - [k8s visitor](./5.md)
+- [k8s builder](./6.md)
 
 ## 方法集合决定接口的实现
 
