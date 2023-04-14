@@ -1003,7 +1003,7 @@ func Protocol(protocol string) Options {
   }
 }
 
-func NewServer(addr string, ...Options) *Server {
+func NewServer(addr string, options ...Options) *Server {
   serv := Server{
     addr,
     "8080",
@@ -1025,7 +1025,8 @@ func NewServer(addr string, ...Options) *Server {
 - [修饰器](./3.md)
 - [pipeline](./4.md)
 - [k8s visitor](./5.md)
-- [k8s builder](./6.md)
+- k8s builder
+- [综合题](./7.md)
 
 ## 方法集合决定接口的实现
 
