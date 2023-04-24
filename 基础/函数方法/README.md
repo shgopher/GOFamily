@@ -1028,6 +1028,113 @@ func NewServer(addr string, options ...Options) *Server {
 - k8s builder
 - [综合题](./7.md)
 
+# 方法
+
+接下来，我们介绍方法，所谓方法，其实只是函数的一种语法糖，它跟函数并没有本质的区别，我们看一个简单的例子：
+
+```go
+type Student struct{
+  name string
+  year int
+  addr string
+}
+
+func(s *Student)GetName(name string){
+  s.name = name
+}
+```
+可以看到，这是一个定义在指针类型`*student` 上的方法 `GetName`,实际上，它完全等于函数的这种形态：
+
+```go
+func GetName(s *Student, name string) {
+  s.name = name
+}
+```
+go语言本身对于方法的使用是很宽泛的：
+- 指针类型的变量可以使用值类型的方法
+- 值类型的变量可以使用指针类型的方法
+
+这跟后文要讲的接口绝对是差距极大，因为接口的要求非常严格，这个可以看接口和函数的对比。
+
+值类型的变量可以使用指针类型的方法
+```go
+type Student struct{
+  name string
+  year int
+  addr string
+}
+
+func(s *Student)GetName(name string){
+  s.name = name
+}
+
+func main(){
+  var s Student
+  s.GetName("张三")
+}
+```
+当值类型来使用指针类型的方法时，系统默认会调用这个值的指针，因此这是系统给予的语法糖。
+
+指针类型的变量可以使用值类型的方法
+```go
+type Student struct{
+  name string
+  year int
+  addr string
+}
+
+func(s Student)GetName(name string){
+  s.name = name
+}
+
+func main(){
+  var s = new(Student)
+  s.GetName("张三")
+}
+```
+当指针类型来使用值类型的方法时，系统默认会调用这个指针指向的值，因此这是系统给予的语法糖。
+
+这个例子其实是错误的行为，因为s的方法是定义在值类型的，使用一个s去调用它上面的GetName,改变的只是方法中，s的复制品上的值，外部调用的这个s，实际上是不会有任何的改变的，我们如果从实质出发 `func GetName(s Student, name string)` ，就能看出来了。
+
+跟函数以及全局变量，常量是一样的，方法也是首字母大写可以导出包，小写无法导出包。
+
+这里有个细节要注意一下，不能跨越包去定义方法，go语言不支持，比如，原生类型 `（int,map,slice,bool 等）` 是无法提供方法的，例如
+```go
+// ❌
+func(i int)Get(){}
+```
+所以通常来说，我们就定义一个底层为int的新类型才可以
+```go
+type A int
+func(a A)Get(){}
+```
+那么我们总结一下关于方法的几个小细节：
+
+- 方法首字母的大小写注定了是否可以导出包
+- 不能跨越包去定义方法
+- 每一个方法只能被一个类型去定义，不能俩类型去定义一个方法
+- ***指针类型和接口类型不能作为方法的基底类型***
+
+最后一条，我们详细展开一下：
+
+以下定义是错误的：
+
+```go
+// ❌
+type A *int
+func(a A)Get(){}
+
+// ✅
+type A int
+func(a *A)Get(){}
+```
+
+```go
+// ❌
+type A xxInterface
+func(a A)Get()
+```
+
 ## 方法集合决定接口的实现
 
 ## 类型嵌入以及方法集合
@@ -1035,6 +1142,68 @@ func NewServer(addr string, options ...Options) *Server {
 ## define类型的方法集合
 
 ## 类型别名的方法集合
+
+
+## issues
+
+`问题一：`***关于方法的一道题：判断输出 ***
+
+```go
+func main() {
+	var a = []*Student{
+		{"一"},
+		{"二"},
+		{"三"},
+	}
+
+	for _, v := range a {
+		go v.pName()
+	}
+
+	var b = []Student{
+		{"四"},
+		{"五"},
+		{"六"},
+	}
+	for _, v := range b {
+		go v.pName()
+	}
+	time.Sleep(time.Second)
+}
+
+type Student struct {
+	name string
+}
+
+func (s *Student) pName() {
+	fmt.Println(s.name)
+}
+```
+答案是：
+```go
+三
+六
+六
+一
+二
+六
+```
+回答：
+
+可以看到，我们期望的 一二三 四五六 并没有输出，这里不考虑顺序，那么四和五为什么没有输出呢？这个时候我们应该考虑方法的本质。
+
+首先我们定了一个在指针类型上的方法pName，所以第一个for循环中，实际上的运行是,每一个指针类型，然后定义在他们上面的方法，并且输出，但是第二个他们是值类型，go的编译器自动给引出了指针类型，所以说按照指针的实质
+
+```go
+func pName(s *Student) {
+  
+}
+```
+
+这里放置的就是 &v ，还有个大的原因，就是整个for循环比开辟一个新的 goroutine 远远的快，所以当三个goroutine开辟完成的时候，所引用的&v 就是同一个数据了。所以这个时候输出的就是同样的最后的数据值，也就是 “六”
+
+如果想正常的输出，可以把定义在指针上的方法，改成定义在值上的方法即可。
+
 
 ## 参考资料
 - https://book.douban.com/subject/35720728/ 170页 - 243页
