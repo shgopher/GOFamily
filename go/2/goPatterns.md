@@ -26,7 +26,7 @@
 ```go
 type singleton struct {}
 var app *singleton
-var once *sync.Once
+var once sync.Once
 // 使用CreateApp once.Do只能执行一次
 func CreateApp()*singleton{
 	once.Do(func() {
