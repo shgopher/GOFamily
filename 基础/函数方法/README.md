@@ -3,13 +3,12 @@
 
 - 函数初始化的顺序
 - init 函数
-- 函数式编程
 - defer的运用
 - 变长参数
-- 方法集合决定接口的实现
-- 类型嵌入以及方法集合
+- 类型嵌入来完成继承
 - define类型的方法集合
 - 类型别名的方法集合
+- 函数式编程
 
 go 语言中函数的基本使用方法如下：
 
@@ -558,7 +557,435 @@ func CheckIn(arges ...any) (*Contents, error) {
 ```
 这段代码的意思就是先给定一个默认值，比如这里地址是默认值的，也即是它是可选的内容，鉴于这段代码标识的意义，这个可省略的一定是在最后一位的。
 
+# 方法
 
+接下来，我们介绍方法，所谓方法，其实只是函数的一种语法糖，它跟函数并没有本质的区别，我们看一个简单的例子：
+
+```go
+type Student struct{
+  name string
+  year int
+  addr string
+}
+
+func(s *Student)GetName(name string){
+  s.name = name
+}
+```
+可以看到，这是一个定义在指针类型`*student` 上的方法 `GetName`,实际上，它完全等于函数的这种形态：
+
+```go
+func GetName(s *Student, name string) {
+  s.name = name
+}
+```
+go语言本身对于方法的使用是很宽泛的：
+- 指针类型的变量可以使用值类型的方法
+- 值类型的变量可以使用指针类型的方法
+
+这跟后文要讲的接口绝对是差距极大，因为接口的要求非常严格，这个可以看接口和函数的对比。
+
+值类型的变量可以使用指针类型的方法
+```go
+type Student struct{
+  name string
+  year int
+  addr string
+}
+
+func(s *Student)GetName(name string){
+  s.name = name
+}
+
+func main(){
+  var s Student
+  s.GetName("张三")
+}
+```
+当值类型来使用指针类型的方法时，系统默认会调用这个值的指针，因此这是系统给予的语法糖。
+
+指针类型的变量可以使用值类型的方法
+```go
+type Student struct{
+  name string
+  year int
+  addr string
+}
+
+func(s Student)GetName(name string){
+  s.name = name
+}
+
+func main(){
+  var s = new(Student)
+  s.GetName("张三")
+}
+```
+当指针类型来使用值类型的方法时，系统默认会调用这个指针指向的值，因此这是系统给予的语法糖。
+
+这个例子其实是错误的行为，因为s的方法是定义在值类型的，使用一个s去调用它上面的GetName,改变的只是方法中，s的复制品上的值，外部调用的这个s，实际上是不会有任何的改变的，我们如果从实质出发 `func GetName(s Student, name string)` ，就能看出来了。
+
+跟函数以及全局变量，常量是一样的，方法也是首字母大写可以导出包，小写无法导出包。
+
+这里有个细节要注意一下，不能跨越包去定义方法，go语言不支持，比如，原生类型 `（int,map,slice,bool 等）` 是无法提供方法的，例如
+```go
+// ❌
+func(i int)Get(){}
+```
+所以通常来说，我们就定义一个底层为int的新类型才可以
+```go
+type A int
+func(a A)Get(){}
+```
+那么我们总结一下关于方法的几个小细节：
+
+- 方法首字母的大小写注定了是否可以导出包
+- 不能跨越包去定义方法
+- 每一个方法只能被一个类型去定义，不能俩类型去定义一个方法
+- ***指针类型和接口类型不能作为方法的基底类型***
+
+最后一条，我们详细展开一下：
+
+以下定义是错误的：
+
+```go
+// ❌
+type A *int
+func(a A)Get(){}
+
+// ✅
+type A int
+func(a *A)Get(){}
+```
+
+```go
+// ❌
+type A xxInterface
+func(a A)Get()
+```
+
+
+
+## 类型嵌入来完成继承
+go 语言使用类型的嵌入来实现继承母体的对象以及对象上的方法。
+
+```go
+type People struct {
+  name string
+}
+func(p *People)Name(){
+  fmt.Println(p.name)
+}
+```
+
+现在我们将类型嵌入到一个新的类型来实现继承：
+
+```go
+type Student struct {
+  People
+  address string
+}
+func(s *Student)Address(){
+  fmt.Println(s.address)
+}
+func main(){
+  var s Student
+  s.Name()
+  s.Address()
+}
+```
+
+我们还可以重写继承的方法来完成重载操作：
+
+```go
+func(s *Student)Name(){
+  fmt.Println(s.People.Name()+"学生")
+
+}
+```
+当发生嵌入类型和本类型，字段重合的时候，优先调用本类型的字段，嵌入类型的只需要加上前缀就可以了。
+
+```go
+type Student struct {
+  People
+  name string
+}
+type People struct {
+  name string
+}
+
+func main(){
+  var s Student
+  s.name = "1"
+  s.People.name = "2"
+}
+```
+如果你不想直接嵌入，也可以在前面加上变量名称：
+
+```go
+type Student struct {
+  // 不嵌入也可以
+  people People
+  name string
+}
+type People struct {
+  name string
+}
+
+func main(){
+  var s Student
+  s.name = "1"
+  s.people.name = "2"
+}
+
+```
+不过，如果是不嵌入的方式，就无法直接调用方法了，需要加上前缀。
+
+```go
+func main(){
+  var s Student
+  s.people.name()
+}
+```
+
+内置类型也可以作为字段直接嵌入到新类型中
+
+```go
+type a struct{
+  int
+  string
+}
+```
+不过使用的时候比较非常规了：
+
+```go
+func main(){
+  var a1 a
+  a1.int = 1
+  a1.string = "2"
+  fmt.Println(a1)
+}
+```
+指针类型也可以直接嵌入：
+
+```go
+
+type a struct {
+	int
+	string
+	*b
+}
+type b struct {
+}
+
+func main() {
+	var a1 a = a{
+		int:    0,
+		string: "",
+		b: &b{},
+	}
+
+	fmt.Println(a1)
+}
+```
+我们可以看到，直接嵌入的时候，其实是省略了写法。但是通常，int string，这种内置的类型我们都会指定一个变量给他们。例如常规写法：
+
+```go
+type A struct {
+  People
+  name string
+  year int
+  b *b
+}
+```
+
+无论嵌入的是值类型还是指针类型，函数都可以直接调用他们身上的方法：
+
+```go
+type People struct{
+  name int
+}
+
+func(p *People)Name(){
+  fmt.Println(p.name)
+}
+type Address struct{
+  value string
+}
+func(a *Address)Value(){
+  fmt.Println(a.value)
+}
+type Student struct{
+  People
+  *Address
+}
+func main(){
+  var s Student
+  //由于这里的address字段是指针，所以我们必须给address赋予实际的值的地址：
+  s = Student{
+    Address: &Address{
+      value: "1",
+    },
+  }
+  s.Name()
+  s.Value()
+}
+```
+
+s指针类型和值类型还有区别：
+
+
+值类型
+
+```go
+func main(){
+  var s Student
+  //由于这里的address字段是指针，所以我们必须给address赋予实际的值的地址：
+  s = Student{
+    Address: &Address{
+      value: "1",
+    },
+  }
+  s.Name()
+  s.Value()
+}
+```
+
+这个时候它调用的就是 People的方法 + *Address的方法,但是如果s这里是指针类型的话，那么它调用的就是 *People的方法 + *Address的方法
+
+```go
+func main(){
+  var s *Student
+  //由于这里的address字段是指针，所以我们必须给address赋予实际的值的地址：
+  s = &Student{
+    Address: &Address{
+      value: "1",
+    },
+  }
+  s.Name()
+  s.Value()
+}
+```
+如果你感觉这种语法躺难以理解，我建议你可以不使用嵌入，使用`s.Address.Value()`来调用方法:
+
+```go
+
+type Student struct{
+  People People
+  Address *Address
+}
+func main(){
+  var s Student
+  //由于这里的address字段是指针，所以我们必须给address赋予实际的值的地址：
+  s = Student{
+    Address: &Address{
+      value: "1",
+    },
+  }
+  s.People.Name()
+  s.Address.Value()
+}
+```
+
+
+## define类型的方法集合
+define 就是 `type A int` 的意思（type A = int 是另一个意思表示 alias），其中新类型 A 叫做define类型， int叫做 underlying 类型
+
+define类型的底层如果是接口，那么它完全可以“继承”底层数据的方法，比如底层接口拥有三个抽象函数，那么它也有三个一模一样的三个抽线函数
+
+```go
+func main() {
+	fmt.Println("Hello, 世界")
+
+	var b B
+	var d D
+	b = d
+	b.get()
+
+}
+
+type A interface {
+	get()
+}
+
+type B A
+
+type D int
+
+func (D) get() {
+
+	println("hi")
+}
+
+```
+
+但是，如果不是接口类型，那么这个类型上就什么方法都没有。它跟它底层的underlying将没有任何的联系。
+
+```go
+func main() {
+	fmt.Println("Hello, 世界")
+	var a1 a
+	a1.get()
+
+	var b1 b
+	b1.get()
+}
+
+type a struct{}
+
+func (a) get() {
+	println("hi")
+}
+
+type b a
+
+// error: b1.get undefined (type b has no field or method get)
+```
+## 类型别名的方法集合
+接下来我们介绍一个类型的别名alias
+
+使用方法是这样的：
+```go
+type rune = int32
+```
+可以看到跟
+```go
+type rune int32
+```
+非常像，但是，我要强调一下，这两者是完全不同的东西。前者是类型别名，rune就是int32的一个分身，它跟int32完全拥有相同的权利，后者，rune和int32 是完全两个类型，只是rune使用了int32作为自己的底层数据而已。
+
+我们看一个例子：
+```go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, 世界")
+
+	var h hiInterface
+	var hi hiStruct
+	h = hi
+
+	h.get()
+}
+
+type myInterface interface {
+	get()
+}
+
+type myStruct struct{}
+
+func (myStruct) get() {
+
+	println("hi")
+}
+
+type hiInterface = myInterface
+type hiStruct = myStruct
+
+```
+可以看到，别名和类型之间，完全相同，完全等价，不管是接口还是结构体，亦或者是其它的东西。
 ## 函数式编程
 函数就是一个普通的类型，它跟int，string，拥有相同的地位，所以你会发现函数式编程在go语言的代码里运用的很广泛。
 
@@ -661,131 +1088,6 @@ func Get() func(string) int {
 // 4
 // 你好
 // 5
-
-```
-***在实现接口的时候函数需要显示转换***
-```go
-func main() {
-  http.ListenAndServer(":8080", http.HandlerFunc(hi))
-}
-
-func hi(w http.ResponseWriter, r *http.Request) {
-  fmt.Fprintf(w, "hi")
-}
-
-```
-这是正确的用法，不能因为 hi 跟 http.HandlerFunc 底层一样，就认为它俩相等，因为http.HandlerFunc实现了接口，并不代表 hi实现了接口。
-
-实际上是不等于的关系，需要显式的转换一下。
-
-接下来让我们看一下刚才代码的底层原理实现：
-
-```go
-type b interface{
-  add(int,int)int
-}
-
-type b1 func(int,int)int
-
-func(b b1)add(x,y int)int{
-  return b(x,y)
-}
-
-func t (x,y int)int{
-  return x+y
-}
-
-func main() {
-  var bb b = b1(t)
-  bb.add(1,2)
-}
-```
-
-在非实现接口的时候。直接使用，以及return 的时候，引用类型(slice map func,interface,chan)是不需要显式转换的，只有非引用类型比如int，bool string strcuct 这种需要。
-
-```go
-// 不需要显示的转换
-
-// 函数类型 return 
-type b func(string) int
-
-func get2() b {
-	return func(s string) int {
-    println(s)
-		return len(s)
-	}
-}
-
-// 函数类型 直接使用
-
-func main() {
-	get(func(int)string{
-		return "hello"
-	})
-}
-
-type N func(int)string
-
-func get(n N){}
-
-// 当然你如果显式的转换一下也是没有问题的
-func get3() b {
-	return b(func(s string) int {
-		return len(s)
-	})
-}
-
-// interface 看似也可以解释这个问题
-// 但是本质上是不同的，interface是实现，
-// 并不是底层 type a int 这种类型
-// 实际上 动态类型实现接口以后，就等于接口类型那个类型了。
-package main
-
-func main() {
-	var h hi = NewHi()
-	h.get()
-}
-
-type hi interface {
-	get()
-}
-type hey struct{}
-
-func (hey) get() {
-	println("hi")
-}
-
-func NewHi() hi {
-	return hey{}
-}
-
-// 必须显示的转换
-
-// 整数类型
-type a int
-
-func get1() int{
-	var a1 a
-	a1 = 12
-	return int(a1)
-}
-
-// struct 也需要显示的转换
-type b struct {
-  i int
-}
-
-type b1 b
-
-func get7()b1{
-  return b1{i:1}
-}
-
-// 或者是
-
-func get8() b1 {
-  return b1(b{i:1})
-}
 
 ```
 ### 函数式编程的实际应用
@@ -1028,125 +1330,12 @@ func NewServer(addr string, options ...Options) *Server {
 - k8s builder
 - [综合题](./7.md)
 
-# 方法
 
-接下来，我们介绍方法，所谓方法，其实只是函数的一种语法糖，它跟函数并没有本质的区别，我们看一个简单的例子：
-
-```go
-type Student struct{
-  name string
-  year int
-  addr string
-}
-
-func(s *Student)GetName(name string){
-  s.name = name
-}
-```
-可以看到，这是一个定义在指针类型`*student` 上的方法 `GetName`,实际上，它完全等于函数的这种形态：
-
-```go
-func GetName(s *Student, name string) {
-  s.name = name
-}
-```
-go语言本身对于方法的使用是很宽泛的：
-- 指针类型的变量可以使用值类型的方法
-- 值类型的变量可以使用指针类型的方法
-
-这跟后文要讲的接口绝对是差距极大，因为接口的要求非常严格，这个可以看接口和函数的对比。
-
-值类型的变量可以使用指针类型的方法
-```go
-type Student struct{
-  name string
-  year int
-  addr string
-}
-
-func(s *Student)GetName(name string){
-  s.name = name
-}
-
-func main(){
-  var s Student
-  s.GetName("张三")
-}
-```
-当值类型来使用指针类型的方法时，系统默认会调用这个值的指针，因此这是系统给予的语法糖。
-
-指针类型的变量可以使用值类型的方法
-```go
-type Student struct{
-  name string
-  year int
-  addr string
-}
-
-func(s Student)GetName(name string){
-  s.name = name
-}
-
-func main(){
-  var s = new(Student)
-  s.GetName("张三")
-}
-```
-当指针类型来使用值类型的方法时，系统默认会调用这个指针指向的值，因此这是系统给予的语法糖。
-
-这个例子其实是错误的行为，因为s的方法是定义在值类型的，使用一个s去调用它上面的GetName,改变的只是方法中，s的复制品上的值，外部调用的这个s，实际上是不会有任何的改变的，我们如果从实质出发 `func GetName(s Student, name string)` ，就能看出来了。
-
-跟函数以及全局变量，常量是一样的，方法也是首字母大写可以导出包，小写无法导出包。
-
-这里有个细节要注意一下，不能跨越包去定义方法，go语言不支持，比如，原生类型 `（int,map,slice,bool 等）` 是无法提供方法的，例如
-```go
-// ❌
-func(i int)Get(){}
-```
-所以通常来说，我们就定义一个底层为int的新类型才可以
-```go
-type A int
-func(a A)Get(){}
-```
-那么我们总结一下关于方法的几个小细节：
-
-- 方法首字母的大小写注定了是否可以导出包
-- 不能跨越包去定义方法
-- 每一个方法只能被一个类型去定义，不能俩类型去定义一个方法
-- ***指针类型和接口类型不能作为方法的基底类型***
-
-最后一条，我们详细展开一下：
-
-以下定义是错误的：
-
-```go
-// ❌
-type A *int
-func(a A)Get(){}
-
-// ✅
-type A int
-func(a *A)Get(){}
-```
-
-```go
-// ❌
-type A xxInterface
-func(a A)Get()
-```
-
-## 方法集合决定接口的实现
-
-## 类型嵌入以及方法集合
-
-## define类型的方法集合
-
-## 类型别名的方法集合
 
 
 ## issues
 
-`问题一：`***关于方法的一道题：判断输出 ***
+`问题一：` ***关于方法的一道题：判断输出***
 
 ```go
 func main() {
