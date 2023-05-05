@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-04-26 21:47:31
+ * @LastEditTime: 2023-05-06 01:02:08
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -12,7 +12,7 @@
 > 有关泛型相关的约束内容均放置在[泛型](../泛型)这一章节，这里不再赘述
 
 重点内容前情提要
-- 实现接口
+- 方法集合决定接口的实现
 - 接口的嵌入
 - 接口类型的底层
 - 空接口
@@ -31,7 +31,57 @@ go语言为了区分，将传统接口称之为接口，将扩展的接口称之
 这一章我们只介绍经典接口的基本概念和使用方法。
 
 ## 方法集合决定接口的实现
+通常，我们使用下面这种形式去完成接口的实现
+```go
+type Writer interface {
+	Write([]byte) (int, error)
+}
+type BufferWrite struct {
+	value bytes.Buffer
+}
+
+func(b *BufferWrite) Write(p []byte) (int, error){}
+```
+我们知道，go语言规定，不可跨包去实现类型的方法，所以我们只讨论自定义的类型与接口之间的关系，首先抛出结论：松耦合关系。
+
+go语言使用一种叫做鸭子理论的方式去实现接口：只要实现了接口的方法（go泛型, go1.18+, 理论从方法改为了类型）就算是实现了这个接口，这属于隐式接口实现。
+
+通常来说，例如es6，Java等都是要显式的说明实现了哪个接口的，但是go不需要，它只需要实现方法即可，而且，它还可以实现多个接口，毕竟多实现几个方法就可以算是实现了这个接口。由此还可以推断出，go可以多实现方法，而不会影响对接口的实现。
+
+这里要说明一下，go语言对于定义在指针类型上的变量有语法糖：
+
+```go
+type Writer interface {
+	get()
+	set()
+}
+type Student struct{}
+func(s Student) get() {}
+func(s *Student) set() {}
+
+func main(){
+	var t Student
+	var tp = new(Student)
+	var w Writer 
+	// ❌
+	w = t
+	// ✅
+	w = tp
+
+}
+```
+我们可以看到，get和set分别是一个值类型和一个指针类型上实现的，这里我们的结论是：当实现接口时，**类型的指针变量**在实现方法上可以包括***定义在类型指针上的方法以及定义在值类型上的方法***，但是**值类型变量**只包含定义在**值类型**上的方法
+
+这里是提示信息：
+
+```bash
+cannot use t (variable of type Student) as Writer value in assignment: Student does not implement Writer (method set has pointer receiver)
+```
+通常来说，这不应该成为程序员的烦恼，所以想用谁就好好的定义在谁上面的方法即可，完全不会出错。
+
 ## 接口嵌入
+### 在接口中嵌入接口类型
+### 在结构体中嵌入接口类型
 ## 接口类型的底层
 
 ## 空接口的使用
@@ -86,7 +136,7 @@ func main() {
 ```
 
 
-然而函数的使用是宽松的。当直接使用函数，以及return 函数的 的时候，引用类型(slice map func,interface,chan)是不需要显式转换的，只有非引用类型比如int，bool string strcuct 这种需要。
+然而函数的使用是宽松的。当直接使用函数，以及return 函数的 的时候，引用类型(slice, map, func, interface, chan)是不需要显式转换的，只有非引用类型比如int，bool string strcuct 这种需要。
 
 ```go
 // 不需要显示的转换
@@ -177,13 +227,15 @@ func get8() b1 {
 ```
 
 ## issues
-***interface如何判断nil***
+`问题一：` ***interface如何判断 nil***
 
-***eface 和 iface的区别***
+`问题二：` ***如何判断 go 接口类型是否相等***
 
-***如何查找interface中的方法***
+`问题三：` ***eface 和 iface的区别*** 
 
-***interface 设计的优缺点***
+`问题四：` ***如何查找interface中的方法***
+
+`问题五：` ***interface 设计的优缺点***
 ## 参考资料
 - https://book.douban.com/subject/35720728/ 246页 - 286页 
 - https://mp.weixin.qq.com/s/6_ygmyd64LP7rlkrOh-kRQ

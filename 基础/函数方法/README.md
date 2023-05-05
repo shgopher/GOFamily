@@ -649,20 +649,29 @@ func(a A)Get(){}
 以下定义是错误的：
 
 ```go
-// ❌
+// ❌ 指针类型不能有自己的方法
 type A *int
 func(a A)Get(){}
 
-// ✅
+// ✅ 类型的指针可以有自己的方法
 type A int
 func(a *A)Get(){}
 ```
 
 ```go
-// ❌
+type A interface {
+	get()
+}
+// ❌ 接口类型不能有自己的方法
+func (A) get() {}
+```
+
+```go
+// ❌ 以接口为基底的类型不能有自己的方法
 type A xxInterface
 func(a A)Get()
 ```
+
 
 
 
