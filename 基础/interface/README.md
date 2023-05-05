@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-05-06 01:02:08
+ * @LastEditTime: 2023-05-06 01:11:40
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -81,7 +81,23 @@ cannot use t (variable of type Student) as Writer value in assignment: Student d
 
 ## 接口嵌入
 ### 在接口中嵌入接口类型
+```go
+type Writer interface {
+	Write([]byte) (int, error)
+	error()
+}
+type Error1 interface {
+	error()
+}
+type WriterError interface {
+	Writer
+	Error1
+}
+```
+这样的组合就可以组合成一个新的接口，并且嵌入的接口还可以有方法上的交集，go是不介意的（go1.14+）。
+
 ### 在结构体中嵌入接口类型
+
 ## 接口类型的底层
 
 ## 空接口的使用
