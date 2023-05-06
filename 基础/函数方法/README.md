@@ -1399,6 +1399,34 @@ func pName(s *Student) {
 
 如果想正常的输出，可以把定义在指针上的方法，改成定义在值上的方法即可。
 
+`问题二：` ***panic(nil)时，defer函数中的recover() == nil成立吗***
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+func main() {
+
+	defer func() {
+		a := recover()
+		fmt.Println(a == nil)
+
+	}()
+	panic(nil)
+}
+
+```
+
+答案是：
+
+当go1.21+ 的时候，不成立，在小于1.21的版本中是成立的。
+
+在1.21以下，panic中的nil是会传递给 recover() 函数的，所以必定是 true ，但是在1.21+的版本中， `panic(nil)` 在编译时，底层修改为了`panic(new(runtime.PanicNilError))`
+
+所以说，nil是不等于 *runtime.PanicNilError 的，综上所述，小于1.21的版本成立，大于1.21的版本不成立。
 
 ## 参考资料
 - https://book.douban.com/subject/35720728/ 170页 - 243页

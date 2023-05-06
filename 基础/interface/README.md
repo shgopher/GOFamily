@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-05-06 01:11:40
+ * @LastEditTime: 2023-05-06 22:46:02
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -245,13 +245,46 @@ func get8() b1 {
 ## issues
 `问题一：` ***interface如何判断 nil***
 
+只有类型是 nil + value 是nil的接口类型才是nil，否则它不等于nil
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+	var a1 a
+	// true
+	fmt.Println(a1 == nil)
+	var b1 *b
+	a1 = b1
+	// false
+	fmt.Println(a1 == nil)
+
+}
+
+type a interface {
+	get()
+}
+
+type b struct{}
+
+func (*b) get() {}
+```
+
 `问题二：` ***如何判断 go 接口类型是否相等***
+
 
 `问题三：` ***eface 和 iface的区别*** 
 
+
 `问题四：` ***如何查找interface中的方法***
 
+
 `问题五：` ***interface 设计的优缺点***
+
 ## 参考资料
 - https://book.douban.com/subject/35720728/ 246页 - 286页 
 - https://mp.weixin.qq.com/s/6_ygmyd64LP7rlkrOh-kRQ
