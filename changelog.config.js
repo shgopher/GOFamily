@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-06 12:20:49
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-05-06 12:22:40
+ * @LastEditTime: 2023-05-06 13:13:05
  * @FilePath: /GOFamily/changelog.config.js
  * @Description: 
  * 
@@ -10,12 +10,12 @@
  */
 module.exports = {
   disableEmoji: true,
-  format: '{type}{scope}: {subject}{body}',
+  format: '{type}{scope}: {subject}',
   list: ['test', 'feat', 'fix', 'chore', 'docs', 'refactor', 'style', 'ci', 'perf'],
   maxMessageLength: 64,
   minMessageLength: 3,
   questions: ['type', 'scope', 'subject', 'body', 'breaking', 'issues', 'lerna'],
-  scopes: [],
+  scopes: ['basic','root','all','runtime','concurrency','project','.vuepress','.github'],
   types: {
     chore: {
       description: 'Build process or auxiliary tool changes',
