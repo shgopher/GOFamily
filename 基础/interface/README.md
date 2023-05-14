@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-05-06 22:46:02
+ * @LastEditTime: 2023-05-14 00:57:35
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -97,6 +97,101 @@ type WriterError interface {
 这样的组合就可以组合成一个新的接口，并且嵌入的接口还可以有方法上的交集，go是不介意的（go1.14+）。
 
 ### 在结构体中嵌入接口类型
+在结构体中嵌入一个接口，就相当于实现了这个接口，拥有了它的方法，但是注意，仍然是实现的这种抽象方法，那么我们为什么要将一个接口类型嵌入到一个结构体中呢？
+
+因为go语言规定，嵌入接口，结构体相当于实现了这些接口；结构体本身也实现了方法时，优先调用结构体的方法。
+
+实际上，这个场景是这样的，在某个函数中，它的参数是一个接口类型，并且这个函数调用的只是这个接口类型的某个，或几个方法，并不是全部，那么我们作为结构体，想实现这个接口，又不想多实现额外的方法，那么这种方法就很好用了。
+
+```go
+
+package main
+
+import "fmt"
+
+func main() {
+	var a A
+	D(a)
+	D1(a)
+}
+
+type A struct {
+	BI
+}
+
+type BI interface {
+	get()
+	set()
+}
+
+func (A) get() {
+	fmt.Println("hi")
+}
+
+func D(b BI) {
+	b.get()
+
+}
+
+```
+
+注意上文提到了，接口中内嵌接口的时候，内嵌的接口方法可以重复，但是结构体中内嵌的接口，不允许出现方法重复的问题：
+
+```go
+// ❌ ： ambiguous selector a.get
+type A struct{
+	BI
+	BI1
+}
+type BI interface{
+	get()
+	set()
+}
+type BI1 interface{
+	get()
+	err()
+}
+```
+不过，要想解决这个问题，我们只需要让结构体实现这种重复的方法即可，这样，优先级就提升到了结构体，接口的方法就不会被调用了。比如：
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var a A
+	D(a)
+	D1(a)
+}
+
+type A struct {
+	BI
+	BI1
+}
+type BI interface {
+	get()
+	set()
+}
+type BI1 interface {
+	get()
+	err()
+}
+
+func (A) get() {
+	fmt.Println("hi")
+}
+
+func D(b BI) {
+	b.get()
+
+}
+
+func D1(b BI1) {
+	b.get()
+}
+
+```
 
 ## 接口类型的底层
 
@@ -116,7 +211,7 @@ type WriterError interface {
 
 ```go
 func main() {
-  http.ListenAndServer(":8080", http.HandlerFunc(hi))
+  http.ListenAndServe(":8080", http.HandlerFunc(hi))
 }
 
 func hi(w http.ResponseWriter, r *http.Request) {
@@ -128,17 +223,17 @@ func hi(w http.ResponseWriter, r *http.Request) {
 
 实际上是不等于的关系，需要显式的转换一下。
 
-接下来让我们看一下刚才代码的底层原理实现：
+接下来让我们看一下刚才代码原理：
 
 ```go
 type b interface{
   add(int,int)int
 }
 
-type b1 func(int,int)int
+type a func(int,int)int
 
-func(b b1)add(x,y int)int{
-  return b(x,y)
+func(a1 a)add(x,y int)int{
+  return a1(x,y)
 }
 
 func t (x,y int)int{
@@ -146,7 +241,7 @@ func t (x,y int)int{
 }
 
 func main() {
-  var bb b = b1(t)
+  var bb b = a(t)
   bb.add(1,2)
 }
 ```
@@ -156,7 +251,7 @@ func main() {
 
 ```go
 // 不需要显示的转换
-
+// 或者也可以说，系统自动把这个匿名函数推导为了b类型。
 // 函数类型 return 
 type b func(string) int
 
@@ -180,6 +275,7 @@ type N func(int)string
 func get(n N){}
 
 // 当然你如果显式的转换一下也是没有问题的
+// 或者说，你人为的帮它推导出了类型是b类型
 func get3() b {
 	return b(func(s string) int {
 		return len(s)

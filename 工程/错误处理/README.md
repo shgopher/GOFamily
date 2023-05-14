@@ -1,3 +1,13 @@
+<!--
+ * @Author: shgopher shgopher@gmail.com
+ * @Date: 2022-11-17 20:40:42
+ * @LastEditors: shgopher shgopher@gmail.com
+ * @LastEditTime: 2023-05-14 22:26:47
+ * @FilePath: /GOFamily/工程/错误处理/README.md
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by shgopher, All Rights Reserved. 
+-->
 # 错误处理
 
 ## issues
@@ -75,3 +85,4 @@ recoverd in f
 
 ## 参考资料
 - https://mp.weixin.qq.com/s/EvkMQCPwg-B0fZonpwXodg
+- https://mp.weixin.qq.com/s/D_CVrPzjP3O81EpFqLoynQ

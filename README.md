@@ -12,7 +12,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 </p>
 
 添加微信公众号：<a href="#wechat.png">科科人神</a>, 回复：
-- `面试题`, 获取经典go面试大全。
+- `面试题`, 获取经典go面试大全（巨全，强推，不仅有 go 问题还有大厂的算法和系统设计原题以及面试技巧等等内容）
 
 - `好友`, 可以添加作者的微信好友
 
@@ -30,7 +30,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [求值顺序](./基础/求值顺序)
 - [作用域](./基础/作用域)
 - [函数方法](./基础/函数方法)
-- [interface](./基础/interface)
+- [接口](./基础/interface)
 - [逻辑和判断语句](./基础/逻辑和判断语句) 
 - [泛型](./基础/泛型)
 - [其他内容](./基础/其他内容)
@@ -82,6 +82,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [go src](https://github.com/golang/go)
 - [the go programming language](https://www.gopl.io/)
 - [GO 语言精进之路](https://book.douban.com/subject/35720729/)
+- [Mastering Go](https://shgopher.github.io/pdf/mastering-go-cn.pdf)
 - [Go 语言设计与实现](https://draveness.me/golang/)
 - [深度探索 GO 语言](https://book.douban.com/subject/36104087/)
 - [Go 语言编程模式实战](https://time.geekbang.org/opencourse/intro/100069501)
