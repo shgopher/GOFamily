@@ -73,10 +73,13 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 ## 更多内容
 > 👷 正在施工中...
 
+- [GOFamily](https://github.com/shgopher/GOFamily) go 后端程序员宝典：go基础语法，go底层数据结构，go runtime 实现原理，go 并发模式 ，go语言项目经验
 - [408](https://github.com/shgopher/408) 关于408的相关知识，例如算法数据结构，网络，操作系统，数据库等。
 - [luban](https://github.com/shgopher/luban) 系统设计相关内容，例如分布式共识算法，消息队列，容器，RPC 等内容。
 - [dingdang](https://github.com/shgopher/dingdang) 各种工具类的使用，例如 git，正则表达式，ddd，CI/CD 等内容。
-- [god](https://github.com/shgopher/god) 关于程序员自身的一些看法，例如面试经历，赚钱窍门，创业门道，如何向上管理等。
+- [god](https://github.com/shgopher/god) 关于程序员自身的一些看法，例如面试经历，赚钱窍门，创业门道，如何向上
+管理等。
+- [RustFamily](https://github.com/shgopher/RustFamily) rust 基础知识，rust 并发编程，rust 项目实践，rust底层原理。
 ## 参考资料
 - [go.dev](https://go.dev)
 - [go src](https://github.com/golang/go)

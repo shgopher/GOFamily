@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-05-14 00:57:35
+ * @LastEditTime: 2023-05-19 17:20:01
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -192,7 +192,66 @@ func D1(b BI1) {
 }
 
 ```
+下面让我们看一下，这种用法在单元测试场景中的应用
 
+让我们描述一个场景：
+
+有一个函数，它接受一个接口类型作为参数，我们要对它进行单元测试，而且我们要伪造一些数据。
+
+```go
+// 函数体
+func MaleCount(s stmt)(int,error){
+	result,err := s.Exec("SELECT count(*) FROM exployee_tab WHERE gender=?","1")
+	if err != nil {
+		return 0,err
+	} 
+	return result.Int(),nil
+}
+// 抽象接口
+type stmt interface {
+	Close error
+	NumInput()int
+	Exec(stmt string,args ...string)(Result,error)
+	Query(args []string)(Rows,error)
+}
+// 接口相关的一些数据
+type Result struct{
+	Count int
+}
+func(r Result) Int()int{return r.Count}
+
+type Rows []struct{}
+```
+
+我们可以看到，要想对这个 MaleCount 函数进行处理，那么一个实现了stmt接口的动态类型必不可少，但是我们并不需要所有的方法，仅仅需要Exec方法。
+
+所以我们第一步就是设置一个fake类型，并且将接口内嵌来完成“继承”。
+```go
+type fakeStmtForMaleCount struct{
+	stmt
+}
+// 这里实际上只是简写，
+//真正的测试要对smt和arg进行测试的
+func(f fakeStmtForMaleCount)Exec(stmt string,args ...string)(Result,error){
+	return Result{1},nil
+}
+```
+当我们内嵌完成继承之后，我们相当于拥有了这些抽象方法，然后我们在这个接口体上自行实现Exec，这样就可以将结构体的Exec优先级提前。
+
+那么让我们开始使用虚假数据 `Result{1}` 开始测试 MaleCount 函数
+
+```go
+func TestEmployeeMaleCount(t *testing.T) {
+	fs := fakeStmtForMaleCount{}
+	v,err := MaleCount(fs)
+	if err != nil {
+		t.Error("error is :",err)
+	}
+	if v != 1  {
+		t.Errorf("we want %d, actual is %d",1,v)
+	}
+}
+```
 ## 接口类型的底层
 
 ## 空接口的使用
