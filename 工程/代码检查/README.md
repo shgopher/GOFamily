@@ -116,6 +116,16 @@ Vulnerability #2: GO-2022-0493
   More info: https://pkg.go.dev/vuln/GO-2022-0493
 ```
 信息中包括了你引用的某些包出现的一些漏洞，在fix中有修复的信息，可以把你引用的包进行一个升级。
+## x/tools 工具系列
+> https://pkg.go.dev/golang.org/x/tools#section-readme 
+
+比如检测变量shadow的工具
+
+```bash
+go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow
+```
+
+
 ## 参考资料
 -  https://go.dev/blog/vuln
 - https://time.geekbang.org/column/article/390401

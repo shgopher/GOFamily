@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-06-05 09:21:14
+ * @LastEditTime: 2023-06-05 22:10:31
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -15,9 +15,9 @@
 - 方法集合决定接口的实现
 - 接口的嵌入
 - 接口类型的底层
+- 如何判断接口类型的相等
 - 论述“nil error != nil”的原因
-- 空接口
-- 接口的相等性
+- 接口类型如何装箱动态类型
 - 小接口的意义
 - 接口提供程序的可扩展性
 - 接口提供程序的可测试性
@@ -284,11 +284,265 @@ func TestEmployeeMaleCount(t *testing.T) {
 }
 ```
 ## 接口类型的底层
+这是接口的底层数据：
 
-## 论述“nil error != nil”的原因
-## 空接口的使用
-## 接口的相等性
+一般接口：
+```go
+// interface
+type iface struct {
+	tab *itab
+	data unsafe.Pointer
+}
+```
+空接口：
+```go
+// empty interface
+type eface struct {
+	_type *_type
+	data unsafe.Pointer
+}
+```
+data 表示的意思一样，值是动态类型的地址。我们比较value时，比较的是地址指向的数据是否相同而不是地址本身。
+
+空接口并没有定义接口的方法，因此`_type` 定义的均为动态类型的元数据
+```go
+type _type struct {
+	size uintptr
+	ptrdata uintptr
+	hash uint32
+	tflag tflag
+	align uint8
+	fieldalign uint8
+	kind uint8
+	alg *typeAlg
+	gcdata *byte
+	str nameOff
+	ptrToThis typeOff
+
+}
+```
+一般接口因为本身定义了方法，因此它需要定义自己的方法，以及动态类型的数据，因此它除了 `_type` 外，还定义了 `interfacetype` 用来存储自己定义的方法元数据。 
+```go
+type itab struct {
+	// 非空接口本身的信息
+	inter *interfacetype
+	// 动态类型数据
+	_type *_type
+	// _type.hash的copy，用于 switch 判断类型
+	hash  uint32
+	_     [4]byte
+	// 动态类型已实现接口方法的调用地址数组
+	fun   [1]uintptr
+}
+```
+注意这里的fun数组，这里定义的 `[1]uintptr` 在实际使用时，可能不是[1],这里的数据时可变的，如果是2，就表示实现了两个方法。
+
+原文的注释是这样的 `// variable sized. fun[0]==0 means _type does not implement inter.`
+```go
+type interfacetype struct {
+	// 接口本身的类型信息
+	typ _type
+	// 接口所在的包路径
+	pkgpath name
+	// 接口方法集合
+	mhdr []imethod
+}
+
+```
+
+## 如何判断接口类型的相等
+当接口类型未被赋予动态类型时，它的两个字段，即：动态类型字段和动态类型value字段均为nil，那么这个未初始化的接口变量就恒等于`nil`
+
+当接口类型被赋予了动态类型，那么如果判断这时候的接口类型，必须为类型相同以及值相同，接下来我们看一个案例：
+
+***两个非空非nil接口变量比较：***
+```go
+func main() {
+    printNonEmptyInterface1()
+}
+
+type T struct {
+    name string
+}
+func (t T) Error() string {
+    return "bad error"
+}
+func printNonEmptyInterface1() {
+    var err1 error    // 非空接口类型
+    var err1ptr error // 非空接口类型
+    var err2 error    // 非空接口类型
+    var err2ptr error // 非空接口类型
+
+    err1 = T{"eden"}
+    err1ptr = &T{"eden"}
+
+    err2 = T{"eden"}
+    err2ptr = &T{"eden"}
+    println("err1:", err1)
+    println("err2:", err2)
+    println("err1 = err2:", err1 == err2)             // true
+    println("err1ptr:", err1ptr)
+    println("err2ptr:", err2ptr)
+    println("err1ptr = err2ptr:", err1ptr == err2ptr) // false
+}
+```
+```go
+err1: (0x104c959a8,0x1400004c748)
+err2: (0x104c959a8,0x1400004c728)
+err1 = err2: true
+err1ptr: (0x104c95988,0x1400004c738)
+err2ptr: (0x104c95988,0x1400004c758)
+err1ptr = err2ptr: false
+```
+
+> println ，预定义函数，在编译期间，会由编译器根据要输出的参数的类型，将println替换为特定的函数，这些预定义函数定义在 [runtime/print.go](https://github.com/golang/go/blob/96d16803c2aae5407e99c2a1db79bb51d9e1c8da/src/runtime/print.go#L255) 中，针对 eface和iface的打印函数是：
+	```go
+	func printeface(e eface){
+		print(e._type, e.data)
+	}
+	```
+	```go
+	func printiface(i iface){
+		print(i.tab, i.data)
+	}
+	```
+
+
+如代码所示，我们要判断的是，非空接口，并且已经实现了动态类型的两组接口类型，答案已经写在代码里了，即：`err1 == err2` `err1ptr != err2ptr`
+
+现在就让我们从源码出发来探究一下原因。
+
+首先，我们知道**类型相同以及值相同才是真的相等**，err1 和 err2 的动态类型均为 `T` ，值也均为 `T{"eden"}` ，所以他们相等；err1ptr ，和err2ptr 的类型均为 `*T`，值均为`&T{"eden"}`，但是系统却判断他们不相等，从源码来看，二者的`tab *itab`，因为动态类型的元数据相同，这个字段一致，所以类型一致，从第二个字段 data 来说，***data存储了`&T{"edent"}`的地址，这个地址指向的内容仍为地址***，从内容上来说地址指向的地址值并不相同，所以这就可以解释为什么结果是false了。
+
+***接下来我们看一下两个空非nil接口类型的比较：***
+
+```go
+func main() {
+	var a any
+	var b any
+	a = &S{
+		"1",
+	}
+	b = &S{
+		"1",
+	}
+	//(0x102f8aaa0,0x1400004c758)
+  //(0x102f8aaa0,0x1400004c748)
+	println(a)
+	println(b)
+	// false
+	println(a == b)
+}
+
+type S struct {
+	name string
+}
+```
+根据源码所知，a和b的 `_type` 是完全相同的，然而地址指向的地址不相同，所以结果是false，下面让我们稍微改动一下：
+```go
+func main() {
+	var a any
+	var b any
+	a = &S{
+		
+	}
+	b = &S{
+		
+	}
+// (0x104422aa0,0x1400004c767)
+// (0x104422aa0,0x1400004c767)
+	println(a)
+	println(b)
+	// true
+	println(a == b)
+}
+
+type S struct {
+	
+}
+```
+这个时候你惊奇的发现，结果竟然是true，这是为什么呢？不是说，地址指向的地址应该是不同的吗？nonono，并不是所有的情况都是那样，如果结果是空接口，那么空接口的所有变量指向的都是同一个地址，所以从结果上来说，data其实地址是相同的，指向的是同一个数据，所以答案是true。
+>在 Go 中，空数据结构（比如 struct{}）不占用任何内存空间，因此在创建空数据结构时，它们实际上是指向同一个地址的。这是因为在 Go 中，每个变量都需要分配内存空间，以便可以存储它们的值。但是，由于空结构体没有任何字段，因此它们不需要分配任何内存空间。因此，在创建空结构体时，它们实际上是指向同一个已经分配的零大小内存块的指针。
+
+***一个非空接口类型和一个空接口类型一定不相等吗？***
+
+如果你根据源码来看，第一个字段本身就不一样，肯定不相等了，但是go在比较相等时，比较的是`_type`字段，并不是全部的tab数据，所以当两者 字段中的`_type`相同就表示类型相同:
+```go
+func main() {
+	var a any = S{6}
+	var b B  = S{6}
+	//(0x1040dfae0,0x1400004c760) 
+	//(0x1040e5a68,0x1400004c758)
+  //true
+	println(a,b)
+	println(a == b)
+}
+type S struct{
+	int
+}
+type B interface{
+	get()
+}
+func(S)get(){}
+```
+所以从结果来看，_type 字段相同均为 S，data也是一致的，所以答案是 true
+
+***nil接口类型：***
+```go
+func main() {
+	var e error
+	var a any
+	//(0x0,0x0)
+	println(a)
+	//(0x0,0x0)
+	println(e)
+	println(e == nil)
+	println(a == nil)
+	println(a == e)
+}
+```
+当一个接口是未给定动态类型的接口类型，它就是nil接口，那么它的类型和data值均为空，所以只要是nil接口，他们均相等，并且等于nil。
+
+最后说明一下，***当接口类型获取动态类型的时候，绝大多数情况下，会将动态类型的值复制，并且放置在一个新的内存空间里，所以原始数据跟接口类型的数据再无瓜葛，指针类型除外***，不过为了节省空间，有一种情况，go编译器就会放弃这个动作，并不会每次都重新分配。
+
+```go
+func main() {
+	var x any = 34
+	var y any = x
+	var z any = x
+// (0x1023343e0,0x10232c1b0)
+// (0x1023343e0,0x10232c1b0)
+// (0x1023343e0,0x10232c1b0)
+	println(x)
+	println(y)
+	println(z)
+}
+```
+可以看到，go判断，x y z 三个空接口类型的动态类型，类型均相同都是int，并且 data 指向同一块内存地址。
+
+非空接口也是一样：
+```go
+func main() {
+	var a1 a = b{}
+	var a2 a = a1
+// 	(0x102791a48,0x1400004c758)
+//  (0x102791a48,0x1400004c758)
+	println(a1)
+	println(a2)
+}
+
+type a interface {
+	get()
+}
+type b struct {
+	name string
+}
+
+func (b) get() {}
+```
+我们如果想获取关于接口的内部实现细节，可以看一下这个[项目](https://github.com/bigwhite/GoProgrammingFromBeginnerToMaster/blob/main/chapter5/sources/dumpinterface.go)，可以输出内部的信息
 ## 小接口的意义
+
 ## 接口提供程序的可扩展性
 ## 接口提供程序的可测试性
 ## 接口的严格和函数的宽松对比
@@ -455,13 +709,27 @@ type b struct{}
 func (*b) get() {}
 ```
 
-`问题二：` ***如何判断 go 接口类型是否相等***
+`问题二：` ***论述 “ nil error != nil ” 的原因***
 
+nil error通常可以用这种方法来输出:
+```go
+func main() {
+	var a error = (*b)(nil)
+	//(0x102205988,0x0)
+	println(a)
+	//false
+	println(a == nil)
+}
 
+type b struct {
+	error
+}
 
+```
+可以发现，nil error 的类型并不是0x0，而 nil 接口变量是 0X0,0x0，所以这两者并不相同。
 `问题三：` ***eface 和 iface的区别*** 
 
-
+eface和iface的第二个字段相同均存储的是动态类型的地址，然而eface的第一个字段保存的是动态类型的元数据，即：_type 字段，而iface的第一个字段不仅仅保存了动态类型的元数据 _type ，还保存了自己的方法集合的相关数据，以及动态类型实现的方法地址等数据。
 
 `问题四：` ***如何查找interface中的方法***
 
