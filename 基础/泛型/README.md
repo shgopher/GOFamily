@@ -13,10 +13,38 @@ go使用interface作为约束，约束的意思是约束了这个泛型都具有
 
 go可以将所有的接口（包括经典接口，和泛型以后的接口）都用作约束，但是可以不代表应该，要有选择的去使用约束，但是约束并不是都可以作为传统的接口来使用的，例如传统的接口只能存在方法，并不能存在类型，**只要存在类型就自动归纳为约束**
 
-综上所述，第一，约束的概念大于接口，只有传统接口可以作为抽象类型去使用，约束只能存在于函数或者类型之中，不能单独使用。第二，不要把传统接口用在约束的地方，这种用法是不合适的，通常来说传统接口的模式就用作抽象类型的解耦即可（用了也不错，只是不建议）。
-
+综上所述，第一，约束的概念大于接口，只有传统接口可以作为抽象类型去使用，约束只能存在于函数方法或者类型之中，不能单独使用。
 ```go
-type st interface{
+func main() {
+	var a1 a
+}
+
+type a interface{
+	int|float64
+	get()
+}
+```
+```bash
+# 不能在类型约束之外使用类型 a：接口包含类型约束
+cannot use type a outside a type constraint: interface contains type constraints
+
+```
+
+第二，不要把传统接口用在约束的地方，这种用法是不合适的，通常来说传统接口的模式就用作抽象类型的解耦即可（用了也不错，只是不建议）。
+```go
+// 不建议
+type Writer interface {
+	hi()
+}
+
+func Get[T Writer](v T) {
+	v.hi()
+}
+```
+
+请认识到，泛型是一种类型，约束是一种类型的约束，请不要把约束当作泛型。
+```go
+type st interface {
   int | string
 }
 ```
@@ -27,7 +55,7 @@ go内置了很多约束，比如说 any 和 comparable ，意思是任何类型�
 约束不仅仅可以单独写出来，还可以内置于函数内部。
 
 ```go
-func Age[T int| string,B float64| string](i T,j B){}
+func Age[T int| string, B float64| string](i T,j B){}
 ```
 这种形式下，T 和 B 的约束就是仅限此函数使用 
 
@@ -38,28 +66,6 @@ type st interface{
 	~string | ~int
 }
 ```
-于此同时，约束也不仅仅是基础类型，约束的内容是方法也是可以的
-
-```go
-
-func ConcatTo[S Stringer, P Plusser](s []S, p []P) []string {
-	r := make([]string, len(s))
-	for i, v := range s {
-		r[i] = p[i].Plus(v.String())
-	}
-	return r
-}
-
-type Plusser interface {
-	Plus(string) string
-}
-type Stringer interface {
-	String() string
-}
-
-```
-所有说这里就可以看出来，在引入泛型之后，go的interface的功能扩充了。
-
 
 约束跟接口是一样的也是可以嵌套的
 
@@ -78,7 +84,7 @@ type ImpossibleConstraint interface {
 ```
 这里的意义就是 **and**的意思 就是说这个约束是可以比较的还是必须得支持`hash()uintptr` 
 
-下面这种方法也是可以的
+下面这种方式也是可以的
 
 ```go
 type NumericAbs[T any] interface {
@@ -89,79 +95,87 @@ type NumericAbs[T any] interface {
 	Abs() T
 }
 ```
-上面的类型意思是满足数字类型，下面的意思是满足这个方法，所以最终实现这个约束，就是一个对象是数字类型，并且实现了这个接口
+上面的类型意思是满足数字类型，下面的意思是满足这个方法，所以最终实现这个约束的对象就是一个数字类型，并且实现了这个接口的 `Abs()T` 方法。
 
 当结构体中使用泛型的时候，泛型不能直接作为嵌入使用
 ```go
 type Lockable[T any] struct {
-	T // 正确的方法应该是 T T
+	T // 正确的方法应该是 t T ； 将 T 作为类型参数，不可直接嵌入
 	mu sync.Mutex
 }
 
 ```
-错误提示： `embedded field type cannot be a (pointer to a) type parameter`
+错误提示： `embedded field type cannot be a (pointer to a) type parameter` ；`嵌入式字段类型不能是（指向）类型参数`
 
 我们再看一下当泛型结构体嵌入到其它结构体中如何使用
 
 ```go
-package main
-
-import (
-	"fmt"
-)
-
-func main() {
-	fmt.Println("Hello, 世界")
-}
-
 type A[T any] struct {
 	T T
 }
 
 type B[T any] struct {
-	// 这里也可以使用 A[T] 前者是输入了实际类型，
-	//后者虽然输入的是泛型类型T，但是同样属于一个具体类型
-	A[C] 
+	// 这里使用 A[T] 输入了实际类型，
+	A[T]
 	T T
-}
-
-type C struct {
 }
 ```
 
 可以看出关键点，泛型结构体被嵌入其它结构体的时候，泛型要给实际的类型才可以
 
-这句解释是跟方法中的泛型做对比的
+结构体泛型和方法中的泛型做对比：
 
 ```go
 type A[T any] struct{}
 
 func(a A[T])Get(){}
 ```
-我们知道方法里的泛型是使用这种方法，方法里的泛型是可以直接从struct定义的地方继承这个泛型T的，但是结构体的嵌套或者使用，就不能继承了，所以得给实际的类型不然就会报错  `embedded field type cannot be a (pointer to a) type parameter`
+方法里的泛型是可以直接从struct定义的地方继承这个泛型T的，当这个结构体使用时，指定实际的类型即可。
+```go
+func main() {
+	var d1 d
+	var a  = A[d]{
+		d1,
+	}
+	a.Get()
+}
+// 只要没有类型就不是约束，是接口，在go语言中，接口可以充当一个一般类型
+type d interface {
+	get()
+}
 
-约束里的泛型同样不能直接嵌入使用
+type A[T any] struct {
+	T T
+}
+
+func (a A[T]) Get() {
+	fmt.Println(a)
+}
+```
+
+***约束里的泛型同样不能直接嵌入使用***
 
 ```go
+// ❌
 type B[T any] interface {
 	T
 }
 ```
 错误提示： `cannot embed a type parameter`
 
-只有泛型类型是方法的参数时才可以这么做，比如说
+泛型只能充当类型：
 
 ```go
 type EmbeddedParameter[T any] interface {
 	~int | ~uint 
 	me() T 
 ```
-如果想使用这种约束，可以这么使用
+使用约束中的泛型还是需要注意一下的，稍微有些复杂：
 
 ```go
 func Abs[T EmbeddedParameter[T]](t T)T{}
 ```
-解释一下，中括号里面泛型的两个T表达的意思是不一样的，后面的T表达的是 约束里的泛型，表示 any，前面的T表示的是满足后面的这个约束的类型T，但是这里注意，后面T虽然之前定义的时候是any但是这里被改变了，改变为了必须满足约束 `EmbeddedParameter`的类型，如果说的通俗点，从any变成了，满足 `int ｜ uint and 实现 me()T方法 `后文会有代码进行解释。
+解释一下，中括号里面泛型的两个T表达的意思是不一样的，后面的T表达的是**约束里的泛型**，表示 any，前面的T表示的是满足后面的这个约束的类型T，但是这里注意，后面T虽然之前定义的时候是 any 但是这里被赋予为T之后，改变了，改变为了必须满足约束 `EmbeddedParameter`的类型，如果说的通俗点，从any变成了，满足 `int ｜ uint and 实现 me()T方法 `后文会有代码进行解释。
 
 当然了，后面的T没有也行，如果没有后面的T就是相当于不改变后面的T的约束类型了
 
@@ -176,11 +190,11 @@ func IsClose[T2 Differ](a, b T2) bool {
 
 ```
 
-当使用了泛型之后，是无法使用断言的，这是非法的，那么如果一定要在运行时的时候去判断类型怎么办呢？答案就是转变成`interface{}`即可，因为我们知道任何对象都已经实现了空接口，那么就可以被空接口去转化
+当使用了泛型之后，是无法使用断言的，这是非法的，那么如果一定要在运行时的时候去判断类型怎么办呢？答案就是转变成 `any` ( type any = interface{} ) 即可，因为我们知道任何对象都已经实现了空接口，那么就可以被空接口去转化
 
 ```go
 func GeneralAbsDifference[T Numeric](a, b T) T {
-	switch (interface{})(a).(type) {
+	switch (any)(a).(type) {
 	case int, int8, int16, int32, int64,
 		uint, uint8, uint16, uint32, uint64, uintptr,
 		float32, float64:
@@ -201,7 +215,7 @@ type AliasA = A // 错误 ❌
 type AliasA = A[int] // 正确
 ```
 
-其中错误的问题是 别名不能直接使用泛型类型 `cannot use generic type A[T any] without instantiation`，它需要泛型的实例化
+其中错误的问题是 别名不能直接使用泛型类型 `cannot use generic type A[T any] without instantiation`，它需要泛型实际赋值
 ## 使用方法
 下面展示一下go泛型的基本使用方法
 ```go
@@ -217,7 +231,7 @@ func Age[T any](t T) T{
 	return t
 }
 ```
-这是函数使用泛型的写法，当函数使用泛型的时候，需要在变量前使用中括号标注泛型的具体约束，然后后面才能使用这个泛型类型，使用泛型函数的时候，中括号是可以省略的`Age(12)` 系统会自动推算泛型的具体实现。顺便说一下，泛型类型使用`%v`作为占位符，泛型类型无法进行断言，这一点跟`interface{}`不同。
+这是函数使用泛型的写法，当函数使用泛型的时候，需要在变量前使用中括号标注泛型的具体约束，然后后面才能使用这个泛型类型，使用泛型函数的时候，中括号是可以省略的`Age(12)` 系统会自动推算泛型的具体实现。顺便说一下，泛型类型使用`%v`作为占位符，也就是默认的类型，泛型类型无法进行断言。
 
 当然了，我么也可以不用any，自定义一个约束
 
@@ -264,18 +278,19 @@ func(dd *DD[T])TT(t T){
 	fmt.Println(t,len(*dd))
 }
 ```
-在 age 结构体声明的时候，声明了一个泛型 T ，在struct体内就可以使用这个T，值得注意的是，这个结构体方法内部仅可以使用定义在这个结构体对象上的泛型
+在 age 结构体声明的时候，声明了一个泛型 T ，在struct体内就可以使用这个T，方法内部仅可以使用定义在这个结构体对象上的泛型
 
 下面是一个**错误案例**
 
 ```go
+// ❌
 func (a *Age[T])Post[B any](t T,b B) {
 	fmt.Println(a.I, t)
 } 
 ```
 `syntax error: method must have no type parameters`
 
-接下来我们看一下，如何使用 `type a[T any] interface{} 有类型也有方法`的泛型结构
+接下来我们看一下，如何使用有类型也有方法的泛型
 
 ```go
 package main
@@ -313,7 +328,7 @@ func AbsDifference[T NumericAbs[T]](a, b T) T {
 }
 ```
 ## 实现原理
-泛型的第一种方法是在编译这个泛型时，使用一个字典，里面包含了这个泛型函数的全部类型信息，然后当运行时，使用函数实例化的时候从这个字典中取出信息进行实例化即可，这种方法会导致执行性能下降，一个实例化类型`int, x=y`可能通过寄存器复制就可以了，但是泛型必须通过内存了（因为需要map进行赋值），不过好处就是不浪费空间
+泛型的第一种方法是在编译这个泛型时，使用一个字典，里面包含了这个泛型函数的全部类型信息，然后当运行时，使用函数实例化的时候从这个字典中取出信息进行实例化即可，这种方法会导致执行性能下降，一个实例化类型`int, x=y`可能通过寄存器复制就可以了，但是泛型必须通过内存了（因为需要字典进行运行时赋值），不过好处就是不浪费空间
 
 还有一种方法就是把这个泛型的所有类型全部提前生成，这种方法也有一个巨大的缺点就是代码量直线上升，如果是一个包的情况下还能根据具体的函数调用去实现该实现的类型，如果是包输出的的情况下，那么就得不得不生成所有的类型。
 
@@ -532,7 +547,7 @@ func (a *Aget[T]) Approach() T {
 }
 
 ```
-实际上目前，还没一个确切的泛型的零值，那么我们要做的只能是按照实际来具体分析，按照提案，以后有可能使用`return ...` `return _` `return ` `return nil` `return T{}` 这些都是可能的结果，我个人比较喜欢 `return T{}` 来表示泛型的零值，或许在go1.19或者go2的时候能实现，拭目以待吧。
+实际上目前，还没一个确切的泛型的零值，那么我们要做的只能是按照实际来具体分析，按照提案，以后有可能使用`return ...` `return _` `return ` `return nil` `return T{}` 这些都是可能的结果，我个人比较喜欢 `return T{}` 来表示泛型的零值，拭目以待吧。
 
 ***问题二：*** 无法识别使用了底层数据的其它类型
 
