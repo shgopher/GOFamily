@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-06-05 22:10:31
+ * @LastEditTime: 2023-06-07 03:55:09
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -17,9 +17,9 @@
 - 接口类型的底层
 - 如何判断接口类型的相等
 - 论述“nil error != nil”的原因
-- 接口类型如何装箱动态类型
 - 小接口的意义
-- 接口提供程序的可扩展性
+- 不可滥用空接口
+- 接口作为程序水平组合的连接点，提供程序的可扩展性
 - 接口提供程序的可测试性
 - 接口的严格对比函数的宽松
 
@@ -542,9 +542,70 @@ func (b) get() {}
 ```
 我们如果想获取关于接口的内部实现细节，可以看一下这个[项目](https://github.com/bigwhite/GoProgrammingFromBeginnerToMaster/blob/main/chapter5/sources/dumpinterface.go)，可以输出内部的信息
 ## 小接口的意义
+***接口越小，抽象程度越高，使用范围也就越大***
 
-## 接口提供程序的可扩展性
+一群飞禽走兽，我们可以给他们的行为抽象为“飞行”，一群能游泳的动物我们可以给他们的行为抽象为“游泳”。那么飞行和游泳涵盖的内容就会非常的多，使用范围就会很大，比如我们现在有一个函数，要求对所有能飞行的动物做出打印动作，那么众多飞行的动物就都可以使用这个函数。
+```go
+func main() {
+	e1 := e{"大鹅"}
+	y1 := y{"老鹰"}
+	// {大鹅} 他们的具体行为模式是： 大鹅慢慢的飞
+	PrintFlyer(e1)
+	// {老鹰} 他们的具体行为模式是： 老鹰迅速飞行
+	PrintFlyer(y1)
+}
+
+type Flyer interface {
+	Fly() (flyMod string)
+}
+
+func PrintFlyer(f Flyer) {
+	fmt.Println(f, "他们的具体行为模式是：", f.Fly())
+}
+
+// 大鹅
+type e struct {
+	name string
+}
+
+func (e) Fly() string {
+	return "大鹅慢慢的飞"
+}
+
+// 老鹰
+type y struct {
+	name string
+}
+
+func (y) Fly() string {
+	return "老鹰迅速飞行"
+}
+```
+
+***易于实现和测试***
+
+当接口的方法较少时，动态类型实现的方法就少了，必然容易实现以及容易测试。
+
+***高內聚，易于复合组合***
+
+我们抽象程度很高的接口，接口做的事情就很单一，比如飞行类的接口方法就是飞行，游泳动物的接口方法就只有游泳，当有会游泳也会飞行的动物时，我们只需要成立一个新的接口，将飞机类和游泳类的接口嵌入到新接口中就形成了一个全新的会飞行也会游泳的接口了。
+
+如果一个接口涵盖了各种方法，那么当组合接口的时候，势必某些方法是被弃用的，所以综上所述，设置单一的，高内聚的方法是好的设计方案。
+
+### 如何设计小接口
+1. 先初步抽象出接口，这个时候可以有耦合，也可以不够高抽象，但是你得先定义出一个初步的接口出来，与此同时我们也得清楚，越是业务代码，抽象出一个高内聚的接口越难。
+
+2. 将大接口拆分为小接口，使用一段时间以后，我们会发现某些操作是可以单出被提取出来的，比如 io 包的 writer 和 reader，那么我们就可以把这个动作单独抽象出来。抽象的最高程度就是只有一个方法，这就非常的內聚了，可以说，这种程度的抽象在日常业务中还是相对比较难的，需要在长时间的使用中，慢慢摸索。
+
+综上所述：现搞出一个能用的大接口再说，以后慢慢解耦，形成抽象程度更高的小接口。
+
+## 不可滥用空接口
+
+
+## 接口作为程序水平组合的连接点，提供程序的可扩展性
+
 ## 接口提供程序的可测试性
+
 ## 接口的严格和函数的宽松对比
 接口的实现是严格的：在实现接口的时候函数需要显示转换
 
@@ -586,11 +647,12 @@ func main() {
 ```
 
 
-然而函数的使用是宽松的。当直接使用函数，以及return 函数的 的时候，引用类型(slice, map, func, interface, chan)是不需要显式转换的，只有非引用类型比如int，bool string strcuct 这种需要。
+函数的使用是宽松的。当直接使用函数，以及return 函数的 的时候，（其它引用类型也一样：slice, map, func, interface, chan）是不需要显式转换的，只有非引用类型比如int，bool string strcuct ... 需要。
 
 ```go
 // 不需要显示的转换
-// 或者也可以说，系统自动把这个匿名函数推导为了b类型。
+// 或者也可以说：系统自动把这个匿名函数推导为了b类型。
+
 // 函数类型 return 
 type b func(string) int
 
@@ -602,11 +664,11 @@ func get2() b {
 }
 
 // 函数类型 直接使用
-
 func main() {
-	get(func(int)string{
+	var a = func(int)string{
 		return "hello"
-	})
+	} 
+	get(a)
 }
 
 type N func(int)string
@@ -620,31 +682,6 @@ func get3() b {
 		return len(s)
 	})
 }
-```
-
-interface 看似也可以解释这个问题但是本质上是不同的，interface是实现，并不是底层 type a int 这种类型,实际上 动态类型实现接口以后，就等于接口类型那个类型了。
-```go
-package main
-
-func main() {
-	var h hi = NewHi()
-	h.get()
-}
-
-type hi interface {
-	get()
-}
-type hey struct{}
-
-func (hey) get() {
-	println("hi")
-}
-
-func NewHi() hi {
-	return hey{}
-}
-
-
 ```
 不过除了函数等引用类型之外的非引用类型还是必须显示的转换的
 
