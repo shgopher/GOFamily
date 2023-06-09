@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-06-09 11:07:36
+ * @LastEditTime: 2023-06-09 11:30:32
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -14,6 +14,7 @@
 重点内容前情提要
 - 方法集合决定接口的实现
 - 接口的嵌入
+- 类型断言
 - 接口类型的底层
 - 如何判断接口类型的相等
 - 论述“nil error != nil”的原因
@@ -280,6 +281,37 @@ func TestEmployeeMaleCount(t *testing.T) {
 	}
 	if v != 1  {
 		t.Errorf("we want %d, actual is %d",1,v)
+	}
+}
+```
+## 类型断言
+当使用空接口作为类型参数的时候，空接口已经充盈了一个动态类型，如果我们要将这个空接口类型转化为原来的类型就需要断言。
+
+常规的断言方式：
+
+```go
+func main() {
+	var a any
+	a = 12
+	// 第二个参数 ok 变量可以省略
+	// v := a.(int)
+	// fmt.Println(v)
+	if v, ok := a.(int); ok {
+		fmt.Println(v)
+	}
+}
+```
+存在于switch中的断言方式：
+```go
+func main() {
+	var f any
+	f = "12"
+	// (type)里面的type为固定用法，不能更改。
+	switch v := f.(type) {
+	case string:
+		fmt.Println(v)
+	default:
+		fmt.Println("NO")
 	}
 }
 ```
