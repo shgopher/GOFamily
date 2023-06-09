@@ -139,6 +139,7 @@ module.exports = {
       {
         text:'作者',link:'https://shgopher.github.io/',
       },
-    ]
+    ], 
+    sidebar:'auto'
   },
 }
