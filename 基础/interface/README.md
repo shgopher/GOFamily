@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-06-08 08:27:40
+ * @LastEditTime: 2023-06-09 11:07:36
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -698,11 +698,53 @@ func main(){
 通常来说，web编程中的中间件就是这么用的，使用pipline的方法，使用修饰器模式（包裹函数）然后链式调用，使用http.HandlerFunc 进行适配器（也就是类型的转换）进而实现中间件的功能。
 
 ## 接口提供程序的可测试性
+主要思想就是从引入一个结构体变成引入一个接口，这样就可以完美的解耦上下的数据。
 
+下面有一个场景，使用接口来降低耦合达到可以测试函数的目的。
 
+ 首先我们先看一下原版：
+```go
+import(
+	"example.com/s/cache"
+)
 
+func AddA(name string, year int){
+	
+	cache.Add(name, year)
+}
+```
+我们发现，整个数据耦合在一起了，如果想替换掉cache包，那就是不可能的，下面我们使用接口将 AddA 改造一下。
+```go
+type Ader interface{
+	Add(name string, year int)
+}
+
+func AddA(a Ader,name string,year int){
+	a.Add(name, year)
+}
+```
+下面我们实现一下这个接口
+```go
+type ExampleAd struct {
+	name string
+	year int
+}
+func(d *ExampleAd)Add(name string, year int) {
+	d.name = name
+	d.year = year
+	cache.Add(d.name, d.year)
+}
+```
+
+最后的运行
+```go
+a := new(ExampleAd)
+
+AddA(a,"liming",13)
+	
+```
 ## 接口的严格和函数的宽松对比
-接口的实现是严格的：在实现接口的时候函数需要显示转换
+接口的实现是严格的：在实现接口的时候函数需要显示转换（适配器模式）
 
 ```go
 func main() {
