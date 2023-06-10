@@ -12,12 +12,19 @@
 ## 进程模型
 
 ## 线程模型
+
 ## 事件驱动模型
+
 ## clojure 分离标识与状态
+
 ## actor
+
 ## csp
+
 ## 数据级并行
+
 ## lambda 架构
+
 ## 参考资料
 - https://mp.weixin.qq.com/s/TvHY2i1FX1zS_WHdCvK-wA
 - https://book.douban.com/subject/26337939/ 
