@@ -1328,7 +1328,7 @@ func NewServer(addr string, options ...Options) *Server {
 
 如你所见，使用了函数作为返回值，函数作为参数，变长函数以及闭包等知识，去完成了 “functional options” 这种函数式编程的模式。
 
-这里还有关于函数式编程其它相关内容：
+### 这里还有关于函数式编程其它相关内容：
 > 这里的 主要内容来自 酷壳 coolshell.cn (R.I.P 耗子叔)
 
 - [反转控制](./0.md)
