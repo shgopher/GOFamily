@@ -1287,14 +1287,16 @@ func(sb *ServerBulder) Run()Server{
 
 ***functional Options --- 功能选项模式***
 
+使用场景：在一个配置中心，我们并不想把配置的struct暴漏出去，那么我们可以将这个struct定义为非导出类型，然后我们定义一个可导出的函数类型，将这个struct设置为函数的参数，使用这个可导出的函数来完成配置的操作。
+
 首先是定义一个函数类型
 ```go
-type Options func(*Server)
+type Option func(*server)
 
-type Server struct {
-  Addr string
-  Port int
-  Protocol string
+type server struct {
+  addr string
+  port int
+  protocol string
 }
 ```
 
@@ -1302,20 +1304,20 @@ type Server struct {
 
 ```go
 
-func Port(port int) Options {
-  return func(s *Server) {
-    s.Port = port
+func WithPort(port int) Options {
+  return func(s *server) {
+    s.port = port
   }
 }
 
-func Protocol(protocol string) Options {
-  retrun func(s *Server) {
-    s.Protocol = protocol
+func WithProtocol(protocol string) Options {
+  retrun func(s *server) {
+    s.protocol = protocol
   }
 }
 
-func NewServer(addr string, options ...Options) *Server {
-  serv := Server{
+func NewServer(addr string, options ...Option) *server {
+  serv := server{
     addr,
     "8080",
     "tcp",
@@ -1323,10 +1325,20 @@ func NewServer(addr string, options ...Options) *Server {
   for _, opt := range options {
     opt(&serv)
   }
+  // 接下来的处理
+}
+```
+```go
+import(
+  "xx/example"
+)
+func main(){
+  example.NewServer("bj",example.WithPort("8080"),example.WithProtocol("tcp"))
 }
 ```
 
 如你所见，使用了函数作为返回值，函数作为参数，变长函数以及闭包等知识，去完成了 “functional options” 这种函数式编程的模式。
+在这个场景下，我们扩展配置变得非常容易，并不需要更改现有的代码，并且也防止了配置struct的外漏。
 
 ### 这里还有关于函数式编程其它相关内容：
 > 这里的 主要内容来自 酷壳 coolshell.cn (R.I.P 耗子叔)
