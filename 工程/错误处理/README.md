@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-05-14 22:26:47
+ * @LastEditTime: 2023-06-11 08:43:57
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -30,6 +30,10 @@ func main() {
 	}()
 	fmt.Println("hi1")
 	panic("oops")
+	// 这里的defer将不会进栈，所以也就不会执行了。
+	defer func() {
+		println("x")
+	}()
 	fmt.Println("hi2")
 }
 
