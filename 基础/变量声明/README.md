@@ -98,7 +98,51 @@ func method1(){
   b := int32(20) // 改变默认类型
 }
 ```
+## 小心shadow的变量
+我们知道，当有两个两个以上的变量在赋值时，如果其中有一个未被提前声明，那么就需要使用 `:=` ，这个时候系统会自动判断有哪些未提前声明，然而有一种场景下系统会发生误判，准确的来说这是一种歧义，系统的判断会跟程序员的心理不一致，出现了变量shadow的行为，让我们看一下代码：
+```go
+func WithName(){
+  var a string
+  // tracing 为 bool 类型
+  if tracing{
+    a,err := example.Method()
+  } else {
+    a,err := example.Method1()
+  } 
+}
+```
+在外层，a 已经提前声明，但是在 if 这个作用域中，由于 err 并未提前声明，所以使用了 `:=` ，由于系统**无法获知**这里的 a 是否需要再次声明，所以 go 语言默认 a 是一个新的变量，这样外层的 a 就无法得到新的值，外层 a 也就被内层的 a 给 shadow 了。
 
+如果想改变这种 bug ，我们可以将err也提前声明：
+
+```go
+func WithName(){
+  var a string
+  var err error
+  // tracing 为 bool 类型
+  if tracing{
+    a,err = example.Method()
+  } else {
+    a,err = example.Method1()
+  } 
+}
+```
+或者也可以改变内部的变量名称，来改变这种 shadow ：
+```go
+func WithName(){
+  var a string
+  // tracing 为 bool 类型
+  if tracing{
+    ai,err := example.Method()
+    a = ai
+  } else {
+    ai,err := example.Method1()
+    a = ai
+  } 
+}
+```
+## 参考资料
+- https://juejin.cn/post/7241452578125824061
 
 
 

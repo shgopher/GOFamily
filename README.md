@@ -88,6 +88,8 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [Mastering Go](https://shgopher.github.io/pdf/mastering-go-cn.pdf)
 - [Go 语言设计与实现](https://draveness.me/golang/)
 - [深度探索 GO 语言](https://book.douban.com/subject/36104087/)
+- [我为什么放弃 GO 语言？](https://juejin.cn/post/7241452578125824061)
+- [100-go-mistakes](https://github.com/teivah/100-go-mistakes)
 - [Go 语言编程模式实战](https://time.geekbang.org/opencourse/intro/100069501)
 - [Go 并发编程实战课](https://time.geekbang.org/column/intro/100061801)
 - [Go 语言项目开发实战](https://time.geekbang.org/column/intro/100079601)
