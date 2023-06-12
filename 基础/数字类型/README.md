@@ -45,6 +45,21 @@ go不能直接显示2进制，使用`fmt.Printf("%b",12)` `1000` 来输出一个
 ### 基础浮点数，math/big包，decimal 三方包的对比
 > todo
 
+让我们看一下著名的 0.1 + 0.2 != 0.3 这个问题
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var a = 0.1
+	var b = 0.2
+	
+	// false
+	fmt.Println(a+b == 0.3)
+}
+``` 
+
 ***基础浮点数 IEEE 754 详细介绍***
 ***math/big 包详细介绍***
 ***decimal 第三方包，实现原理详细介绍***
@@ -119,3 +134,4 @@ rune是int32，byte是uint8，相比byte来说，rune可以容纳的字符个数
 - https://zhuanlan.zhihu.com/p/145220416
 - http://www.manongjc.com/article/50416.html
 - http://c.biancheng.net/view/18.html
+- https://zhuanlan.zhihu.com/p/353013671

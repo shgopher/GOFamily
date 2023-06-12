@@ -1,8 +1,8 @@
 # 其他内容
-## 指针类型和值类型
-go 语言的指针类型是 `uintptr` 它的实质是一个整数类型，并且完全可以容纳所有的指针的数据。
+## 指针
+go 语言的指针类型是 unsafe.Pointer, `uintptr` 是指针的计算类型，也就是说，地址必须通过 unsafe.Pointer 提取以后，再转为uintptr 才能进行计算， uintptr的实质是一个整数类型，并且完全可以容纳所有的指针的数据。
 
-go 语言使用 `*` 符号用来表示指针类型，以及取这个指针类型的实际数据，使用 `&` 去取变量的指针（地址），我们看一下操作
+go 语言使用 `*` 符号用来表示指针类型，以及取指针类型实际数据这个操作，使用 `&` 取变量的指针（地址），我们看一下操作
 ```go
 func main(){
 	// 使用 内置函数 new() 去取结构体的地址
@@ -17,6 +17,34 @@ type People struct{
 	name string
 }
 
+```
+我们看一下如何直接计算指针类型
+```go
+
+func main() {
+	// a ，string 类型
+	var a string
+	
+	// b ，a变量的地址
+	var b *string = &a
+	fmt.Println("打印初始a变量的地址", b)
+	
+	// c，转为可计算的指针类型之后的变量
+	c := uintptr(unsafe.Pointer(b)) // uintptr(unsafe.Pointer())
+	fmt.Println("打印可计算指针类型c", c)
+	c++
+	fmt.Println("打印可计算指针类型c++", c)
+	
+	// 将c再转化为 a 的地址
+	b = (*string)(unsafe.Pointer(c)) // (*string)(unsafe.Pointer())
+	fmt.Println("打印转换后的a的指针", b)
+}
+```
+```go
+打印初始a的指针地址 0x14000096230
+打印可计算指针类型c 1374390149680
+打印可计算指针类型c++ 1374390149681
+打印转换后的a的指针 0x14000096231
 ```
 ## go的引用类型和非引用类型
 
