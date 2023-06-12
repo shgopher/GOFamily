@@ -43,13 +43,11 @@ go不能直接显示2进制，使用`fmt.Printf("%b",12)` `1000` 来输出一个
 由于浮点数计算的时候并不精确，容易发生较大误差，所以我们可以使用现有的高精度第三方库进行替换：https://github.com/shopspring/decimal
 
 ### 基础浮点数，math/big包，decimal 三方包的对比
+> todo
 
 ***基础浮点数 IEEE 754 详细介绍***
-
 ***math/big 包详细介绍***
-
 ***decimal 第三方包，实现原理详细介绍***
-
 ***如何选择***
 
 ## complex 复数
