@@ -50,7 +50,9 @@ func main() {
 
 |引用类型|非引用类型|
 |:---:|:---:|
-|slice, interface, chan, map, func, 指针|array, struct, 数字类型, bool|
+|slice, interface, chan, map|其余|
+
+引用类型的实质其实就是 fat pointer 即：胖指针，整个类型使用struct作为底层数据，data是一个指针地址，它指向的是要使用的数据。
 
 ## 全局变量和局部变量
 
