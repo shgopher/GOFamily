@@ -18,7 +18,7 @@ type People struct{
 }
 
 ```
-我们看一下如何直接计算指针类型
+我们看一下如何直接计算指针类型 
 ```go
 
 func main() {
