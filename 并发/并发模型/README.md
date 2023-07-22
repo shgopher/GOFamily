@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-06-09 11:58:21
+ * @LastEditTime: 2023-06-17 12:50:51
  * @FilePath: /GOFamily/并发/并发模型/README.md
  * @Description: 
  * 
@@ -19,11 +19,11 @@
 
 ## actor
 
-## csp
-
 ## 数据级并行
 
 ## lambda 架构
+
+## csp
 
 ## 参考资料
 - https://mp.weixin.qq.com/s/TvHY2i1FX1zS_WHdCvK-wA

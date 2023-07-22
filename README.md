@@ -96,6 +96,7 @@ hey~，我是科科人神，目前就职于国内一家互联网公司，你们�
 - [Go 语言核心 36 讲](https://time.geekbang.org/column/intro/100013101)
 - [手把手带你写一个 Web 框架](https://time.geekbang.org/column/intro/100090601)
 - [Google资深工程师深度讲解Go语言](https://coding.imooc.com/class/chapter/180.html#Anchor)
+- [Golang-Internal-Notes](https://github.com/LeoYang90/Golang-Internal-Notes)
 
 ## 扫一扫添加我的公众号，回复 “加群”，可以加入微信群。
 

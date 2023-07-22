@@ -43,7 +43,6 @@ go不能直接显示2进制，使用`fmt.Printf("%b",12)` `1000` 来输出一个
 由于浮点数计算的时候并不精确，容易发生较大误差，所以我们可以使用现有的高精度第三方库进行替换：https://github.com/shopspring/decimal
 
 ### 基础浮点数，math/big包，decimal 三方包的对比
-> todo
 
 让我们看一下著名的 0.1 + 0.2 != 0.3 这个问题
 ```go
@@ -123,20 +122,48 @@ func main() {
 
 ***math/big 包详细介绍***
 
+big 拥有下面三个类型
 
-***decimal 第三方包，实现原理详细介绍***
+- Int
+- Float
+- Rat (有理数)
 
+big包提供的 `big.Int` 底层数据是一个切片，所以说它可以保存超过 `uint64` 的数据；`big.Rat` 的底层数据是，分子和分母分别都是一个 `big.Int` 类型，所以说它也可以保存超过 uint64 的数据。
 
+big.Float 类型是 Go 语言中提供的一个高精度的浮点数计算库，它使用了任意精度的浮点数表示，可以处理大数和小数，并提供了一系列的计算方法
 
-***如何选择***
+虽然它是高精度的浮点数计算，但是仍然不够精确，如果是绝对的精确的浮点数计算，通常要使用有理数，或者使用整数去取代真正的小数，下面这个第三方包就是使用整数去取代浮点数的方式来获取精确的浮点数运行结果。
+
+***decimal***
+
+这个第三方包底层使用 `big.Int` 进行处理数据，也就是说，它使用整数存储，计算然后得出结论的时候再把之前的指数还原即可，所以它可以进行精确的浮点数运算
+
+https://github.com/shopspring/decimal
+
+这个包中，0.1 + 0.2 就等于 0.3 了
+```go
+func main() {
+	// 创建一个新的Float类型
+	a := decimal.NewFromFloat(0.1)
+	b := decimal.NewFromFloat(0.2)
+	c := decimal.NewFromFloat(0.3)
+	value := a.Add(b)
+	// 0
+	fmt.Println(value.Cmp(c))
+}
+```
 
 ## complex 复数
 |类型|描述|
 |:---:|:---:|
-|complex64|复数，实部和虚部是float32|
-|complex128|复数，实部和虚部都是float64|
+|complex64|实部和虚部是 float32|
+|complex128|实部和虚部都是 float64|
 
-使用go语言内置的函数 `real()`和`imag()`来分别获取到复数的实部和虚部，构建复数的时候使用内置函数`complex()`
+`c := complex(3, 4) ` 创建一个复数，实部为 3，虚部为 4
+
+或者还可以这样：`c := 3 + 4i`
+
+使用go语言内置的函数 `real()` 和 `imag()` 来分别获取到复数的实部和虚部
 ## issues
 ***问题一：*** go语言数字之间的类型转化是如何进行的
 
@@ -200,3 +227,4 @@ rune是int32，byte是uint8，相比byte来说，rune可以容纳的字符个数
 - http://www.manongjc.com/article/50416.html
 - http://c.biancheng.net/view/18.html
 - https://zhuanlan.zhihu.com/p/353013671
+- https://developer.aliyun.com/article/673258
