@@ -157,7 +157,162 @@ func main() {
 // [0 0 2 5] [0 2 5]
 ```
 从上面的案例可以说明，首先，a1 a 指向同一个底层数组，其次，a1和a在append的时候，都是在各自切片的后面添加数据，他们会互相影响，在写代码的时候容易出现bug
+### 对append的优化
+对一个未知大小的切片进行append操作的最佳选择是初始化一个 nil 切片：
+```go
+var s []string
+s = append(s,"a")
+```  
+s 在初始化的时候没有分配内存，在append的时候分配了一个底层数组，下面这种方式就会浪费一次内存分配
+```go
+s := make([]string,0)
+s = append(s,"a")
+```
+这种方式，在 s 初始化的时候会给予它一个底层长度为 0 的数组，即便长度为 0，go 并未分配实际的内存空间，但是仍然浪费了执行片段，append 的时候还要再次分配底层数组。
 
+不过使用 make 的方式比较适合**已知容量**的场景。
+
+除此之外还有两种初始化的方式：
+- `[]int(nil)`
+- `[]string("a")`
+
+我们知道 `[]int{}` 和 `var s []int` 是两种皆然不同的初始化方式，虽然都是0长度，但是前者不是 nil，后者是 nil，不过append的时候不会介意是否是nil，这也提醒了我们判断是否是空切片的方式，使用 len == 0 才是正确的方法，“是否等于nil” 是错误用法。
+
+`[]string(nil)` 的用法非常少见，通常来说，使用场景就下面这么一个：
+
+```go
+src := []string("hi","there","!")
+s := append([]string(nil), src...)
+```
+我们这里使用一个值为nil的切片主要是为了符合类型的需求。
+## 切片的copy
+copy 是go 语言的内置函数，全局使用，`copy(a,b []Type)`，copy是深度拷贝，它将后者的数据完全拷贝给前者。
+
+要注意的是，将要被复制的元素能复制的量取决于前者的length
+
+比如下面这种情况，被复制的元素就是0，但是并不会panic
+```go
+src := []int{1,2,3}
+var d []int
+// []
+copy(d,src)
+```
+一般来说，我们会使用相同的length：
+
+```go
+src := []int{1,2,3}
+d := make([]int,len(src))
+copy(d,src)
+```
+## 切片未被合理gc
+当切片完成自己的使命时，我们希望它可以正常的被 gc 掉，通常来说，我们可以手动使用 `runtime.GC()` 来强制系统进行垃圾回收，下面我们看一种bug，这种bug出现以后，我们手动的垃圾回收将会无效
+
+```go
+s := make([]int,10)
+// 此处原本的想法是只取两个数据
+// 但是造成了10个数据都不能垃圾回收，8个浪费
+// 正确的方法是 copy(res,s[8:])
+b := s[8:]
+runtime.GC()
+runtime.KeepLive(b)
+```
+本来我们期望s底层数组可以被垃圾回收，但是b也指向这个相同的底层数组，那么这个垃圾回收就无法执行。
+
+这种多切片指向底层数组而造成的无法正常垃圾回收的行为很常见。在工作中还是应该检查好自己的代码，避免这种行为的发生。
+## 切片中的 range 注意事项
+
+range 时，我们直接修改返回的值是不会生效的，因为返回的值并不是原始的数据，而是数据的复制。
+
+```go
+type Student struct {
+	year int
+}
+
+func main() {
+	result := []Student{
+		{12},
+		{13},
+	}
+	for _, student := range result {
+		student.year++
+	}
+	// 12 13
+	fmt.Println(result)
+}
+```
+也就是说，这里的`student := ` student的改变不会影响result中的任何数据，除非这里的 `[]Student` 是 `[]*Student`
+
+下面我们演示一下，正确的在range时的操作方式：
+
+```go
+type Student struct {
+	year int
+}
+
+func main() {
+	result := []Student{
+		{12},
+		{13},
+	}
+	for i := range result {
+		result[i].year++
+	}
+	// 13 14
+	fmt.Println(result)
+}
+```
+正确的方式就是直接使用 result 本身进行操作，就可以真正的去改变result了。
+
+并且,在range的时候，range 后面的数据其实也是复制品，也就是说，这里的 ` := range result` result 也是复制品，原有的 result 如何变化都不会影响range结果。
+
+```go
+// 这里的 result
+for i := range result {
+	// 跟这里面的result不是一个值，
+	//只有里面的result才是跟外面的result是一个值
+		result[i].year++
+	}
+```
+
+下面我们再看一个案例：
+```go
+s := make([]int,3)
+for range s {
+	s = append(s,10)
+}
+// [0 0 0 10 10 10]
+```
+你猜结果是多少呢？是会一直 range 吗？因为数据在一直添加啊，nonono，只会range 3次而已，因为 range 后面的 s是固定不变的，它本身只是原有s的复制品而已。
+
+综上：
+
+- range 后面的数据是原有数据的复制品
+- range 前面的k v 更是后面复制品输出数据的复制品
+- range 里面的数据才是跟外面的数据保持一致
+
+第三点很关键，range后面的数据跟range里面的数据并不是一个：
+```go
+s := make([]int,3)
+// 这里的s
+for range s {
+	// 这里的s 跟外面保持一致
+	s = append(s,10)
+}
+```
+**不能**把 range 当做 function 来类比：
+```go
+
+func main(){
+	s := make([]int,1)
+	range(s)
+
+}
+func range(s any)(k,v any){
+	s[0]++
+}
+```
+如果是函数，函数体的变量s和函数内部的s就是同一个，显然，range中，range后面的s和range里面的s并不是同一个。
+ 
 ## 切片转化为数组
 在 go 1.20 版本中，新添加了切片转为数组或者数组指针的操作，具体实现如下：
 ```go

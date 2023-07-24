@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-28 01:33:50
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-02-03 17:13:54
+ * @LastEditTime: 2023-07-24 22:21:40
  * @FilePath: /GOFamily/基础/作用域/README.md
  * @Description: 
  * 
@@ -39,7 +39,7 @@ func main() {
   time.Sleep(time.Second)
 }
 ```
-因为 i属于loop级别，通常来说for执行过程是快于新开辟一个goroutine的，所以导致这是个goroutine输出的都是最后一个i，即都输出10
+因为 **i属于loop级别**，通常来说for执行过程是快于新开辟一个goroutine的，所以导致这是个goroutine输出的都是最后一个i，即都输出10
 
 根据go 1.20的表述，以后这个loop级别的变量**非常有可能**会被修改成局部变量。如果没有被修改，我们可以开辟一个局部变量
 
@@ -116,7 +116,7 @@ if a:=1;a<2 {
 
 所以，在if中的大括号里，是可以输出a的值的。
 ## for
-for循环的作用域可以使用下面的两种方式展现。
+for循环的作用域可以使用下面的两种方式展现。for循环中的变量都属于loop 级，不属于每次的那个小循环的局部变量，所以在整个的loop过程中，变量是唯一的，就是那一个。只不过不同的时间点，这个变量的值有可能是不同的。
 
 ```go
 for i:=0;i<10;i++ {

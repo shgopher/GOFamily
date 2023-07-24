@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-02-07 07:25:17
+ * @LastEditTime: 2023-07-24 22:51:01
  * @FilePath: /GOFamily/基础/逻辑和判断语句/README.md
  * @Description: 
  * 
@@ -143,7 +143,7 @@ func a(){
   for {
     select {
       case <- time.After(time.Second):
-      break;
+      break
     }
   }
 }
