@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-03-31 19:05:02
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-04-01 02:04:13
+ * @LastEditTime: 2023-08-07 23:55:36
  * @FilePath: /GOFamily/基础/结构体/README.md
  * @Description: 
  * 
@@ -274,3 +274,31 @@ func main() {
 }
 
 ```
+## 空结构体
+
+通常，当我们需要一个临时的变量时，我们可以会想到设置一个 bool 类型，因为我们潜意识中感觉一个 bool 类型是比较小的，但是一个空的变量才是最小的，下面让我们看一个例子，这个例子发生在使用 channel 传递信息这个场景。
+
+```go
+func main() {
+  sig := make(chan bool)
+  go func(){
+    time.Sleep(time.Second)
+    sig <- true
+  }()
+  <- sig
+  fmt.Println("任务已经完成")
+}
+```
+没错，这段代码中，使用一个 bool 类型的 channel 是没什么问题的，你甚至也可以使用 int string 都可以，因为只是传递一个信息，信息的内容不重要，但是当我们站在优化的角度来考虑，这里的 bool 就不完美了，我们改成空的结构体即可：
+```go
+func main() {
+  sig := make(chan struct{})
+  go func(){
+    time.Sleep(time.Second)
+    sig <- struct{}{}
+  }()
+  <- sig
+  fmt.Println("任务已经完成")
+}
+```
+需要注意的是，一个空的结构体，表示它类型的方式是 `struct{}`，而使用这个空结构体的方式就是`struct{}{}`，前面的大括号是跟 struct 一起的整体表示空结构体，后面的大括号表示一个空结构体类型的结构体调用。
