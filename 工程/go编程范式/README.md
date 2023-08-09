@@ -2,19 +2,20 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-07-24 13:09:26
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-08-05 18:59:37
+ * @LastEditTime: 2023-08-08 04:29:50
  * @FilePath: /GOFamily/工程/go编程范式/README.md
  * @Description:
  * 
  * Copyright (c) 2023 by shgopher, All Rights Reserved. 
 -->
 # go 编程范式
-   
+    
 ## 创建模式
 - [创建者](./创建者/README.md)
 - [工厂方法](./工厂方法/README.md)
 - [对象池](./对象池/README.md)
 - [单例](./单例/README.md)
+- [原型](./原型/README.md)
 ## 结构模式
 - [装饰器](./装饰器/README.md)
 - [代理](./代理/README.md)

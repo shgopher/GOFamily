@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-03-31 19:05:02
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-08-07 23:55:36
+ * @LastEditTime: 2023-08-08 01:20:56
  * @FilePath: /GOFamily/基础/结构体/README.md
  * @Description: 
  * 
@@ -301,4 +301,5 @@ func main() {
   fmt.Println("任务已经完成")
 }
 ```
-需要注意的是，一个空的结构体，表示它类型的方式是 `struct{}`，而使用这个空结构体的方式就是`struct{}{}`，前面的大括号是跟 struct 一起的整体表示空结构体，后面的大括号表示一个空结构体类型的结构体调用。
+需要注意的是，一个空的结构体，表示它类型的方式是 `struct{}`，而使用这个空结构体的方式就是`struct{}{}`，前面的大括号是跟 struct 一起的整体表示空结构体，后面的大括号表示一个空结构体类型的结构体调用
+

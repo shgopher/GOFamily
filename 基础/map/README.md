@@ -31,6 +31,9 @@ func main() {
 	}
 	// 删除数据,不存在这个数据不会panic
 	delete(m, "hello")
+	// 删除 map 所有条目
+	clear(m)
+
 }
 ```
 ## map基础知识
