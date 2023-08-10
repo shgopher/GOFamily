@@ -1,6 +1,8 @@
 # go标准库的简单介绍
 https://pkg.go.dev/std
 ## archive
+https://pkg.go.dev/archive
+
 目前不存在 archive 包本身，存在其子包，这个包，包含的内容是对于档案文件的处理，比如 tar，zip 这种文档文件。
 ### archive/tar
 https://pkg.go.dev/archive/tar
@@ -50,15 +52,61 @@ cmp 包提供了有关比较的相关内容。
 - cmp.Ordered 表示可比较的类型约束
 - 提供了比较函数
 ## compress
+https://pkg.go.dev/compress
+
+不直接提供 compress 包，提供了众多子包，所有的内容都是关于压缩算法
 ### compress/bzip2
+https://pkg.go.dev/compress/bzip2
+```go
+import "compress/bzip2"
+```
+提供了 bzip2 的解压功能，然而并没有提供压缩的功能
 ### compress/flate
+https://pkg.go.dev/compress/flate
+```go
+import "compress/flate"
+```
+flate 实现了 RFC1951 中描述的 DEFLATE 压缩数据格式。
 ### compress/gzip
+https://pkg.go.dev/compress/gzip
+```go
+import "compress/gzip"
+```
+gzip 实现了对 gzip 格式压缩文件的解压（读取）和压缩（写入）
 ### compress/lzw
+https://pkg.go.dev/compress/lzw
+```go
+import "compress/lzw"
+```
+lzw 实现了 lzw 文件（ Lempel-Ziv-Welch ）的解压缩操作。
 ### compress/zlib
+https://pkg.go.dev/compress/zlib
+```go
+import "compress/zlib"
+```
+zlib 实现了对 zlib 格式文件的解压和压缩操作。
 ## container
+https://pkg.go.dev/container
+
+container 没有提供本包，提供了众多子包，这个目录下的内容都是关于容器的，这也是 go 提供的内置容器
 ### container/heap
+https://pkg.go.dev/container/heap
+```go
+import "container/heap"
+```
+go 内置的堆，值得注意的是，go语言仅提供了接口以及接口的相关函数，并没有具体的实现，使用时还需要自行实现接口。
 ### container/list
+https://pkg.go.dev/container/list
+```go
+import "container/list
+```
+go 内置的双向链表，这里不是接口了，是已经实现好了的双向链表
 ### container/ring
+https://pkg.go.dev/container/ring
+```go
+import "container/ring"
+```
+go 内置的循环链表，非接口，已经实现好了
 ## context
 ## crypto
 ### crypto/aes
