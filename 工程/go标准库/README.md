@@ -107,8 +107,33 @@ https://pkg.go.dev/container/ring
 import "container/ring"
 ```
 go 内置的循环链表，非接口，已经实现好了
-## context
+## [context](../并发/context)
+https://pkg.go.dev/context
+```go
+import "context"
+```
+context 提供了在“多线程”的场景下的线程控制功能，简单的说就是 context 这个上下文可以统一取消所有的上下文环境中的 goroutine
+```go
+func main() {
+	ctx, cal := context.WithTimeout(context.Background(), time.Second*1)
+	defer cal()
+	go func() {
+		select {
+		case <-time.After(time.Second * 2):
+			fmt.Print(1)
+		case <-ctx.Done():
+			fmt.Print(2)
+		}
+	}()
+	time.Sleep(time.Second * 3)
+}
+```
 ## crypto
+https://pkg.go.dev/crypto
+```go
+import "crypto"
+```
+crypto 包，是 go 提供的加密算法包。
 ### crypto/aes
 ### crypto/cipher
 ### crypto/des
