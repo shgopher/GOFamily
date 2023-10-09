@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-07-24 13:09:26
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-08-08 04:29:50
+ * @LastEditTime: 2023-08-14 22:09:36
  * @FilePath: /GOFamily/工程/go编程范式/README.md
  * @Description:
  * 
@@ -38,6 +38,9 @@
 - [定时函数](./定时函数/README.md)
 ## 函数式编程模式
 - [功能选项](./功能选项/README.md)
+- [k8s visitor](./k8s_visitor/README.md)
+- [pipeline](./pipeline/README.md)
 ## 参考资料
 - https://github.com/shgopher/go-patterns
 - https://mp.weixin.qq.com/s/Sv-SXDYxea_K_TtiI_CjTw
+- https://mp.weixin.qq.com/s/KRgNwJt1C7q2ckeqCu9pCQ

@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-06-09 11:30:32
+ * @LastEditTime: 2023-10-08 13:56:19
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -816,7 +816,7 @@ func main() {
 ```
 
 
-函数的使用是宽松的。当直接使用函数，以及return 函数的 的时候，（其它引用类型也一样：slice, map, func, interface, chan）是不需要显式转换的，只有非引用类型比如int，bool string strcuct ... 需要。
+函数的使用是宽松的。当直接使用函数，以及return 函数的 的时候，（其它引用类型也一样：slice, map, func, interface, chan）是不需要显式转换的，只有非引用类型比如int，bool string struct ... 需要。
 
 ```go
 // 不需要显示的转换
