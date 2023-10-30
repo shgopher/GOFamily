@@ -255,10 +255,12 @@ func hi(a,b int)(int,int){
 
 所以输出的是 4 -2 ，而且defer里面的输出 “defer 会执行的 5 -1” 也执行了。
 
-defer函数虽然是先入后出，在所有的正式指令执行完成以后执行，但是它的变量初始化可是顺序的：
+defer函数虽然是先入后出，在所有的正式指令执行完成以后执行，但是它的变量初始化可是***顺序的***，这里强调一下，仅仅是变量的初始化是顺序执行，defer函数是不会顺序执行的：
 ```go
 func hi(a, b int) (x, y int) {
 	j := 0
+  // j 顺序的初始化数据了，
+  // println却不会顺序执行！
 	defer func(j int) {
 		println(j)
 	}(j)
@@ -415,7 +417,115 @@ func Get(){
   defer f.Close()
 }
 ```
+### defer 函数因为无法return造成的内存泄露bug
+```go
+func readFiles(ch <-chan string) error {
+	for path := range ch {
+		file, err := os.Open(path)
+		if err != nil {
+			return err
+		}
+		defer file.Close()
+		// Do something with file
+	}
+	return nil
+}
+```
+在这个案例中，defer 函数用于关闭一个文件的句柄，假设我们在读取文件的过程中发生了bug，readFile 永远无法 return nil， 那么这个 defer 函数就永远不会实行，就会造成内存的泄露。
 
+改正的话，我们可以给 defer 函数 wrap 一层函数，在这个子函数中只要能 return，运行 defer 函数即可
+
+```go
+func readFiles(ch <-chan string) error {
+	for path := range ch {
+		if err := readFile(path); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+// 我们设置了一个新的函数，只要在这个函数里可以正常return 即可
+func readFile(path string) error {
+	file, err := os.Open(path)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+	// Do something with file
+	return nil
+}
+```
+### 再次强调：有无返回值具体变量对于defer的影响
+有返回变量
+```go
+func main(){
+  // 13
+  // 12
+  fmt.Print(a())
+}
+func a() (i int) {
+
+	defer func() {
+		i++
+		fmt.Println(i + 1) //13
+	}()
+	i++
+	i += 10
+	return
+
+}
+```
+执行顺序是这样的：
+1. i 初始化为原始数据 0
+2. i++
+3. i+= 10
+4. i++
+5. fmt.Println(i+1) // 13
+6. return 这个时候最终的i // 12 
+
+所以当拥有返回值变量的时候，return 返回的是最终的 i，就连 defer 中的 i 的变量也算上。
+
+无返回变量
+```go
+func main(){
+  // 3
+  // 11
+  fmt.Print(a())
+}
+func a() int {
+  i:= 0
+	defer func() {
+		i++
+		fmt.Println(i + 1) //3
+	}()
+	i++
+	
+	return i + 10
+
+}
+```
+执行的顺序：
+1. i 初始化为0
+2. i++ 
+3. 执行 i + 10 并把这个数据记录到return上去，但是并不会真的return
+4. i++
+5. fmt.Println(i+1)// 3
+6. defer 执行完毕以后，return 开始返回之前记录的那个值。
+
+为什么在这个没有返回变量的时候，i在defer中的变化不会影响返回值呢，因为返回值记录的那个值发生在defer之前，所以defer再将i变化也不会影响之前记录的那个值了，那个值是已经固定的了，它没有立即返回是因为要执行defer，你也可以理解为
+```go
+func a() int {
+  i:= 0
+	defer func() {
+		i++
+		fmt.Println(i + 1) //3
+	}()
+	i++
+	a := i+10
+	return a
+}
+```
+所以a的值是不会再受到 defer中的i的变化的。
 ## 变长参数
 举个变长参数函数的例子：
 ```go
