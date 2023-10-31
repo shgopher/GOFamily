@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-10-31 11:59:17
+ * @LastEditTime: 2023-10-31 15:41:51
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -33,6 +33,35 @@ if err := readFile("./");err != nil {
 }
 ```
 wrap 一层信息，对于错误的定位更加高效
+
+## Error 的本质是什么
+错误处理的核心就是下面这一个 error 的接口
+```go
+type error interface{
+	Error()string
+}
+```
+所以只要我们的自建类型实现了这个接口，就可以使用很多的错误处理的方法。
+### 自定义 error
+我们使用 errors.New() 的时候其实就是返回了一个 go 自建的，叫做 errorString 的实现了 error接口的结构体。
+这就是自建error的方法
+```go
+func main() {
+	e := errors.New("a")
+	println(e)
+}
+// (0x47fd48,0xc00003e730)
+```
+为了防止在比较错误的时候发生错误一致的情况，所以自建 error，返回的实际上是一个指针。
+> 下文会提用什么方法进行比较 err ，实际上就是 “两个接口类型是否相等 --- 类型一致，值一致”，如果返回的值是指针，那么值肯定就不可能一样了，如果是值，那么值就有可能是一样的。
+
+```go
+// go 源代码
+
+func New(s string) error {
+	return &errorString{s}
+}
+```
 
 ## errors.Is()
 上文我们说到，错误可以使用wrap的方式进行封装，那么如果我们想判断封装的这么多层的错误中，有没有哪一层错误等于我们要的值，可以使用 这个函数进行判断：
@@ -73,8 +102,71 @@ println(err == e)
 	err2 := fmt.Errorf("err1:%w",err1)
 	err := errors.Join(err1,err2)
 ```
-## 错误处理实战
+## 当错误处理遇到了defer
+```go
+func age() (int, error){
+	if xx {
+		return 0 ,err
+	}
+	defer f.close
+}
+```
+这段伪代码的意思是说，当 有条件之后，返回一个错误，但是defer 的内容发生在这个err被固定之后，所以defer中如果再有错误将不会被处理。
 
+那么我们该怎么更改呢？
+
+我想你一定想到了前文我们说过，使用带有变量的返回值是可以将defer的值进行返回的：
+
+```go
+func age() ( i int, e error){
+	if xx {
+			e = xx
+			i = xx
+		return 
+	}
+	defer f.close
+}
+```
+那么这种写法，defer中如果发生了错误就会覆盖掉了 程序执行中的err，所以这种方法也是不行的，即使它能照顾到了defer中的错误处理。
+
+我们可以将错误处理都放在defer中处理就可以了
+```go
+func age() ( i int, e error){
+	if xx {
+		i = xx
+		e = xx
+		return 
+	}
+	defer func(){
+		e1 := f.close()
+		if e != nil {
+				if  e1 != nil {
+					log(e1) 
+				}
+				return 
+		}
+		err = e1
+	}()
+}
+```
+这样，两种错误都能处理到了
+
+
+## 错误处理实战
+这里会介绍在实战过程中用到的诸多技巧
+### 使用 errors.New() 时要写清楚包名
+```go
+package age
+
+ErrMyAge := errors.New("age: ErrMyAge is error")
+ErrMyAddress := errors.New("age: ErrMyAddress is error")
+```
+### 使用 error处理一般错误，使用panic处理严重错误（异常）
+使用这种模型就避免了类似Java那种所有错误都一样的行为，Java的使用try catch的方式导致任何错误都是一个方式去处理，非常有可能让程序员忽略错误的处理
+
+然而go不同，**错误**使用error，**异常**使用panic的方式去处理。
+- 错误 ： error
+- 异常：panic
 ## issues
 `问题一：` **请说出下列代码的执行输出***
 
