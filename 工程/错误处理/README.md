@@ -2,13 +2,14 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-10-31 15:41:51
+ * @LastEditTime: 2023-10-31 16:04:40
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
  * Copyright (c) 2023 by shgopher, All Rights Reserved. 
 -->
 # 错误处理
+## 错误处理的基本认识
 在 go 语言中，没有传统编程语言的 `try - catch` 操作，go 语言中一切错误都需要显式处理：
 ```go
 if err := readFile("./x");err != nil {
@@ -247,3 +248,5 @@ recoverd in f
 ## 参考资料
 - https://mp.weixin.qq.com/s/EvkMQCPwg-B0fZonpwXodg
 - https://mp.weixin.qq.com/s/D_CVrPzjP3O81EpFqLoynQ
+- https://time.geekbang.org/column/article/391895
+- 极客时间《go进阶训练营》
