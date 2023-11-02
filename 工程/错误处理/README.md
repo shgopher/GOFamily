@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-01 22:51:49
+ * @LastEditTime: 2023-11-02 11:59:33
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -35,7 +35,7 @@ if err := readFile("./"); err != nil {
 ```
 wrap 一层信息，对于错误的定位更加高效
 
-## Error 的本质是什么
+## Error 的本质是什么？
 错误处理的核心就是下面这一个 error 的接口
 ```go
 type error interface{
@@ -54,7 +54,7 @@ func main() {
 // (0x47fd48,0xc00003e730)
 ```
 为了防止在比较错误的时候发生错误一致的情况，所以自建 error，返回的实际上是一个指针。
-> 下文会提用什么方法进行比较 err ，实际上就是 “两个接口类型是否相等 --- 类型一致，值一致”，如果返回的值是指针，那么值肯定就不可能一样了，如果是值，那么值就有可能是一样的。
+> 下文会提用什么方法进行比较 err ，实际上就是 “两个接口类型是否相等 --- 类型一致，值一致”，如果返回的值是指针，那么值肯定就不可能一样了。
 
 ```go
 // go 源代码
@@ -83,13 +83,17 @@ func main(){
 type errS struct {
 	a string
 }
+
 func (t errS) Error() string {
 return t.a
 }
+
 err := errS{"typical error"}
 err1 := fmt.Errorf("wrap err: %w", err)
 err2 := fmt.Errorf("wrap err1: %w", err1)
+
 var e errS
+
 if !errors.As(err2, &e) {
 panic("TypicalErr is not on the chain of err2")
 }
@@ -163,9 +167,9 @@ ErrMyAge := errors.New("age: ErrMyAge is error")
 ErrMyAddress := errors.New("age: ErrMyAddress is error")
 ```
 ### 使用 error处理一般错误，使用panic处理严重错误（异常）
-使用这种模型就避免了类似Java那种所有错误都一样的行为，Java的使用try catch的方式导致任何错误都是一个方式去处理，非常有可能让程序员忽略错误的处理
+使用这种模型就避免了类似 Java 那种所有错误都一样的行为，Java 的使用 try-catch 的方式导致任何错误都是一个方式去处理，非常有可能让程序员忽略错误的处理
 
-然而go不同，**错误**使用error，**异常**使用panic的方式去处理。
+然而 go 不同，**错误**使用 error，**异常**使用 panic 的方式去处理。
 - 错误 ： error
 - 异常：panic
 ## issues
