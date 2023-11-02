@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-10-31 16:04:40
+ * @LastEditTime: 2023-11-01 22:51:49
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -12,25 +12,25 @@
 ## 错误处理的基本认识
 在 go 语言中，没有传统编程语言的 `try - catch` 操作，go 语言中一切错误都需要显式处理：
 ```go
-if err := readFile("./x");err != nil {
+if err := readFile("./x"); err != nil {
 	return err
 }
 ```
 通常，我们规定函数返回的最后一个数据是错误接口：
 ```go
-func age(v int)(int,error){
+func age(v int)(int, error){
 	if v > 10 {
 		return 10, nil
 	}
-	return -1,fmt.Errorf("错误x")
+	return -1, fmt.Errorf("错误x")
 }
 ```
-我们直接返回一个err是一种简单的做法，如果错误比较初级也可以这么做，但是如果想要带有更精确的提示信息，可以在返回的时候 wrap 一层信息：
+我们直接返回一个 err 是一种简单的做法，如果错误比较初级也可以这么做，但是如果想要带有更精确的提示信息，可以在返回的时候 wrap 一层信息：
 
 就以上文的读取数据为例
 ```go
-if err := readFile("./");err != nil {
-	return fmt.Errorf("在读取数据的时候发生了错误，错误信息是：%W",err)
+if err := readFile("./"); err != nil {
+	return fmt.Errorf("在读取数据的时候发生了错误，错误信息是：%w", err)
 }
 ```
 wrap 一层信息，对于错误的定位更加高效
