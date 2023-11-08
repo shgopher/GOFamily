@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-02 11:59:33
+ * @LastEditTime: 2023-11-08 10:26:54
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -156,8 +156,13 @@ func age() ( i int, e error){
 ```
 这样，两种错误都能处理到了
 
-
-## 错误处理实战
+## 错误处理实战的三种方式
+### 经典的错误处理方式
+### 屏蔽过程中的错误处理
+### 利用函数式编程延迟错误处理
+### 分层架构中的错误处理方法
+### errgroup的使用技巧
+## 错误处理实战技巧
 这里会介绍在实战过程中用到的诸多技巧
 ### 使用 errors.New() 时要写清楚包名
 ```go
@@ -172,6 +177,40 @@ ErrMyAddress := errors.New("age: ErrMyAddress is error")
 然而 go 不同，**错误**使用 error，**异常**使用 panic 的方式去处理。
 - 错误 ： error
 - 异常：panic
+### 基础库，应该避免使用 error types 
+因为这种写法容易造成代码的耦合，尤其是在我们写的基础库中，非常容易造成改动代码来引入的不健壮性。
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type ErrMyAge struct {
+	errv string
+}
+
+func (e *ErrMyAge) Error() string {
+	return fmt.Sprintf("age: %s", e.errv)
+}
+
+func main() {
+	err := &ErrMyAge{"err age is hi"}
+	fmt.Println(err)
+}
+```
+或者使用 errors.New()
+```go
+ErrAge := errors.New("age: ErrAge is error")
+ErrAddress := errors.New("age: ErrAddress is error")
+```
+
+实际上他们都是 error types ,如果别人使用了这个基础库，那么势必这些错误就会跟使用者的代码耦合，我们改动了代码，第三方的代码就会因此受到影响。
+
+
+
+## 错误码的设置
+
 ## issues
 `问题一：` **请说出下列代码的执行输出***
 
