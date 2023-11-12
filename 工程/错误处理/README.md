@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-08 10:26:54
+ * @LastEditTime: 2023-11-12 22:25:42
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -63,6 +63,23 @@ func New(s string) error {
 	return &errorString{s}
 }
 ```
+当我们使用fmt.Errorf()的时候，其实也是使用的上述方法。
+
+不过，如果我们使用了占位符 `%w`时，将不会使用上述方法，而是使用了 wrapError ：
+
+```go
+type wrapError struct {
+	msg string
+	err error
+}
+func(e *wrapError) Error()string{
+	return e.msg
+}
+func(e *wrapError) Unwrap() error{
+	return e.err
+}
+```
+使用这种方式主要是为了错误链，那就让我们看一下如何使用错误链的相关操作。
 
 ## errors.Is()
 上文我们说到，错误可以使用wrap的方式进行封装，那么如果我们想判断封装的这么多层的错误中，有没有哪一层错误等于我们要的值，可以使用 这个函数进行判断：
@@ -156,12 +173,165 @@ func age() ( i int, e error){
 ```
 这样，两种错误都能处理到了
 
-## 错误处理实战的三种方式
+## 错误处理实战的五种方式
 ### 经典的错误处理方式
+每一个步骤分别直接处理错误
+```go
+type age interface{
+	getAge()error
+	putAge()error
+	allAge()error
+}
+func D(ag age)error{
+	if err != ag.getAge();err != nil {
+		return fmt.Errorf("%w",err)
+	}
+	if err != ag.putAge();err != nil {
+		return fmt.Errorf("%w",err)
+	}
+	if err != ag.allAge();err != nil {
+	  return fmt.Errorf("%w",err)
+	}
+}
+```
 ### 屏蔽过程中的错误处理
-### 利用函数式编程延迟错误处理
+将错误放置在对象的内部进行处理：
+```go
+type FileCopier struct{
+	w *os.File
+	r *os.File
+	err error
+}
+func (f *FileCopier)open(path string)( *os.File,error){
+	if f.err != nil {
+		return nil, f.err
+	}
+
+	h, err := os.Open(path)
+	if err!= nil {
+		f.err = err
+		return nil, err
+	}
+	return h,nil
+}
+
+func(f *FileCopier)OpenSrc(path string) {
+	if f.err != nil {
+		return
+	}
+	f.r,f.err = os.Open(path)
+	return 
+}
+func(f *FileCopier) CopyFile(src, dst string) error {
+	if f.err != nil {
+		return f.err
+	}
+	defer func(){
+		if f.r != nil {
+			f.r.Close()
+		}
+		if f.w!= nil {
+			f.w.Close()
+		}
+		if f.err != nil {
+			if f.w != nil {
+				os.Remove(dst)
+			}
+		}
+	
+	f.opensrc(src)
+	f.createDst(dst)
+	return f.err
+		}
+	}()
+}
+```
+这段代码并不是特别完整，但是从中我们还是可以理解这种将错误放在对象中的写法的技巧。
+
+首先，错误直接放置在对象自身，在方法中首先去调用这个字段来看是否拥有错误，如果有，直接退出即可
+
+如果没有错误继续往下走，如果本次方法发生错误就继续将这个错误赋值给这个字段，
+
+当最后处理的方法时，这里也就是 copyfile方法，我们在 defer 中要对于各个子方法进行判断，到底是哪个方法有错误，然后逐一进行判定。相当于处理错误的逻辑集中放置到了最后一个函数进行执行了。
+
+也就是说，将错误放置在对象本身的时候，通常应该为顺序调用的方法，一旦前者出现错误，后者即可退出
+
+如果不是顺序的执行过程，那么有些的错误就可能被湮没，导致错误无法被感知。
+### 利用函数式编程去延迟错误处理
+
+```go
+
+```
 ### 分层架构中的错误处理方法
+常见的分层架构
+- controller 控制层
+- service 服务层
+- dao 数据访问层
+
+dao 层生产错误
+```go
+if err != nil {
+	return fmt.Errorf("%w",err)
+}
+```
+service 追加错误
+```go
+err := a.Dao.getName()
+	if err != nil {
+	return fmt.Errorf("getname err: %w",err)
+	}
+}
+```
+controller 打印错误
+```go
+if err!= nil {
+	log(err)
+}
+```
+
+如果感觉标准库提供的错误处理不够丰富，也可以使用 github.com/pkg/errors 来处理错误
+
+此包比价常用的方法有
+```go
+// 生成新的错误
+func New()error
+// 只附加新的消息
+func WithMessage(err error,message string) error
+// 只附加堆栈信息
+func WithStack(err error)error
+// 附加信息 + 堆栈信息
+func Wrapf(err error,format string,args...interface{}) error
+// 获取最根本的错误（错误链的最底层）
+func Cause(err error) error
+```
 ### errgroup的使用技巧
+errgroup 的使用方法是 golang.org/x/sync/errgroup
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"golang.org/x/sync/errgroup"
+)
+
+
+func main() {
+	g, ctx := errgroup.WithContext(context.Background())
+	// 启动一个 goroutine去处理错误
+	g.Go(func() error {
+		return fmt.Errorf("error1")
+	})
+	g.Go(func() error {
+		return fmt.Errorf("error2")
+	})
+	// 类似 waitgroup 的 wait 方法
+	if err := g.Wait(); err != nil {
+		fmt.Println(err)
+	}
+}
+```
+
 ## 错误处理实战技巧
 这里会介绍在实战过程中用到的诸多技巧
 ### 使用 errors.New() 时要写清楚包名
@@ -177,6 +347,8 @@ ErrMyAddress := errors.New("age: ErrMyAddress is error")
 然而 go 不同，**错误**使用 error，**异常**使用 panic 的方式去处理。
 - 错误 ： error
 - 异常：panic
+
+假设我们在代码中使用了panic，通常来说，为了代码的健壮性还是会使用 defer 函数去运行一个 recover()的，程序的存活比啥都重要。
 ### 基础库，应该避免使用 error types 
 因为这种写法容易造成代码的耦合，尤其是在我们写的基础库中，非常容易造成改动代码来引入的不健壮性。
 ```go
@@ -207,7 +379,8 @@ ErrAddress := errors.New("age: ErrAddress is error")
 
 实际上他们都是 error types ,如果别人使用了这个基础库，那么势必这些错误就会跟使用者的代码耦合，我们改动了代码，第三方的代码就会因此受到影响。
 
-
+### 减少 if err != nil 的视觉影响
+核心思想就是将大函数变小函数
 
 ## 错误码的设置
 
