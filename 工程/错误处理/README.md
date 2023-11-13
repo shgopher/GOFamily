@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-12 22:25:42
+ * @LastEditTime: 2023-11-13 15:05:11
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -81,7 +81,7 @@ func(e *wrapError) Unwrap() error{
 ```
 使用这种方式主要是为了错误链，那就让我们看一下如何使用错误链的相关操作。
 
-## errors.Is()
+### errors.Is()
 上文我们说到，错误可以使用wrap的方式进行封装，那么如果我们想判断封装的这么多层的错误中，有没有哪一层错误等于我们要的值，可以使用 这个函数进行判断：
 
 ```go
@@ -94,7 +94,7 @@ func main(){
 	}
 }
 ```
-## errors.As()
+### errors.As()
 这个方法跟上文的 Is() 类似，只不过它判断的是类型是否一致。
 ```go
 type errS struct {
@@ -117,7 +117,7 @@ panic("TypicalErr is not on the chain of err2")
 println("TypicalErr is on the chain of err2")
 println(err == e)
 ```
-## errors.Join()
+### errors.Join()
 这个方法是将几个错误结合在一起的方法：
 ```go
 	err1 := fmt.Errorf("err1:%w",err)
@@ -257,10 +257,52 @@ func(f *FileCopier) CopyFile(src, dst string) error {
 也就是说，将错误放置在对象本身的时候，通常应该为顺序调用的方法，一旦前者出现错误，后者即可退出
 
 如果不是顺序的执行过程，那么有些的错误就可能被湮没，导致错误无法被感知。
-### 利用函数式编程去延迟错误处理
+### 利用 k8s visitor 函数式编程模式去延迟错误处理
+
+k8s 的visitor模式是将数据和逻辑行为分离的一种编程范式，在[函数](../../基础/函数方法/7.md)以及[设计模式](../go编程范式/k8s_visitor/README.md)这两章都有提到
+
+要想分离数据和行为，必须有三个组件
+
+- 数据本身，通常是一个结构体
+- 一个以函数为底层的数据，它作为逻辑行为本身，它的参数包含了数据本身。
+- 一个包含了这个函数的接口，它作为中间的抽象桥梁
 
 ```go
+// 数据本身
+type ZooTor struct{
+	
+}
+// 构建的操作
+type MyFunc func(ZooTor) error
 
+// 桥梁
+type Walker interface {
+  Next() MyFunc 
+}
+
+// 
+type SliceWalker struct {
+  index int
+  funs []MyFunc
+}
+
+func NewEnterFunc() MyFunc {
+  return func(t ZooTour) error {
+    return t.Enter()
+  }
+}
+
+func BreakOnError(t ZooTour, walker Walker) error {
+  for {
+    f := walker.Next()
+    if f == nil {
+      break 
+    }
+    if err := f(t); err != nil {  
+      continue // 遇到错误break或者continue继续执行
+    }
+  }
+}
 ```
 ### 分层架构中的错误处理方法
 常见的分层架构
@@ -332,7 +374,7 @@ func main() {
 }
 ```
 
-## 错误处理实战技巧
+## 错误处理相关技巧
 这里会介绍在实战过程中用到的诸多技巧
 ### 使用 errors.New() 时要写清楚包名
 ```go
@@ -380,9 +422,113 @@ ErrAddress := errors.New("age: ErrAddress is error")
 实际上他们都是 error types ,如果别人使用了这个基础库，那么势必这些错误就会跟使用者的代码耦合，我们改动了代码，第三方的代码就会因此受到影响。
 
 ### 减少 if err != nil 的视觉影响
-核心思想就是将大函数变小函数
+核心思想就是将大函数变小函数，通过封装函数的方法从视觉上降低 if err 的影响。
 
-## 错误码的设置
+## 业务code 码的设置
+常见的 http 错误码数量较少，比如常见的只有例如 404 301 302 200 503 等，绝对数量还是较少，无法去表达业务上的错误，因此我们需要设置一套能表达具体生产业务的code 码。
+
+为了保证服务端的安全，我们设置的code 码应该设置两套数据，一套显示给客户端，一套自用，以此来保证服务端的绝对安全。
+
+有三种设计业务code 码的方式：
+
+### 一律返回 http status 200 ，具体code 码单独设置
+
+例如
+```json
+{
+  "error": {
+    "message": "Syntax error \"Field picture specified more than once. This is only possible before version 2.1\" at character 23: id,name,picture,picture",
+    "type": "OAuthException",
+    "code": 2500,
+    "fbtrace_id": "xxxxxxxxxxx"
+  }
+}
+```
+- http status code 通通 200
+- code 2500，才是真实的面向客户端的code 码
+
+使用这种方法的一大缺陷就是必须解析body内容才能发现具体的错误业务码，很多场景我们仅仅需要知道返回的是成功或者错误，并不需要知晓具体的业务码，这是这种方式的一大弊端。
+
+### 使用合适的 http status code + 简单的信息以及业务错误代码
+```bash
+HTTP/1.1 400 Bad Request
+x-connection-hash: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+set-cookie: guest_id=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Date: Thu, 01 Jun 2017 03:04:23 GMT
+Content-Length: 62
+x-response-time: 5
+strict-transport-security: max-age=631138519
+Connection: keep-alive
+Content-Type: application/json; charset=utf-8
+Server: tsa_b
+
+# 注意这里：仅仅返回简单的错误信息
+{"errors":[{"code":215,"message":"Bad Authentication data."}]}
+```
+这种方案也是大多数公司采纳的方案，使用具体的 http status code 可以知晓大概的业务类型，是错误还是正常运行，然后使用简单的错误信息和业务错误代码去定位具体的错误
+
+如果业务不是特别复杂，使用这种方式即可
+### 使用合适的 http status code + 非常详细的业务错误代码以及信息
+```bash
+HTTP/1.1 400
+Date: Thu, 01 Jun 2017 03:40:55 GMT
+Content-Length: 276
+Connection: keep-alive
+Content-Type: application/json; charset=utf-8
+Server: Microsoft-IIS/10.0
+X-Content-Type-Options: nosniff
+
+{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"api error codes"},"Errors":[{"Code":1001,"Message":"Required parameter is missing.","Parameter":"SearchRequest.AppId","HelpUrl":"http\u003a\u002f\u002fmsdn.microsoft.com\u002fen-us\u002flibrary\u002fdd251042.aspx"}]}}
+```
+当业务逻辑稍微复杂一些，并且需要极其精准和快速的定位错误时，就需要在返回的body中去设置非常详细的错误信息
+
+**综上所述：**
+
+- 使用正确的 http status code 让业务的第一步变得更加直观
+- 区别于 http status code ，具体业务的code 码会更加丰富
+- 返回尽可能详细的错误，有助于复杂逻辑的快速错误定位
+- 直接返回给客户的错误代码不应该包括敏感信息，敏感信息的code 码仅供内部使用
+- 错误信息要求规范，简洁以及有用
+
+### 业务code 码的具体设计
+引入业务code码的核心原因就是 http status code 太少，以及他们并不能跟具体业务挂钩。
+
+当我们设置好良好又详细的code 码时，我们就可以快速定位业务代码，以及可以快速知晓发生错误的等级模块，具体信息等
+
+下面给出具体的设计思路：**纯数字表达，不同的数字段表达不同的模块不同的业务**
+
+例如 100101
+- 10 ：表示某个服务
+- 01 ：表示某个服务下的模块
+- 01 ：模块下的错误码
+
+10 服务 01 模块 01 错误，--- 服务10 数据库模块 未找到记录错误
+
+一共最多有100个服务，每个服务最多有100个模块，每个模块最多有100个错误，如果某些模块100个都不够用，那怎么这个模块有必要去拆分一下了。
+
+### 如何设置 http status code
+
+- `1xx`：请求已接收，继续处理
+- `2xx`：成功处理了请求
+- `3xx`：请求被重定向
+- `4xx`：请求错误
+- `5xx`：服务器错误
+
+由于 http status code 相对数量也不算太少，如果每一个都利用上，难免会增加复杂度，建议仅使用基本的几个即可
+
+- 200 - 表示请求成功执行。
+- 400 - 表示客户端出问题。
+- 500 - 表示服务端出问题。
+
+如果上述的感觉太少，再增加下面几个也可以
+
+- 401 - 表示认证失败。
+- 403 - 表示授权失败。
+- 404 - 表示资源找不到，这里的资源可以是 URL 或者 RESTful 资源。
+
+将http status code控制在**个位数**，有利于后端的逻辑代码简洁性，比如 301 302 确实是代表不同的含义，**前端或许可以设置丰富的 http status code，因为浏览器会进行相关的具体操作，但是后端返回给前端的 http status code 并没有任何的操作，使用过多只会增加复杂度。**
+
+## 设计一个生产级的错误包
 
 ## issues
 `问题一：` **请说出下列代码的执行输出***
@@ -462,7 +608,7 @@ recoverd in f
 这个时候 f中的 g(2) 后面的数据也无法执行了，因为整个f也陷入了恐慌，所以它只能return 进入defer了，defer中刚好有recover，所以执行了recover信息后，就退出了函数。
 
 ## 参考资料
-- https://mp.weixin.qq.com/s/EvkMQCPwg-B0fZonpwXodg
+- https://mp.weixin.qq.com/s/EvkMQCPwg-B0ffZonpwXodg
 - https://mp.weixin.qq.com/s/D_CVrPzjP3O81EpFqLoynQ
 - https://time.geekbang.org/column/article/391895
 - 极客时间《go进阶训练营》
