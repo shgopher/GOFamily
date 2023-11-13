@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-13 15:05:11
+ * @LastEditTime: 2023-11-13 16:32:20
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -529,6 +529,38 @@ X-Content-Type-Options: nosniff
 将http status code控制在**个位数**，有利于后端的逻辑代码简洁性，比如 301 302 确实是代表不同的含义，**前端或许可以设置丰富的 http status code，因为浏览器会进行相关的具体操作，但是后端返回给前端的 http status code 并没有任何的操作，使用过多只会增加复杂度。**
 
 ## 设计一个生产级的错误包
+### 生产级的错误包需要的功能
+
+1. 支持错误堆栈
+
+```go
+2021/07/02 14:17:03 call func got failed: func called error
+
+main.funcB /home/colin/workspace/golang/src/github.com/marmotedu/gopractise-demo/errors/good.go:27
+main.funcA /home/colin/workspace/golang/src/github.com/marmotedu/gopractise-demo/errors/good.go:19
+main.main /home/colin/workspace/golang/src/github.com/marmotedu/gopractise-demo/errors/good.go:10
+runtime.main /home/colin/go/go1.16.2/src/runtime/proc.go:225runtime.goexit /home/colin/go/go1.16.2/src/runtime/asm_amd64.s:1371
+exit status 1
+```
+拥有错误的堆栈，我们才能定位错误的根源。
+
+2. 支持打印不同的格式 比如 %s %w %d 
+
+3. 支持 Wrap() Unwrap() 的功能，就是错误的嵌套和反嵌套
+
+4. 错误包要支持 Is() 和 As() 方法，这主要是因为有错误的嵌套，所以无法再使用接口相比较的方式进行判断接口类型是否相等（类型相同，值相同）
+
+5. 要支持格式化和非格式化的创建方式
+
+```go
+errors.New("err")
+fmt.Errorf("%w",err)
+```
+
+### 具体实现
+从 github.com/pkg/errors 包中改造即可。
+
+//todo
 
 ## issues
 `问题一：` **请说出下列代码的执行输出***
