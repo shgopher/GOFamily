@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-13 16:32:20
+ * @LastEditTime: 2023-11-14 12:57:34
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -560,7 +560,15 @@ fmt.Errorf("%w",err)
 ### 具体实现
 从 github.com/pkg/errors 包中改造即可。
 
-//todo
+增加以下字段的结构体就可以满足上面的需求
+```go
+type withCode struct {
+	err   error
+	code  int
+	cause error
+	*stack
+}
+```
 
 ## issues
 `问题一：` **请说出下列代码的执行输出***
