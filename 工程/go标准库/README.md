@@ -1,4 +1,4 @@
-# go标准库的简单介绍
+# go 标准库的简单介绍
 https://pkg.go.dev/std
 ## archive
 https://pkg.go.dev/archive
@@ -25,10 +25,10 @@ https://pkg.go.dev/bufio
 ```go
 import "bufio"
 ```
-`bufio` 包， 提供了有缓冲的 i/o，比 io 包封装程度更高。使用缓冲区来一次读取多个字节，从而减少系统调用的次数。
+`bufio` 包，提供了有缓冲的 i/o，比 io 包封装程度更高。使用缓冲区来一次读取多个字节，从而减少系统调用的次数。
 - 提供了基本的读写功能
 - 提供了逐行读取的功能
-## builtin 
+## builtin
 https://pkg.go.dev/builtin
 
 注意，此包无法使用 import 的方式引入，因为它只是内部包和内部类型的一个存放位置而已
@@ -72,13 +72,13 @@ https://pkg.go.dev/compress/gzip
 ```go
 import "compress/gzip"
 ```
-gzip 实现了对 gzip 格式压缩文件的解压（读取）和压缩（写入）
+gzip 实现了对 gzip 格式压缩文件的解压 (读取) 和压缩 (写入)
 ### compress/lzw
 https://pkg.go.dev/compress/lzw
 ```go
 import "compress/lzw"
 ```
-lzw 实现了 lzw 文件（ Lempel-Ziv-Welch ）的解压缩操作。
+lzw 实现了 lzw 文件 (Lempel-Ziv-Welch) 的解压缩操作。
 ### compress/zlib
 https://pkg.go.dev/compress/zlib
 ```go
@@ -94,7 +94,7 @@ https://pkg.go.dev/container/heap
 ```go
 import "container/heap"
 ```
-go 内置的堆，值得注意的是，go语言仅提供了接口以及接口的相关函数，并没有具体的实现，使用时还需要自行实现接口。
+go 内置的堆，值得注意的是，go 语言仅提供了接口以及接口的相关函数，并没有具体的实现，使用时还需要自行实现接口。
 ### container/list
 https://pkg.go.dev/container/list
 ```go
@@ -112,7 +112,7 @@ https://pkg.go.dev/context
 ```go
 import "context"
 ```
-context 提供了在“多线程”的场景下的线程控制功能，简单的说就是 context 这个上下文可以统一取消所有的上下文环境中的 goroutine
+context 提供了在 “多线程” 的场景下的线程控制功能，简单的说就是 context 这个上下文可以统一取消所有的上下文环境中的 goroutine
 ```go
 func main() {
   // cal的调用，以及计时器的到达均可调用 ctx.Done() 的发生。
@@ -240,7 +240,7 @@ import "crypto/x509/pkix"
 ```
 ## database
 https://pkg.go.dev/database
-此包不可直接使用，它包含了子包，这个子包是处理sql的统一接口，并不提供实际的实现
+此包不可直接使用，它包含了子包，这个子包是处理 sql 的统一接口，并不提供实际的实现
 ### database/sql
 https://pkg.go.dev/database/sql
 
@@ -262,13 +262,13 @@ https://pkg.go.dev/database/sql/driver
 ```go
 import "database/sql/driver"
 ```
-driver 包，包含了数据库 driver 的接口，要想实现某个数据库的驱动（driver）就必须引入此包，实现此包定义接口的具体内容。
+driver 包，包含了数据库 driver 的接口，要想实现某个数据库的驱动 (driver) 就必须引入此包，实现此包定义接口的具体内容。
 
 在被用户使用的时候，引入第三方数据库驱动，加上引入 database/sql 这个 SQL 操作包，就可以实现正常的 SQL 操作。
 ## debug
 https://pkg.go.dev/debug
 
-不提供 debug 包本身，debug 包含了众多子包，都是跟 调试相关。
+不提供 debug 包本身，debug 包含了众多子包，都是跟调试相关。
 ### debug/buildinfo
 https://pkg.go.dev/debug/buildinfo
 不直接使用此包，此包提供二进制的功能，由 runtime/debug 来调用。
@@ -318,9 +318,9 @@ import _ "embed"
 ```
 mbed 是 Go 语言自 1.16 版本引入的一个标准库，用于将静态文件嵌入到 Go 代码中。
 
-通过 embed 包，我们可以将静态文件（如文本文件、JSON 文件、HTML 文件、图像文件等）直接嵌入到 Go 代码中，而无需将文件作为独立的资源文件放在磁盘上。这样做的好处是，可以将所有的资源文件打包到可执行文件中，方便分发和部署。
+通过 embed 包，我们可以将静态文件 (如文本文件、JSON 文件、HTML 文件、图像文件等) 直接嵌入到 Go 代码中，而无需将文件作为独立的资源文件放在磁盘上。这样做的好处是，可以将所有的资源文件打包到可执行文件中，方便分发和部署。
 
-将一个文件嵌入到一个string中
+将一个文件嵌入到一个 string 中
 ```go
 package main
 
@@ -367,7 +367,7 @@ encoding 包提供了许多子包，每个子包都专门用于处理特定的�
 
 - encoding/json：用于处理 JSON 数据的编码和解码。
 - encoding/xml：用于处理 XML 数据的编码和解码。
-- encoding/csv：用于处理 CSV（逗号分隔值）数据的编码和解码。
+- encoding/csv：用于处理 CSV (逗号分隔值) 数据的编码和解码。
 - encoding/base64：用于进行 base64 编码和解码。
 - encoding/hex：用于进行十六进制编码和解码。
 - encoding/gob：用于进行 Go 对象的编码和解码。
@@ -382,7 +382,7 @@ https://pkg.go.dev/encoding/asn1
 ```go
 import "encoding/asn1"
 ```
-encoding/asn1 用于进行 ASN.1（Abstract Syntax Notation One）编码和解码。
+encoding/asn1 用于进行 ASN.1 (Abstract Syntax Notation One) 编码和解码。
 ### encoding/base32
 https://pkg.go.dev/encoding/base32
 ```go
@@ -406,7 +406,7 @@ https://pkg.go.dev/encoding/csv
 ```go
 import "encoding/csv"
 ```
-encoding/csv 用于处理 CSV（逗号分隔值）格式的数据。
+encoding/csv 用于处理 CSV (逗号分隔值) 格式的数据。
 
 ### encoding/gob
 https://pkg.go.dev/encoding/gob
@@ -427,7 +427,7 @@ https://pkg.go.dev/encoding/json
 ```go
 import "encoding/json"
 ```
-encoding/json 用于对 JSON（JavaScript Object Notation）格式的数据进行编码和解码操作。
+encoding/json 用于对 JSON (JavaScript Object Notation) 格式的数据进行编码和解码操作。
 
 JSON 是一种常用的数据交换格式，用于在不同平台和编程语言之间传输和存储数据。JSON 数据由键值对组成，可以表示复杂的数据结构和层次关系。
 ### encoding/pem
@@ -435,15 +435,15 @@ https://pkg.go.dev/encoding/pem
 ```go
 import "encoding/pem"
 ```
-encoding/pem 用于对 PEM（Privacy-Enhanced Mail）格式的数据进行编码和解码操作。
+encoding/pem 用于对 PEM (Privacy-Enhanced Mail) 格式的数据进行编码和解码操作。
 
-PEM 是一种常用的文本格式，用于在非文本环境中传输和存储密钥、证书等数据。PEM 格式使用 ASCII 字符表示二进制数据，通常以 "-----BEGIN…" 和 "-----END…" 标记来标识不同类型的数据。
+PEM 是一种常用的文本格式，用于在非文本环境中传输和存储密钥、证书等数据。PEM 格式使用 ASCII 字符表示二进制数据，通常以 “-----BEGIN…” 和 “-----END…” 标记来标识不同类型的数据。
 ### encoding/xml
 https://pkg.go.dev/encoding/xml
 ```go
 import "encoding/xml"
 ```
-encoding/xml 用于对 XML（eXtensible Markup Language）格式的数据进行编码和解码操作。
+encoding/xml 用于对 XML (eXtensible Markup Language) 格式的数据进行编码和解码操作。
 
 XML 是一种常用的文本格式，用于存储和传输结构化的数据。XML 数据由标签、属性和文本内容组成，可以表示复杂的数据结构和层次关系。
 ## errors

@@ -28,16 +28,16 @@ s= `{"user": "shgopher", "links": ["https://github.com/shgopher"]}`
 ```
 ## 字符串的基础知识
 - 字符串的数据是只读数据不可更改
-- 字符串的零值是可用的，`var s string` 结果是`""`
+- 字符串的零值是可用的，`var s string` 结果是 `""`
 - 获取字符串长度的操作时间复杂度是 `O(1)` 因为它是不可变的只读数据，所以长度被保存在了字段中，直接读这个字段即可
-- 字符串可以通过 `+` , `+=` 进行拼接
+- 字符串可以通过 `+`，`+=` 进行拼接
 - 字符串可以使用 `> < >= <= == =!` 运算符，比较的顺序是：
   - 先比较长度
   - 再比较是否是指向一块内存地址
   - 如果都满足再比较具体数据
-- 字符串原生支持unicode字符集，并且go默认支持utf-8的编码算法
-  - rune存储unicode的一个码点
-  - byte存储真实的底层字符（比如utf-8，三个字符来保存一个中文字符，rune就只显示一个字符，byte会显示三个）
+- 字符串原生支持 unicode 字符集，并且 go 默认支持 utf-8 的编码算法
+  - rune 存储 unicode 的一个码点
+  - byte 存储真实的底层字符 (比如 utf-8，三个字符来保存一个中文字符，rune 就只显示一个字符，byte 会显示三个)
   ```go
   package main
 
@@ -52,7 +52,7 @@ s= `{"user": "shgopher", "links": ["https://github.com/shgopher"]}`
 - 使用``原生支持多行字符
 ## 字符串的高效构造
 字符串的构造有以下这么几种
-- 最常规的使用`+`和 `+=`
+- 最常规的使用 `+` 和 `+=`
 - fmt.Sprintf
 - strings.Join
 - strings.Builder
@@ -137,16 +137,16 @@ func main() {
 	fmt.Print(b.String())
 }
 ```
-根据benchmark，得出以下结论：
-- 带有预估string长度的strings.Builder 最快
-- 带有预估的bytes.Buffer 和strings.Join 性能第二档次
-- 没有预估长度的strings.Builder和bytes.Buffer以及 + += 第三档次
-- fmt.Sprintf最差劲
+根据 benchmark，得出以下结论：
+- 带有预估 string 长度的 strings.Builder 最快
+- 带有预估的 bytes.Buffer 和 strings.Join 性能第二档次
+- 没有预估长度的 strings.Builder 和 bytes.Buffer 以及 + += 第三档次
+- fmt.Sprintf 最差劲
 
 那么：
 
 - 当能给出预估的情况下，优选使用 strings.Builder
-- strings.Joins性能最稳，没有预估的情况下，使用这个稳定啊（实际上这个join就是调用了string.Builder,并且给出了预估长度）
+- strings.Joins 性能最稳，没有预估的情况下，使用这个稳定啊 (实际上这个 join 就是调用了 string.Builder，并且给出了预估长度)
 	
 ```go
 func Join(elems []string, sep string) string {
@@ -176,10 +176,10 @@ return b.String()
 - 操作符 + += 最直观，并且在字符短，以及编译器知道连接的字符串个数时，这种方式还能得到编译器的优化
 - fmt.Sprintf 用在多类型组成字符串的时候是最好的，虽然它效率很差，但是人家能力强啊
 
-**综上所诉**：优先选`strings.Join`
+**综上所诉**：优先选 `strings.Join`
 ## 字符串的底层
 ### 数据结构
-一个string的底层数据类似一个slice，只不过这个slice是只读数据，它的底层不同于一般的slice，是一个特别的struct
+一个 string 的底层数据类似一个 slice，只不过这个 slice 是只读数据，它的底层不同于一般的 slice，是一个特别的 struct
 ```go
 type stringStruct struct{
 	str unsafe.Pointer
@@ -188,7 +188,7 @@ type stringStruct struct{
 	//但是string因为是只读的关系只有length的含义
 }
 ```
-`runtime/string.go`中出现了这么一段代码
+`runtime/string.go` 中出现了这么一段代码
 ```go
 // rawstring allocates storage for a new string. The returned
 // string and byte slice both refer to the same storage.
@@ -205,10 +205,10 @@ func rawstring(size int) (s string, b []byte) {
 	return
 }
 ```
-我们仔细看注释的这句话，当一个string导入数据的时候，运行时会给定一个辅助的slice，用来辅助的导入数据，然后当数据导入完毕之后，这个slice的描述符，也就是这个代表了这个slice的struct就会被删除掉，所以说其实string不能跟slice划上等号，也不能简简单单的说它是一个只读的slice，实际上它压根就不是slice，slice在生成string的过程中只是起到了辅助作用
+我们仔细看注释的这句话，当一个 string 导入数据的时候，运行时会给定一个辅助的 slice，用来辅助的导入数据，然后当数据导入完毕之后，这个 slice 的描述符，也就是这个代表了这个 slice 的 struct 就会被删除掉，所以说其实 string 不能跟 slice 划上等号，也不能简简单单的说它是一个只读的 slice，实际上它压根就不是 slice，slice 在生成 string 的过程中只是起到了辅助作用
 
 ### 类型转换
-字符串进行的转化只能是string和`[]rune`or`[]byte`互相转换
+字符串进行的转化只能是 string 和 `[]rune` or `[]byte` 互相转换
 ```go
 package main
 
@@ -223,7 +223,7 @@ func main() {
 }
 ```
 
-上文我们提到的字符串的构造，例如删除一个字符，追加一个字符，都无一例外需要改变这个string，那么很明显任何数据的处理都是**拷贝**的数据，原数据是不会有任何变化的，所以这就告诫我们字符串的处理要小心非常有可能浪费大量的内存。
+上文我们提到的字符串的构造，例如删除一个字符，追加一个字符，都无一例外需要改变这个 string，那么很明显任何数据的处理都是**拷贝**的数据，原数据是不会有任何变化的，所以这就告诫我们字符串的处理要小心非常有可能浪费大量的内存。
 
 我们看一下底层的转换代码：
 ```go
@@ -246,7 +246,7 @@ func stringtoslicebyte(buf *tmpBuf, s string) []byte {
 
 ```
 
-于此同时我们也能发现string的底层的真实存储是`[]byte`不是`[]rune`
+于此同时我们也能发现 string 的底层的真实存储是 `[]byte` 不是 `[]rune`
 ```go
 package main
 
@@ -266,16 +266,16 @@ func main() {
 ```
 
 
-go为某几种特别的情况优化了string和slice转换必须拷贝的情况，意思就是不需要拷贝就让这个string直接使用这个slice的底层，但是有个规定，只要是slice发生了改变，那么这个string立即失效
+go 为某几种特别的情况优化了 string 和 slice 转换必须拷贝的情况，意思就是不需要拷贝就让这个 string 直接使用这个 slice 的底层，但是有个规定，只要是 slice 发生了改变，那么这个 string 立即失效
 
 `b = []int{1,2}`
 
-- string(b) 用在map的key中 `ma[string(b)]++` 
-- string(b) 在字符串的拼接句子中 "a" + string(b)
-- for-range中的string到[]byte的转换
+- string(b) 用在 map 的 key 中 `ma[string(b)]++`
+- string(b) 在字符串的拼接句子中 “a” + string(b)
+- for-range 中的 string 到[]byte 的转换
 
 ## for-range 字符串
-因为对一个字符串使用range的时候，go 默认使用utf8 的编码方式，但是string的底层是[]byte 的存储方式，所以直接 range的时候，将这个时候的字符转化为 字符 就会发生乱码的情况
+因为对一个字符串使用 range 的时候，go 默认使用 utf8 的编码方式，但是 string 的底层是[]byte 的存储方式，所以直接 range 的时候，将这个时候的字符转化为字符就会发生乱码的情况
 ```go
 s := "你好"
 for k := range s {
@@ -283,9 +283,9 @@ for k := range s {
 	fmt.Printf("%c",s[k])
 }
 ```
-解决方法有两种:
+解决方法有两种：
 
-1. 直接获取value值
+1. 直接获取 value 值
 ```go
 func main() {
 	s := "你好"
@@ -295,7 +295,7 @@ func main() {
 	}
 }
 ``` 
-2. 将s 转化为 []rune 来获取真正的 unicode 编码：
+2. 将 s 转化为 []rune 来获取真正的 unicode 编码：
 ```go
 func main() {
 	s := "你好"

@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-14 12:57:34
+ * @LastEditTime: 2023-11-15 23:16:22
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -44,8 +44,8 @@ type error interface{
 ```
 所以只要我们的自建类型实现了这个接口，就可以使用很多的错误处理的方法。
 ### 自定义 error
-我们使用 errors.New() 的时候其实就是返回了一个 go 自建的，叫做 errorString 的实现了 error接口的结构体。
-这就是自建error的方法
+我们使用 errors.New() 的时候其实就是返回了一个 go 自建的，叫做 errorString 的实现了 error 接口的结构体。
+这就是自建 error 的方法
 ```go
 func main() {
 	e := errors.New("a")
@@ -54,7 +54,7 @@ func main() {
 // (0x47fd48,0xc00003e730)
 ```
 为了防止在比较错误的时候发生错误一致的情况，所以自建 error，返回的实际上是一个指针。
-> 下文会提用什么方法进行比较 err ，实际上就是 “两个接口类型是否相等 --- 类型一致，值一致”，如果返回的值是指针，那么值肯定就不可能一样了。
+> 下文会提用什么方法进行比较 err，实际上就是 “两个接口类型是否相等 --- 类型一致，值一致”，如果返回的值是指针，那么值肯定就不可能一样了。
 
 ```go
 // go 源代码
@@ -63,9 +63,9 @@ func New(s string) error {
 	return &errorString{s}
 }
 ```
-当我们使用fmt.Errorf()的时候，其实也是使用的上述方法。
+当我们使用 fmt.Errorf() 的时候，其实也是使用的上述方法。
 
-不过，如果我们使用了占位符 `%w`时，将不会使用上述方法，而是使用了 wrapError ：
+不过，如果我们使用了占位符 `%w` 时，将不会使用上述方法，而是使用了 wrapError：
 
 ```go
 type wrapError struct {
@@ -82,7 +82,7 @@ func(e *wrapError) Unwrap() error{
 使用这种方式主要是为了错误链，那就让我们看一下如何使用错误链的相关操作。
 
 ### errors.Is()
-上文我们说到，错误可以使用wrap的方式进行封装，那么如果我们想判断封装的这么多层的错误中，有没有哪一层错误等于我们要的值，可以使用 这个函数进行判断：
+上文我们说到，错误可以使用 wrap 的方式进行封装，那么如果我们想判断封装的这么多层的错误中，有没有哪一层错误等于我们要的值，可以使用这个函数进行判断：
 
 ```go
 func main(){
@@ -124,7 +124,7 @@ println(err == e)
 	err2 := fmt.Errorf("err1:%w",err1)
 	err := errors.Join(err1,err2)
 ```
-## 当错误处理遇到了defer
+## 当错误处理遇到了 defer
 ```go
 func age() (int, error){
 	if xx {
@@ -133,11 +133,11 @@ func age() (int, error){
 	defer f.close
 }
 ```
-这段伪代码的意思是说，当 有条件之后，返回一个错误，但是defer 的内容发生在这个err被固定之后，所以defer中如果再有错误将不会被处理。
+这段伪代码的意思是说，当有条件之后，返回一个错误，但是 defer 的内容发生在这个 err 被固定之后，所以 defer 中如果再有错误将不会被处理。
 
 那么我们该怎么更改呢？
 
-我想你一定想到了前文我们说过，使用带有变量的返回值是可以将defer的值进行返回的：
+我想你一定想到了前文我们说过，使用带有变量的返回值是可以将 defer 的值进行返回的：
 
 ```go
 func age() ( i int, e error){
@@ -149,9 +149,9 @@ func age() ( i int, e error){
 	defer f.close
 }
 ```
-那么这种写法，defer中如果发生了错误就会覆盖掉了 程序执行中的err，所以这种方法也是不行的，即使它能照顾到了defer中的错误处理。
+那么这种写法，defer 中如果发生了错误就会覆盖掉了程序执行中的 err，所以这种方法也是不行的，即使它能照顾到了 defer 中的错误处理。
 
-我们可以将错误处理都放在defer中处理就可以了
+我们可以将错误处理都放在 defer 中处理就可以了
 ```go
 func age() ( i int, e error){
 	if xx {
@@ -252,14 +252,14 @@ func(f *FileCopier) CopyFile(src, dst string) error {
 
 如果没有错误继续往下走，如果本次方法发生错误就继续将这个错误赋值给这个字段，
 
-当最后处理的方法时，这里也就是 copyfile方法，我们在 defer 中要对于各个子方法进行判断，到底是哪个方法有错误，然后逐一进行判定。相当于处理错误的逻辑集中放置到了最后一个函数进行执行了。
+当最后处理的方法时，这里也就是 copyfile 方法，我们在 defer 中要对于各个子方法进行判断，到底是哪个方法有错误，然后逐一进行判定。相当于处理错误的逻辑集中放置到了最后一个函数进行执行了。
 
 也就是说，将错误放置在对象本身的时候，通常应该为顺序调用的方法，一旦前者出现错误，后者即可退出
 
 如果不是顺序的执行过程，那么有些的错误就可能被湮没，导致错误无法被感知。
 ### 利用 k8s visitor 函数式编程模式去延迟错误处理
 
-k8s 的visitor模式是将数据和逻辑行为分离的一种编程范式，在[函数](../../基础/函数方法/7.md)以及[设计模式](../go编程范式/k8s_visitor/README.md)这两章都有提到
+k8s 的 visitor 模式是将数据和逻辑行为分离的一种编程范式，在[函数](../../基础/函数方法/7.md)以及[设计模式](../go编程范式/k8s_visitor/README.md)这两章都有提到
 
 要想分离数据和行为，必须有三个组件
 
@@ -346,7 +346,7 @@ func Wrapf(err error,format string,args...interface{}) error
 // 获取最根本的错误（错误链的最底层）
 func Cause(err error) error
 ```
-### errgroup的使用技巧
+### errgroup 的使用技巧
 errgroup 的使用方法是 golang.org/x/sync/errgroup
 ```go
 package main
@@ -383,16 +383,18 @@ package age
 ErrMyAge := errors.New("age: ErrMyAge is error")
 ErrMyAddress := errors.New("age: ErrMyAddress is error")
 ```
-### 使用 error处理一般错误，使用panic处理严重错误（异常）
+### 使用 error 处理一般错误，使用 panic 处理严重错误 (异常)
 使用这种模型就避免了类似 Java 那种所有错误都一样的行为，Java 的使用 try-catch 的方式导致任何错误都是一个方式去处理，非常有可能让程序员忽略错误的处理
 
 然而 go 不同，**错误**使用 error，**异常**使用 panic 的方式去处理。
-- 错误 ： error
+- 错误：error
 - 异常：panic
 
-假设我们在代码中使用了panic，通常来说，为了代码的健壮性还是会使用 defer 函数去运行一个 recover()的，程序的存活比啥都重要。
-### 基础库，应该避免使用 error types 
+假设我们在代码中使用了 panic，通常来说，为了代码的健壮性还是会使用 defer 函数去运行一个 recover() 的，程序的存活比啥都重要。
+### 基础库，应该避免使用 error types
 因为这种写法容易造成代码的耦合，尤其是在我们写的基础库中，非常容易造成改动代码来引入的不健壮性。
+
+使用自定义的 error type
 ```go
 package main
 
@@ -400,12 +402,14 @@ import (
 	"fmt"
 )
 
+// 为了额外增加更多的错误信息，字段需大写
 type ErrMyAge struct {
-	errv string
+	EV string
+	MErr int
 }
 
 func (e *ErrMyAge) Error() string {
-	return fmt.Sprintf("age: %s", e.errv)
+	return fmt.Sprintf("age: %s", e.EV)
 }
 
 func main() {
@@ -413,25 +417,89 @@ func main() {
 	fmt.Println(err)
 }
 ```
-或者使用 errors.New()
+
+使用 errors.New() 哨兵错误模式：
+
 ```go
+// 我方代码
 ErrAge := errors.New("age: ErrAge is error")
 ErrAddress := errors.New("age: ErrAddress is error")
+
+---------
+// 使用者
+
+import(
+	"github.com/shgopher/age"
+)
+
+func age(){
+		// 带来了耦合
+		if errors.Is(err, age.ErrAge){
+		// 处理
+		}
+	}
+}
 ```
 
-实际上他们都是 error types ,如果别人使用了这个基础库，那么势必这些错误就会跟使用者的代码耦合，我们改动了代码，第三方的代码就会因此受到影响。
+实际上他们都是 error types，只不过前者比后者增加了很多额外的信息，但是相同点是，他们都造成了耦合
 
-### 减少 if err != nil 的视觉影响
-核心思想就是将大函数变小函数，通过封装函数的方法从视觉上降低 if err 的影响。
+如果别人使用了这个基础库，那么势必这些错误就会跟使用者的代码耦合，我们改动了代码，第三方的代码就会因此受到影响。
 
-## 业务code 码的设置
-常见的 http 错误码数量较少，比如常见的只有例如 404 301 302 200 503 等，绝对数量还是较少，无法去表达业务上的错误，因此我们需要设置一套能表达具体生产业务的code 码。
+因此，在对外暴露的基础包中，我们应尽量减少定义哨兵错误 (上述定义方法被称之为哨兵模式的错误)
 
-为了保证服务端的安全，我们设置的code 码应该设置两套数据，一套显示给客户端，一套自用，以此来保证服务端的绝对安全。
+上述提供的哨兵模式是透明的错误导出机制，所以容易造成耦合
 
-有三种设计业务code 码的方式：
+我们可以提供不透明的机制，不导出透明的错误类型，仅仅让用户判断是否等于 nil，就可以防止耦合的存在
 
-### 一律返回 http status 200 ，具体code 码单独设置
+```go
+import ("github.com/shgopher/age")
+
+func age(){
+
+	if err:= age.Bar(); err == nil {
+		return
+	}
+	
+}
+```
+这也是大多数程序应该提供的模式，不对外暴露，避免了耦合
+
+那么这种方法的缺陷也很明显了，就是无法获取更多的错误信息，理论上来说，我们也没必要获取那么多错误信息，但是如果真的要获取错误信息了，该如何去做呢？
+
+我们可以向外暴露一些动作，只暴露行为：
+
+```go
+type mage interface {
+	age() bool
+}
+
+// 通过一个对外暴露的函数可以对外输出行为
+// 并且还不用暴露出具体的对象
+func IsMage(err error)bool {
+	 a, ok := err.(mage)
+	 return ok && a.age()
+}
+```
+### 优化不必要的代码让程序变得更简洁
+方法一将大函数变小函数，通过封装函数的方法从视觉上降低 if err 的影响。
+
+```go
+
+```
+方法二将代码中不必要的成分删除，来保证代码的简洁
+```go
+
+```
+
+
+## 业务 code 码的设置
+常见的 http 错误码数量较少，比如常见的只有例如 404 301 302 200 503 等，绝对数量还是较少，无法去表达业务上的错误，因此我们需要设置一套能表达具体生产业务的 code 码。
+
+为了保证服务端的安全，我们设置的 code 码应该设置两套数据，一套显示给客户端，一套自用，以此来保证服务端的绝对安全。
+
+有三种设计业务 code 码的方式：
+
+### 一律返回 http status 200，具体 code 码单独设置
 
 例如
 ```json
@@ -445,9 +513,9 @@ ErrAddress := errors.New("age: ErrAddress is error")
 }
 ```
 - http status code 通通 200
-- code 2500，才是真实的面向客户端的code 码
+- code 2500，才是真实的面向客户端的 code 码
 
-使用这种方法的一大缺陷就是必须解析body内容才能发现具体的错误业务码，很多场景我们仅仅需要知道返回的是成功或者错误，并不需要知晓具体的业务码，这是这种方式的一大弊端。
+使用这种方法的一大缺陷就是必须解析 body 内容才能发现具体的错误业务码，很多场景我们仅仅需要知道返回的是成功或者错误，并不需要知晓具体的业务码，这是这种方式的一大弊端。
 
 ### 使用合适的 http status code + 简单的信息以及业务错误代码
 ```bash
@@ -480,31 +548,31 @@ X-Content-Type-Options: nosniff
 
 {"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"api error codes"},"Errors":[{"Code":1001,"Message":"Required parameter is missing.","Parameter":"SearchRequest.AppId","HelpUrl":"http\u003a\u002f\u002fmsdn.microsoft.com\u002fen-us\u002flibrary\u002fdd251042.aspx"}]}}
 ```
-当业务逻辑稍微复杂一些，并且需要极其精准和快速的定位错误时，就需要在返回的body中去设置非常详细的错误信息
+当业务逻辑稍微复杂一些，并且需要极其精准和快速的定位错误时，就需要在返回的 body 中去设置非常详细的错误信息
 
 **综上所述：**
 
 - 使用正确的 http status code 让业务的第一步变得更加直观
-- 区别于 http status code ，具体业务的code 码会更加丰富
+- 区别于 http status code，具体业务的 code 码会更加丰富
 - 返回尽可能详细的错误，有助于复杂逻辑的快速错误定位
-- 直接返回给客户的错误代码不应该包括敏感信息，敏感信息的code 码仅供内部使用
+- 直接返回给客户的错误代码不应该包括敏感信息，敏感信息的 code 码仅供内部使用
 - 错误信息要求规范，简洁以及有用
 
-### 业务code 码的具体设计
-引入业务code码的核心原因就是 http status code 太少，以及他们并不能跟具体业务挂钩。
+### 业务 code 码的具体设计
+引入业务 code 码的核心原因就是 http status code 太少，以及他们并不能跟具体业务挂钩。
 
-当我们设置好良好又详细的code 码时，我们就可以快速定位业务代码，以及可以快速知晓发生错误的等级模块，具体信息等
+当我们设置好良好又详细的 code 码时，我们就可以快速定位业务代码，以及可以快速知晓发生错误的等级模块，具体信息等
 
 下面给出具体的设计思路：**纯数字表达，不同的数字段表达不同的模块不同的业务**
 
 例如 100101
-- 10 ：表示某个服务
-- 01 ：表示某个服务下的模块
-- 01 ：模块下的错误码
+- 10：表示某个服务
+- 01：表示某个服务下的模块
+- 01：模块下的错误码
 
-10 服务 01 模块 01 错误，--- 服务10 数据库模块 未找到记录错误
+10 服务 01 模块 01 错误，--- 服务 10 数据库模块未找到记录错误
 
-一共最多有100个服务，每个服务最多有100个模块，每个模块最多有100个错误，如果某些模块100个都不够用，那怎么这个模块有必要去拆分一下了。
+一共最多有 100 个服务，每个服务最多有 100 个模块，每个模块最多有 100 个错误，如果某些模块 100 个都不够用，那怎么这个模块有必要去拆分一下了。
 
 ### 如何设置 http status code
 
@@ -526,7 +594,7 @@ X-Content-Type-Options: nosniff
 - 403 - 表示授权失败。
 - 404 - 表示资源找不到，这里的资源可以是 URL 或者 RESTful 资源。
 
-将http status code控制在**个位数**，有利于后端的逻辑代码简洁性，比如 301 302 确实是代表不同的含义，**前端或许可以设置丰富的 http status code，因为浏览器会进行相关的具体操作，但是后端返回给前端的 http status code 并没有任何的操作，使用过多只会增加复杂度。**
+将 http status code 控制在**个位数**，有利于后端的逻辑代码简洁性，比如 301 302 确实是代表不同的含义，**前端或许可以设置丰富的 http status code，因为浏览器会进行相关的具体操作，但是后端返回给前端的 http status code 并没有任何的操作，使用过多只会增加复杂度。**
 
 ## 设计一个生产级的错误包
 ### 生产级的错误包需要的功能
@@ -544,11 +612,11 @@ exit status 1
 ```
 拥有错误的堆栈，我们才能定位错误的根源。
 
-2. 支持打印不同的格式 比如 %s %w %d 
+2. 支持打印不同的格式比如 %s %w %d
 
 3. 支持 Wrap() Unwrap() 的功能，就是错误的嵌套和反嵌套
 
-4. 错误包要支持 Is() 和 As() 方法，这主要是因为有错误的嵌套，所以无法再使用接口相比较的方式进行判断接口类型是否相等（类型相同，值相同）
+4. 错误包要支持 Is() 和 As() 方法，这主要是因为有错误的嵌套，所以无法再使用接口相比较的方式进行判断接口类型是否相等 (类型相同，值相同)
 
 5. 要支持格式化和非格式化的创建方式
 
@@ -613,7 +681,7 @@ main.main()
 
 Program exited.
 ```
-解释：Panic，意味着恐慌，意思等于return，所以panic下面的数据是无法执行的，defer不同，他们是顺序的将这些defer函数装入函数内置的defer栈的，所以在return之后，defer栈会执行，所以这里的defer 1 2 3 可以执行，Panic前面的 hi1 可以执行，但是Panic之后，相当于return后面的hi2 就无法执行了。
+解释：Panic，意味着恐慌，意思等于 return，所以 panic 下面的数据是无法执行的，defer 不同，他们是顺序的将这些 defer 函数装入函数内置的 defer 栈的，所以在 return 之后，defer 栈会执行，所以这里的 defer 1 2 3 可以执行，Panic 前面的 hi1 可以执行，但是 Panic 之后，相当于 return 后面的 hi2 就无法执行了。
 
 `问题二：` **看一段代码，分析答案**
 
@@ -644,11 +712,11 @@ Defer in g 2
 recoverd in f
 ```
 
-解释一下，首先执行的是 f函数的代码，然后开始执行g，在g中遇到了Panic，所以panic后面的 parinting in g 就无法执行了，所以执行了 defer in g
-这个时候 f中的 g(2) 后面的数据也无法执行了，因为整个f也陷入了恐慌，所以它只能return 进入defer了，defer中刚好有recover，所以执行了recover信息后，就退出了函数。
+解释一下，首先执行的是 f 函数的代码，然后开始执行 g，在 g 中遇到了 Panic，所以 panic 后面的 parinting in g 就无法执行了，所以执行了 defer in g
+这个时候 f 中的 g(2) 后面的数据也无法执行了，因为整个 f 也陷入了恐慌，所以它只能 return 进入 defer 了，defer 中刚好有 recover，所以执行了 recover 信息后，就退出了函数。
 
 ## 参考资料
 - https://mp.weixin.qq.com/s/EvkMQCPwg-B0ffZonpwXodg
 - https://mp.weixin.qq.com/s/D_CVrPzjP3O81EpFqLoynQ
 - https://time.geekbang.org/column/article/391895
-- 极客时间《go进阶训练营》
+- 极客时间《go 进阶训练营》
