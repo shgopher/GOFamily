@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-15 23:16:22
+ * @LastEditTime: 2023-11-16 21:20:57
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -484,13 +484,112 @@ func IsMage(err error)bool {
 方法一将大函数变小函数，通过封装函数的方法从视觉上降低 if err 的影响。
 
 ```go
+// 改造之前
 
+func OpenFile(src ,dst string) error {
+	if r,err := os.Open(src); err != nil {
+		return err
+	}
+	if w,err := os.Create(dst); err != nil {
+		r.Cloase()
+		return err
+	}
+	if _,err := io.Copy(w,r); err!= nil {
+
+		return err
+	}
+	return nil
+}
+
+// 将前面两个操作封装成一个函数
+
+func OpenD(src dst string) (*os.File,*os.File,error) {
+	var r ,w *os.File 
+	var err error
+
+	if r,err = os.Open(src); err!= nil {
+		return nil,nil,err
+	}
+	if w,err = os.Create(dst); err!= nil {
+		r.Close()
+		return nil,nil,err
+	}
+
+	return r,w,err
+}
+// 主函数就只有一个 if err 了
+func OpenFile(src,dst string)error {
+	var err error
+	var r, w *os.File
+	if r,w,err = OpenD(src,dst); err!= nil {
+		return err
+	}
+	defer func(){
+		r.Close()
+		w.Close()
+	}()
+	if _,err = io.Copy(w,r); err!= nil {
+		return err
+	}
+	return nil
+}
 ```
 方法二将代码中不必要的成分删除，来保证代码的简洁
 ```go
+// 改造前
+func AuthticateRequest(r *Request)error{
+	err := authticate(r.User)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+// 实际上 authticate 只返回一个 error 类型的接口，根本不需要判断
+func AuthticateRequest(r *Request)error{
+	return authticate(r.User)
+}
+```
+方法三使用更加合适的方法
+```go
+// 我们要逐行去读取数据
+
+// 改造前
+func Countlines(r io.Reader)(int,error){
+	var(
+		br = bufio.NewReader(r)
+		line int
+		err error
+	)
+
+	for {
+		_,err = br.readline('\n')
+		line ++ 
+		if err != nil {
+			break
+		}
+	}
+		if err != io.EOF {
+			return 0,err
+		}
+		return lines,nil
+		
+}
+
+// 代码看起来也是很合理的样子，也很简洁，但是，我们其实用的函数不是特别的合适
+
+//其实这里使用 scan 更加合适，代码量更加精简，并且结构异常舒服
+func Countlines(r io.Reader) (int,error){
+
+	sc := bufio.NewScanner(r)
+	lines := 0
+
+	for sc.Scan() {
+		lines++
+	}
+	return lines,sc.Err()
+}
 
 ```
-
 
 ## 业务 code 码的设置
 常见的 http 错误码数量较少，比如常见的只有例如 404 301 302 200 503 等，绝对数量还是较少，无法去表达业务上的错误，因此我们需要设置一套能表达具体生产业务的 code 码。
