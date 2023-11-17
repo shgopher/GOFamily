@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-16 21:20:57
+ * @LastEditTime: 2023-11-16 22:01:32
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -578,15 +578,15 @@ func Countlines(r io.Reader)(int,error){
 // 代码看起来也是很合理的样子，也很简洁，但是，我们其实用的函数不是特别的合适
 
 //其实这里使用 scan 更加合适，代码量更加精简，并且结构异常舒服
-func Countlines(r io.Reader) (int,error){
-
+func Countlines(r io.Reader) (int,error){	
 	sc := bufio.NewScanner(r)
 	lines := 0
 
 	for sc.Scan() {
 		lines++
 	}
-	return lines,sc.Err()
+	
+	return lines, sc.Err()
 }
 
 ```
