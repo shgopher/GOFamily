@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-10-08 13:56:19
+ * @LastEditTime: 2023-11-22 15:54:03
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -158,6 +158,11 @@ type BI interface {
 
 func (A) get() {
 	fmt.Println("hi")
+	// 如果想调用被嵌入的接口的方法可以这么用,
+	// 我们知道调用直接嵌入的对象时候，变量名称默等于后面的类型名称，
+	// 看下面演示
+	// var a A
+	// a.BI.get()
 }
 
 func D(b BI) {

@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-22 14:11:32
+ * @LastEditTime: 2023-11-22 14:13:07
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -591,7 +591,6 @@ func Countlines(r io.Reader) (int,error){
 
 ``` 
 
- 
 
 ## 业务 code 码的设置
 常见的 http 错误码数量较少，比如常见的只有例如 404 301 302 200 503 等，绝对数量还是较少，无法去表达业务上的错误，因此我们需要设置一套能表达具体生产业务的 code 码。
