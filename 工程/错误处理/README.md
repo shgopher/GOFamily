@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-22 14:13:07
+ * @LastEditTime: 2023-11-23 15:19:15
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -341,7 +341,7 @@ func New()error
 func WithMessage(err error,message string) error
 // 只附加堆栈信息
 func WithStack(err error)error
-// 附加信息 + 堆栈信息
+// 附加信息 + 堆栈信息(就是一大堆的各种文件的堆栈调用过程的详细信息)
 func Wrapf(err error,format string,args...interface{}) error
 // 获取最根本的错误（错误链的最底层）
 func Cause(err error) error
@@ -591,6 +591,33 @@ func Countlines(r io.Reader) (int,error){
 
 ``` 
 
+### 错误应该只处理一次
+
+我们有日志系统，有些时候我们发现一个错误，然后打了一个日志，然后又把错误给 return 了，实际上这与 go 语言哲学中说的错误只处理一次相违背
+```go
+// ❌
+func age()error{
+	 _, err := os.Open("./a")
+	if  err!= nil {
+		log.Prinln(err)
+		return err
+	}
+}
+```
+```go
+// ✅
+func age()error{
+	 _, err := os.Open("./a")
+	if  err!= nil {
+		return err
+	}
+}
+```
+正确的处理方法是错误只处理一次，那么在什么时候处理呢？
+
+上文提到了多层的架构设计，我们在底层和中层仅仅是向上抛出，并不需要将错误记录在日志中，在应用层才需要去使用日志记录错误，日志记录完错误以后，也不需要再向上抛出错误了 (最顶端了) 完全满足 “只处理一次错误” 的要求。
+
+或者也可以这样，你在最初的错误处打了日志，然后返回了错误，之后就不再打印日志。
 
 ## 业务 code 码的设置
 常见的 http 错误码数量较少，比如常见的只有例如 404 301 302 200 503 等，绝对数量还是较少，无法去表达业务上的错误，因此我们需要设置一套能表达具体生产业务的 code 码。
