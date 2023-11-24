@@ -330,6 +330,7 @@ if err!= nil {
 	log(err)
 }
 ```
+### pkg/errors
 
 如果感觉标准库提供的错误处理不够丰富，也可以使用 github.com/pkg/errors 来处理错误
 
