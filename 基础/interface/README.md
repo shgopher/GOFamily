@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-22 15:54:03
+ * @LastEditTime: 2023-11-24 15:56:12
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -318,6 +318,36 @@ func main() {
 	default:
 		fmt.Println("NO")
 	}
+}
+```
+断言中的类型不止是实际类型比如 int 比如一个具体的 struct，还能是接口类型，比如一个接口类型：
+```go
+
+type MyAget interface {
+	Age() int
+} 
+func IsMyAget(e error)bool{
+	if _ ,ok:=e.(MyAget);ok{
+		return true
+	}
+	return false
+}
+```
+这个函数的意义是这样的，接受一个 error 接口类型的对象，然后断言看它是否是 MyAget 接口类型。
+
+```go
+type Age struct {
+	value string
+	e error
+}
+func (a *Age) Age() int {
+	return 10
+}
+func(a *Age)Error() string {
+	return a.value
+}
+func main(){
+	IsMyAget(&Age{"10",nil})
 }
 ```
 ## 接口类型的底层

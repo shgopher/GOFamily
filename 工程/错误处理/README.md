@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-23 15:19:15
+ * @LastEditTime: 2023-11-24 15:39:16
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -101,21 +101,21 @@ type errS struct {
 	a string
 }
 
-func (t errS) Error() string {
+func (t *errS) Error() string {
 return t.a
 }
 
-err := errS{"typical error"}
+err := &errS{"typical error"}
 err1 := fmt.Errorf("wrap err: %w", err)
 err2 := fmt.Errorf("wrap err1: %w", err1)
 
-var e errS
-
+var e *errS
+// 这里的 target 必须使用指针
 if !errors.As(err2, &e) {
-panic("TypicalErr is not on the chain of err2")
+	panic("TypicalErr is not on the chain of err2")
 }
-println("TypicalErr is on the chain of err2")
-println(err == e)
+	println("TypicalErr is on the chain of err2")
+	println(err == e)
 ```
 ### errors.Join()
 这个方法是将几个错误结合在一起的方法：
@@ -333,9 +333,9 @@ if err!= nil {
 
 如果感觉标准库提供的错误处理不够丰富，也可以使用 github.com/pkg/errors 来处理错误
 
-此包比价常用的方法有
+此包常用的方法有
 ```go
-// 生成新的错误
+// 生成新的错误，同样会附加堆栈信息
 func New()error
 // 只附加新的消息
 func WithMessage(err error,message string) error
@@ -346,6 +346,29 @@ func Wrapf(err error,format string,args...interface{}) error
 // 获取最根本的错误（错误链的最底层）
 func Cause(err error) error
 ```
+例如：
+```go
+func main(){
+	err := age()
+	if err != nil {
+		// %+v 是 pkg/errors 包提供的格式化输出格式
+		fmt.Printf("%+v",err)
+	}
+}
+
+func age()error {
+	return errors.Wrap(err,"open error")
+}
+```
+
+在使用这个 pkg/errors 包的时候要注意一件事，因为 wrap 可以包装堆栈向上输出，如果你调用的第三方库使用了 wrap，你再次使用 wrap，那么就会出现两堆相同的堆栈信息，这造成了极大的冗余。
+
+所以，
+
+- 在提供多人使用的三方库的时候不要使用 wrap，只有逻辑代码的时候使用 wrap 的功能
+- 遇到一个错误不打算处理，那么要带上足够多的信息再向上抛出
+- 一旦错误处理完成之后就没有错误了，不再需要把错误继续网上抛，返回 nil 即可
+
 ### errgroup 的使用技巧
 errgroup 的使用方法是 golang.org/x/sync/errgroup
 ```go
@@ -609,15 +632,14 @@ func age()error{
 func age()error{
 	 _, err := os.Open("./a")
 	if  err!= nil {
-		return err
+		return errors.Wrap(err,"open error")
 	}
 }
 ```
 正确的处理方法是错误只处理一次，那么在什么时候处理呢？
 
-上文提到了多层的架构设计，我们在底层和中层仅仅是向上抛出，并不需要将错误记录在日志中，在应用层才需要去使用日志记录错误，日志记录完错误以后，也不需要再向上抛出错误了 (最顶端了) 完全满足 “只处理一次错误” 的要求。
+上文提到了多层的架构设计，我们在底层 (带有堆栈的错误向上抛出) 和中层 (仅仅附加信息再次向上抛出) 仅仅是向上抛出，并不需要将错误记录在日志中，在应用层才需要去使用日志记录错误，日志记录完错误以后，也不需要再向上抛出错误了 (最顶端了) 完全满足 “只处理一次错误” 的要求。
 
-或者也可以这样，你在最初的错误处打了日志，然后返回了错误，之后就不再打印日志。
 
 ## 业务 code 码的设置
 常见的 http 错误码数量较少，比如常见的只有例如 404 301 302 200 503 等，绝对数量还是较少，无法去表达业务上的错误，因此我们需要设置一套能表达具体生产业务的 code 码。
