@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-24 15:56:12
+ * @LastEditTime: 2023-11-24 15:58:23
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -292,7 +292,7 @@ func TestEmployeeMaleCount(t *testing.T) {
 ## 类型断言
 当使用空接口作为类型参数的时候，空接口已经充盈了一个动态类型，如果我们要将这个空接口类型转化为原来的类型就需要断言。
 
-常规的断言方式：
+### 常规的断言方式：
 
 ```go
 func main() {
@@ -306,7 +306,7 @@ func main() {
 	}
 }
 ```
-存在于 switch 中的断言方式：
+### 存在于 switch 中的断言方式：
 ```go
 func main() {
 	var f any
@@ -320,6 +320,8 @@ func main() {
 	}
 }
 ```
+### 断言类型也可以是接口
+
 断言中的类型不止是实际类型比如 int 比如一个具体的 struct，还能是接口类型，比如一个接口类型：
 ```go
 
