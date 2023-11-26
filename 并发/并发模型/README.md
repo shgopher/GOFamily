@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-26 23:50:28
+ * @LastEditTime: 2023-11-27 00:06:07
  * @FilePath: /GOFamily/并发/并发模型/README.md
  * @Description: 
  * 
@@ -43,6 +43,13 @@ go 语言推荐的并发模型使用的就是 csp 模型，csp 的核心思想�
 
 所以如果使用 channel 的方式进行通信就是使用的 csp 并发模型
 
+CSP 模型中的进程通信原语包括：
+
+- 发送消息：一个进程可以通过发送消息到另一个进程来与之进行通信。
+- 接收消息：一个进程可以通过接收消息来获取另一个进程发送的消息。
+- 原子发送-接收：一个进程可以通过原子发送-接收操作来发送消息并等待接收消息，这相当于发送和接收两个操作的组合。
+
+这些进程通信的都是通过内置的 channel 对象去实现的。
 ## 参考资料
 - https://mp.weixin.qq.com/s/TvHY2i1FX1zS_WHdCvK-wA
 - https://book.douban.com/subject/26337939/ 
