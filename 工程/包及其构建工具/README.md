@@ -157,8 +157,6 @@ func main() {
 ```
 它的意思是省略包名，no！，请不要这么用。
 
-## 导包的顺序
-
 ## go module 构建工具
 - go111MODULE
 - GOPROXY

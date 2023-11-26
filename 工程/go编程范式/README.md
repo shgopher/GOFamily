@@ -42,5 +42,6 @@
 - [pipeline](./pipeline/README.md)
 ## 参考资料
 - https://github.com/shgopher/go-patterns
+- https://time.geekbang.org/column/article/386238
 - https://mp.weixin.qq.com/s/Sv-SXDYxea_K_TtiI_CjTw
 - https://mp.weixin.qq.com/s/KRgNwJt1C7q2ckeqCu9pCQ
