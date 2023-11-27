@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-27 00:06:07
+ * @LastEditTime: 2023-11-27 16:14:01
  * @FilePath: /GOFamily/并发/并发模型/README.md
  * @Description: 
  * 
@@ -50,6 +50,86 @@ CSP 模型中的进程通信原语包括：
 - 原子发送-接收：一个进程可以通过原子发送-接收操作来发送消息并等待接收消息，这相当于发送和接收两个操作的组合。
 
 这些进程通信的都是通过内置的 channel 对象去实现的。
+## 了解 goroutine
+这里我们现简单的了解一些基本的使用 goroutne 的方法，后面的 channel 篇和并发原语 context atomic 定时器会进行更加详细的介绍。
+
+我们知道 go 使用了用户线程也就是 goroutine 去替代了传统的线程，所以在 go 语言中我们能操作的线程就是 goroutine，我们无法去触及真实的线程，线程和 goroutine 之间的关系是 go 语言运行时的调度器去调度的。
+### 创建 goroutine
+使用 go 关键字加上函数去创建一个 goroutine，当然后面跟方法也可以。
+
+```go
+func age() {
+	// 注意后面跟的是一个函数的运行，这跟 defer 一致
+	c := make(chan int, 1)
+	go func() {
+		time.Sleep(10000)
+		c <- 12
+	}()
+	d := <-c
+	fmt.Println(d)
+}
+```
+我们可以看到，这里使用了 csp 的并发模型，下面我们看一下使用传统的共享内存的并发模式
+
+```go
+func age() {
+	// 注意后面跟的是一个函数的运行，这跟 defer 一致
+	var mu sync.Mutex
+	for i := 0; i < 10; i++ {
+		go func(i int) {
+			mu.Lock()
+			defer mu.Unlock()
+			fmt.Println(i)
+		}(i)
+	}
+	time.Sleep(200)
+}
+```
+
+
+### goroutine 退出
+goroutine 使用代价很低，因为它并不是操作系统的线程，创建成本非常低，go 推荐可以多多使用 goroutine
+
+goroutine 退出有两种方式：
+- 主动退出：使用 return 或者 panic 关键字退出
+- 非主动退出：使用 sync.WaitGroup，context 等方法，当所有的 goroutine 都退出后，等待组会自动退出
+
+```go
+func main() {
+	var wg sync.WaitGroup
+	wg.Add(1)
+	go func() {
+    defer wg.Done()
+	}()
+    wg.Wait()
+}
+``` 
+go goroutine 执行完毕就会直接退出，程序的执行跟主 goroutine 有关，只要主 goroutine 不退出程序就会正常执行下去，反之，主 goroutine 如果退出了，其它的 goroutine 可能没有执行完毕，但是整个程序还是结束了。
+
+```go
+func main() {
+	go age()
+}
+func age() {
+	time.Sleep(10000)
+	fmt.Println("hi there")
+}
+```
+这个程序将无法保证能输出 hi there
+
+要想让 age 输出正常的值，必须保证主 goroutine 不能退出，比如使用 sync.WaitGroup，比如直接让主 goroutine 休眠
+
+```go
+func main() {
+	go age()
+  time.Sleep(20000)
+}
+func age() {
+	time.Sleep(10000)
+	fmt.Println("hi there")
+}
+```
+
 ## 参考资料
 - https://mp.weixin.qq.com/s/TvHY2i1FX1zS_WHdCvK-wA
 - https://book.douban.com/subject/26337939/ 
