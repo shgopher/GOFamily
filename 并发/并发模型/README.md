@@ -129,7 +129,7 @@ func age() {
 	fmt.Println("hi there")
 }
 ```
-
+下面让我们正式学习 go 并发语言，channel 等相关知识！
 ## 参考资料
 - https://mp.weixin.qq.com/s/TvHY2i1FX1zS_WHdCvK-wA
 - https://book.douban.com/subject/26337939/ 
