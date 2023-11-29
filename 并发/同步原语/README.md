@@ -2,14 +2,14 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-28 20:58:22
+ * @LastEditTime: 2023-11-28 23:57:32
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
  * Copyright (c) 2023 by shgopher, All Rights Reserved. 
 -->
 # 同步原语
-同步原语是 go 提供的相对底层的同步机制，它更加灵活，但是同时也更加复杂，如果可能的话，我们应该尽量使用 csp 的并发模型，使用 channel 去代替并发原语。
+同步原语是 go 提供的相对底层的同步机制，它更加灵活，但是同时也更加复杂，如果可能的话，我们应该尽量使用 csp 的并发模型，使用 channel 去代替同步原语。
 ## sync.Mutex
 下面介绍的众多并发原语，甚至下一章的 channel，都使用了这个核心内容，它就是 `sync.Mutex`，它是所有同步原语包含 channel 的底层核心。
 ### sync.Mutex 基础操作

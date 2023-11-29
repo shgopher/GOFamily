@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-24 15:39:16
+ * @LastEditTime: 2023-11-29 11:40:27
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -257,53 +257,7 @@ func(f *FileCopier) CopyFile(src, dst string) error {
 也就是说，将错误放置在对象本身的时候，通常应该为顺序调用的方法，一旦前者出现错误，后者即可退出
 
 如果不是顺序的执行过程，那么有些的错误就可能被湮没，导致错误无法被感知。
-### 利用 k8s visitor 函数式编程模式去延迟错误处理
 
-k8s 的 visitor 模式是将数据和逻辑行为分离的一种编程范式，在[函数](../../基础/函数方法/7.md)以及[设计模式](../go编程范式/k8s_visitor/README.md)这两章都有提到
-
-要想分离数据和行为，必须有三个组件
-
-- 数据本身，通常是一个结构体
-- 一个以函数为底层的数据，它作为逻辑行为本身，它的参数包含了数据本身。
-- 一个包含了这个函数的接口，它作为中间的抽象桥梁
-
-```go
-// 数据本身
-type ZooTor struct{
-	
-}
-// 构建的操作
-type MyFunc func(ZooTor) error
-
-// 桥梁
-type Walker interface {
-  Next() MyFunc 
-}
-
-// 
-type SliceWalker struct {
-  index int
-  funs []MyFunc
-}
-
-func NewEnterFunc() MyFunc {
-  return func(t ZooTour) error {
-    return t.Enter()
-  }
-}
-
-func BreakOnError(t ZooTour, walker Walker) error {
-  for {
-    f := walker.Next()
-    if f == nil {
-      break 
-    }
-    if err := f(t); err != nil {  
-      continue // 遇到错误break或者continue继续执行
-    }
-  }
-}
-```
 ### 分层架构中的错误处理方法
 常见的分层架构
 - controller 控制层
