@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-29 11:40:27
+ * @LastEditTime: 2023-11-29 11:49:04
  * @FilePath: /GOFamily/工程/错误处理/README.md
  * @Description: 
  * 
@@ -306,7 +306,7 @@ func Cause(err error) error
 func main(){
 	err := age()
 	if err != nil {
-		// %+v 是 pkg/errors 包提供的格式化输出格式
+		// %+v 是 pkg/errors 包提供的格式化输出格式，输出错误堆栈
 		fmt.Printf("%+v",err)
 	}
 }
@@ -324,6 +324,36 @@ func age()error {
 - 遇到一个错误不打算处理，那么要带上足够多的信息再向上抛出
 - 一旦错误处理完成之后就没有错误了，不再需要把错误继续网上抛，返回 nil 即可
 
+所以我们使用 pkg/errors 包将上面的分层写法做一个更完善的改进：
+
+dao 层生产错误
+```go
+// a
+func getName()error {
+	if err != nil {
+		// 返回此处的错误堆栈
+		return errors.Wrap(err,"error:")
+	}
+	return nil
+}
+
+```
+service 追加错误
+```go
+err := a.getName()
+	if err != nil {
+		// 不返回堆栈了，仅仅添加错误
+		return errors.WithMessage(err,"getName error")
+	}
+}
+```
+controller 打印错误
+```go
+if err!= nil {
+	// 添加日志
+	log(err)
+}
+```
 ### errgroup 的使用技巧
 errgroup 的使用方法是 golang.org/x/sync/errgroup
 ```go
