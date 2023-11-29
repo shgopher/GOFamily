@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-29 21:08:56
+ * @LastEditTime: 2023-11-29 22:14:21
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -35,13 +35,12 @@ Mutex 也就是互斥锁，它主要是为了解决多线程下数据的竞争�
 ### 临界区
 临界区的概念是指在多线程的时候，临界区域的内容会被不同的线程去获取和释放，这个区域会发生数据的争夺问题。
 
-这个区域因为会发生争夺，所以会被保护起来，可以这么说，临界区是***多线程中整体数据中的共享部分*** 
+这个区域因为会发生争夺，所以会被保护起来，可以这么说，临界区是**多线程中整体数据中的共享部分**
 
 所以临界区是要保护的区域，**一次只能让一个线程去使用**
 
 所以 sync.Mutex 就是用来保护临界区的，它可以保证临界区的互斥
 
-### 锁的加锁和解锁
 ### sync.Mutex 基础操作
 我们现看一下它的基础使用功能：
 ```go
@@ -74,6 +73,12 @@ sync.Mutex 即为互斥锁，规则是：
 - 只有现解锁才能继续上锁，happens-before 就是：***n 次解锁一定 happens-before n+1 次加锁***
 
 ### sync.Locker 接口
+```go
+type Locker interface{
+  Lock()
+  Unlock()
+}
+```
 
 ### sync.Mutex 互斥锁的实现原理
 go 语言互斥锁的实现非常简单，只有这一个结构体就是核心：

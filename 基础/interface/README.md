@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-24 15:58:23
+ * @LastEditTime: 2023-11-30 00:11:41
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -287,6 +287,24 @@ func TestEmployeeMaleCount(t *testing.T) {
 	if v != 1  {
 		t.Errorf("we want %d, actual is %d",1,v)
 	}
+}
+```
+## 匿名接口
+与普通命名接口不同，匿名接口没有类型名，只通过方法集来定义接口
+
+匿名接口的作用主要有：
+
+- 临时使用，不需要命名
+- 作为参数或返回值，减少接口命名
+
+```go
+func doSomething(v interface{ Get() int }) {
+   // ...
+}
+
+func returnInterface() interface{ Foo() string } {
+   // ...
+   return x
 }
 ```
 ## 类型断言
