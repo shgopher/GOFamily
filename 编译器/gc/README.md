@@ -1,3 +1,13 @@
+<!--
+ * @Author: shgopher shgopher@gmail.com
+ * @Date: 2023-11-17 11:59:13
+ * @LastEditors: shgopher shgopher@gmail.com
+ * @LastEditTime: 2023-12-06 14:25:27
+ * @FilePath: /GOFamily/编译器/gc/README.md
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by shgopher, All Rights Reserved. 
+-->
 # go 语言官方编译器 gc
 ## 前端组件
 - Lexer：进行词法分析，将代码分割成词法单元
@@ -21,3 +31,5 @@ gc 实现了对 Go 语言的完整支持，可以编译包括复杂特性如 gor
 gc 编译器写在 Go 语言本身并采用了 Go 的并发特性，编译速度非常快。它与 Go 的发布周期同步，确保语言 feature 得到及时支持。
 
 所以 Go 语言默认编译器的全称就是 gc，它是官方提供的 Go 语言编译器。
+## 参考资料
+- https://go.dev/src/cmd/compile/README
