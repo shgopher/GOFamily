@@ -109,7 +109,7 @@ module.exports = {
       //     },
       //   ]
       // } 
-      ,
+      // ,
       {
         text:"系列教程",
         ariaLabel: 'Menu',
