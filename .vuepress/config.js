@@ -1,8 +1,8 @@
 module.exports = {
   // 站点配置
 
-  title: 'GOFamily - go 后端程序员宝典',
-  description: '🔥 go 后端程序员宝典，包含了：算法，数据库，网络操作系统，分布式，系统设计等一揽子知识体系',
+  title: 'GOFamily - go 程序员宝典',
+  description: '🔥 go 程序员宝典，包含了：算法，数据库，网络操作系统，分布式，系统设计等一揽子知识体系',
   head: [
     ['link', {rel: 'shortcut icon', type: "image/x-icon", href: `/favicon.ico`}],
   ],
@@ -87,28 +87,28 @@ module.exports = {
       {
         text: '首页', link: '/'
       },
-      {
-        text:"推荐项目",
-        ariaLabel: 'project',
-        items:[
-          {
-            text:"hui 【web框架】",
-            link:"https://github.com/shgopher/hui",
-          },
-          {
-            text:"key  【服务授权系统】",
-            link:"https://github.com/shgopher/key",
-          },
-          {
-            text:"ka  【秒杀服务】",
-            link:"https://github.com/shgopher/ka",
-          },
-          {
-            text:"go-short 【短链接服务】",
-            link:"https://github.com/shgopher/go-key",
-          },
-        ]
-      } 
+      // {
+      //   text:"推荐项目",
+      //   ariaLabel: 'project',
+      //   items:[
+      //     {
+      //       text:"hui 【web框架】",
+      //       link:"https://github.com/shgopher/hui",
+      //     },
+      //     {
+      //       text:"key  【服务授权系统】",
+      //       link:"https://github.com/shgopher/key",
+      //     },
+      //     {
+      //       text:"ka  【秒杀服务】",
+      //       link:"https://github.com/shgopher/ka",
+      //     },
+      //     {
+      //       text:"go-short 【短链接服务】",
+      //       link:"https://github.com/shgopher/go-key",
+      //     },
+      //   ]
+      // } 
       ,
       {
         text:"系列教程",
