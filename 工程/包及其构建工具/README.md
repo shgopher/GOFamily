@@ -294,6 +294,29 @@ go: go.mod file not found in current directory or any parent directory.
 ```
 
 所以这个时候应该使用的是 go install。
+### 引入的 go 包 git 更改名称了怎么办？
+
+Go 语言提出了一个模块代号 (Module Path) 的概念来解决这个问题。
+
+简单来说，模块代号就是一个模块的唯一标识，即使模块仓库的路径名改变了，但其模块代号不变。
+
+例如一个模块：
+
+模块路径：`github.com/user/project`
+模块代号：`github.com/user/project`
+如果模块 rename 后路径变成了 `github.com/newUser/newProj`，但模块代号不变：
+
+模块新路径：`github.com/newUser/newProj`
+模块代号：`github.com/user/project`
+这样通过模块代号，其他依赖它的模块导入语句就不用修改了，还是导入老的模块代号，但实际上会去新路径下找。
+
+在发布新版本代码时，只需要在 go.mod 文件中声明：
+
+`module github.com/user/project`
+
+就可以确保模块代号不变，其他依赖不受影响。
+
+所以 Go 语言通过模块代号很好地解决了模块路径变更的问题，最大程度保证了导入的稳定性。
 
 ### go 包代理
 
