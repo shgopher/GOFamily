@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-12-06 16:22:23
+ * @LastEditTime: 2023-12-22 18:35:14
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -206,6 +206,16 @@ type Mutex struct {
   sema uint32
 }
 ```
+> 在阅读下面互斥锁的几个阶段之前，建议先读一下 G:M:P 模型
+
+#### 互斥锁演变的四个阶段一：简单实现
+
+#### 互斥锁演变的四个阶段二：优先新 goroutine
+
+#### 互斥锁演变的四个阶段三：优先新 goroutine 以及被唤醒的 goroutine
+
+#### 互斥锁演变的四个阶段四：在第三个阶段的基础上引入饥饿模式
+
 ## sync.RWMutex
 ## sync.Locker
 ## sync.WaitGroup
