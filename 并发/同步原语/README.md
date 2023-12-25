@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-12-22 18:35:14
+ * @LastEditTime: 2023-12-25 23:04:39
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -209,7 +209,45 @@ type Mutex struct {
 > 在阅读下面互斥锁的几个阶段之前，建议先读一下 G:M:P 模型
 
 #### 互斥锁演变的四个阶段一：简单实现
+```go
+// 最初的代码
+type Mutex struct {
+  state int32 // 锁是否被持有的标志，1 被持有，0 没有被持有
+  sema uint32 // 锁的具体状态，此信号量具有高级语意，用来控制goroutine的状态
+}
+// compare and swap 操作：val 和 old 进行对比，如果相同，使用new去替代 val的值
+func cas(val *int32, old,new int32)bool{}
+// val 数据添加一个 delta 值，返回新的值
+func xadd(val *int32, delta int32)(new int32){
+  for {
+    v := *val
+    if cas(val,v,v+delta) {
+      return v+delta
+    }
+  }
+  panic("unreached")
+}
 
+func (m *mutex)Lock() {
+  if xadd(&m.key,1) == 1 { // 标识+1 ，如果等于1 获取到锁
+    return 
+  }
+  // 这里就是说，当key >1 的时候，我们通知goroutine休眠等待锁
+  // 只有key 等于 1 才能算获取锁
+  semacquire(&m.sema)
+}
+func (m *mutex)Unlock() {
+  if xadd(&m.key,-1) == 0 { // 标识-1 ，如果等于0 表示没有其它等待者
+    return
+  }
+  // 这个函数是汇编语言写的，上面那个 semacquire 也是
+  semrelease(&m.sema) // 唤醒等待锁的其它的goroutine中的一个
+}
+``` 
+
+可以看到，这种简单的实现，完全没有考虑任何的情况，仅仅是简单的加锁和解锁，不考虑 goroutne 的任何情况，就是随机的，随机的获取锁然后解锁。
+
+注意 go 语言的锁可以 a 加 b 解，所以一定要谁加锁就谁解锁，不然就无法构成互斥锁这个概念了。
 #### 互斥锁演变的四个阶段二：优先新 goroutine
 
 #### 互斥锁演变的四个阶段三：优先新 goroutine 以及被唤醒的 goroutine
@@ -247,7 +285,14 @@ type Mutex struct {
 如果是正常的模式下，就是按照正常队列 FIFO 的顺序去获取锁，除非这个时候有新的 goroutine 生成，那么这个 goroutine 会优先获取锁。
 
 但是如果一个队头的 goroutine 等待时间过长超过了 1ms，那么它就会将互斥锁的模式变成饥饿模式，自动获取锁
+### 问题三：Mutext 的底层中，使用 state 和 sema 来表示锁的状态，sema 是信号量，为什么在有信号量表示锁的状态之后还需要一个 state 表示锁是否上锁呢？
 
+- state 作为一个 boolean 变量，可以非常简单直观地表示锁的基本状态。
+- sema 是一个整数计数器，可以灵活地表示多种状态，如等待队列长度等。
+- 将两者分开，可以清晰地分离基本锁状态和高级同步语义，符合分而治之的设计思想。
+- sema 可直接 reused 现成的信号量实现代码，state 又足够轻量不需要复杂机制。
+- 将两者组合可以充分发挥各自的优势，实现一个功能完备但设计简单的 mutex。
+- 如果全部只依赖 sema 来表示所有状态，实现可能会更复杂，语义也不够清晰。
 ## 参考资料
 - https://mp.weixin.qq.com/s/iPpWd8vjyaN2sJFwxzN9Bg
 - https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-sync-primitives/
