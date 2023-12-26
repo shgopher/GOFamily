@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-12-25 23:04:39
+ * @LastEditTime: 2023-12-26 22:14:31
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -212,7 +212,7 @@ type Mutex struct {
 ```go
 // 最初的代码
 type Mutex struct {
-  state int32 // 锁是否被持有的标志，1 被持有，0 没有被持有
+  key int32 // 锁是否被持有的标志，1 被持有，0 没有被持有
   sema uint32 // 锁的具体状态，此信号量具有高级语意，用来控制goroutine的状态
 }
 // compare and swap 操作：val 和 old 进行对比，如果相同，使用new去替代 val的值
@@ -249,11 +249,49 @@ func (m *mutex)Unlock() {
 
 注意 go 语言的锁可以 a 加 b 解，所以一定要谁加锁就谁解锁，不然就无法构成互斥锁这个概念了。
 #### 互斥锁演变的四个阶段二：优先新 goroutine
+在这个演变中，go 的互斥锁调度会优先将锁权分给新创建的 goroutine
+```go
+const (
+  // 1
+  mutexLock = 1 << iota
+  // 2
+  mutexWoken
+  // 2
+  mutexWaiterShift = iota
+)
+type Mutex struct {
+  state int32
+  sema uint32
+}
 
-#### 互斥锁演变的四个阶段三：优先新 goroutine 以及被唤醒的 goroutine
+```
+state 的内容变成了三个：
+- 第一个字段：mutexWaiters 阻塞等待的数量
+- 第二个字段：mutexWoken 唤醒标记
+- 第三个字段：mutexLocked 持有锁的标记
+
+我们先前知道，如果想要获取锁的 goroutine 没有机会获取到锁，就会进行休眠，但是在锁释放唤醒之后，它并不能像先前一样直接获取到锁，还是要和正在请求锁 goroutine 进行竞争。这会给后来请求锁的 goroutine 一个机会，也让 CPU 中正在执行的 goroutine 有更多的机会获取到锁，在一定程度上提高了程序的性能。
+
+在这次演变中，go 的调度器会将新的 goroutine 给赋予锁，因为新的 goroutine 就是正在 cpu 执行片段中执行的 goroutine，这个时候将锁给他们无疑是效率最高的。
+
+#### 互斥锁演变的四个阶段三：多给机会，优先新 goroutine 以及被唤醒的 goroutine
+
+如果新来的 goroutine 或者是被唤醒的 goroutine 首次获取不
+到锁，它们就会通过**自旋** (spin，通过循环不断尝试) 的方式，尝试检查锁是否被释放。在尝试**一定**的自旋次数后，再执行原来的逻辑。
 
 #### 互斥锁演变的四个阶段四：在第三个阶段的基础上引入饥饿模式
+为什么会加入饥饿模式呢？就是因为如果都优先给新的 goroutine，那么等待队列中的 goroutine 就永远不会被执行，所以引入了饥饿模式，优先执行等待中的 goroutine
+然后新的 gorontine 就被添加到了等待队列中的队尾，这个时期称之为饥饿模式，因为新的 goroutine 基本上都要在 cpu 的时间片段中执行，所以在这个模式下，执行效率反而是底下的，因为正在执行的 goroutine 被强行放到队尾了。
 
+当等待的队首的 goroutine 等待时间超过 1ms 就会进入这个模式
+
+当队首的 goroutine 等待时间小于 1ms 或者已经执行到队尾了，那么这个模式就会从饥饿模式改为正常的模式
+### sync.Mutex 易错的几种场景
+#### Lock/Unlock 不是成对出现
+#### Copy 已经使用的 Mutex
+#### 重入
+#### 死锁
+### sync.Mutex 扩展
 ## sync.RWMutex
 ## sync.Locker
 ## sync.WaitGroup
