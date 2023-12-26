@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-12-26 22:14:31
+ * @LastEditTime: 2023-12-27 00:58:07
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -288,10 +288,113 @@ state 的内容变成了三个：
 当队首的 goroutine 等待时间小于 1ms 或者已经执行到队尾了，那么这个模式就会从饥饿模式改为正常的模式
 ### sync.Mutex 易错的几种场景
 #### Lock/Unlock 不是成对出现
+因为 go 语言中，互斥锁是无法获取 goroutine 的信息的，所以存在 a 锁 b 解的情况，即：a goroutine 上了锁，b goroutine 给解开了。
+
+如果你不是为了实现锁，是为了任务编排，那么可以这么做。
+
+如果是为了锁，请不要这么做，因为这么做的后果就是这将不能形成锁这个概念
+
+或者说当你使用了 lock 的时候忘记 unlock 了，那么最终都会导致系统走向失败
 #### Copy 已经使用的 Mutex
+go 语言的 mutex 使用 state 字段去表示锁的含义，所以当你 copy 一个锁的时候，实际上已经 copy 了这个锁的状态，这将导致错误的结果
+
+go 语言的同步原语众多，使用的底层都是 mutex (包括 channel)，所以说，不仅仅是 mutex 不能使用 copy，其它的同步原语都不能。
 #### 重入
+所谓重入，就是多次上锁，注意这里是拥有锁的这个线程去请求这把锁
+
+go 语言不支持重入，系统会 panic，这种重入锁无法实现也跟 go 语言的互斥锁没有记录使用它的 goroutine 有关系
+
+那么如果 go 语言也实现一个重入锁，核心就是将持有锁的 goroutine 的 id 记录下来
 #### 死锁
+当多线程的情况下，多个线程陷入了争抢资源的情况，当他们都陷入了停滞状态，或者阻塞状态的时候，就会发生死锁，deaadlock
+
+一般来讲，当你发现系统多个线程都堵死的时候，就会发生死锁情况了，但是通常发生死锁是发生在满足这四个情况下
+
+- 互斥：资源具有排他性，只能有一个 goroutine 访问
+- 持有和等待：goroutine 持有资源，并还在请求其它资源
+- 不可剥夺：资源只有被它持有的 goroutine 释放
+- 环路等待：发生了环路等待事件
+
+举一个案例
+```go
+package main
+
+import(
+  "sync"
+  "fmt"
+  "time"
+)
+
+func main(){
+  var wg sync.WaitGroup
+  var mu1 sync.Mutex
+  var mu2 sync.Mutex
+  wg.Add(2)
+  go func(){
+    defer wg.Done()
+    mu1.Lock()
+    defer mu1.Unlock()
+    time.Sleep(1000)
+    mu2.Lock()
+    defer mu2.Unlock()
+  }()
+  go func(){
+    defer wg.Done()
+    mu2.Lock()
+    defer mu2.Unlock()
+    time.Sleep(1000)
+    mu1.Lock()
+    defer mu1.Unlock()
+  }()
+  wg.Wait()
+}
+```
+在这个案例中，mu1 和 mu2 代表两个资源，两个 goroutine 在争夺这两个资源，下面我们盘点一下上文说的四个理论知识：
+
+- 互斥性：资源只能被一个 goroutine 持有
+- 持有和等待，一个 goroutine 获取了一把锁，还想获取第二把
+- 不可剥夺，持有锁的 goroutine 释放锁后，其他 goroutine 不能再获取该锁
+- 环路等待，两个 goroutine 陷入了环路这个概念总，第一个先持有 mu1，第二个 goroutine 先持有 mu2，他们又分别要获取另一个锁，所以陷入了环路等待中
+
+所以这个案例中，发生了死锁
+```go
+fatal error: all goroutines are asleep - deadlock!
+
+goroutine 1 [semacquire]:
+sync.runtime_Semacquire(0xc0000a4020?)
+	/usr/local/go-faketime/src/runtime/sema.go:62 +0x25
+sync.(*WaitGroup).Wait(0x0?)
+	/usr/local/go-faketime/src/sync/waitgroup.go:116 +0x48
+main.main()
+	/tmp/sandbox1712910389/prog.go:31 +0x125
+
+goroutine 17 [sync.Mutex.Lock]:
+sync.runtime_SemacquireMutex(0x1?, 0x58?, 0x459218?)
+	/usr/local/go-faketime/src/runtime/sema.go:77 +0x25
+sync.(*Mutex).lockSlow(0xc0000a2028)
+	/usr/local/go-faketime/src/sync/mutex.go:171 +0x15d
+sync.(*Mutex).Lock(...)
+	/usr/local/go-faketime/src/sync/mutex.go:90
+main.main.func1()
+	/tmp/sandbox1712910389/prog.go:20 +0xd1
+created by main.main in goroutine 1
+	/tmp/sandbox1712910389/prog.go:15 +0xb9
+
+goroutine 18 [sync.Mutex.Lock]:
+sync.runtime_SemacquireMutex(0x1?, 0x58?, 0x459218?)
+	/usr/local/go-faketime/src/runtime/sema.go:77 +0x25
+sync.(*Mutex).lockSlow(0xc0000a2020)
+	/usr/local/go-faketime/src/sync/mutex.go:171 +0x15d
+sync.(*Mutex).Lock(...)
+	/usr/local/go-faketime/src/sync/mutex.go:90
+main.main.func2()
+	/tmp/sandbox1712910389/prog.go:28 +0xd1
+created by main.main in goroutine 1
+	/tmp/sandbox1712910389/prog.go:23 +0x119
+
+```
 ### sync.Mutex 扩展
+
 ## sync.RWMutex
 ## sync.Locker
 ## sync.WaitGroup
