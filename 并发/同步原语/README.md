@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-12-28 00:28:18
+ * @LastEditTime: 2023-12-28 00:53:36
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -486,7 +486,75 @@ func main() {
 出现死锁的原因就是出现了环形等待，读锁等待写锁解锁，写锁等待读锁解锁
 
 ## sync.WaitGroup
- 
+它的作用是任务的编排
+
+waitgroup 一共有三个方法：
+
+- Add(delta int)：增加 delta 个任务
+- Done()：任务完成，减少一个任务
+- Wait()：阻塞等待，直到所有任务完成
+
+```go
+func main() {
+  var wg sync.WaitGroup
+  wg.Add(2)
+  go func(){
+    defer wg.Done()
+    time.Sleep(1000)
+  }()
+  go get(&wg)
+  wg.Wait()
+}
+
+func get(wg *sync.WaitGroup) {
+  defer wg.Done()
+  time.Sleep(1000)
+}
+```
+### 常见错误
+- add 的时候数值传入负值
+- done 的次数超过 add 中的次数
+- 在 add 之前调用了 wait
+- 当前一个 waitgroup 还没有完结就开始重用了 waitgroup，也就是说，必须等到上一轮的 wait 执行完毕了才能开启新的一轮
+
+最后这个错误我们看一个案例：
+
+```go
+func main(){
+  var wg sync.WaitGroup
+  wg.Add(1)
+  go func(){
+    time.Sleep(1000)
+    wg.Done()
+    wg.Add(1) // AA
+  }()
+  wg.Wait()
+}
+```
+在这个案例中，AA 处的 add 行为有可能发生在主 goroutine 之后，那么相当于一轮未结束又开启了新的一轮，就会发生 panic 行为
+
+当然了，我不是说 add 只能调用一次，但是 add 虽然能调用多次，但是不能发生在 wait 之后
+
+正确的多次调用 add 的案例：
+
+```go
+func main(){
+  var wg sync.WaitGroup
+
+  for i:=0;i<10;i++{
+    wg.Add(1)
+    go func(){
+      defer wg.Done()
+      time.Sleep(1000)
+    }()
+  }
+  wg.Wait()
+}
+```
+注意，我们这里每次循环都调用了一次 add，但是 add 的调用始终发生在 wait 之前，这还是属于同一轮的多次 add 调用，这符合 waigroup 的规定
+
+
+
 ## sync.Once
 
 ## 讨论 map 在多线程中的场景
