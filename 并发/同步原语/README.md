@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-12-27 23:08:50
+ * @LastEditTime: 2023-12-27 23:45:48
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -449,10 +449,44 @@ func(m *RecursiveMutex) Unlock(){
 }
 ```
 ## sync.RWMutex
+上文我们提到了互斥锁，互斥锁是真的锁，不论是读还是写都只能有一个 goroutine 去操作，所以说互斥锁才是真的锁，那么我们这里讲的读写锁是什么含义呢？
+
+读写锁：允许多个 goroutine 同时去读一个数据，但是这个时候是不允许写的；只允许一个 goroutine 去写一个数据，并且不允许其它 goroutine 去读这个数据。
+
+所以，读写锁跟互斥锁相比，把读的权限给增大了，但是写的权限不变。
+
+当我们遇到一个读多写少的场景，那么使用读写锁的效率要比互斥锁的效率高的多。
+
+读写锁拥有以下几个方法：
+
+- Lock/Unlock：写操作时加的锁
+- Rlock/RUnlock：读操作时加的锁
+- Rlocker：为读操作返回一个 Locker 接口的对象
+
+RWMutex 跟 mutex 一样，初始值都是未加锁的状态，当然他们都是有状态的结构体，所以也不能复制锁，因为初始值就是未加锁，所以直接声明即可。
+
+总结一下读写锁的几个注意事项
+- 上文提到了，不可复制
+- lock 和 unlock 要成对出现；Rlock 和 RUnlock 也要成对出现
+
+下面我们看一下，使用读写锁造成的死锁问题
+
+```go
+// 这个写法出问题的原因是：读锁还没结束就开启了写锁
+func main() {
+	var mu sync.RWMutex
+
+	mu.RLock()
+	mu.Lock()
+	mu.Unlock()
+	mu.RUnlock()
+
+}
+```
+出现死锁的原因就是出现了环形等待，读锁等待写锁解锁，写锁等待读锁解锁
 
 ## sync.Locker
 ## sync.WaitGroup
-## sync.Cond
 ## sync.Once
 ## 讨论 map 在多线程中的场景
 ## Pool
