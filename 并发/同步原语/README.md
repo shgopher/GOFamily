@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-12-27 23:45:48
+ * @LastEditTime: 2023-12-28 00:28:18
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -356,7 +356,7 @@ func main(){
 - 不可剥夺，持有锁的 goroutine 释放锁后，其他 goroutine 不能再获取该锁
 - 环路等待，两个 goroutine 陷入了环路这个概念总，第一个先持有 mu1，第二个 goroutine 先持有 mu2，他们又分别要获取另一个锁，所以陷入了环路等待中
 
-![h](./环路等待.png)
+![h](./ringwaiter.png)
 
 所以这个案例中，发生了死锁
 ```go
@@ -485,15 +485,20 @@ func main() {
 ```
 出现死锁的原因就是出现了环形等待，读锁等待写锁解锁，写锁等待读锁解锁
 
-## sync.Locker
 ## sync.WaitGroup
+ 
 ## sync.Once
+
 ## 讨论 map 在多线程中的场景
+
 ## Pool
+
 ## errgroup
+
 ## semaphore
+
 ## singleflight
-## syncmap
+
 ## issues
 ### 问题一：有互斥锁就一定有临界区吗？
 互斥锁的存在不等于必须存在临界区。
