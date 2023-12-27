@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-12-27 00:58:07
+ * @LastEditTime: 2023-12-27 23:08:50
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -311,9 +311,9 @@ go 语言不支持重入，系统会 panic，这种重入锁无法实现也跟 g
 一般来讲，当你发现系统多个线程都堵死的时候，就会发生死锁情况了，但是通常发生死锁是发生在满足这四个情况下
 
 - 互斥：资源具有排他性，只能有一个 goroutine 访问
-- 持有和等待：goroutine 持有资源，并还在请求其它资源
+- **持有和等待**：goroutine 持有资源，并还在请求其它资源
 - 不可剥夺：资源只有被它持有的 goroutine 释放
-- 环路等待：发生了环路等待事件
+- **环路等待**：发生了环路等待事件，下面这个案例可以解释这个理论
 
 举一个案例
 ```go
@@ -356,6 +356,8 @@ func main(){
 - 不可剥夺，持有锁的 goroutine 释放锁后，其他 goroutine 不能再获取该锁
 - 环路等待，两个 goroutine 陷入了环路这个概念总，第一个先持有 mu1，第二个 goroutine 先持有 mu2，他们又分别要获取另一个锁，所以陷入了环路等待中
 
+![h](./环路等待.png)
+
 所以这个案例中，发生了死锁
 ```go
 fatal error: all goroutines are asleep - deadlock!
@@ -394,8 +396,60 @@ created by main.main in goroutine 1
 
 ```
 ### sync.Mutex 扩展
+这里主要讲解如何对 sync.Mutex 进行功能扩展
 
+基本的原理就是**将 sync.Mutex 嵌入到一个新的接口体中，然后重载 Lock 和 Unlock 的方法进行改造**
+
+#### 改造一个重入锁
+```go
+type RecursiveMutex struct {
+  sync.Mutex
+  owner int64 // goroutine id
+  recursion int64 //当前goroutine重入次数
+}
+```
+lock 操作
+```go
+func(m *RecursiveMutex)Lock(){
+  // 第三方包，目的是获取正在获取锁的lock 操作的 runtime id
+  // github.com/petermattis/goid
+  gid := goid.Get()
+
+  // 判断当前goroutine是否是要重入的goroutine
+  if atomic.LoadInt64(&m.owner) == gid {
+    // 重入指标+1
+    atomic.AddInt64(&m.recursion, 1)
+    return
+  }
+  m.Mutex.Lock()
+  // 获取得到锁的goroutine的id
+  atomic.StoreInt64(&m.owner, gid)
+  atomic.StoreInt64(&m.recursion, 1)
+
+}
+```
+unlock 操作
+```go
+func(m *RecursiveMutex) Unlock(){
+  gid := goid.Get()
+
+  // 非持有锁的goroutine去释放锁直接panic
+  if atomic.LoadInt64(&m.owner) == gid {
+    panic("wrong",m.owner,gid)
+  }
+  // 重入指标-1
+  atomic.StoreInt64(&m.recursion,&m.recursion -1)
+
+  if atomic.LoadInt64(&m.recursion) != 0 { // 持有的goroutine还没有全部unlock
+    return 
+  }
+  // 将 重入指标设置为-1
+  atomic.StoreInt64(&m.recursion,-1)
+  m.Mutex.Unlock()
+}
+```
 ## sync.RWMutex
+
 ## sync.Locker
 ## sync.WaitGroup
 ## sync.Cond
