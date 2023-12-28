@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-12-28 00:53:36
+ * @LastEditTime: 2023-12-28 20:12:22
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -556,11 +556,180 @@ func main(){
 
 
 ## sync.Once
+once 用来执行仅发生一次的动作，常用与单例模式，对象初始化的行为，并且经常在 init 函数中使用
 
-## 讨论 map 在多线程中的场景
+sync.Once 仅仅暴漏了一个 do 方法，而且多次调用 do，仅有第一次的无返回值的 f 函数可以执行，即便 f 不同：
 
-## Pool
+```go
+var once sync.Once
 
+func init() {
+  once.Do(func() {
+    // 仅执行一次
+  })
+  // 这次不会执行
+  once.Do(func() {
+    
+  })
+}
+```
+
+## 讨论线程安全的 map 在多线程中的使用
+go 语言中的 map 并不是并发安全的，一个 map 如果不加锁的去处理数据的时候就会出现 panic 的情况，比如：
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func main() {
+	var m = make(map[int]int, 10) // 初始化一个map
+	go func() {
+		for i := 0; i < 100000; i++ {
+			m[1] = 1 //设置key
+		}
+	}()
+	go func() {
+		for i := 0; i < 100000; i++ {
+			fmt.Println(m[2]) //访问这个map
+		}
+	}()
+	time.Sleep(1000000)
+}
+```
+这种写法就会发生 panic，原因是 go 语言不支持并发读写 map，必须加锁
+
+其实我们如果分析这段代码，并没有说对同一个 key 值进行读写，也没有涉及到扩容的问题，但是仍然会 panic，go 在操作 map 时会进行 data race 的检测，只要检测有，就会直接 panic
+### 直接加锁
+我们可以人为的加锁，这样就可以避免 data race 的行为
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func main() {
+	var mu sync.Mutex
+	var m = make(map[int]int, 10) // 初始化一个map
+	go func() {
+		for i := 0; i < 100000; i++ {
+			mu.Lock()
+			m[1] = 1 //设置key
+			mu.Unlock()
+		}
+	}()
+	go func() {
+		for i := 0; i < 100000; i++ {
+			mu.Lock()
+			fmt.Println(m[2]) //访问这个map
+			mu.Unlock()
+		}
+	}()
+	time.Sleep(1000000)
+}
+```
+如果数据量比较低的话，这么做毫无问题，如果数据量较大，或者每次操作都比较耗时，读写公用一锁就比较浪费了。
+
+那么可以使用读写锁吗？当然可以啦，我们使用读写锁可以更优秀的去解决这个问题
+
+
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func main() {
+	var mu sync.RWMutex
+	var m = make(map[int]int, 10) // 初始化一个map
+	go func() {
+		for i := 0; i < 100000; i++ {
+			mu.Lock()
+			m[1] = 1 //设置key
+			mu.Unlock()
+		}
+	}()
+	go func() {
+		for i := 0; i < 100000; i++ {
+			mu.RLock()
+			fmt.Println(m[2]) //访问这个map
+			mu.RUnlock()
+		}
+	}()
+	time.Sleep(1000000)
+}
+```
+RWMutex 在同时有读写需求时，会优先获取写锁，读锁需要等待
+
+如果当前有读锁，则后续的写锁请求会被阻塞，但读锁可以继续获取，
+
+如果当前有写锁，则后续的读锁和写锁请求都会被阻塞。
+
+所以，如果读多写少，使用读写锁是非常方便的，假如读和写都异常的高，那么读和写其实是不能同时进行的，如果读贼多，写就可能被阻塞等待了。
+
+### 细颗粒度并发安全 Map
+我们都知道，锁对于性能的影响是特别大的，尤其是线程非常多的时候，那么多线程公用一个锁，各种等待，能不影响效率吗，那么怎么做能提高效率呢？
+
+降低锁的颗粒度就可以提高效率，换言之就是本来 1000 个线程公用一个，现在，我们把数据分为 10 份，100 个线程用一个锁，性能就能大范围的提高
+
+我们可以使用 https://github.com/orcaman/concurrent-map 这个分片儿锁去替代互斥锁
+
+分片儿锁的基本原理就是将一个大的 map 的内容，变成 10 个或者是更多个 map 的内容，我们可以这么做：
+
+本身需要一个 map 的数据结构，我们改成一个 slice，slice 含有 10 个 map 的数据结构
+我们还需要一个定位分片的算法，基本上都是使用一个哈希算法先定位分片，然后后续就跟一般的互斥锁一致了。
+用法如下：
+
+```go
+// Create a new map.
+	m := cmap.New[string]()
+
+	// Sets item within map, sets "bar" under key "foo"
+	m.Set("foo", "bar")
+
+	// Retrieve item from map.
+	bar, ok := m.Get("foo")
+
+	// Removes item under key "foo"
+	m.Remove("foo")
+```
+### sync.Map
+这是 go 官方提供的一个线程安全的 map，先说使用场景，只写一次，大量读的场景。
+
+sync.Map 跟分片锁不同，分片锁是直接降低颗粒度，sync.Map 它的基本原理是读写分离，用空间换时间。通过一个只读的数据结构来提高读取速度。
+
+当读少写多的时候，它的效率甚至比直接使用互斥锁还低，总之如果不是写少读多的场景，千万不要用，这个包的使用率挺低的。
+
+## sync.Pool
+sync.Pool 是一个对象池，如果我们有一些重复使用的，并且需要频繁的申请和释放的临时对象，那么可以用这个对象池来提高性能。不过这个池子里的对象有可能会被垃圾回收，所以非常重要的数据不能使用这种方法
+
+我来描述一种场景，我们有数据需要被 goroutine 去处理，但是谁处理都行，不 care 是哪位，那么我们就可以创建很多的 goroutine，然后放入到 goroutine 池中 (就跟外包一样。。。)
+
+sync.Pool 有两个注意事项，首先，它线程安全，其次，不能复制 sync.Pool，如果你复制一个 sync.Pool，实际上得到的只是一个指针的拷贝，并不会复制本地池子，所以多个拷贝的 sync.Pool 指针指向的是同一个本地池子，达不到复用的目的。应该定义一个全局的 sync.Pool 实例，不同的 goroutine 都使用这个实例，才能达到对象复用和减少内存分配的目的
+
+pool 包拥有三个方法
+
+- New
+- Get
+- Set
+ 
+下面举一个例子：
+```go
+var buffer = sync.Pool{
+  New: func() any {
+    return new(bytes.Buffer)
+  },
+}
+```
 ## errgroup
 
 ## semaphore

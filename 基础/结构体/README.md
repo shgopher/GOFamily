@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-03-31 19:05:02
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-09-19 20:49:53
+ * @LastEditTime: 2023-12-28 21:27:13
  * @FilePath: /GOFamily/基础/结构体/README.md
  * @Description: 
  * 
@@ -78,6 +78,32 @@ type People struct {
   year int
 }
 ```
+## 解耦结构体声明和调用
+当我们实现结构体的时候，如果显示写出结构体的字段变量名称，就可以不按照顺序，以及可以不完全实现全部字段，这样的话，结构体的声明和实现就可以完全解耦，当然可以隐藏实现的结构体变量，那么你不得不要按照顺序，以及实现全部字段，满足这两者才可以。
+
+```go
+// 显式实现
+type People struct {
+  Addr string
+  name string
+  year func(int)int
+}
+func main(){
+  var p = People{
+    Addr: "北京",
+    year: func(a int)int{
+      return 2000 + a
+    }
+  }
+ 
+}
+```
+上述代码就是显示的写出了字段的变量名称，你看，name 并没有被写上，这种情况下，name 就会被命名为一个初始值，即 “”
+
+这样，即使结构体本身有什么增加字段的行为，实现结构体的逻辑代码也不用改变了。
+
+如果是隐式的话，那么必须按照顺序，以及数量进行实现，建议在字段不变以及字段数量非常少的时候使用。
+
 ## 匿名 struct
 
 我们使用匿名 struct，可以完全将另一个结构体嵌入到这个结构体中。
