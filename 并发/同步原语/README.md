@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-12-28 20:12:22
+ * @LastEditTime: 2023-12-28 22:44:09
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -718,23 +718,167 @@ sync.Pool 有两个注意事项，首先，它线程安全，其次，不能复�
 
 pool 包拥有三个方法
 
-- New
-- Get
-- Set
+- New，pool 的 new 方法后面跟的是创建的内容，一旦 pool 里面空了，就会调用这个 new 方法，当然你也可以不指定这个参数，那么创建的就是 nil 了
+- Get 从 pool 中获取一个对象
+- Set 将对象送回 pool 中
  
-下面举一个例子：
+下面举一个演示的例子：
 ```go
 var buffer = sync.Pool{
   New: func() any {
     return new(bytes.Buffer)
   },
 }
+
+func GetBuffer()*bytes.Buffer {
+  return buffer.Get().(*bytes.Buffer)
+}
+func PutBuffer(buf *bytes.Buffer){
+  // Reset会将缓冲区重置为空，但它会保留底层存储以供将来写入使用
+  buf.Reset()
+  buffers.Put(buf)
+}
 ```
-## errgroup
+这段代码是会有内存泄露的风险的，原因也很简单，buf.Reset() 并不会删除底层 slice 的容量，它会保存底层数据结构中的容量，所以 gc 的时候这个 buffer 就非常有可能不会被回收，造成内存泄露
+
+改正方法也很简单，底层数据太大了直接丢弃 gc 就 ok 了，小的放到池子里
+```go
+func PutBuffer(buf *bytes.Buffer){
+  // Reset会将缓冲区重置为空，但它会保留底层存储以供将来写入使用
+  buf.Reset()
+  if buf.Cap() > maxSize{
+    return 
+  }
+  buffers.Put(buf)
+}
+```
+### pool 内存浪费
+当我们需求的内存比池子中的内存小很多的时候，就会造成内存浪费，解决方法就是多造几个池子，比如小池子，中池子，大池子，使用这种方案合理的使用内存
+
+```go
+var(
+  readerPool   sync.Pool
+  reader2kPool sync.Pool
+  reader4kPool sync.Pool
+)
+```
+推荐一个三方库，特点是能更加高效的发挥系统性能节约内存以及避免内存泄露问题等，他可以动态的去调节池子的 dafault size 和 max size
+
+https://github.com/valyala/bytebufferpool
+
+连接池也是一个很常见的需求，但是通常不会使用 pool，因为 pool 会被 gc，所以并不靠谱，通常我们使用 map 或者 slice 去实现一个需要真的长时间稳定连接的连接池比如：
+
+- http client 池
+- tcp 连接池，推荐三方库：https://github.com/fatih/pool
+- 数据库连接池
+- memcached client 连接池
+### worker pool
+worker pool 其实就是 goroutine 的池子，虽然 go 语言的 goroutine 非常的轻量化，但是如果几十万上百万的 goroutine 被创建还是会出问题的
+
+因为 goroutine 是一种要求长期存在的资源，所以一般不使用 pool，而是使用 channel 去作为池子，毕竟 channel 自带线程安全
+
+Worker pool 的目的是为了重用 goroutine。但它重用的不是 goroutine 本身，而是通过 goroutine 执行任务的能力。
+
+如果直接在 channel 中传递 goroutine，那么每个 goroutine 只能执行唯一的一个任务，执行完就退出了。这并没有实现重用。
+
+而 worker pool 的设计是：
+
+创建固定数量的 goroutine 作为 workers。
+workers 在 loop 中持续从任务 channel 接收任务并执行。
+向任务 channel 不断发送不同的任务。
+这样，每个 worker(goroutine) 就可以执行多个任务，实现重用。
+
+所以 channel 中的内容不是 goroutine，而是任务信息，用于指导 goroutine 执行什么任务。goroutine 从 channel 收任务，利用自身的执行能力反复执行不同的任务。
+
+这才是 worker pool 设计的核心思想 - 通过固定数量的 goroutine 反复执行不同的任务，以重用 goroutine 实现高效调度。
+
+所以，worker pool 的目的是重用 goroutine 的执行能力，而不是重用 goroutine 本身。这是通过 channel+goroutine 的组合实现的，channel 用于传递任务信息，goroutine 负责执行任务
+
+让我们简单的实现一个方案：
+```go
+// 任务类型
+type Task struct {
+  f func() // 任务函数
+}
+
+// 执行任务
+func (t *Task) Execute() {
+  t.f() 
+}
+
+// 工作goroutine
+type Worker struct {
+  TaskChan chan *Task
+}
+
+func (w *Worker) Start() {
+  for {
+    task := <-w.TaskChan
+    task.Execute() 
+  }
+}
+
+// goroutine池
+type Pool struct {
+  TaskChan chan *Task
+  Workers []*Worker
+} 
+
+// 创建goroutine池
+func NewPool(numWorkers int) *Pool {
+  
+  taskChan := make(chan *Task)
+
+  // 初始化workers
+  var workers []*Worker
+  for i := 0; i < numWorkers; i++ {
+    worker := &Worker{
+      TaskChan: taskChan,
+    }
+    workers = append(workers, worker)
+    go worker.Start()
+  }
+
+  return &Pool{
+    TaskChan: taskChan,
+    Workers: workers,
+  }
+}
+
+// 分发任务
+func (p *Pool) Schedule(task *Task) {
+  p.TaskChan <- task
+}
+```
+使用方式
+```go
+func main(){
+// 定义任务
+task1 := &Task{ 
+  f: func() {
+    // do something
+  }}
+
+pool := NewPool(10) 
+
+// 分发任务
+pool.Schedule(task1)
+}
+```
+
+提供一些个优秀的 worker pool 方案
+
+- gammazero/workerpool
+- ivpusic/grpool
+- dpaks/goworkers
+- https://github.com/alitto/pond
+
 
 ## semaphore
 
 ## singleflight
+
+## errgroup
 
 ## issues
 ### 问题一：有互斥锁就一定有临界区吗？
