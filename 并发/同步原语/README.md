@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-12-29 00:23:49
+ * @LastEditTime: 2024-01-03 21:45:38
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -553,11 +553,69 @@ func main(){
 ```
 注意，我们这里每次循环都调用了一次 add，但是 add 的调用始终发生在 wait 之前，这还是属于同一轮的多次 add 调用，这符合 waigroup 的规定
 
-## singleflight
+## SingleFlight
+在处理多个 goroutine 同时调用同一个函数的时候，只让一个 goroutine 去调用这个函数，等到这个 goroutine 返回结果的时候，再把结果返回给这几个同时调用的 goroutine
 
+在面对多个 goroutine 并发去读一个数据的时候，使用 SingleFlight 可以大大降低请求量，从 n 的请求量降低到 1，比如在秒杀的场景下，n 个 goroutine 去请求数据，那么我们使用 SingleFlight 就能大大提高读的性能
+
+SingleFlight 提供了三个公开方法：
+- func (g *Group) Do(key string，fn func() (interface {}，error)) (v interface {}，err error，shared bool)
+- func (g *Group) DoChan(key string，fn func() (interface {}，error)) <-chan Result
+- func (g *Group) Forget(key string)
+
+- Do：Do 执行并返回函数的结果，同样 key 值下的只能有一个 goroutine 持有的 do 方法会执行，其它的都会等待，直到唯一一个执行完毕有了结果，那么大家 (指都执行 do 的众多 goroutine) 都有了结果
+- DoChan：跟 do 类似，返回值是一个 channel
+- Forget：告诉这个 group，忘记 key，之后，这个 key 请求回执行 f 函数，而不是等待前一个未完成的 fn 函数的结果
+
+  ```go
+    sf := &sync.SingleFlight{} 
+
+    sf.Do("param", func() interface{} {
+        // ...function logic
+        return result 
+    })
+
+    // 后续想重新执行
+    sf.Forget("param") 
+
+    sf.Do("param", func() interface{} {
+        // 这次会再次执行函数逻辑
+    })
+  ```
+
+我们在处理缓存击穿的问题时，通常采用 singleflight 会有比较好的适用，所谓缓存击穿就是大量请求在请求一个 key 值时，key 值失效了，大量数据开始请求数据库，使用 singleflight 时，大量数据只需要一次请求，完美解决了缓存击穿问题
+
+> 缓存击穿：指一个 key 非常热点，在不停的扛着大并发，大并发集中对这一个点进行访问，当这个 key 在失效的瞬间，持续的大并发就穿破缓存，直接请求数据库，就像弹丸穿透目标一样。当某个 key 在过期的瞬间，有大量的请求并发访问，这类数据一般是热点数据，由于缓存过期，会同时访问数据库来查询最新数据，并且回写缓存，会对数据库造成压力。
+
+> 缓存穿透：指查询一个数据库一定不存在的数据，由于缓存是不命中时被动写的，并且出于容错考虑，如果从存储层查不到数据则不写入缓存，这将导致这个不存在的数据每次请求都要到存储层去查询，失去了缓存的意义。
+
+> 缓存雪崩：指在某一个时间段，缓存集中过期失效。所有访问都落到数据库上，对数据库造成巨大压力。这通常因为缓存服务器宕机或缓存时效过短导致，可通过服务器保护或增大缓存过期时间来避免。
 ## cyclicBarrier
+> github.com/marusama/cyclicbarrier
+
+允许一组 goroutine 彼此等待，到达一个共同的执行点。同时，因为它可
+以被重复使用，所以叫循环栅栏
+
+基本用法就是 Await 方法，等待所有的参与者到达，到达了就往下走，然后开始新的循环
+
+```go
+// 数字代表执行任务的 goroutine 的个数
+b1 := cyclicbarrier.New(10) 
+// 或者带有方法的循环栅栏
+b2 := cyclicbarrier.NewWithAction(10, func() error { return nil }) 
+
+b.Await(ctx)    // await other parties
+// 将循环栅栏重置
+b.Reset()       // reset the barrier
+```
 
 ## errgroup
+将一个通用的父任务，拆成几个小任务并发执行的场景
+
+- WithContex 表示创建一个 group 实例，并且创建一个 withcancel 的上下文 context，一旦子任务返回错误，或者 wait 调用返回，context 就会被 cancel
+- Go Go(f func()error) 传入的子任务，一旦 error，就会促发 withcancel 的 cancel 操作
+- Wait 等待所有任务都完成后，wait 才会执行
+
 
 ## sync.Once
 once 用来执行仅发生一次的动作，常用与单例模式，对象初始化的行为，并且经常在 init 函数中使用
