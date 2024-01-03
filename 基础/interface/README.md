@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-11-30 00:11:41
+ * @LastEditTime: 2024-01-03 22:08:48
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -994,7 +994,20 @@ eface 和 iface 的第二个字段相同均存储的是动态类型的地址，�
 
 `问题四：` ***如何查找 interface 中的方法***
 
+除了查找文档，以及查看源码，还可以通过反射来查找 interface 中的方法。
 
+```go
+type MyInterface interface {
+    Method1() 
+    Method2()
+}
+
+t := reflect.TypeOf((*MyInterface)(nil)).Elem()
+for i := 0; i < t.NumMethod(); i++ {
+    m := t.Method(i)
+    fmt.Println(m.Name) 
+}
+```
 
 `问题五：` ***interface 设计的优缺点***
 
