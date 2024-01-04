@@ -521,7 +521,7 @@ func OrderedSlice[T Ordered](s []T) {
 }
 ```
 ## issues
-***问题一：***关于泛型中的零值
+### 关于泛型中的零值
 
 在 go 里面对泛型的零值并没有一个所谓的泛型零值可以使用，需要根据不同的实践去实现，比如
 
@@ -549,7 +549,7 @@ func (a *Aget[T]) Approach() T {
 ```
 实际上目前，还没一个确切的泛型的零值，那么我们要做的只能是按照实际来具体分析，按照提案，以后有可能使用 `return ...` `return _` `return ` `return nil` `return T{}` 这些都是可能的结果，我个人比较喜欢 `return T{}` 来表示泛型的零值，拭目以待吧。
 
-***问题二：***无法识别使用了底层数据的其它类型
+### 无法识别使用了底层数据的其它类型
 
 ```go
 type Float interface {
@@ -575,7 +575,7 @@ var G = NewtonSqrt(MyFloat(64))
 ```
 这里约束 Float 拥有的约束类型是 `~float32` 和 `float64` 当在 switch 中定义了 float32 和 flaot64 时，无法识别下面的新类型 MyFloat 即使它的底层时 float32，go 的提议是以后在 switch 中使用 `case ~float32:` 来解决这个问题，目前尚未解决这个问题
 
-***问题三：***即便约束一致，类型也是不同的
+### 即便约束一致，类型也是不同的
 
 ```go
 func Copy[T1, T2 any](dst []T1, src []T2) int {
