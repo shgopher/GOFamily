@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-01-04 17:32:45
+ * @LastEditTime: 2024-01-04 19:03:24
  * @FilePath: /GOFamily/并发/context/README.md
  * @Description: 
  * 
@@ -37,8 +37,90 @@ context 有一些编程范式：
 
 其中，带有 Cause 的函数跟不带的函数基本意思相同，但是多了一个 cause 的内容，它是指的是取消的原因
 
+## withValue
+WithValue 基于 parent Context 生成一个新的 Context，保存了一个 key-value 键值
+对。它常常用来传递上下文。
+
+context 在查询 key 值的时候还支持链式查找，如果没有发现数据就往 parent context 中查询
+
+```go
+ctx = context.TODO()
+ctx = context.WithValue(ctx, "key1", "0001")
+ctx = context.WithValue(ctx, "key2", "0001")
+ctx = context.WithValue(ctx, "key3", "0001")
+ctx = context.WithValue(ctx, "key4", "0004")
+fmt.Println(ctx.Value("key1"))
+```
+
 ### WithCancel
-当你的任务执行完毕了，执行返回值中的 cancel 函数，cancel 函数会 close 这个 done channel，这样就可以释放资源
+withCancel 返回父 context 中的 ctx 实例副本，它相当于父 context 的子 context，并且在父 context 被取消时，子 context 也会被取消。
+
+```go
+func withCancel(parent Context) *cancelCtx {
+	if parent == nil {
+		panic("cannot create context from nil parent")
+	}
+	c := &cancelCtx{}
+  // 向上寻找
+	c.propagateCancel(parent, c)
+	return c
+}
+```
+propagateCancel 部分代码：
+```go
+func (c *cancelCtx) propagateCancel(parent Context, child canceler) {
+	c.Context = parent
+
+	done := parent.Done()
+	if done == nil {
+		return // parent is never canceled
+	}
+
+	select {
+	case <-done:
+		// 如果父done了，那么子ctx一定也会出发cancel
+		child.cancel(false, parent.Err(), Cause(parent))
+		return
+	default:
+	}
+
+	if p, ok := parentCancelCtx(parent); ok {
+		// parent is a *cancelCtx, or derives from one.
+		p.mu.Lock()
+		if p.err != nil {
+			// 如果父发生了cancel，那么子ctx也要触发cancel
+			child.cancel(false, p.err, p.cause)
+		} else {
+			if p.children == nil {
+				p.children = make(map[canceler]struct{})
+			}
+      // 将子ctx添加到父ctx中
+			p.children[child] = struct{}{}
+		}
+		p.mu.Unlock()
+		return
+	}
+  ...
+  go func() {
+		select {
+      // 父 done被触发，那么子ctx就会被触发cancel操作
+		case <- parent.Done():
+			child.cancel(false, parent.Err(), Cause(parent))
+		case <-child.Done():
+		}
+	}()
+}
+
+type canceler interface {
+	cancel(removeFromParent bool, err, cause error)
+	Done() <-chan struct{}
+}
+```
+propagateCancel 将 c 向上传播，顺着 parent 的路径一直向上查找，直到找到 parentCancelCtx，如果不为空，就把自己加入到这个 parentCancelCtx 的 children 切片中，然后就可以在父 ctx 取消的时候，通知自己也被取消
+
+当这个 cancelCtx 的 cancel 函数被调用的时候，parent 的 Done 被 close 的时候，或者父 ctx 触发了 cancel 的时候，这个子 ctx 会被触发 cancel 动作
+
+cancel 是向下传递的，如果一个 WithCancel 生成的 Context 被 cancel 时，如果它的子 Context (也有可能是孙，或者更低)，就会被 cancel，但是不会向上传递。parent Context 不会因为子 Context 被 cancel 而 cancel。
 
 ```go
 package main
@@ -70,10 +152,11 @@ WithCancel 返回 parent context 的一个副本，它自然就是子 context，
 
 这两个只是添加了到期时间，一个是超时时间，一个是截止时间，一旦超过时间后，自动 close 这个 done 这个 channel
 
-done 这个 channel 被 close 有三个原因：
+综上所述，done 这个 channel 被 close 有三个原因：
 - 截止时间到了
 - cancel 函数被调用了
-- parent context 直接控制子 context 的 done close
+- parent context 的 done close 了，然后子 ctx 也要触发 cancel 方法
+- parent context cancel 了触发子 ctx cancel 方法
 
 关于第三条，解释一下：
 ```go
@@ -140,3 +223,4 @@ func main() {
 
 ## issues
 ### contex.Contex 如何实现并发安全的？
+Go 语言中 context 实现并发安全的主要手段是通过原子操作和 Mutex 来保证状态的原子性
