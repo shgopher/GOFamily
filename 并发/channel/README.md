@@ -5,8 +5,8 @@
 ## 消息传递
 ## 任务编排
 ## issues
-### 有无buffer的channel 区别
-### channel close 后，read write  close 的区别
+### 有无 buffer 的 channel 区别
+### channel close 后，read write close 的区别
 ### channle 底层是什么
 ### channle 和运行时调度如何交互
 - https://betterprogramming.pub/common-goroutine-leaks-that-you-should-avoid-fe12d12d6ee

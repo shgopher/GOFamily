@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-01-03 22:08:48
+ * @LastEditTime: 2024-01-04 14:51:33
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -438,7 +438,7 @@ type interfacetype struct {
 ```
 
 ## 如何判断接口类型的相等
-当接口类型未被赋予动态类型时，它的两个字段，即：动态类型字段和动态类型 value 字段均为 nil，那么这个未初始化的接口变量就恒等于 `nil`
+***当接口类型未被赋予动态类型时***，它的两个字段，即：动态类型字段和动态类型 value 字段均为 nil，那么这个未初始化的接口变量就恒等于 `nil`
 
 当接口类型被赋予了动态类型，那么如果判断这时候的接口类型，必须为类型相同以及值相同，接下来我们看一个案例：
 
@@ -978,7 +978,7 @@ func main() {
 	var a error = (*b)(nil)
 	//(0x102205988,0x0)
 	println(a)
-	//false
+	//false，原因主要是动态类型赋予了这个指针类型具体的类型了，只是没有类型的值而已
 	println(a == nil)
 }
 
@@ -1001,11 +1001,34 @@ type MyInterface interface {
     Method1() 
     Method2()
 }
-
+//这里就是将nil转化为*MyInterface类型，elem()是一个非常重要的方法, Elem返回接口 v 包含的值或指针 v 指向的值
 t := reflect.TypeOf((*MyInterface)(nil)).Elem()
 for i := 0; i < t.NumMethod(); i++ {
     m := t.Method(i)
     fmt.Println(m.Name) 
+}
+```
+
+使用反射，判断某个类型是否实现了某个接口：
+```go
+package main
+
+import (
+	"fmt"
+	"io"
+	"os"
+	"reflect"
+)
+
+func main() {
+	// As interface types are only used for static typing, a
+	// common idiom to find the reflection Type for an interface
+	// type Foo is to use a *Foo value.
+	writerType := reflect.TypeOf((*io.Writer)(nil)).Elem()
+
+	fileType := reflect.TypeOf((*os.File)(nil))
+	fmt.Println(fileType.Implements(writerType))
+
 }
 ```
 

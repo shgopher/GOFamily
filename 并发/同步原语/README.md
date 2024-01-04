@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-01-03 22:40:39
+ * @LastEditTime: 2024-01-04 12:47:41
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -951,10 +951,12 @@ pool.Schedule(task1)
 
 go 语言在 x/sync 中提供了一个 weighted 的包，它就是提供的信号量的功能
 
-- Acquire p 操作，减少信号量的数值，表示获取了资源
-- Release v 操作，增加信号量的数值，表示释放了资源
+- Acquire p 操作，减少信号量的数值，表示获取了资源 -1
+- Release v 操作，增加信号量的数值，表示释放了资源 +1
 - TryAcquire 尝试获取资源，如果获取成功，则返回 true，否则返回 false
 它类似于 trylock 锁，也就是失败直接返回 false，并不会阻塞
+
+注意，信号量为了简洁的设计要求，pv 操作使用 +1 和 -1 这种非常简单的递增递减设计，是有意为之的。这种简单性使得信号量在各种同步情况下都很容易理解和正确使用。更复杂的操作可能会引入难以发现的 bug 或误用场景。
 
 让我们使用信号量来实现一个 worker pool
 ```go
