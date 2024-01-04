@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-01-05 00:01:12
+ * @LastEditTime: 2024-01-05 00:18:43
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -868,7 +868,7 @@ func (t *Task) Execute() {
   t.f() 
 }
 
-// 工作goroutine
+// 单个worker池 
 type Worker struct {
   TaskChan chan *Task
 }
@@ -880,13 +880,13 @@ func (w *Worker) Start() {
   }
 }
 
-// goroutine池
+// 为worker 池 分配 goroutine ，这得结合下面的 Newpool 才能看出来
 type Pool struct {
   TaskChan chan *Task
   Workers []*Worker
 } 
 
-// 创建goroutine池
+// 创建worker池
 func NewPool(numWorkers int) *Pool {
   
   taskChan := make(chan *Task)
