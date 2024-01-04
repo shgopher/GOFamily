@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-01-04 19:03:24
+ * @LastEditTime: 2024-01-04 19:06:48
  * @FilePath: /GOFamily/并发/context/README.md
  * @Description: 
  * 
@@ -224,3 +224,24 @@ func main() {
 ## issues
 ### contex.Contex 如何实现并发安全的？
 Go 语言中 context 实现并发安全的主要手段是通过原子操作和 Mutex 来保证状态的原子性
+
+根据底层代码可知，当不同的 goroutine 获取 ctx 的时候，每次操作都会加上互斥锁，来保证数据的非竞争性，线程的安全，例如
+
+```go
+if p, ok := parentCancelCtx(parent); ok {
+		// parent is a *cancelCtx, or derives from one.
+		p.mu.Lock()
+		if p.err != nil {
+			// 如果父发生了cancel，那么子ctx也要触发cancel
+			child.cancel(false, p.err, p.cause)
+		} else {
+			if p.children == nil {
+				p.children = make(map[canceler]struct{})
+			}
+      // 将子ctx添加到父ctx中
+			p.children[child] = struct{}{}
+		}
+		p.mu.Unlock()
+		return
+	}
+```
