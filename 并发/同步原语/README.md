@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-01-04 12:47:41
+ * @LastEditTime: 2024-01-05 00:01:12
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -1170,6 +1170,7 @@ func main() {
 		s[0] = <-ch
 		s[1] = <-ch
 		s[2] = <-ch
+		// 这里，对于hho进行排序了，不然也不一定是hho这个顺序
 		sort.Strings(s)
 		result := s[0] + s[1] + s[2]
 		fmt.Println(s)
