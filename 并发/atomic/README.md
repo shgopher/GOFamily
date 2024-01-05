@@ -15,7 +15,8 @@
 
 原子包操作对象的时候，都是操作的地址，所以谨记不要使用值操作而是要指针操作
 
-介绍一下 atomic 的内容：
+## 介绍一下 atomic 的内容
+
 - Add：例如 `func AddInt32(addr *int32,delta int32)(new int32)` 给第一个参数地址指向的数据值增加一个 delta 并返回新的数据
 - CompareAndSwap：例如 `func CompareAndSwapInt32(addr *int32,old,new int32)(swapped bool)` 比较 addr 指向的数据是否等于 old，如果不等于返回 false，如果等于就将此地址的值切换为 new 值，并且返回 true
 - Load：例如 `func LoadInt32(addr *int32)(val int32)` 读取 addr 指向的值并返回
