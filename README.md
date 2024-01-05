@@ -39,7 +39,6 @@ hey~，我是科科，目前就职于国内一家互联网公司，你们可以�
 - [同步原语](./并发/同步原语)
 - [channel](./并发/channel)
 - [context](./并发/context)
-- [定时器](./并发/定时器)
 - [atomic](./并发/atomic)
 ## runtime
 - [三色 gc 算法](./runtime/三色gc算法)
@@ -48,6 +47,7 @@ hey~，我是科科，目前就职于国内一家互联网公司，你们可以�
 - [栈内存管理](./runtime/栈内存管理)
 - [系统监控](./runtime/系统监控)
 - [netpool](./runtime/netpool)
+- [定时器](./runtime/定时器)
 ## 编译器
 - [gc](./编译器/gc)
 - [llvm](./编译器/llvm)
