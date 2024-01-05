@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-01-05 22:28:25
+ * @LastEditTime: 2024-01-05 22:33:23
  * @FilePath: /GOFamily/并发/atomic/README.md
  * @Description: 
  * 
@@ -28,6 +28,14 @@
 
 ## 基于原子库的第三方扩展
 - uber-go/atomic 定义扩展了几种常见类型的原子操作，例如 bool error string 等
+
+  ```go
+  var atom atomic.Uint32
+  atom.Store(42)
+  atom.Sub(2)
+  atom.CompareAndSwap(40, 11)
+  ```
+  看起来的确比官方提供的原子包更加简洁一些
 
 ## issues
 ### 对一个地址的赋值是原子操作吗？
