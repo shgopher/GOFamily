@@ -186,6 +186,8 @@ fmt.Println(cap(ch))
 |nil|阻塞|阻塞|panic|
 |closed|panic|正常值+零值|panic|
 
+对于正常的 channel，如果它没有缓存，那么读写都会发生阻塞，除非另一方准备好，对于有 buffer 的 channel，当它还有缓存的时候，随意发送数据，这个时候收可以不准备好，当他满了，其实跟没有 buffer 的是一样的，这里就不过多讨论了，可以去查看[内存模型](../内存模型/README.md)那一章
+
 ## select
 select 是 go 语言提供的，供 channel 去操作的一个组件，它的基本使用方法如下
 ```go
@@ -223,7 +225,7 @@ select {}
 
 ```
 ### 对于 select for 和 time.Sleep 的阻塞机制的理解
-***1. 使用 for 循环不会造成 cpu 的执行吗？还是说 cpu 陷入了休眠状态，time.Sleep 呢？***
+***1。使用 for 循环不会造成 cpu 的执行吗？还是说 cpu 陷入了休眠状态，time.Sleep 呢？***
 
 使用 `for{}` 循环会导致 CPU 高速空转。
 
@@ -233,11 +235,11 @@ for 循环本质上是一个忙等待/空转，CPU 会一直执行循环体内�
 
 所以从资源利用效率来说，time.Sleep() 明显优于 for 循环的空转方式。
 
-***2. 那么 select {} 呢是高速空转还是让出资源呢？***
+***2。那么 select {} 呢是高速空转还是让出资源呢？***
 
 当 select 里所有的 case 都不 ready 时，它会释放 CPU 时间片，使当前 goroutine 进入阻塞状态，这就避免了空转。
 
-***3. select 的不同 case，在等待 case ready 的时候，select 是靠调度器去看 case 是否 ready 还是不停的轮询呢？***
+***3。select 的不同 case，在等待 case ready 的时候，select 是靠调度器去看 case 是否 ready 还是不停的轮询呢？***
 
 select 内部实现了更精密的监听逻辑：
 
@@ -269,7 +271,8 @@ func main(){
 ```
 通常来说，这是为了超时而去设置的跳出机制
 
-## 使用反射执行未知数量的channel
+## 使用反射执行未知数量的 channel
+
 ## 数据交流
 
 ## 消息传递
@@ -280,9 +283,13 @@ func main(){
 
 ## 锁
 
+## channel 注意事项
+### channel panic
+#### closed nil channel
+#### close closed channel
+#### send closed channel
+### goroutine 泄露
 ## channel 的实现原理
-
-## 注意事项
 
 ## issues
 ### 有无 buffer 的 channel 区别
