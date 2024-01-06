@@ -1,21 +1,5 @@
-<p align="left">
-hey~，我是科科，目前就职于国内一家互联网公司，你们可以加我<a href="#wechat.png">微信</a>，交个朋友吧~
-</p>
-<br>
-<p align="center">
-<a href='#wechat.png'
- target="_blank"><img src="https://img.shields.io/static/v1?label=%E7%A7%91%E7%A7%91%E4%BA%BA%E7%A5%9E&message=%E5%85%AC%E4%BC%97%E5%8F%B7&color="></a>
-<a href="https://space.bilibili.com/478621088" target="_blank"><img src="https://img.shields.io/static/v1?label=bilibili&message=b%E7%AB%99&color=blue"></a>
-<a href="https://www.zhihu.com/people/shgopher" target="_blank"><img src="https://img.shields.io/static/v1?label=zhihu&message=%E7%9F%A5%E4%B9%8E&color=blue"></a>
-<a href="https://blog.csdn.net/zyfljxzby" target="_blank"><img src="https://img.shields.io/static/v1?label=csdn&message=CSDN&color=red"></a>
-<a href="https://www.toutiao.com/c/user/token/MS4wLjABAAAAIGeO1-kCUelF-G8GW3AvJlrEL7tiO24WHJmnX4nV1bs" target="_blank"><img src="https://img.shields.io/static/v1?label=toutiao&message=%E5%A4%B4%E6%9D%A1&color=red"></a>
-</p>
+<script src="https://gist.github.com/shgopher/721b09047ac5819c9eebc93d6c9080e8.js"></script>
 
-添加微信公众号：<a href="#wechat.png">科科人神</a>，回复：
-- `面试题`，获取经典 go 面试大全 (巨全，强推，不仅有 go 面试题还有大厂的算法和系统设计原题以及面试技巧等等内容)
-
-- `好友`，可以添加作者的微信好友
-                             
 ## 基础
 - [变量声明](./基础/变量声明)
 - [常量声明](./基础/常量声明)
@@ -84,6 +68,9 @@ hey~，我是科科，目前就职于国内一家互联网公司，你们可以�
 - [god](https://github.com/shgopher/god) 关于程序员自身的一些看法，例如面试经历，赚钱窍门，创业门道，如何向上
 管理等。
 - [RustFamily](https://github.com/shgopher/RustFamily) rust 基础知识，rust 并发编程，rust 项目实践，rust 底层原理。
+- [HarmonyFamily](https://github.com/shgopher/HarmonyFamily) openHarmony 本身及其 App 开发
+- [VueFamily](https://github.com/shgopher/VueFamily) vue 系列教程
+- [ReactFamily](https://github.com/shgopher/ReactFamily) react 系列教程
 ## 参考资料
 - [go.dev](https://go.dev)
 - [go src](https://github.com/golang/go)

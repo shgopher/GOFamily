@@ -284,7 +284,7 @@ func main(){
 ## 锁
 
 ## channel 注意事项
-### channel panic
+### channel 发生 panic
 #### closed nil channel
 #### close closed channel
 #### send closed channel
