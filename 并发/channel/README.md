@@ -273,29 +273,111 @@ func main(){
 
 ## 使用反射执行未知数量的 channel
 
-## 数据交流
+## 消息交流---生产者/消费者模式
+著名的 worker pool，如果使用 channel 去实现的话，就是一个标准的生产者消费者模式
+## 传递信号
+当使用 channel 去传递信号的时候，实际上就是传递的信号量。
 
-## 消息传递
+例如使用一个 channel 去充当信号量，当 channel 没有被关闭的时候，那么就会一直阻塞，一旦 closed，那么就能读取到数据，自然就完成了信号的传递，这种用法非常常见，比如：
 
-## 信号通知
-
-## 任务编排
-
+```go
+func age(){
+  ch := make(chan struct{})
+  go func(){
+    //...
+    close(ch)
+  }()
+  <- ch
+}
+```
+这里使用的 channel 就是充当了一个传递信号的功能。一旦信号传递过来，整个函数就可以继续运行下去了。
 ## 锁
+## 任务编排
+### or-do 模式
+### fan-in
+### fan-out
+### map-reduce
+### 流水线模式
+### stream
+### 流水线模式和 stream 流模式的对比
+流水线模式 (Pipeline Pattern) 和流模式 (Stream Pattern) 都是将任务分解成多个阶段来处理，但两者还是有一些区别：
 
+- 数据流动方向不同
+  - 流水线模式是一条主线，数据从头流到尾，每个阶段处理完输出给下一个阶段。
+  - 流模式是多条分支，数据可以从多个来源流入，经过处理流向多个去处。
+- 执行方式不同
+  - 流水线模式强调阶段间**串行执行**。**一个阶段的输出是下一阶段的输入**。
+  - 流模式可以并行执行，不同阶段可以同时操作不同数据。
+- 连接方式不同
+  - 流水线模式中，每个阶段靠固定管道连接，顺序不能改变。
+  - 流模式中，流可以更灵活自由地连接。
+- 扩展性不同
+  - 流水线模式扩展一个阶段可能影响整个流水线。
+  - 流模式扩展一个阶段对其他阶段影响很小。
+
+总结：
+- 流水线模式注重将任务划分多个线性执行的固定阶段。
+- 流模式注重构建灵活的流处理流程，流可以并行运动。
+
+所以两者侧重点不同，在使用上也有区别。
 ## channel 注意事项
-### channel 发生 panic
-#### closed nil channel
-#### close closed channel
-#### send closed channel
+发生下面事项一定会触发 panic：
+
+- 向已经关闭的 channel 中发送数据
+- 关闭一个 nil channel
+- 关闭一个已经被关闭的 channel
+
 ### goroutine 泄露
+```go
+func age(){
+  ch := make(chan int)
+  go func(){
+    time.Sleep(time.Second*10)
+    ch <- 12
+    }()
+    select{
+      case <-ch:
+        fmt.Println("ch 被关闭了")
+      case <-time.After(time.Second):
+    }
+}
+```
+当 time.After(time.Second) 执行完毕以后，上面那个 goroutine 因为无法接收数据，所以就会一直阻塞在发送数据那个地方，所以这个代码中，goroutine 就会泄露了。
+
+解决之道就是将容量设置为 1 即可：
+
+```go
+func age(){
+  ch := make(chan int,1)
+  go func(){
+    time.Sleep(time.Second*10)
+    ch <- 12
+    }()
+    select{
+      case <-ch:
+        fmt.Println("ch 被关闭了")
+      case <-time.After(time.Second):
+    }
+}
+```
+当设置为 1 的时候，即使没有接受者了，发送这个地方的代码也能执行完毕，所以这个 goroutine 是不会泄露了。
+
+这里插一句，main goroutine 只要退出，其它 goroutine 不管有没有执行完毕也会退出，所以如果这种代码在 main 函数中出现，那么是不会发生 goroutine 泄露问题的，因为 main 函数结束以后，其它 goroutine 自动结束
 ## channel 的实现原理
 
 ## issues
+### channel 是并发银弹吗？
+
+在 go 语言中，绝大多数情况下都是是使用 channel 更有优势，比如上文提到的那几种场景，例如数据的传递以及任务编排，需要跟 select 或者 context 结合，那么这都是 channel 的适用场景
+
+不过如果是对于共享资源的并发访问，使用传统的互斥锁更有优势一些
+
+如果只是线程安全的对于某个变量的数据变更，使用原子包显然是更加合适的选择
 ### 有无 buffer 的 channel 区别
 ### channel close 后，read write close 的区别
 ### channle 底层是什么
 ### channle 和运行时调度如何交互
+### 编程题，使用三个 goroutine 打印 abc 100 次
 ## 参考资料
 - https://betterprogramming.pub/common-goroutine-leaks-that-you-should-avoid-fe12d12d6ee
 - https://github.com/fortytw2/leaktest
