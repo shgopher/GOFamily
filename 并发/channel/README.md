@@ -187,14 +187,103 @@ fmt.Println(cap(ch))
 |closed|panic|正常值+零值|panic|
 
 ## select
+select 是 go 语言提供的，供 channel 去操作的一个组件，它的基本使用方法如下
+```go
+func main() {
+  var ch = make(chan int,10)
+  var ch1 = make(chan int,10)
+  var ch2 = make(chan int,10)
+  for i:=0;i< 10;i++ {
+    select {
+      case <-ch:
+        fmt.Println("ch被关闭了")
+      case ch1<- i:
+        fmt.Println("ch1 发送成功")
+      case v,ok := <- ch2:
+        if ok {
+          fmt.Println("ch2 接收到值",v)
+        }
+      default:
+        fmt.Println("ch没有被关闭")
+    }
+  }
+}
+```
+首先，select 的 case 中只能存放 channel 的收和发，以及一个 default 分支，各个分支如果在相同时间满足了条件是会随机去走分支的，不存在先后顺序，在 select 中也是可以去做判断的，判断 channel 是否存在正常值
+
+select 本身不具有循环性质，所以通常被配合 for 循环使用
+
+select 在没有任何 case 的时候会陷入阻塞，我们如果希望有一个阻塞存在，使用 select 是极好的：
+```go
+func main(){
+//...
+select {}
+}
+
+
+```
+### 对于 select for 和 time.Sleep 的阻塞机制的理解
+***1. 使用 for 循环不会造成 cpu 的执行吗？还是说 cpu 陷入了休眠状态，time.Sleep 呢？***
+
+使用 `for{}` 循环会导致 CPU 高速空转。
+
+for 循环本质上是一个忙等待/空转，CPU 会一直执行循环体内容，只不过这里的循环体为空，所以 CPU 会一直空转浪费资源。
+
+相比而言，time.Sleep() 会**让出 CPU 时间片**，把 goroutine 暂停一段时间，在这段时间 CPU 可以去执行其他任务。当 sleep 时间结束，goroutine 会重新得到时间片继续执行。
+
+所以从资源利用效率来说，time.Sleep() 明显优于 for 循环的空转方式。
+
+***2. 那么 select {} 呢是高速空转还是让出资源呢？***
+
+当 select 里所有的 case 都不 ready 时，它会释放 CPU 时间片，使当前 goroutine 进入阻塞状态，这就避免了空转。
+
+***3. select 的不同 case，在等待 case ready 的时候，select 是靠调度器去看 case 是否 ready 还是不停的轮询呢？***
+
+select 内部实现了更精密的监听逻辑：
+
+- 为每个 case 的 channel 设置监听器
+- 当前 goroutine 阻塞时释放 CPU 执行权
+- 监听器异步监控 channel 状态
+- 有 channel ready 则唤醒 goroutine
+
+所以 select 不是通过忙碌的轮询来判断 channel ready，而是通过异步监听的方式，只在必要的时刻唤醒 goroutine。
+
+这种方式可以极大地减少 CPU 的占用，效率也更高。
+
+综上所述，如果你想设置一个阻塞时，使用一个没有 case 的 select 是比一个空 for 循环更好的方法，如果你想设置一个有时间的阻塞时，使用 time.Sleep 无疑是更好的选择，不过这里需要注意的是 time.Sleep 的精度并不高，特别高精度的阻塞不要使用这个函数，select 设计非常精妙，在等待 case 的时候并不会大量耗费 cpu 的执行时间，而是让出 cpu 的执行片段，设置监听，异步的去获取状态，所以 select 的性能是非常不错的
+
 ## 定时器
+在 go 语言中，go 提供了定时器给用户，基本的使用方法如下：
+```go
+func main(){
+  for {
+    select {
+      // 在一秒后给case发送信息
+    case <- time.After(time.Second):
+      return
+    // 心跳信号，每间隔一秒发送一次信息
+    case <- time.Tick(time.Second):
+    }
+  }
+}
+```
+通常来说，这是为了超时而去设置的跳出机制
+
+## 使用反射执行未知数量的channel
 ## 数据交流
+
 ## 消息传递
+
 ## 信号通知
+
 ## 任务编排
+
 ## 锁
+
 ## channel 的实现原理
+
 ## 注意事项
+
 ## issues
 ### 有无 buffer 的 channel 区别
 ### channel close 后，read write close 的区别
