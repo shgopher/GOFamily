@@ -261,10 +261,10 @@ func main(){
   for {
     select {
       // 在一秒后给case发送信息
-    case <- time.After(time.Second):
+    case <-time.After(time.Second):
       return
     // 心跳信号，每间隔一秒发送一次信息
-    case <- time.Tick(time.Second):
+    case <-time.Tick(time.Second):
     }
   }
 }
@@ -272,9 +272,17 @@ func main(){
 通常来说，这是为了超时而去设置的跳出机制
 
 ## 使用反射执行未知数量的 channel
+当你不确定需要多少个 channel 去处理时，你只能选择在运行时去创建未知数量的 channel，这个时候就要使用反射了。
+
 
 ## 消息交流---生产者/消费者模式
 著名的 worker pool，如果使用 channel 去实现的话，就是一个标准的生产者消费者模式
+
+为了组合这么个结构，需要一个存储任务的数据结构，那么这里肯定是使用一个 channel 了
+
+所以基本原理就是，一边往 channel 中发送数据，一边从 channel 中取数据，然后使用固定数量的 goroutine 去消费 channel 中的数据，刚好形成一个完整的生产者消费者模式
+
+
 ## 传递信号
 当使用 channel 去传递信号的时候，实际上就是传递的信号量。
 
@@ -307,7 +315,7 @@ func age(){
   - 流模式是多条分支，数据可以从多个来源流入，经过处理流向多个去处。
 - 执行方式不同
   - 流水线模式强调阶段间**串行执行**。**一个阶段的输出是下一阶段的输入**。
-  - 流模式可以并行执行，不同阶段可以同时操作不同数据。
+  - 流模式可以**并行执行**，**不同阶段可以同时操作不同数据**。
 - 连接方式不同
   - 流水线模式中，每个阶段靠固定管道连接，顺序不能改变。
   - 流模式中，流可以更灵活自由地连接。
@@ -374,10 +382,18 @@ func age(){
 
 如果只是线程安全的对于某个变量的数据变更，使用原子包显然是更加合适的选择
 ### 有无 buffer 的 channel 区别
+go 语言中经常会出现一个 bug，就是死锁，很多都很没有设置 channel 缓存有关，有的时候给 channel 设置一个缓存往往可以规避很多的 panic 风险
+
 ### channel close 后，read write close 的区别
+- read：正常值+零值
+- close：panic
+- write：panic
 ### channle 底层是什么
+
 ### channle 和运行时调度如何交互
+
 ### 编程题，使用三个 goroutine 打印 abc 100 次
+上文提到的 channel 任务编排中的流水线模式完美解决这个问题。
 ## 参考资料
 - https://betterprogramming.pub/common-goroutine-leaks-that-you-should-avoid-fe12d12d6ee
 - https://github.com/fortytw2/leaktest
