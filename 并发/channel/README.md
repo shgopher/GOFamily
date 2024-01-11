@@ -92,6 +92,10 @@ ch <- 12
 ### 接收数据
 ```go
 func age(ch chan int){
+  // 接收但舍弃数值
+  // <- ch
+  
+  // 接收并赋值
   c := <- ch
   fmt.Println(c)
 }
@@ -274,13 +278,67 @@ func main(){
 ## 使用反射执行未知数量的 channel
 当你不确定需要多少个 channel 去处理时，你只能选择在运行时去创建未知数量的 channel，这个时候就要使用反射了。
 
+我们使用 `reflect.Select(cases []reflect.SelectCase)(chosen int,recv reflect.Value,recvok bool)` 去实现 select
 
-## 消息交流---生产者/消费者模式
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+// 使用反射创建的select
+func main() {
+	ch1 := make(chan int, 10)
+	ch2 := make(chan int, 10)
+
+	var cases = createSelectCase(ch1, ch2)
+
+	for i := 0; i < 10; i++ {
+		// chosen：channel 切片的索引
+		// recv：收到的值
+		// ok：是否是通道上发送的值（而不是因为通道关闭而接收到的零值）
+		// Select最多支持 65536 个channel
+		chosen, recv, ok := reflect.Select(cases)
+
+		if recv.IsValid() { // 收
+			fmt.Println("recv:", cases[chosen].Dir, recv, ok)
+		} else { // 发
+			fmt.Println("send:", cases[chosen].Dir)
+		}
+	}
+}
+
+func createSelectCase(chs ...chan int) []reflect.SelectCase {
+	var cases []reflect.SelectCase
+
+	// 创建 收 channel
+	for _, ch := range chs {
+		cases = append(cases, reflect.SelectCase{
+			Dir:  reflect.SelectRecv,  // 发 or 收
+			Chan: reflect.ValueOf(ch), // 具体 Channel
+		})
+	}
+	// 创建 发 channel
+	for i, ch := range chs {
+		cases = append(cases, reflect.SelectCase{
+			Dir:  reflect.SelectSend,  // 发 or 收
+			Chan: reflect.ValueOf(ch), // 具体 channel
+			Send: reflect.ValueOf(i),  // 发送的值
+		})
+	}
+	return cases
+}
+
+
+```
+## 数据交流---生产者/消费者模式
 著名的 worker pool，如果使用 channel 去实现的话，就是一个标准的生产者消费者模式
 
-为了组合这么个结构，需要一个存储任务的数据结构，那么这里肯定是使用一个 channel 了
+为了组成这个结构，需要一个存储任务的数据结构，那么这里肯定是使用一个 channel
 
-所以基本原理就是，一边往 channel 中发送数据，一边从 channel 中取数据，然后使用固定数量的 goroutine 去消费 channel 中的数据，刚好形成一个完整的生产者消费者模式
+基本原理就是，一边往 channel 中发送数据，一边从 channel 中取数据，然后使用固定数量的 goroutine 去消费 channel 中的数据，刚好形成一个完整的生产者消费者模式
 
 
 ## 传递信号
@@ -305,9 +363,9 @@ func age(){
 ### fan-in
 ### fan-out
 ### map-reduce
-### 流水线模式
-### stream
-### 流水线模式和 stream 流模式的对比
+### pipeline-流水线模式
+### stream-流模式
+### pipeline 流水线模式和 stream 流模式的对比
 流水线模式 (Pipeline Pattern) 和流模式 (Stream Pattern) 都是将任务分解成多个阶段来处理，但两者还是有一些区别：
 
 - 数据流动方向不同
@@ -372,7 +430,10 @@ func age(){
 
 这里插一句，main goroutine 只要退出，其它 goroutine 不管有没有执行完毕也会退出，所以如果这种代码在 main 函数中出现，那么是不会发生 goroutine 泄露问题的，因为 main 函数结束以后，其它 goroutine 自动结束
 ## channel 的实现原理
-
+### 创建
+### send
+### recive
+### close
 ## issues
 ### channel 是并发银弹吗？
 
@@ -389,7 +450,7 @@ go 语言中经常会出现一个 bug，就是死锁，很多都很没有设置 
 - close：panic
 - write：panic
 ### channle 底层是什么
-
+一个内部有锁的队列
 ### channle 和运行时调度如何交互
 
 ### 编程题，使用三个 goroutine 打印 abc 100 次
