@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-01-04 19:06:48
+ * @LastEditTime: 2024-01-13 21:58:11
  * @FilePath: /GOFamily/并发/context/README.md
  * @Description: 
  * 
@@ -219,7 +219,25 @@ func main() {
 ```
 但我们调用 cancel 函数的时候，内部参数是一个 error 类型，调用 context.Cause(ctx) 返回的就是它的取消原因，那么这里的话就是 MyError
 
+## 在 WithTimeout 中 cancel() 函数的存在意义是什么？
 
+cancel 函数的作用是可以手动提前取消 Context，使其 Done channel 关闭，不用等待 timeout 的时间或者 deadline 的时间
+
+所以 cancel 函数相当于手动取消的意思，并不是说有了 timeout deadline 之后，cancel 函数就没有存在的意义了。
+
+按照 go 的语法，即便是 timeout 触发了 <- done 操作，你仍然需要手动的去在最后调用 cancel 函数，否则就会报错
+
+WithTimeout 在超时时会自动 cancel context，但是 cancel 函数还是需要调用，以释放/重置 Context 内部的 timer，如果不调用 cancel，timer 不会被释放，持续运行并重复 cancel 导致 context leak，占用更多资源。
+
+```go
+ctx, cancel := context.WithTimeout(parentCtx, 2*time.Second)
+
+go doWork(ctx) 
+
+// 1秒后决定取消任务
+time.Sleep(1*time.Second)  
+cancel()
+```
 
 ## issues
 ### contex.Contex 如何实现并发安全的？

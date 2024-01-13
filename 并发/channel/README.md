@@ -340,6 +340,61 @@ func createSelectCase(chs ...chan int) []reflect.SelectCase {
 
 基本原理就是，一边往 channel 中发送数据，一边从 channel 中取数据，然后使用固定数量的 goroutine 去消费 channel 中的数据，刚好形成一个完整的生产者消费者模式
 
+具体的额外操作还有控制 worker 数量，任务放入 woker 池，以及从 woker 池取出任务这个操作
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"time"
+)
+
+func main() {
+	ch := make(chan int)
+	ctx, cal := context.WithTimeout(context.TODO(), time.Second*2)
+	defer cal()
+	for i := 0; i < 10; i++ {
+		go func(i int) {
+			for {
+				select {
+				case c := <-ch:
+					fmt.Println(i, ":", c)
+					time.Sleep(time.Second)
+				case <-ctx.Done():
+					fmt.Println(i, "退出")
+					return
+				}
+			}
+		}(i)
+	}
+	// 往 channel 中 发送数据
+	go func() {
+		for {
+			ch <- 89
+		}
+
+	}()
+
+	time.Sleep(time.Second * 20)
+}
+
+```
+这就是基本的生产者消费者模式，以及 channel 去数据交流的最基础的原理，下面我们来实现一个真正的可用的 worker pool
+
+一个真正可用的 worker pool 不仅需要一个任务 channel，还需要存储任务 channel 的 woker pool，而这个 woker pool 是一个 chan chan 类型
+
+```go
+type worker struct {
+   wokerPool chan *worker
+   jobChannel chan Job
+}
+```
+
+
+
+
 
 ## 传递信号/通知
 当使用 channel 去传递信号的时候，实际上就是传递的信号量。
