@@ -341,7 +341,7 @@ func createSelectCase(chs ...chan int) []reflect.SelectCase {
 基本原理就是，一边往 channel 中发送数据，一边从 channel 中取数据，然后使用固定数量的 goroutine 去消费 channel 中的数据，刚好形成一个完整的生产者消费者模式
 
 
-## 传递信号
+## 传递信号/通知
 当使用 channel 去传递信号的时候，实际上就是传递的信号量。
 
 例如使用一个 channel 去充当信号量，当 channel 没有被关闭的时候，那么就会一直阻塞，一旦 closed，那么就能读取到数据，自然就完成了信号的传递，这种用法非常常见，比如：

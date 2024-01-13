@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-03-31 19:05:02
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-12-28 21:27:13
+ * @LastEditTime: 2024-01-13 17:49:43
  * @FilePath: /GOFamily/基础/结构体/README.md
  * @Description: 
  * 
@@ -329,3 +329,46 @@ func main() {
 ```
 需要注意的是，一个空的结构体，表示它类型的方式是 `struct{}`，而使用这个空结构体的方式就是 `struct{}{}`，前面的大括号是跟 struct 一起的整体表示空结构体，后面的大括号表示一个空结构体类型的结构体调用
 
+## 直接嵌套还是作为字段
+
+```go
+type Pool struct {
+  wg sync.WaitGroup
+  JobQueue chan Job
+  dispatcher *dispatcher
+}
+// or
+type Pool struct {
+  sync.WaitGroup
+  
+  JobQueue chan Job
+  dispatcher *dispatcher
+}
+
+```
+
+结构体嵌套可能带来的问题:
+
+- 名称冲突
+如果 Pool 结构体中还定义了 Add/Done/Wait 方法,和嵌套的 WaitGroup 中的方法就会产生冲突。
+
+- 不必要的方法
+嵌套整个 WaitGroup 会让 Pool 结构体拥有 Add/Done/Wait 等方法,但 Pool 可能只需要 Wait 就够了。
+
+- 使结构体臃肿
+嵌套整个 WaitGroup 会让 Pool 结构体看起来很臃肿,包含许多其实用不到的方法。
+
+- 继承关系不清晰
+Pool 并不是 WaitGroup 的一种,嵌套整个 WaitGroup 让人可能误以为它是在继承 WaitGroup。
+
+所以,作为一个字段,可以避免上述问题,又可以保持必要的功能。
+
+总结一下,嵌套要慎用,只有当:
+
+- 被嵌套的类型方法不会与现有方法冲突
+- 被嵌套的所有方法都会被用到
+- 两者之间有逻辑上的继承关系
+
+时,才更适合使用嵌套(组合)的方式。
+
+否则,使用字段的方式可以获得必要的功能,而不引入嵌套的潜在问题。
