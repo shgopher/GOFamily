@@ -338,7 +338,7 @@ func createSelectCase(chs ...chan int) []reflect.SelectCase {
 
 为了组成这个结构，需要一个存储任务的数据结构，那么这里肯定是使用一个 channel
 
-基本原理就是，一边往 channel 中发送数据，一边从 channel 中取数据，然后使用固定数量的 goroutine 去消费 channel 中的数据，刚好形成一个完整的生产者消费者模式
+基本原理就是，一边往 channel 中发送数据，一边从 channel 中取数据，然后使用固定数量的 goroutine 去消费 channel 中的数据，刚好形成一个完整的生产者消费者模式，这就是复用 goroutine 的模式。
 
 具体的额外操作还有控制 worker 数量，任务放入 woker 池，以及从 woker 池取出任务这个操作
 
@@ -391,13 +391,65 @@ type worker struct {
    jobChannel chan Job
 }
 ```
+之所以需要一个 chan chan 原因也很简单，如果只有一个 chan，那么 10 几个固定数目的 goroutine 将会互斥的读取一个 channel 的数据，如果是 chan chan 则互不打扰各自读取自己的 channel 即可。
+
+在这个项目中，我们会将读取的 channel 和处理的 channel 分开，读写分离，进行解耦，
+读取数据的 channel 只需要一个即可，处理的 channel 可以有多个
+
+```go
+func(w *worker)run(){
+  go func(){
+   for {
+    // 将 单个channel（可以简单的这么认为为一个 channel） 
+    // 放入 wokerPool 中
+    // 如果 这个 单个woker（这里代表单个channel）不再使用的话
+    w.workerPool <- w
+    select{
+      case job := <- w.jobChannel: // 从单个channel中读取数据并处理
+        job()
+        return        
+    }
+     }
+  }()
+}
 
 
+```
+接下来我们需要一个任务分发的函数，也就是从读取的单个 channel 中读取数据，然后发送给多个处理任务的 channel
 
+```go
+type dispatcher struct {
+   workerPool chan *worker
+   OneChannel chan Job
+}
+func(dispatcher *dispatcher)run(){
+  for {
+    select {
+      case job := <- dispatcher.OneChannel: // 从单个channel中读取数据
+          // 从 wokerPool 中获取一个worker
+          work :=<- disatcher.workerPool
+          // 给这个worker发送任务
+          work.jobChannel <- job
+    }
 
+  }
+}
+
+func RunDispatcher(workerPool chan *workerPool){
+   // 启动固定数目的goroutine去消费任务，并且每一个goroutine拥有一个独立的channel
+   for i:= 0;i<cap(workerPool);i++ {
+      worker := newWorker(workerPool)
+      worker.run()
+   }
+  // 启动分发器
+   go  dispatcher.run()
+}
+```
+
+大致的运行规律就是这些，其它的完整功能请查看这里：https://github.com/shgopher/grpool
 
 ## 传递信号/通知
-当使用 channel 去传递信号的时候，实际上就是传递的信号量。
+当使用 channel 去传递信号的用法
 
 例如使用一个 channel 去充当信号量，当 channel 没有被关闭的时候，那么就会一直阻塞，一旦 closed，那么就能读取到数据，自然就完成了信号的传递，这种用法非常常见，比如：
 
@@ -412,7 +464,96 @@ func age(){
 }
 ```
 这里使用的 channel 就是充当了一个传递信号的功能。一旦信号传递过来，整个函数就可以继续运行下去了。
+
+或者我们也可以传递一个空的结构体而不是直接 close(ch)：
+
+```go
+func age(){
+  ch := make(chan struct{})
+  go func(){
+    //...
+    ch <- struct{}{}
+  }()
+  <- ch
+}
+```
+### 收发同时进行的信号
+你也可能见过这种表现方式，当 channel 充当信号的时候，发和收同时进行，看一个例子：
+
+```go
+go func(){
+    for {
+  select {
+    case <-w.stop: // B
+				w.stop <- struct{}{} // C
+				return
+			}
+  }
+}()
+
+  // 另一段代码
+w.stop <- struct{}{} // A
+<- w.stop // D
+```
+先说结论，这种用法提供了两个意思，提供信号+判断是否运行完毕
+
+A 代码等 B 准备好之后，发送了信号；
+B 代码接受到了信号，这算完成了第一个含义，提供信号
+
+C 代码等 D 代码准备完毕，发送了信号，D 接受完毕，这个表示 A 通知 B 干的事儿，圆满完成，这里是表示判断是否执行完毕
+
 ## 锁
+我们不仅可以使用 sync.Mutext 去实现互斥锁，也可以使用 channel 去做锁，锁本质上来说，其实就是一种信号量，标准的 pv 操作，p 减少数据，获取到锁，v 增加数据释放掉锁，锁是一种二进制信号量
+
+刚好，channel 的收发就符合信号量的指征
+
+```go
+type lock struct {
+   ch chan struct{}
+}
+func(l *lock)lock(){
+   <- l.ch 
+}
+func(l *lock)unlock(){
+   l.ch <- struct{}{}
+}
+func NewLock() *lock{
+  l:= &lock{
+    ch: make(chan struct{},1),
+  }
+  l.ch <- struct{}{}
+  return l
+}
+```
+在初始阶段，给予一个拥有一个缓存的 channel 一个数据，获取锁就是将这个数据取出来，释放锁就是将这个数据放回 channel，这样就实现了信号量以及互斥锁
+
+那么让我们试一下我们自己实现的互斥锁：
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	l := NewLock()
+	value := 0
+	for i := 0; i < 120; i++ {
+
+		go func() {
+			l.lock()
+			value++
+			l.unlock()
+		}()
+	}
+	time.Sleep(time.Second)
+	fmt.Println(value)
+
+}
+// 120
+```
 ## 任务编排
 ### or-do 模式
 ### fan-in
