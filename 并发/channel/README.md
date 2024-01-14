@@ -481,19 +481,21 @@ func age(){
 你也可能见过这种表现方式，当 channel 充当信号的时候，发和收同时进行，看一个例子：
 
 ```go
-go func(){
-    for {
-  select {
-    case <-w.stop: // B
+func main() {
+	go func() {
+		for {
+			select {
+			case <-w.stop: // B
 				w.stop <- struct{}{} // C
 				return
 			}
-  }
-}()
+		}
+	}()
 
-  // 另一段代码
-w.stop <- struct{}{} // A
-<- w.stop // D
+	// 另一段代码
+	w.stop <- struct{}{} // A
+	<-w.stop             // D
+}
 ```
 先说结论，这种用法提供了两个意思，提供信号+判断是否运行完毕
 
@@ -501,7 +503,35 @@ A 代码等 B 准备好之后，发送了信号；
 B 代码接受到了信号，这算完成了第一个含义，提供信号
 
 C 代码等 D 代码准备完毕，发送了信号，D 接受完毕，这个表示 A 通知 B 干的事儿，圆满完成，这里是表示判断是否执行完毕
+### 使用计时器去解决长等待问题
 
+一般来说，我们都是希望程序执行完毕之后自己主动退出，比如：
+```go
+func main() {
+  ch := make(chan struct{})
+  go func(){
+    time.sleep(time.Second)
+    close(ch)
+  }()
+  <- ch
+}
+```
+很合理，一般执行完毕之后，就会通知主 goroutine 优雅退出，但是如果执行的时间过长，用户很有可能就会失去信息，这个时候就需要我们再设置一个超时时间更加优雅的退出
+
+```go
+func main() {
+	ch := make(chan struct{})
+	go func() {
+		time.Sleep(time.Second * 100)
+		close(ch)
+	}()
+	select {
+	case <-ch:
+	case <-time.After(time.Second):
+		fmt.Println("处理超时")
+	}
+}
+```
 ## 锁
 我们不仅可以使用 sync.Mutext 去实现互斥锁，也可以使用 channel 去做锁，锁本质上来说，其实就是一种信号量，标准的 pv 操作，p 减少数据，获取到锁，v 增加数据释放掉锁，锁是一种二进制信号量
 
@@ -516,6 +546,24 @@ func(l *lock)lock(){
 }
 func(l *lock)unlock(){
    l.ch <- struct{}{}
+}
+func (l *lock) tryLock() bool {
+	select {
+	case <-l.ch:
+		return true
+	default:
+	}
+	return false
+}
+
+func (l *lock) tryLockeTimeout(timeout time.Duration) bool {
+	select {
+	case <-l.ch:
+		return true
+	case <-time.After(timeout):
+	}
+  return false
+	
 }
 func NewLock() *lock{
   l:= &lock{
@@ -646,11 +694,11 @@ go 语言中经常会出现一个 bug，就是死锁，很多都很没有设置 
 - close：panic
 - write：panic
 ### channle 底层是什么
-一个内部有锁的队列
+一个内部有锁的循环队列
 ### channle 和运行时调度如何交互
 
 ### 编程题，使用三个 goroutine 打印 abc 100 次
-上文提到的 channel 任务编排中的流水线模式完美解决这个问题。
+上文提到的 channel 任务编排中的 pipeline 流水线模式完美解决这个问题。
 ## 参考资料
 - https://betterprogramming.pub/common-goroutine-leaks-that-you-should-avoid-fe12d12d6ee
 - https://github.com/fortytw2/leaktest
