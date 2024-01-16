@@ -533,8 +533,98 @@ func main() {
 }
 ```
 ### 信号传递之 or-do 模式
-> channel 信号传递之 or-do 模式跟 go 并发原语的 [singleflight](../同步原语/README.md#singleflight) 比较类似
+channel 信号传递之 or-do 模式跟 go 并发原语的 [singleflight](../同步原语/README.md#singleflight) 比较类似
 
+区别是，channel 的 or-do 是多个信号传递，只有一个 channel 获取信号之后就可以停止其它 channel 了，并不需要将这个信号传递给其它的 channel，singleflight 是需要分享情报的。
+
+下面有两种实现的方式，递归和反射，递归比较适合递归树较低的场景，反射就适合了递归树更高的场景，因为如果递归过深的话很容易出现内存溢出的情况，如果你认为你项目中的 goroutine 也就几十那么递归就可以了，毕竟反射可是很浪费执行时间的，如果 goroutine 成千上万，选用反射即可。
+
+使用递归的方法：
+```go
+
+func Ordo(chs ...<-chan any) <-chan any {
+	// 递归退出条件
+	switch len(chs) {
+	case 0:
+		return nil
+	case 1:
+		return chs[0]
+	}
+	or := make(chan any)
+	go func() {
+		defer close(or)
+		switch len(chs) {
+		case 2:
+			select {
+			case <-chs[0]:
+			case <-chs[1]:
+			}
+		default:
+			mi := len(chs) / 2
+			select {
+			case <-Ordo(chs[:mi]...):
+			case <-Ordo(chs[mi:]...):
+			}
+		}
+	}()
+	return or
+}
+```
+
+使用反射的方式：
+```go
+
+func Ordo1(chs ...<-chan any) <-chan any {
+	// 递归退出条件
+	switch len(chs) {
+	case 0:
+		return nil
+	case 1:
+		return chs[0]
+	}
+	or := make(chan any)
+	
+  go func() {
+		defer close(or)
+		var cases []reflect.SelectCase
+		for _, v := range chs {
+			cases = append(cases, reflect.SelectCase{
+				Dir:  reflect.SelectRecv,
+				Chan: reflect.ValueOf(v),
+			})
+
+			reflect.Select(cases)
+		}
+	}()
+	return or
+}
+```
+开始测试：
+
+```go
+package main
+
+import "time"
+
+func main() {
+  // output: 7
+  start := time.Now()
+	<-Ordo(sig(time.Second*7), sig(time.Second*10), sig(time.Second*13))
+	fmt.Println(time.Since(start))
+}
+
+func sig(t time.Duration) <-chan any {
+	ch := make(chan interface{})
+	go func() {
+		defer close(ch)
+		time.Sleep(t)
+	}()
+	return ch
+}
+
+```
+
+测试证明这两种方法均可实现 or-do 信号通知模式，不过就我看来，反射的这种方法，完全无脑，也不用考虑递归，也不必去考虑递归导致的内存溢出，从实现逻辑上，非常的清晰，只需要组成一个 select 随便 case 即可，非常清晰，我首推这种实现方法
 
 ## 锁
 我们不仅可以使用 sync.Mutext 去实现互斥锁，也可以使用 channel 去做锁，锁本质上来说，其实就是一种信号量，标准的 pv 操作，p 减少数据，获取到锁，v 增加数据释放掉锁，锁是一种二进制信号量
