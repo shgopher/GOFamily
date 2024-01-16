@@ -532,6 +532,10 @@ func main() {
 	}
 }
 ```
+### 信号传递之 or-do 模式
+> channel 信号传递之 or-do 模式跟 go 并发原语的 [singleflight](../同步原语/README.md#singleflight) 比较类似
+
+
 ## 锁
 我们不仅可以使用 sync.Mutext 去实现互斥锁，也可以使用 channel 去做锁，锁本质上来说，其实就是一种信号量，标准的 pv 操作，p 减少数据，获取到锁，v 增加数据释放掉锁，锁是一种二进制信号量
 
@@ -603,7 +607,6 @@ func main() {
 // 120
 ```
 ## 任务编排
-### or-do 模式
 ### fan-in
 ### fan-out
 ### map-reduce

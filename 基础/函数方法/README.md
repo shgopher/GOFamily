@@ -729,11 +729,12 @@ func(s Student)GetName(name string){
 func main(){
   var s = new(Student)
   s.GetName("张三")
+  fmt.Println("out:", s.name)//out:
 }
 ```
 当指针类型来使用值类型的方法时，系统默认会调用这个指针指向的值，因此这是系统给予的语法糖。
 
-这个例子其实是错误的行为，因为 s 的方法是定义在值类型的，使用一个 s 去调用它上面的 GetName，改变的只是方法中，s 的复制品上的值，外部调用的这个 s，实际上是不会有任何的改变的，我们如果从实质出发 `func GetName(s Student, name string)`，就能看出来了。
+这个例子其实是错误的行为，因为 s 的方法是定义在值类型的，使用一个 s 去调用它上面的 GetName，改变的只是方法中，s 的***复制品上***的值，外部调用的这个 s，实际上是不会有任何的改变的，我们如果从实质出发 `func GetName(s Student, name string)`，就能看出来了。
 
 跟函数以及全局变量，常量是一样的，方法也是首字母大写可以导出包，小写无法导出包。
 
@@ -781,9 +782,6 @@ func (A) get() {}
 type A xxInterface
 func(a A)Get()
 ```
-
-
-
 
 ## 类型嵌入来完成继承
 go 语言使用类型的嵌入来实现继承母体的对象以及对象上的方法。
@@ -951,7 +949,7 @@ func main(){
 }
 ```
 
-s 指针类型和值类型还有区别：
+s 是指针类型和值类型在调用实质上还是区别的，但是在实际使用中，并不会有什么区别，这主要还是因为要看方法是定义在值类型还是指针类型上。
 
 
 值类型
@@ -959,7 +957,6 @@ s 指针类型和值类型还有区别：
 ```go
 func main(){
   var s Student
-  //由于这里的address字段是指针，所以我们必须给address赋予实际的值的地址：
   s = Student{
     Address: &Address{
       value: "1",
@@ -969,8 +966,6 @@ func main(){
   s.Value()
 }
 ```
-
-这个时候它调用的就是 People 的方法 + *Address 的方法，但是如果 s 这里是指针类型的话，那么它调用的就是* People 的方法 + *Address 的方法
 
 ```go
 func main(){
@@ -985,7 +980,17 @@ func main(){
   s.Value()
 }
 ```
-如果你感觉这种语法躺难以理解，我建议你可以不使用嵌入，使用 `s.Address.Value()` 来调用方法：
+
+当 s 是值时，它调用的就是 People 的方法 + *Address 的方法，
+
+但是如果 s 这里是指针类型的话，那么它调用的就是 *People 的方法 +*Address 的方法
+
+不过即便 s 是值的时候，people 上本身是定义在指针上的方法，那么它在底层调用的时候也势必是 *People
+
+总结一下：结构体变量是什么类型不重要，重要的是定义方法时使用的是什么类型。
+
+
+你也可以不使用嵌入，使用 `s.Address.Value()` 来调用方法：
 
 ```go
 

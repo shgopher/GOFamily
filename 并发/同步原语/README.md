@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-01-05 00:18:43
+ * @LastEditTime: 2024-01-16 16:24:20
  * @FilePath: /GOFamily/并发/同步原语/README.md
  * @Description: 
  * 
@@ -554,6 +554,8 @@ func main(){
 注意，我们这里每次循环都调用了一次 add，但是 add 的调用始终发生在 wait 之前，这还是属于同一轮的多次 add 调用，这符合 waigroup 的规定
 
 ## SingleFlight
+> 著名缓存库 [groupcache](https://github.com/golang/groupcache) 就使用了 singleflight 去通过缓存来减少后端查询数据库的请求
+
 在处理多个 goroutine 同时调用同一个函数的时候，只让一个 goroutine 去调用这个函数，等到这个 goroutine 返回结果的时候，再把结果返回给这几个同时调用的 goroutine
 
 在面对多个 goroutine 并发去读一个数据的时候，使用 SingleFlight 可以大大降低请求量，从 n 的请求量降低到 1，比如在秒杀的场景下，n 个 goroutine 去请求数据，那么我们使用 SingleFlight 就能大大提高读的性能
@@ -574,6 +576,14 @@ SingleFlight 提供了三个公开方法：
         // ...function logic
         return result 
     })
+		sf.Do("param", func() interface{} {
+			//...
+			return result
+		})
+
+		// 对于同一个key 下（这里是param）这些动作只执行一次，后续注册的函数会直接返回第一个函数的结果。
+		//
+
 
     // 后续想重新执行
     sf.Forget("param") 
@@ -582,6 +592,85 @@ SingleFlight 提供了三个公开方法：
         // 这次会再次执行函数逻辑
     })
   ```
+
+下面我们看一下 DoChan 的基本使用方法：
+```go
+package main
+
+import (
+	"fmt"
+
+	"golang.org/x/sync/singleflight"
+)
+
+func main() {
+	g := new(singleflight.Group)
+
+	block := make(chan struct{})
+
+	res1c := g.DoChan("key", func() (interface{}, error) {
+
+		<-block
+
+		return "func 1", nil
+
+	})
+
+	res2c := g.DoChan("key", func() (interface{}, error) {
+
+		<-block
+
+		return "func 2", nil
+
+	})
+
+	close(block)
+
+	res1 := <-res1c
+
+	res2 := <-res2c
+
+	// 使用相同的key执行的函数共享结果
+
+	fmt.Println("Shared:", res2.Shared)
+
+	// 只有第一个函数被执行:它使用"key"被注册和启动,在第二个函数被注册相同的key之前就完成了执行。
+
+	fmt.Println("Equal results:", res1.Val.(string) == res2.Val.(string))
+
+	fmt.Println("Result:", res1.Val)
+}
+
+```
+```bash
+Shared: true
+Equal results: true
+Result: func 1
+```
+
+ 
+
+g.DoChan / g.Do 都会在内部会启动一个新的 goroutine 来执行传入的函数。
+
+g.DoChan 的签名如下：
+
+```go
+func (g *Group) DoChan(key string, fn func() (interface{}, error)) <-chan Result
+```
+
+它接受一个 key 和一个函数 fn，并返回一个 Result 类型的 channel。
+
+在 g.DoChan 内部，会首先根据 key 在内部 map 中查找是否已经有相同 key 的函数在执行：
+
+- 如果存在，则直接返回已有的 Result channel
+- 如果不存在，则启动一个新的 goroutine 执行 fn 函数，并将 Result 发送到返回的 channel 中
+
+所以 g.DoChan 会确保对于相同的 key，最多只有一个 goroutine 在执行 fn，后续的调用会直接复用已有的结果。
+
+这就实现了 key 去重重复执行的语义。
+
+所以，g.DoChan 会隐式地启动 goroutine 来运行函数，这是它实现并发和协调的基础。
+
 
 我们在处理缓存击穿的问题时，通常采用 singleflight 会有比较好的适用，所谓缓存击穿就是大量请求在请求一个 key 值时，key 值失效了，大量数据开始请求数据库，使用 singleflight 时，大量数据只需要一次请求，完美解决了缓存击穿问题
 
@@ -598,6 +687,14 @@ SingleFlight 提供了三个公开方法：
 
 基本用法就是 Await 方法，等待所有的参与者到达，到达了就往下走，然后开始新的循环
 
+那么看起来很像 waitgroup，那么为什么不使用 wg 呢？
+
+在一种场景下 wg 通常很难使用，也就是循环这个含义，因为你需要在 wait 之后再次调用 add 方法充值，然后继续 done wait，麻烦，并且万一在继续 add 的时候发生了并发问题就跟灾难了
+
+- WaitGroup 更适合用在 “一个 goroutine 等待一组 goroutine 到达同一个执行点” 的场景中，或者是不需要重用的场景中。
+
+- CyclicBarrier 更适合用在 “固定数量的 goroutine 等待同一个执行点” 的场景中，而且在放行 goroutine 之后，CyclicBarrier 可以重复利用，不像 WaitGroup 重用的时候，必须小心翼翼避免 panic。
+
 ```go
 // 数字代表执行任务的 goroutine 的个数
 b1 := cyclicbarrier.New(10) 
@@ -609,6 +706,9 @@ b.Await(ctx)    // await other parties
 b.Reset()       // reset the barrier
 ```
 
+我们可以发现循环栅栏会一直循环的执行，虽然它有 await 方法，但是每次到这个 await 都会继续执行下一轮的循环，那么该如何跳出循环呢？
+
+通常我们会配合 sync.WaitGroup 一起执行
 ## errgroup
 将一个通用的父任务，拆成几个小任务并发执行的场景
 
