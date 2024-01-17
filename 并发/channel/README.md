@@ -299,12 +299,21 @@ cron 表达式是一个字符串，由 5 或 6 个用空格分隔的字段组成
 
 cron 表达式的字段与意义如下：
 
-- 第 1 个字段：分钟 (0-59)
-- 第 2 个字段：小时 (0-23)
-- 第 3 个字段：一个月中的第几天 (1-31)
-- 第 4 个字段：月份 (1-12)
-- 第 5 个字段：星期几 (0-7,0 和 7 都表示星期日)
-- 第 6 个字段：年份 (可选，留空就表示每年)
+```go
+# 文件格式說明
+# ┌──分钟（0 - 59）
+# │ ┌──小时（0 - 23）
+# │ │ ┌──日（1 - 31）
+# │ │ │ ┌─月（1 - 12）
+# │ │ │ │ ┌─星期（0 - 6，表示从周日到周六）
+# │ │ │ │ │ ┌─年份（ * 表示全部年份，2024 表示只在2024年）
+# │ │ │ │ │ │
+# * * * * * *
+
+# 例如
+# 0 0 12 * * *
+# 每天 12 点触发
+```
 
 每个字段可以使用特殊字符表示多种时间设置：
 
@@ -792,8 +801,78 @@ func fanin(chs ...<-chan any) <-chan any {
 
 递归版 `fan-in`：
 ```go
+func fanin(chs ...chan any) chan any {
+	switch len(chs) {
+	case 0:
+		c := make(chan any)
+		close(c)
+		return c
+	case 1:
+		return chs[0]
+	case 2:
+		return merge(chs[0], chs[1])
+	default:
+		m := len(chs) / 2
+		return merge(fanin(chs[:m]...), fanin(chs[m:]...))
+	}
+}
 
+func merge(ch1, ch2 chan any) chan any {
+	c := make(chan any)
+	go func() {
+		defer close(c)
+		for ch1 != nil || ch2 != nil {
+			select {
+			case v1, ok := <-ch1:
+				if !ok {
+					ch1 = nil
+					continue
+				}
+				c <- v1
+			case v2, ok := <-ch2:
+				if !ok {
+					ch2 = nil
+					continue
+				}
+				c <- v2
+			}
+		}
+
+	}()
+	return c
+}
 ```
+反射版 `fan-int`：
+```go
+func fanintflect(chs ...chan any) chan any {
+	out := make(chan any)
+	go func() {
+		defer close(out)
+
+		var cases []reflect.SelectCase
+
+		for _, vl := range chs {
+			cases = append(cases, reflect.SelectCase{
+				Dir:  reflect.SelectRecv,
+				Chan: reflect.ValueOf(vl),
+			})
+		}
+
+		for len(cases) > 0 {
+			i, v, ok := reflect.Select(cases)
+			// 从 cases 取数据，一旦取完，cases 会取消已经取完的 case
+			if !ok {
+				cases = append(cases[:i], cases[i+1:]...)
+				continue
+			}
+			// out 发送数据
+			out <- v.Interface()
+		}
+	}()
+	return out
+}
+```
+反射版本这里有个小问题，从 cases 中取出数据，往 out 中添加，这个操作只能一个 case 一个 case 的取，但是你如果观察上文的递归实现模式，你会发现它开启了很多 goroutine 所以是并发的去取数据往 out 中送。
 ### fan-out
 
 ### map-reduce
