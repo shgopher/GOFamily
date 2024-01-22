@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2023-07-24 22:51:01
+ * @LastEditTime: 2024-01-22 17:09:27
  * @FilePath: /GOFamily/基础/逻辑和判断语句/README.md
  * @Description: 
  * 
@@ -213,6 +213,38 @@ func main() {
 ```
 这段代码 for 循环不会一直循环，原因是，arr 会在 range 一个复制一份儿，这个复制体的 len 在最初的 range 中的开头已经确定是 3，后面继续追加的 arr，并不会改变这个最初读取的 `len == 3 ` 这个结果。
 
+不过，如果你使用的是传统的循环，那么这种写法就会出现 bug：
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	n := 12
+	for i := 0; i < n; i++ {
+		n++
+		fmt.Println("i")
+	}
+}
+```
+使用这种传统的 for 循环，因为 n 在循环体和循环内部都是同一个，所以循环不会结束
+
+因此你应该将这种代码改写为 for - range 模式：
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	n := 12
+	for range 12 {
+		n++
+		fmt.Println("i")
+	}
+}
+```
 
 第二段代码：
 
