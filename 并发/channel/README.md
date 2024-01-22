@@ -1002,8 +1002,11 @@ go func() {
 
 方案四：使用 worker 池复用 goroutine 去控制并发的 goroutine 数量
 ```go
+// github.com/shgopher/grpool
 func fanout(value chan any, out []chan any, async bool) {
+	pool := grpool.NewPool(100, 50)
 	go func() {
+		defer pool.Release()
 		defer func() {
 			for _, v := range out {
 				close(v)
@@ -1014,9 +1017,10 @@ func fanout(value chan any, out []chan any, async bool) {
 			for _, vi := range out {
 				vi := vi // if go version is lower then 1.22
 				if async {
-					go func() {
+					pool.JobQueue <- func() {
 						vi <- v
-					}()
+					}
+
 				} else {
 					vi <- v
 				}
@@ -1024,6 +1028,7 @@ func fanout(value chan any, out []chan any, async bool) {
 		}
 	}()
 }
+
 ```
 
 按照我的工作经验，使用工作池和信号量控制 goroutine 数量的方法最为常用，他们都是保证最多同时存在 n 个 goroutine，这样就避免了 goroutine 泄漏问题
