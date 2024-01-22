@@ -882,20 +882,20 @@ fan out 跟 fan in 模式是相反的，fan out 指的是拥有一个输入源�
 func fanout(value chan any, out []chan any, async bool) {
 	go func() {
 		defer func() {
-			for i := 0; i < len(out); i++ {
-				close(out[i])
+			for _, v := range out {
+				close(v)
 			}
 		}()
-    // 对一个nil的通道进行 for range 遍历会导致阻塞(block)。
+		// 对一个nil的通道进行 for range 遍历会导致阻塞(block)。
 		for v := range value {
-			for vi := 0; vi < len(out); vi++ {
+			for _, vi := range out {
 				vi := vi // if go version is lower then 1.22
 				if async {
 					go func() {
-						out[vi] <- v
+						vi <- v
 					}()
 				} else {
-					out[vi] <- v
+					vi <- v
 				}
 			}
 		}
