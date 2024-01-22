@@ -916,18 +916,116 @@ func fanout(value chan any, out []chan any, async bool) {
 
 方案一：使用信号量控制
 ```go
+var (
+  maxWorkers = runtime.GOMAXPROCS(0)
+	sema       = semaphore.NewWeighted(int64(maxWorkers))
+)
+// 在 value传递结束之后，记得close value
+func fanout(value chan any, out []chan any, async bool) {
+	go func() {
+		defer func() {
+			for _, v := range out {
+				close(v)
+			}
+		}()
+		// 对一个nil的通道进行 for range 遍历会导致阻塞(block)。
+		for v := range value {
+			for _, vi := range out {
+				vi := vi // if go version is lower then 1.22
+				if async {
+          ctx := context.Background()
+					if err := sema.Acquire(ctx, 1); err != nil {
+						break
+					}
+					go func() {
+						defer sema.Release(1)
+						vi <- v
+					}()
+				} else {
+					vi <- v
+				}
+			}
+		}
+	}()
+}
 ```
 
 方案二：使用超时时间
 ```go
+func fanout(value chan any, out []chan any, async bool) {
+	go func() {
+		defer func() {
+			for _, v := range out {
+				close(v)
+			}
+		}()
+		// 对一个nil的通道进行 for range 遍历会导致阻塞(block)。
+		for v := range value {
+			for _, vi := range out {
+				vi := vi // if go version is lower then 1.22
+				if async {
+					go func() {
+						vi <- v
+					}()
+				} else {
+					vi <- v
+				}
+			}
+		}
+	}()
+}
 ```
 
 方案三：控制发送 value 的发送频率
 ```go
+func fanout(value chan any, out []chan any, async bool) {
+	go func() {
+		defer func() {
+			for _, v := range out {
+				close(v)
+			}
+		}()
+		// 对一个nil的通道进行 for range 遍历会导致阻塞(block)。
+		for v := range value {
+			for _, vi := range out {
+				vi := vi // if go version is lower then 1.22
+				if async {
+					go func() {
+						vi <- v
+					}()
+				} else {
+					vi <- v
+				}
+			}
+		}
+	}()
+}
 ```
 
 方案四：使用 worker 池复用 goroutine 去控制并发的 goroutine 数量
 ```go
+func fanout(value chan any, out []chan any, async bool) {
+	go func() {
+		defer func() {
+			for _, v := range out {
+				close(v)
+			}
+		}()
+		// 对一个nil的通道进行 for range 遍历会导致阻塞(block)。
+		for v := range value {
+			for _, vi := range out {
+				vi := vi // if go version is lower then 1.22
+				if async {
+					go func() {
+						vi <- v
+					}()
+				} else {
+					vi <- v
+				}
+			}
+		}
+	}()
+}
 ```
 
 按照我的工作经验，使用工作池和信号量控制 goroutine 数量的方法最为常用，他们都是保证最多同时存在 n 个 goroutine，这样就避免了 goroutine 泄漏问题

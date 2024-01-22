@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-01-04 14:51:33
+ * @LastEditTime: 2024-01-22 23:13:56
  * @FilePath: /GOFamily/基础/interface/README.md
  * @Description: 
  * 
@@ -939,7 +939,7 @@ func get8() b1 {
 ```
 
 ## issues
-`问题一：` ***interface 如何判断 nil***
+### ***interface 如何判断 nil***
 
 只有类型是 nil + value 是 nil 的接口类型才是 nil，否则它不等于 nil
 ```go
@@ -970,7 +970,7 @@ type b struct{}
 func (*b) get() {}
 ```
 
-`问题二：` ***论述 “nil error != nil” 的原因***
+### ***论述 “nil error != nil” 的原因***
 
 nil error 通常可以用这种方法来输出：
 ```go
@@ -988,11 +988,11 @@ type b struct {
 
 ```
 可以发现，nil error 的类型并不是 0x0，而 nil 接口变量是 0X0,0x0，所以这两者并不相同。
-`问题三：` ***eface 和 iface 的区别*** 
+### ***eface 和 iface 的区别*** 
 
 eface 和 iface 的第二个字段相同均存储的是动态类型的地址，然而 eface 的第一个字段保存的是动态类型的元数据，即：_type 字段，而 iface 的第一个字段不仅仅保存了动态类型的元数据 _type，还保存了自己的方法集合的相关数据，以及动态类型实现的方法地址等数据。
 
-`问题四：` ***如何查找 interface 中的方法***
+### ***如何查找 interface 中的方法***
 
 除了查找文档，以及查看源码，还可以通过反射来查找 interface 中的方法。
 
@@ -1032,7 +1032,7 @@ func main() {
 }
 ```
 
-`问题五：` ***interface 设计的优缺点***
+### ***interface 设计的优缺点***
 
 优点：
 
@@ -1046,6 +1046,38 @@ func main() {
 - 过度设计：如果使用不当，接口可能会导致过度设计，这可能会令代码库变得复杂、难以理解和维护。因此，在设计接口时应该遵循简单性原则，**仅定义必要的方法**。
 - 性能损失：使用接口可能会导致一些性能损失，因为在运行时需要进行类型断言和方法查找。虽然这种影响通常很小，但在高性能场景下可能会有所不同。
 - 难以理解：对于新手来说，理解接口的概念和使用可能会比较困难，这可能会导致一些代码可读性差的问题。
+
+### ***空接口类型和一般类型是从属关系吗？*** 
+```go
+func age(value any){}
+var a bool 
+// ❌
+age(a)
+```
+上面的代码就表示，***空接口类型和一般的类型是平级关系***，不能说 any 被所有类型实现了，就说 any 是所有类型的父类，这是错误的。所以当我们的 age 中 value 是 any 类型，那么我们传入的数据的类型也得是 any 类型，不然不就是类型错误了吗
+
+那么我们学的，所有类型都实现了空接口这句话如何使用呢，很简单，让任何类型转化为 any 类型即可，任何类型转化为 any 类型之后，就会变成 any 类型，并不是之前它的类型。
+
+所以这里的代码应该这么写：
+
+```go
+func age(value any){}
+var b bool =  true
+var a any = b // 所以这里的 true 从 布尔类型 直接变成了any类型 
+// ✅
+age(a)
+```
+即便你直接传入字面量也可以：
+
+```go
+func main() {
+	age(1) // 这里的 字面量 1 其实就是 any 类型  并不是所谓的int或者uint
+}
+
+func age(value any) {
+	fmt.Println(value)
+}
+```
 
 ## 参考资料
 - https://book.douban.com/subject/35720728/ 246 页 - 286 页
