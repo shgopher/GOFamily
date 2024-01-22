@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-01-22 17:09:27
+ * @LastEditTime: 2024-01-22 17:17:14
  * @FilePath: /GOFamily/基础/逻辑和判断语句/README.md
  * @Description: 
  * 
@@ -231,6 +231,7 @@ func main() {
 使用这种传统的 for 循环，因为 n 在循环体和循环内部都是同一个，所以循环不会结束
 
 因此你应该将这种代码改写为 for - range 模式：
+> go 1.22 增加了对于整数的 for range，之前只有 chan slice map，不过整数的 for range 前面只有一个变量，并且跟其他 for range 一致，n 为复制值，并且 for i := range n，i 也是复制值。这跟其他的 for range 保持一致
 
 ```go
 package main
@@ -239,7 +240,7 @@ import "fmt"
 
 func main() {
 	n := 12
-	for range 12 {
+	for range n {
 		n++
 		fmt.Println("i")
 	}
