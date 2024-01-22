@@ -965,7 +965,12 @@ func fanout(value chan any, out []chan any, async bool) {
 				vi := vi // if go version is lower then 1.22
 				if async {
 					go func() {
-						vi <- v
+            select{
+              case vi <- v:
+              case time.After(time.Second):
+              return
+            }
+						
 					}()
 				} else {
 					vi <- v
@@ -978,28 +983,21 @@ func fanout(value chan any, out []chan any, async bool) {
 
 方案三：控制发送 value 的发送频率
 ```go
-func fanout(value chan any, out []chan any, async bool) {
-	go func() {
-		defer func() {
-			for _, v := range out {
-				close(v)
-			}
-		}()
-		// 对一个nil的通道进行 for range 遍历会导致阻塞(block)。
-		for v := range value {
-			for _, vi := range out {
-				vi := vi // if go version is lower then 1.22
-				if async {
-					go func() {
-						vi <- v
-					}()
-				} else {
-					vi <- v
-				}
+go func() {
+		for {
+			select {
+
+			case <-time.After(time.Second * 3):
+				fmt.Println("关闭了吗")
+				close(value)
+				return
+			case value <- "%":
+				time.Sleep(time.Second >> 5)
+				fmt.Println("发送了吗")
+
 			}
 		}
 	}()
-}
 ```
 
 方案四：使用 worker 池复用 goroutine 去控制并发的 goroutine 数量
