@@ -194,7 +194,7 @@ func IsClose[T2 Differ](a, b T2) bool {
 
 ```go
 func GeneralAbsDifference[T Numeric](a, b T) T {
-	switch (any)(a).(type) {
+	switch any(a).(type) {
 	case int, int8, int16, int32, int64,
 		uint, uint8, uint16, uint32, uint64, uintptr,
 		float32, float64:

@@ -1015,12 +1015,10 @@ func fanout(value chan any, out []chan any, async bool) {
 		// 对一个nil的通道进行 for range 遍历会导致阻塞(block)。
 		for v := range value {
 			for _, vi := range out {
-				vi := vi // if go version is lower then 1.22
 				if async {
 					pool.JobQueue <- func() {
 						vi <- v
 					}
-
 				} else {
 					vi <- v
 				}
