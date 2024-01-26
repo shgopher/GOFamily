@@ -1031,7 +1031,40 @@ func fanout(value chan any, out []chan any, async bool) {
 
 按照我的工作经验，使用工作池和信号量控制 goroutine 数量的方法最为常用，他们都是保证最多同时存在 n 个 goroutine，这样就避免了 goroutine 泄漏问题
 ### map-reduce
+我们在函数那个[章节](https://github.com/shgopher/GOFamily/blob/aca91397692f99cd744fabcaca2055da3ec92c6f/%E5%9F%BA%E7%A1%80/%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95/1.md?plain=1#L11)介绍过 map-reduce 模式，不过并没有牵涉到并发，这里我们介绍一下并发版的 map-reduce 模式
+map
+```go
+func mapChan(in <-chan any,fn func(any)any)<-chan {
+  out := make(chan any)
+  if in == nil {
+    close(out)
+    return out
+  }
 
+  go func() {
+    defer close(out)
+    for v := range in {
+      out <- fn(v)
+    }
+  }()
+  return out
+}
+```
+reduce
+```go
+func reduceChan(in <-chan,fn func(r,v any)any)any {
+  if in == nil {
+    return nil
+  }
+
+  out <- in
+
+  for v := range in {
+    out = fn(out,v)
+  }    
+  return out
+}
+```
 ### pipeline-流水线模式
 pipeline 模式的核心思想就是顺序，单线模式，数据从头到尾，顺序执行，一个阶段的输出是下一阶段的输入。
 
