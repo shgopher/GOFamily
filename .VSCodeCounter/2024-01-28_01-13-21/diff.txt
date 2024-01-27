@@ -1,0 +1,161 @@
+Date : 2024-01-28 01:13:21
+Directory : /Users/shgopher/Desktop/family/GOFamily
+Total : 69 files,  4679 codes, 148 comments, 930 blanks, all 5757 lines
+
+Languages
++--------------+------------+------------+------------+------------+------------+
+| language     | files      | code       | comment    | blank      | total      |
++--------------+------------+------------+------------+------------+------------+
+| Markdown     |         66 |      4,681 |        110 |        914 |      5,705 |
+| Shell Script |          1 |         19 |         15 |         16 |         50 |
+| Makefile     |          1 |          2 |          0 |          0 |          2 |
+| JavaScript   |          1 |        -23 |         23 |          0 |          0 |
++--------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                    | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                       |         69 |      4,679 |        148 |        930 |      5,757 |
+| . (Files)                                                               |          3 |         33 |         15 |         14 |         62 |
+| .vuepress                                                               |          1 |        -23 |         23 |          0 |          0 |
+| runtime                                                                 |          2 |          1 |         10 |          1 |         12 |
+| runtime/gmp                                                             |          1 |          1 |         10 |          0 |         11 |
+| runtime/定时器                                                             |          1 |          0 |          0 |          1 |          1 |
+| 基础                                                                      |         15 |      1,551 |         20 |        291 |      1,862 |
+| 基础/helloWorld                                                           |          1 |         37 |         10 |         11 |         58 |
+| 基础/interface                                                            |          1 |        105 |          0 |         18 |        123 |
+| 基础/map                                                                  |          1 |          2 |          0 |          1 |          3 |
+| 基础/slice                                                                |          1 |        268 |          0 |         38 |        306 |
+| 基础/string                                                               |          1 |         30 |          0 |          3 |         33 |
+| 基础/其他内容                                                                 |          1 |         10 |          0 |         -3 |          7 |
+| 基础/函数方法                                                                 |          4 |        122 |          0 |         12 |        134 |
+| 基础/变量声明                                                                 |          1 |         82 |          0 |          8 |         90 |
+| 基础/数字类型                                                                 |          1 |         78 |          0 |         43 |        121 |
+| 基础/结构体                                                                  |          1 |         77 |          0 |         21 |         98 |
+| 基础/逻辑和判断语句                                                              |          1 |         26 |          0 |          7 |         33 |
+| 基础/错误处理                                                                 |          1 |        714 |         10 |        132 |        856 |
+| 工程                                                                      |         35 |        554 |         30 |         57 |        641 |
+| 工程/go web 编程                                                            |          1 |         -5 |        -10 |          0 |        -15 |
+| 工程/goweb编程                                                              |          1 |          5 |         10 |          0 |         15 |
+| 工程/go标准库                                                                |          1 |        518 |          0 |         31 |        549 |
+| 工程/go编程范式                                                               |         22 |         40 |         20 |         20 |         80 |
+| 工程/go编程范式 (Files)                                                       |          1 |         36 |         10 |          1 |         47 |
+| 工程/go编程范式/k8s_visitor                                                   |          1 |          1 |          0 |          0 |          1 |
+| 工程/go编程范式/pipeline                                                      |          1 |          1 |          0 |          0 |          1 |
+| 工程/go编程范式/代理                                                            |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/信号量                                                           |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/创建者                                                           |          1 |          1 |          0 |          2 |          3 |
+| 工程/go编程范式/功能选项                                                          |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/单例                                                            |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/原型                                                            |          1 |          1 |         10 |          0 |         11 |
+| 工程/go编程范式/发布者订阅者                                                        |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/定时函数                                                          |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/对象池                                                           |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/工厂方法                                                          |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/并行                                                            |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/扇入                                                            |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/扇出                                                            |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/断路器                                                           |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/有界并行                                                          |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/生成器                                                           |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/策略                                                            |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/装饰器                                                           |          1 |          0 |          0 |          1 |          1 |
+| 工程/go编程范式/观察者                                                           |          1 |          0 |          0 |          1 |          1 |
+| 工程/go语言规范                                                               |          1 |          2 |         10 |          0 |         12 |
+| 工程/go面试题                                                                |          6 |         36 |         10 |          5 |         51 |
+| 工程/wasm                                                                 |          1 |          4 |          0 |         -1 |          3 |
+| 工程/包及其构建工具                                                              |          1 |         20 |          0 |         14 |         34 |
+| 工程/错误处理                                                                 |          1 |        -66 |        -10 |        -12 |        -88 |
+| 并发                                                                      |          9 |      2,470 |         20 |        543 |      3,033 |
+| 并发 (Files)                                                              |          1 |         -1 |         10 |          0 |          9 |
+| 并发/atomic                                                               |          1 |         50 |         10 |         22 |         82 |
+| 并发/channel                                                              |          1 |      1,097 |          0 |        206 |      1,303 |
+| 并发/context                                                              |          1 |        208 |          0 |         46 |        254 |
+| 并发/内存模型                                                                 |          1 |          2 |          0 |         -2 |          0 |
+| 并发/同步原语                                                                 |          1 |      1,025 |         10 |        253 |      1,288 |
+| 并发/定时器                                                                  |          1 |         -1 |          0 |          0 |         -1 |
+| 并发/并发原语                                                                 |          1 |         -3 |        -10 |         -2 |        -15 |
+| 并发/并发模型                                                                 |          1 |         93 |          0 |         20 |        113 |
+| 编译器                                                                     |          4 |         93 |         30 |         24 |        147 |
+| 编译器 (Files)                                                             |          1 |         26 |         10 |          0 |         36 |
+| 编译器/gc                                                                  |          1 |         20 |         10 |          5 |         35 |
+| 编译器/gccgo                                                               |          1 |         10 |          0 |          5 |         15 |
+| 编译器/llvm                                                                |          1 |         37 |         10 |         14 |         61 |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| filename                                                                | language     | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| /Users/shgopher/Desktop/family/GOFamily/.vuepress/config.js             | JavaScript   |        -23 |         23 |          0 |          0 |
+| /Users/shgopher/Desktop/family/GOFamily/Makefile                        | Makefile     |          2 |          0 |          0 |          2 |
+| /Users/shgopher/Desktop/family/GOFamily/README.md                       | Markdown     |         12 |          0 |         -2 |         10 |
+| /Users/shgopher/Desktop/family/GOFamily/lint.sh                         | Shell Script |         19 |         15 |         16 |         50 |
+| /Users/shgopher/Desktop/family/GOFamily/runtime/gmp/README.md           | Markdown     |          1 |         10 |          0 |         11 |
+| /Users/shgopher/Desktop/family/GOFamily/runtime/定时器/README.md           | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/helloWorld/README.md         | Markdown     |         37 |         10 |         11 |         58 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/interface/README.md          | Markdown     |        105 |          0 |         18 |        123 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/map/README.md                | Markdown     |          2 |          0 |          1 |          3 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/slice/README.md              | Markdown     |        268 |          0 |         38 |        306 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/string/README.md             | Markdown     |         30 |          0 |          3 |         33 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/其他内容/README.md               | Markdown     |         10 |          0 |         -3 |          7 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/函数方法/0.md                    | Markdown     |          1 |          0 |          0 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/函数方法/4.md                    | Markdown     |          2 |          0 |          2 |          4 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/函数方法/7.md                    | Markdown     |          3 |          0 |         -1 |          2 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/函数方法/README.md               | Markdown     |        116 |          0 |         11 |        127 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/变量声明/README.md               | Markdown     |         82 |          0 |          8 |         90 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/数字类型/README.md               | Markdown     |         78 |          0 |         43 |        121 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/结构体/README.md                | Markdown     |         77 |          0 |         21 |         98 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/逻辑和判断语句/README.md            | Markdown     |         26 |          0 |          7 |         33 |
+| /Users/shgopher/Desktop/family/GOFamily/基础/错误处理/README.md               | Markdown     |        714 |         10 |        132 |        856 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go web 编程/README.md          | Markdown     |         -5 |        -10 |          0 |        -15 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/goweb编程/README.md            | Markdown     |          5 |         10 |          0 |         15 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go标准库/README.md              | Markdown     |        518 |          0 |         31 |        549 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/README.md             | Markdown     |         36 |         10 |          1 |         47 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/k8s_visitor/README.md | Markdown     |          1 |          0 |          0 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/pipeline/README.md    | Markdown     |          1 |          0 |          0 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/代理/README.md          | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/信号量/README.md         | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/创建者/README.md         | Markdown     |          1 |          0 |          2 |          3 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/功能选项/README.md        | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/单例/README.md          | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/原型/README.md          | Markdown     |          1 |         10 |          0 |         11 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/发布者订阅者/README.md      | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/定时函数/README.md        | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/对象池/README.md         | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/工厂方法/README.md        | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/并行/README.md          | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/扇入/README.md          | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/扇出/README.md          | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/断路器/README.md         | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/有界并行/README.md        | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/生成器/README.md         | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/策略/README.md          | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/装饰器/README.md         | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go编程范式/观察者/README.md         | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go语言规范/README.md             | Markdown     |          2 |         10 |          0 |         12 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go面试题/README.md              | Markdown     |          8 |          0 |          0 |          8 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go面试题/architect.md           | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go面试题/intermediate.md        | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go面试题/primary.md             | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go面试题/senior.md              | Markdown     |          0 |          0 |          1 |          1 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/go面试题/中高级go面试题一.md           | Markdown     |         28 |         10 |          1 |         39 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/wasm/README.md               | Markdown     |          4 |          0 |         -1 |          3 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/包及其构建工具/README.md            | Markdown     |         20 |          0 |         14 |         34 |
+| /Users/shgopher/Desktop/family/GOFamily/工程/错误处理/README.md               | Markdown     |        -66 |        -10 |        -12 |        -88 |
+| /Users/shgopher/Desktop/family/GOFamily/并发/README.md                    | Markdown     |         -1 |         10 |          0 |          9 |
+| /Users/shgopher/Desktop/family/GOFamily/并发/atomic/README.md             | Markdown     |         50 |         10 |         22 |         82 |
+| /Users/shgopher/Desktop/family/GOFamily/并发/channel/README.md            | Markdown     |      1,097 |          0 |        206 |      1,303 |
+| /Users/shgopher/Desktop/family/GOFamily/并发/context/README.md            | Markdown     |        208 |          0 |         46 |        254 |
+| /Users/shgopher/Desktop/family/GOFamily/并发/内存模型/README.md               | Markdown     |          2 |          0 |         -2 |          0 |
+| /Users/shgopher/Desktop/family/GOFamily/并发/同步原语/README.md               | Markdown     |      1,025 |         10 |        253 |      1,288 |
+| /Users/shgopher/Desktop/family/GOFamily/并发/定时器/README.md                | Markdown     |         -1 |          0 |          0 |         -1 |
+| /Users/shgopher/Desktop/family/GOFamily/并发/并发原语/README.md               | Markdown     |         -3 |        -10 |         -2 |        -15 |
+| /Users/shgopher/Desktop/family/GOFamily/并发/并发模型/README.md               | Markdown     |         93 |          0 |         20 |        113 |
+| /Users/shgopher/Desktop/family/GOFamily/编译器/README.md                   | Markdown     |         26 |         10 |          0 |         36 |
+| /Users/shgopher/Desktop/family/GOFamily/编译器/gc/README.md                | Markdown     |         20 |         10 |          5 |         35 |
+| /Users/shgopher/Desktop/family/GOFamily/编译器/gccgo/README.md             | Markdown     |         10 |          0 |          5 |         15 |
+| /Users/shgopher/Desktop/family/GOFamily/编译器/llvm/README.md              | Markdown     |         37 |         10 |         14 |         61 |
+| Total                                                                   |              |      4,679 |        148 |        930 |      5,757 |
++-------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
