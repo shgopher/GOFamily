@@ -1087,6 +1087,69 @@ func (a *A)Download()*A{return a}
 
 我们将 channel 比作一个 token，所谓令牌，只要我们控制获取令牌的顺序，那么就可以控制持有这些令牌的 goroutine 顺序。
 
+下面我们使用 4 个 goroutine 依次打印 “a b c d”，300 次，我们使用流水线的方式实现：
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type Token struct{}
+
+var (
+	GNumber int
+	Number  int
+	sign    = make(chan struct{})
+)
+
+func world(id int) {
+	switch id {
+	case 0:
+		fmt.Println("a")
+	case 1:
+		fmt.Println("b")
+	case 2:
+		fmt.Println("c")
+  case 3:
+    fmt.Println("d")
+  }
+}
+func worker(id int, in chan Token, out chan Token, number int,fn func(int)) {
+	for number > 0 {
+		token := <-in
+		fn(id)
+    
+    // 这段代码是为了保证最后一个 goroutine 执行完毕退出 
+		if id == (GNumber-1) && number == 1 {
+			close(sign)
+			break
+		}
+
+		out <- token
+		number--
+	}
+}
+func RunPipeline(GNumber int,Number int,chs[]chan Token,fn func(int)) {
+  
+	for i := range GNumber {
+    // 核心代码: 
+    // 传入的in chan 和 out chan 刚好前后顺序
+    // 这样 token 才能前后传递
+		go worker(i, chs[i], chs[(i+1)%GNumber], Number,fn)
+	}
+	chs[0] <- struct{}{}
+	<-sign
+
+}
+func main() {
+  GNumber = 4
+	Number = 300
+  chs := []chan Token{make(chan Token), make(chan Token), make(chan Token), make(chan Token)}
+  RunPipeline(GNumber,Number,chs,world)
+}
+```
  
 ### stream-流模式
 
@@ -1184,6 +1247,60 @@ go 语言中经常会出现一个 bug，就是死锁，很多都很没有设置 
 
 ### 编程题，使用三个 goroutine 打印 abc 100 次
 上文提到的 channel 任务编排中的 pipeline 流水线模式完美解决这个问题。
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type Token struct{}
+
+var (
+	GNumber int
+	Number  int
+	sign    = make(chan struct{})
+)
+
+func world(id int) {
+	switch id {
+	case 0:
+		fmt.Println("a")
+	case 1:
+		fmt.Println("b")
+	case 2:
+		fmt.Println("c")
+  }
+}
+func worker(id int, in chan Token, out chan Token, number int,fn func(int)) {
+	for number > 0 {
+		token := <-in
+		fn(id)
+		if id == (GNumber-1) && number == 1 {
+			close(sign)
+			break
+		}
+		out <- token
+		number--
+	}
+}
+func RunPipeline(GNumber int,Number int,chs[]chan Token,fn func(int)) {
+  
+	for i := range GNumber {
+		go worker(i, chs[i], chs[(i+1)%GNumber], Number,fn)
+	}
+	chs[0] <- struct{}{}
+	<-sign
+
+}
+func main() {
+  GNumber = 3
+	Number = 100
+  chs := []chan Token{make(chan Token), make(chan Token), make(chan Token), make(chan Token)}
+  RunPipeline(GNumber,Number,chs,world)
+}
+```
+包括之前的水生成工厂那道题，也可以使用 pieline 模式来解决，替换掉之前使用的 waitgroup 和信号量，以及循环栅栏
 ## 参考资料
 - https://betterprogramming.pub/common-goroutine-leaks-that-you-should-avoid-fe12d12d6ee
 - https://github.com/fortytw2/leaktest
