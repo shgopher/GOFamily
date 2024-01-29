@@ -1152,7 +1152,7 @@ func main() {
 ```
  
 ### stream-流模式
-
+ 
 ### pipeline 流水线模式和 stream 流模式的对比
 流水线模式 (Pipeline Pattern) 和流模式 (Stream Pattern) 都是将任务分解成多个阶段来处理，但两者还是有一些区别：
 
