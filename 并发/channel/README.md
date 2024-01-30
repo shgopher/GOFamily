@@ -1152,7 +1152,42 @@ func main() {
 ```
  
 ### stream-流模式
- 
+将 channel 当做流式管道，提供多种功能，比如筛选元素，跳过元素等
+
+将数据转化为流，其中 channel 就是流，众多数据这里是 `...any`
+
+创建流
+```go
+func stream(done chan struct{}, values ...any) chan any {
+	c := make(chan any)
+	go func() {
+		defer close(c)
+		for _, v := range values {
+			select {
+			case <-done:
+				return
+			case s <- v:
+			}
+		}
+	}()
+	return c
+} 
+```
+根据流，我们可以有以下的处理
+- takeN：只取流中的前 n 个数据
+- takeFn：筛选流中的数据，只保留满足条件的数据
+- takeWhile：只取前面满足条件的数据，一旦不满足，就不再取了
+- skipN：跳过流中的前 n 个数据
+- skipFn：跳过满足条件的所有数据
+- skipWhile：跳过前面满足条件的数据，一旦不满足条件了，当前这个元素和以后的元素都会输出
+
+#### takeN
+#### takeFn
+#### takeWhile
+#### skipN
+#### skipFn
+#### skipWhile
+
 ### pipeline 流水线模式和 stream 流模式的对比
 流水线模式 (Pipeline Pattern) 和流模式 (Stream Pattern) 都是将任务分解成多个阶段来处理，但两者还是有一些区别：
 
