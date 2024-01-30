@@ -355,7 +355,7 @@ func AbsDifference[T NumericAbs[T]](a, b T) T {
 ## 用例子学泛型
 理论学习完了，不使用例子进行复习的话会忘的很快的。跟着我看几个例子吧
 
-***例子一：***函数泛型 `map-filter-reduce`
+### 函数泛型 `map-filter-reduce`
 
 ```go
 package main
@@ -434,7 +434,7 @@ type Result struct {
 
 `map的结果是：[2 4 6 8 10] filter的结果是:[3 4 5] reduce的结果是： 36`
 
-***例子二：***方法上的泛型 `sets`
+### 例子二：方法上的泛型 `sets`
 ```go
 package main
 
@@ -508,7 +508,7 @@ map[1:{} 2:{}]
 map[1:{}]
 `
 
-***例子三：***外部定义的约束 `实现一个sort接口类型`
+### 例子三：外部定义的约束 `实现一个sort接口类型`
 
 ```go
 package main
