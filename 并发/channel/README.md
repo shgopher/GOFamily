@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-02-01 17:01:38
+ * @LastEditTime: 2024-02-01 17:38:23
  * @FilePath: /GOFamily/并发/channel/README.md
  * @Description: 
  * 
@@ -1452,15 +1452,9 @@ func age(){
 ```
 当设置为 1 的时候，即使没有接受者了，发送这个地方的代码也能执行完毕，所以这个 goroutine 是不会泄露了。
 
-这里插一句，main goroutine 只要退出，其它 goroutine 不管有没有执行完毕也会退出，所以如果这种代码在 main 函数中出现，那么是不会发生 goroutine 泄露问题的，因为 main 函数结束以后，其它 goroutine 自动结束
-## channel 的实现原理
-### 创建
+这里插一句，main goroutine 只要退出，其它 goroutine 不管有没有执行完毕也会退出，所以如果这种代码在 main 函数中出现，那么是不会发生 goroutine 泄露问题的，因为：
 
-### send
-
-### recive
-
-### close
+***main 函数结束以后，其它 goroutine 自动结束***
 
 ## issues
 ### channel 是并发银弹吗？
