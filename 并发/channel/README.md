@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-02-01 17:54:11
+ * @LastEditTime: 2024-02-01 17:57:46
  * @FilePath: /GOFamily/并发/channel/README.md
  * @Description: 
  * 
@@ -1538,6 +1538,27 @@ go 语言中经常会出现一个 bug，就是死锁，很多都很没有设置 
 - write：panic
 ### channle 底层是什么
 一个内部有锁的循环队列
+
+channel 在 Go 语言中的底层实现主要涉及以下几个方面：
+
+1. 数据结构：channel 在内部维护一个消息队列，用于存储缓冲区的数据 (有缓存的话)，同时有发送方、接收方的指针。
+
+2. 同步机制：使用互斥锁 (Mutex) 和条件变量 (Cond) 实现同步，保证并发安全。
+
+3. 调度机制：通过运行时调度器管理 goroutine 的阻塞和唤醒，维护等待队列。
+
+4. 内存管理：与运行时内存管理紧密结合，缓冲区数据的内存分配与释放。
+
+5. 性能优化：负载均衡、本地队列等方式提高性能。
+
+具体而言，channel 的数据结构 hchan 中包含以下字段：
+
+- buf：循环队列，维护缓冲区
+- sendx/recvx：发送和接收指针
+- lock：互斥锁
+- sendsema/recvsema：发送和接收的条件变量
+
+发送接收时需要获取互斥锁，阻塞时等待条件变量。调度器 basis 上维护等待队列。
 
 ### 编程题，使用三个 goroutine 打印 abc 100 次
 上文提到的 channel 任务编排中的 pipeline 流水线模式完美解决这个问题。
