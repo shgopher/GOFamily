@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-02-01 17:38:23
+ * @LastEditTime: 2024-02-01 17:54:11
  * @FilePath: /GOFamily/并发/channel/README.md
  * @Description: 
  * 
@@ -1456,6 +1456,71 @@ func age(){
 
 ***main 函数结束以后，其它 goroutine 自动结束***
 
+## channle 和运行时调度如何交互
+channel 和 Go 运行时调度器的交互方式如下：
+
+1. 当 goroutine 向 channel 发送数据时，会调用 runtime.chansend 函数。该函数会判断 channel 是否已满，如果满了则让 goroutine 进入阻塞等待。
+
+2. 当 goroutine 从 channel 接收数据时，会调用 runtime.chanrecv 函数。该函数会判断 channel 是否为空，如果为空则让 goroutine 进入阻塞等待。
+
+3. 运行时调度器通过维护等待队列来管理被阻塞的 goroutine。当 channel 可读写时，会从等待队列中弹出 goroutine 继续运行。
+
+4. 运行时调度器以非常高频率运行，会在 goroutine 之间快速切换。这给用户的感觉就是 goroutine 并发运行。
+
+5. channel 的发送接收动作必须匹配，否则程序会死锁。调度器试图重排发送接收顺序来避免死锁。
+
+总结来说，channel 的阻塞是建立在运行时调度器的基础上。调度器管理被阻塞的 goroutine 队列，在条件允许时恢复 goroutine 继续运行。channel 的使用保证了数据的同步传递。
+
+### 如果去掉 channel，goroutine 就可以真实的并行了吗
+
+如果没有 channel 的话，goroutine 可以真正并行执行，不会被阻塞。
+
+channel 的发送接收机制，会在对端未准备好时造成 goroutine 阻塞。这就会引起 goroutine 之间的同步关系。
+
+而如果没有 channel：
+
+1. goroutine 之间不存在同步依赖，可以任意交叉执行。
+
+2. 程序需要自己维护竞争和同步逻辑，较难处理好并发问题。
+
+3. goroutine 无法通过 channel 通信，必须使用共享变量，增加竞争风险。
+
+4. 程序整体并发效果可能更好，但复杂度和错误风险都更高。
+
+5. 丧失了 channel 带来的可组合性、表达能力等优势。
+
+所以 channel 的引入让编程变复杂，但收获是可靠性和可维护性。需要根据实际情况权衡 channel 的引入带来的收益。
+
+如果非要最大程度发挥并行，确实可以考虑去掉 channel，但成功的并发程序往往不是依靠纯并行来实现的。
+
+这需要根据具体情形来权衡 channel 的引入带来的收益和复杂度。
+### channel 底层实际上是互斥锁，阻塞机制也符合互斥锁对于 goroutine 的阻塞规则吗
+
+channel 的发送接收在底层会使用互斥锁来实现同步。所以它继承了互斥锁一些内在的特性：
+
+1. 阻塞的 goroutine 会形成 FIFO (先进先出) 的等待队列，这确保了公平性。
+
+2. runtime 会优先唤醒等待时间最长的 goroutine，防止饥饿。
+
+3. 发送和接收有时会采用短暂的自旋等待锁，避免过早休眠线程。
+
+4. 发送方和接收方争用同一个锁，这会引起优先级反转等问题。
+
+但是
+
+channel 的实现要比直接使用锁更复杂，它内部做了很多优化：
+
+1. 非阻塞发送和接收会被优先执行，避免不必要的阻塞。
+
+2. 尽量避免线程休眠，减少锁的争用。
+
+3. 多核心会并行匹配发送和接收等。
+
+4. 可调节的缓冲区大小可根据场景优化吞吐量。
+
+综上，channel 继承了互斥锁的一些内在特性，但它的实现要复杂很多，做了大量优化来减少锁争用的影响。
+
+所以使用 channel 的信号量模式去实现的互斥锁并不适合，因为它比 go 本身的互斥锁更加复杂
 ## issues
 ### channel 是并发银弹吗？
 
@@ -1473,7 +1538,6 @@ go 语言中经常会出现一个 bug，就是死锁，很多都很没有设置 
 - write：panic
 ### channle 底层是什么
 一个内部有锁的循环队列
-### channle 和运行时调度如何交互
 
 ### 编程题，使用三个 goroutine 打印 abc 100 次
 上文提到的 channel 任务编排中的 pipeline 流水线模式完美解决这个问题。
