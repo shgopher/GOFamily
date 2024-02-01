@@ -1,3 +1,13 @@
+<!--
+ * @Author: shgopher shgopher@gmail.com
+ * @Date: 2023-05-14 23:08:19
+ * @LastEditors: shgopher shgopher@gmail.com
+ * @LastEditTime: 2024-02-01 16:42:00
+ * @FilePath: /GOFamily/并发/channel/README.md
+ * @Description: 
+ * 
+ * Copyright (c) 2024 by shgopher, All Rights Reserved. 
+-->
 # channel
 channel 是 csp 并发模型中的重要组成部分，它完成的使命是 goroutine 之间的通信。也就是 csp 中的 c。
 
@@ -1182,12 +1192,129 @@ func stream(done chan struct{}, values ...any) chan any {
 - skipWhile：跳过前面满足条件的数据，一旦不满足条件了，当前这个元素和以后的元素都会输出
 
 #### takeN
+```go
+func TakeN(done chan struct{},in chan any,num int)chan any{
+	c := make(chan any)
+	go func(){
+		defer close(c)
+		for i := 0; i < num; i++ {
+			select {
+				case <-done:
+					return 
+				case v,ok := <- in:
+					if ok  {
+						c <-v
+					}					
+			}
+		}
+	}()
+	return c
+}
+```
 #### takeFn
-#### takeWhile
-#### skipN
-#### skipFn
-#### skipWhile
+```go
+func TakeFn(done chan struct{},in chan any,fn func(any)bool)chan any{
+	c := make(chan any)
+	go func(){
+		defer close(c)
+		for v := range in {
+			if fn(v){
+			select {
+				case <-done:
+					return
+				case c <- v:					
+			  }
+			}
+		}
+	}()
+	return c
+}
+```
 
+#### takeWhile
+```go
+func takeWhile(done chan struct{}, in chan any, fn func(any) bool) chan any {
+    c := make(chan any)
+    go func() {
+        defer close(c)
+        for v := range in {
+            if !fn(v) {
+                return
+            }
+            select {
+            case <-done:
+                return
+            case c <- v:
+            }
+        }
+    }()
+    return c 
+}
+```
+#### skipN
+```go
+func skipN(done chan struct{}, in chan any, n int) chan any {
+    c := make(chan any)
+    go func() {
+        defer close(c)
+        i := 0
+        for v := range in {
+            if i < n {
+                i++
+                continue
+            }
+            select {
+            case <-done:
+                return
+            case c <- v:
+            }
+        }
+    }()
+    return c
+}
+```
+#### skipFn
+```go
+func skipFn(done chan struct{}, in chan any, fn func(any) bool) chan any {
+    c := make(chan any)
+    go func() {
+        defer close(c)
+        for v := range in {
+            if !fn(v) {
+                select {
+                case <-done:
+                    return
+                case c <- v:
+                }
+            }
+        }
+    }()
+    return c
+}
+```
+#### skipWhile
+```go
+
+func skipWhile(done chan struct{}, in chan any, fn func(any) bool) chan any {
+    c := make(chan any)
+    go func() {
+        defer close(c)
+        skip := true
+        for v := range in {
+            if skip && fn(v) {
+                continue
+            }
+            skip = false
+            select {
+            case <-done:
+                return
+            case c <- v:
+            }
+        }
+    }()
+    return c
+}
+```
 ### pipeline 流水线模式和 stream 流模式的对比
 流水线模式 (Pipeline Pattern) 和流模式 (Stream Pattern) 都是将任务分解成多个阶段来处理，但两者还是有一些区别：
 
