@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-02-01 16:42:00
+ * @LastEditTime: 2024-02-01 17:01:38
  * @FilePath: /GOFamily/并发/channel/README.md
  * @Description: 
  * 
@@ -1313,6 +1313,80 @@ func skipWhile(done chan struct{}, in chan any, fn func(any) bool) chan any {
         }
     }()
     return c
+}
+```
+#### 测试 stream
+```go
+func TestStream(t *testing.T) {
+
+  done := make(chan struct{})
+  defer close(done)
+
+  in := stream(done, 1, 2, 3, 4, 5)
+
+  // takeN
+  out := takeN(done, in, 3)
+  want := []int{1, 2, 3}
+	
+	// reflect.DeepEqual 更适用于判断复杂类型的变量,
+	// 像数组、切片、map、结构体等是否相等,
+	// 简单类型可以用==运算符判断。
+  if got := drain(out); !reflect.DeepEqual(got, want) {
+    t.Errorf("takeN = %v, want %v", got, want)
+  }
+
+  // takeFn
+  fn := func(v any) bool {
+    n := v.(int)
+    return n%2 == 0
+  }
+  out = takeFn(done, in, fn)
+  want = []int{2, 4}
+  if got := drain(out); !reflect.DeepEqual(got, want) {
+    t.Errorf("takeFn = %v, want %v", got, want) 
+  }
+
+  // takeWhile
+  out = takeWhile(done, in, func(v any) bool {
+    return v.(int) < 4
+  })
+  want = []int{1, 2, 3}
+  if got := drain(out); !reflect.DeepEqual(got, want) {
+    t.Errorf("takeWhile = %v, want %v", got, want)
+  }
+
+  // skipN 
+  out = skipN(done, in, 2)
+  want = []int{3, 4, 5}
+  if got := drain(out); !reflect.DeepEqual(got, want) {
+    t.Errorf("skipN = %v, want %v", got, want)
+  }
+
+  // skipFn
+  out = skipFn(done, in, func(v any) bool {
+    return v.(int)%2 == 0
+  })
+  want = []int{1, 3, 5}
+  if got := drain(out); !reflect.DeepEqual(got, want) {
+    t.Errorf("skipFn = %v, want %v", got, want)
+  }
+
+  // skipWhile
+  out = skipWhile(done, in, func(v any) bool {
+    return v.(int) < 3
+  })
+  want = []int{3, 4, 5}
+  if got := drain(out); !reflect.DeepEqual(got, want) {
+    t.Errorf("skipWhile = %v, want %v", got, want) 
+  }
+}
+
+func drain(in <-chan any) []any {
+  out := make([]any, 0)
+  for v := range in {
+    out = append(out, v)
+  }
+  return out
 }
 ```
 ### pipeline 流水线模式和 stream 流模式的对比
