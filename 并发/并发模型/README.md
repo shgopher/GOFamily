@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-02-03 02:13:05
+ * @LastEditTime: 2024-02-03 12:17:08
  * @FilePath: /GOFamily/并发/并发模型/README.md
  * @Description: 
  * 
@@ -64,6 +64,8 @@ CSP 模型中的进程通信原语包括：
 这里我们现简单的了解一些基本的使用 goroutne 的方法，后面的 channel 篇和并发原语 context atomic 定时器会进行更加详细的介绍。
 
 我们知道 go 使用了用户线程也就是 goroutine 去替代了传统的线程，所以在 go 语言中我们能操作的线程就是 goroutine，我们无法去触及真实的线程，线程和 goroutine 之间的关系是 go 语言运行时的调度器去调度的。
+
+goroutine 是一种轻量的可以被大量创建的用户态线程。
 ### 创建 goroutine
 使用 go 关键字加上函数去创建一个 goroutine，当然后面跟方法也可以。
 
@@ -114,7 +116,10 @@ func main() {
     wg.Wait()
 }
 ``` 
-go goroutine 执行完毕就会直接退出，程序的执行跟主 goroutine 有关，只要主 goroutine 不退出程序就会正常执行下去，反之，主 goroutine 如果退出了，其它的 goroutine 可能没有执行完毕，但是整个程序还是结束了。
+
+go goroutine 执行完毕就会直接退出，
+
+***程序的退出跟主 goroutine 有关，只要主 goroutine 不退出程序就会正常执行下去，反之，主 goroutine 如果退出了，其它的 goroutine 即便没有执行完毕，整个程序还是会结束。***
 
 ```go
 func main() {

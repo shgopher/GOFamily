@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-02-01 17:57:46
+ * @LastEditTime: 2024-02-03 11:46:51
  * @FilePath: /GOFamily/并发/channel/README.md
  * @Description: 
  * 
@@ -238,7 +238,7 @@ select {}
 
 
 ```
-### 对于 select for 和 time.Sleep 的阻塞机制的理解
+### 对于 select，for，time.Sleep 的阻塞机制的理解
 ***1。使用 for 循环不会造成 cpu 的执行吗？还是说 cpu 陷入了休眠状态，time.Sleep 呢？***
 
 使用 `for{}` 循环会导致 CPU 高速空转。
