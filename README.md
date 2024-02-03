@@ -17,9 +17,10 @@ hey~，我是科科，目前就职于国内一家互联网公司，你们可以�
 - `好友`，可以添加作者的微信好友
 
 ## 赞助作者
-- [cloudcone 服务器](https://app.cloudcone.com/?ref=2525) 主打一个性价比高，每月 3T 流量，带宽 1 GB/s，服务器地址美国洛杉矶，价格 5 刀/月。可支付宝付款！
 - [just-my-socks 机场](https://justmysocks.net/members/aff.php?aff=29885
 ) 不怕 ip 被 ban，每月 500GB 流量，2.5 Gbps 带宽，支持 5 台设备，价格 5 刀/月。可支付宝付款！
+- [cloudcone 服务器](https://app.cloudcone.com/?ref=2525) 主打一个性价比高，每月 3T 流量，带宽 1 GB/s，服务器地址美国洛杉矶，价格 5 刀/月。可支付宝付款！
+
 
 ## 基础
 - [hello world](./基础/helloWorld/README.md)
