@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-02-03 12:17:08
+ * @LastEditTime: 2024-02-04 15:55:30
  * @FilePath: /GOFamily/并发/并发模型/README.md
  * @Description: 
  * 
@@ -97,6 +97,101 @@ func age() {
 	time.Sleep(200)
 }
 ```
+### 异步函数决定权交给函数调用方
+我们看一个场景：
+
+我们要读取一个目录下的路径，首先我们可以这么写函数：
+```go
+func ListDirectory(dir string)([]string,error)
+```
+这是一个同步函数，我们传入的是目录的地址，返回的是值和错误，只不过我们需要阻塞的等待所有的路径全部扫描完成才能返回
+
+如果我们不想让业务阻塞到这里，可以改造成异步函数：
+```go
+func ListDirectoryAsync(dir string)chan string{
+	go func(){
+		//
+	}()
+	return c
+}
+```
+将数据传递给 channel，只需要不断的去读取 channel 就可以变成非阻塞的业务。
+
+不过这里我们发现还是会有一些问题，比如，如果我读取到了想要的数据想结束这个函数，该如何操作呢？读取过程中我如何分辨是读取完成了 close 掉了这个 channel 还是出现了错误 close 这个 channel 呢，所以这个函数还是需要改造
+
+我们可以将这个函数设置成一个同步函数，让调用者来决定是否异步的启动新 goroutine 去调用这个函数，这给了程序更大的灵活性
+
+***将异步执行函数的异步权交给调用方***是更好的设计思想，
+
+因为如果这个函数内部启动了一个 goroutine，但是它并没有提供给你详细的退出机制，那么非常容易出现 goroutine 的泄漏问题
+
+```go
+func ListDirectory(dir string, fn func(path string, info os.FileInfo, err error)) {
+	info, err := os.Lstat(dir)
+	if err != nil {
+		err = fn(root, nil, err)
+	} else {
+		err = walk(root, info, fn)
+	}
+	if err == SkipDir || err == SkipAll {
+		return nil
+	}
+	return err
+}
+
+// 同步调用
+func retrieveData(root string) (value []string, err error) {
+	// 使用一个切片来存储结果
+	var result []string
+
+	// 调用ListDirectory，这里不再使用goroutine
+	err = ListDirectory(root, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		// 如果文件不是普通文件，直接返回nil
+		if !info.Mode().IsRegular() {
+			return nil
+		}
+		// 将路径添加到结果切片中
+		result = append(result, path)
+		return nil
+	})
+
+	// 如果没有错误，返回结果切片
+	if err == nil {
+		return result, nil
+	}
+	// 如果有错误，返回错误
+	return nil, err
+}
+
+// 异步调用调用：
+
+func retrieveData(root string) (value chan string, err chan error) {
+	err = make(chan error, 1)
+	value = make(chan string)
+	go func() {
+		defer close(value)
+		// 调用时再决定是同步还是异步
+		err <- ListDirectory(root, func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				return err
+			}
+			// if the file is noe regular, it mean the file is done,you should return
+			if !info.Mode().IsRegular() {
+				return nil
+			}
+			value <- path
+			return nil
+		})
+	}()
+	return
+}
+
+```
+
+可以看上文，同步操作也可以，我们也可以使用 `go func` 的方式异步执行它，因为要传入一个函数，所以如果我们使用了异步，就在函数中使用 channel 来传递结果，如果我们是同步，那么就不再使用 channel，使用一个切片即可
 
 
 ### goroutine 退出
