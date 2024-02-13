@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-02-03 11:46:51
+ * @LastEditTime: 2024-02-13 12:27:21
  * @FilePath: /GOFamily/并发/channel/README.md
  * @Description: 
  * 
@@ -634,6 +634,68 @@ func main() {
 	}
 }
 ```
+### shutdown 和信号传递结合优雅退出
+Shutdown 方法通常与信号处理结合使用，以便在接收到系统退出信号 (如 SIGTERM 或 SIGINT) 时优雅地关闭服务器。这样可以确保所有正在进行的操作都能完成，而不是突然中断，从而提供更好的用户体验
+
+这个方法允许你安全地停止服务器，而不会中断正在处理的请求
+
+Shutdown 方法的工作原理如下：
+
+- 关闭监听器：首先，它会关闭所有打开的监听器，这意味着服务器将不再接受新的连接请求。
+
+- 处理现有连接：然后，它会等待所有现有的连接 (如 HTTP 请求) 完成处理。这包括那些正在处理中的请求，以及那些已经完成但尚未关闭的连接。
+
+- 上下文管理：Shutdown 方法接受一个 context.Context 参数，这个上下文可以用来设置超时。如果上下文在服务器关闭完成之前被取消 (例如，因为超时)，Shutdown 方法会返回一个错误。
+
+- 不处理长连接：需要注意的是，Shutdown 方法不会尝试关闭那些长时间保持连接的连接，如 WebSockets。对于这类连接，你需要在服务器上注册一个关闭通知函数，以便在需要时手动通知这些连接关闭。
+
+- 服务器不可重用：一旦调用了 Shutdown，服务器就不能再被重用了。尝试再次调用 Serve、ListenAndServe 或 ListenAndServeTLS 方法将返回 ErrServerClosed 错误。
+
+下面我们看一个案例：
+
+有两个 listenAndServe 服务，其中一个是 debug 服务一个是正式服务
+ ```go
+func main(){
+	done := make(chan error,2)
+	stop := make(chan struct{})
+
+	// 使用方去控制服务的关闭
+	// 使用方控制并发的操作
+	go func(){
+		done <- serveDubug(stop)
+	}()
+	go func(){
+		done <- serveApp(stop)
+	}()
+
+	var stopped bool
+
+	for i := range cap(done){
+		if err := <- done; err != nil{
+			fmt.Println(err)
+		}
+		if !stopped {
+			stopped = true
+			close(stop)
+		}
+	}
+}
+
+func serve(addr string,handler http.Handler,stop <-chan struct{})error {
+	s := http.Server{
+		Addr: addr,
+		Handler: handler,
+	}
+	// 信号传递和关闭服务结合
+	// 这里不能使用 os.Exit()
+	// os.exit 会立刻全部停止，不优雅，比较暴力
+	go func(){
+		<- stop
+		s.Shutdown(contex.Background())
+	}()
+	return s.ListenAndServe()
+}
+ ```
 ### 信号传递之 or-do 模式
 channel 信号传递之 or-do 模式跟 go 并发原语的 [singleflight](../同步原语/README.md#singleflight) 比较类似
 

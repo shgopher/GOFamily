@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-02-04 15:55:30
+ * @LastEditTime: 2024-02-13 01:44:26
  * @FilePath: /GOFamily/并发/并发模型/README.md
  * @Description: 
  * 
@@ -60,7 +60,7 @@ CSP 模型中的进程通信原语包括：
 - 原子发送-接收：一个进程可以通过原子发送-接收操作来发送消息并等待接收消息，这相当于发送和接收两个操作的组合。
 
 这些进程通信的都是通过内置的 channel 对象去实现的。
-## 了解 goroutine
+## 了解 goroutine 的基本信息
 这里我们现简单的了解一些基本的使用 goroutne 的方法，后面的 channel 篇和并发原语 context atomic 定时器会进行更加详细的介绍。
 
 我们知道 go 使用了用户线程也就是 goroutine 去替代了传统的线程，所以在 go 语言中我们能操作的线程就是 goroutine，我们无法去触及真实的线程，线程和 goroutine 之间的关系是 go 语言运行时的调度器去调度的。
@@ -239,6 +239,19 @@ func age() {
 	fmt.Println("hi there")
 }
 ```
+## 使用 goroutine 时的注意事项
+
+当我们使用 goroutine 时，下面几点是注意事项：
+
+1. ***确定一个 goroutine 什么时候会结束***
+2. ***是否有手段能停止 goroutine***
+
+只有搞清楚这两个问题，使用 goroutine 的时候才不会有泄露的风险，所以这两点是使用 gorotine 的安全哲学
+
+- 确定一个 goroutine 什么时候会结束
+- 是否有手段能停止 goroutine
+
+
 下面让我们正式学习 go 并发语言，channel 等相关知识！
 ## 参考资料
 - https://mp.weixin.qq.com/s/TvHY2i1FX1zS_WHdCvK-wA
