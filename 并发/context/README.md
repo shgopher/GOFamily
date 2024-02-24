@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-01-13 21:58:11
+ * @LastEditTime: 2024-02-24 22:06:06
  * @FilePath: /GOFamily/并发/context/README.md
  * @Description: 
  * 
@@ -184,18 +184,26 @@ func main() {
 
 func doWork(ctx context.Context) {
 	for {
-		time.Sleep(time.Second)
 		select {
 		case <-ctx.Done():
 			fmt.Println("over")
 			return
-		default:
-			fmt.Println("11")
+		//default:
+		//		fmt.Println("default")
 		}
 	}
 }
 
 ```
+
+在使用 select 监听 Context 的 Done 通道时，最好不要使用 default 分支。
+
+原因有以下几点：
+
+- default 分支会导致无法准确检测到 Context cancellation 的信号，如我们之前分析的那样
+- 使用 default 时需要仔细设计 case 分支的阻塞时间，比较 tricky
+- 不使用 default 可以确保每次 select 都会阻塞，从而能捕捉到外部的取消通知
+- 默认情况下，不使用 default 也可以使代码更简洁
 
 ## 带有 cause 的函数
 

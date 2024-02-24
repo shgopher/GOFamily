@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-02-13 12:27:21
+ * @LastEditTime: 2024-02-20 20:36:37
  * @FilePath: /GOFamily/并发/channel/README.md
  * @Description: 
  * 
@@ -680,6 +680,10 @@ func main(){
 		}
 	}
 }
+
+// 省略
+//func serveDubug(){serve()}
+//func serveApp(){serve()}
 
 func serve(addr string,handler http.Handler,stop <-chan struct{})error {
 	s := http.Server{
