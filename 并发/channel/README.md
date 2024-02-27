@@ -164,7 +164,7 @@ for value := range ch{
     fmt.Println(value)
 }
 ```
-值得注意的是，一个 channel 如果没有被关闭，那么 range 操作将会一直阻塞，所以通常我们都会关闭这个 channel，好让程序继续执行
+值得注意的是，一个 channel 如果没有被关闭，那么 range 操作将会一直阻塞，所以通常我们都会关闭这个 channel，好让程序继续执行，所以当我们控制 channel 的时候，尽可能的还是让发送方去控制 channel 的关闭，不要在接收方去控制。
 ```go
 go func() {
 		wg1.Wait()
@@ -1660,7 +1660,7 @@ func worker(id int, in chan Token, out chan Token, number int,fn func(int)) {
 		if id == (GNumber-1) && number == 1 {
 			close(sign)
 			break
-		}
+		} 
 		out <- token
 		number--
 	}

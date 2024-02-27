@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2022-11-17 20:40:42
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-02-24 22:06:06
+ * @LastEditTime: 2024-02-24 22:26:17
  * @FilePath: /GOFamily/并发/context/README.md
  * @Description: 
  * 
@@ -158,7 +158,7 @@ WithCancel 返回 parent context 的一个副本，它自然就是子 context，
 - parent context 的 done close 了，然后子 ctx 也要触发 cancel 方法
 - parent context cancel 了触发子 ctx cancel 方法
 
-关于第三条，解释一下：
+关于第三条，解释一下：(第四条类似)
 ```go
 package main
 
@@ -186,10 +186,11 @@ func doWork(ctx context.Context) {
 	for {
 		select {
 		case <-ctx.Done():
+		   // 工作代码
 			fmt.Println("over")
 			return
-		//default:
-		//		fmt.Println("default")
+	//default:
+	//	fmt.Println("default")
 		}
 	}
 }
