@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-02-20 20:36:37
+ * @LastEditTime: 2024-03-02 15:18:19
  * @FilePath: /GOFamily/并发/channel/README.md
  * @Description: 
  * 
@@ -693,6 +693,8 @@ func serve(addr string,handler http.Handler,stop <-chan struct{})error {
 	// 信号传递和关闭服务结合
 	// 这里不能使用 os.Exit()
 	// os.exit 会立刻全部停止，不优雅，比较暴力
+	// log.Fetal 这个函数通常不要使用，因为它的底层调用的就是os.Exit()
+	// 如果要是使用这个 log.Fetal 函数，只用在程序的起始位置，比如main的开头，或者init函数中
 	go func(){
 		<- stop
 		s.Shutdown(contex.Background())
