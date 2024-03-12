@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2024-02-26 00:23:06
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-03-02 17:43:37
+ * @LastEditTime: 2024-03-02 17:50:06
  * @FilePath: /GOFamily/并发/并发优化/README.md
  * @Description: 
  * 
@@ -92,7 +92,7 @@ func (t *Tracker) Shutdown(ctx context.Context) {
 	close(t.ch)
 	select {
 	case <-t.stop:
-	case <-ctx.Done():
+	case <-ctx.Done():  
 	}
 }
 ```
