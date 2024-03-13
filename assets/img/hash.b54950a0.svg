@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="545px" height="556px" viewBox="0 0 545 556" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>未命名</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形" stroke="#0A0101" fill="#D8D8D8" x="0.5" y="0.5" width="530" height="555"></rect>
+        <path id="直线-31" d="M442.995074,121.995122 L442.999976,122.495098 L443.916,215.995 L447.916454,215.956293 L443.504902,224.999976 L438.916887,216.044524 L442.916,216.005 L442.000024,122.504902 L441.995122,122.004926 L442.995074,121.995122 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="直线-30" d="M443,77 L443,107 L447,107 L442.5,116 L438,107 L442,107 L442,77 L443,77 Z" fill="#979797" fill-rule="nonzero"></path>
+        <rect id="矩形" stroke="#979797" fill="#D8D8D8" x="371.5" y="116.5" width="148" height="42"></rect>
+        <rect id="矩形" stroke="#979797" fill="#D8D8D8" x="390.5" y="44.5" width="104" height="32"></rect>
+        <rect id="矩形" stroke="#979797" fill="#D8D8D8" x="129.5" y="443.5" width="40" height="91"></rect>
+        <line x1="130.5" y1="459.5" x2="169.5" y2="459.5" id="直线-24" stroke="#979797" stroke-linecap="square"></line>
+        <rect id="矩形" stroke="#979797" fill="#D8D8D8" x="41.5" y="443.5" width="42" height="91"></rect>
+        <line x1="41.5" y1="459.5" x2="82.5" y2="459.5" id="直线-21" stroke="#979797" stroke-linecap="square"></line>
+        <rect id="矩形" stroke="#979797" fill="#D8D8D8" x="41.5" y="443.5" width="42" height="91"></rect>
+        <line x1="41.5" y1="459.5" x2="82.5" y2="459.5" id="直线-21" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="84.5" y1="528.5" x2="106.5" y2="528.5" id="直线-18" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="106.5" y1="528.5" x2="106.5" y2="452.5" id="直线-19" stroke="#979797" stroke-linecap="square"></line>
+        <path id="直线-16" d="M56,375 L56,434 L60,434 L55.5,443 L51,434 L55,434 L55,375 L56,375 Z" fill="#979797" fill-rule="nonzero"></path>
+        <line x1="55.5" y1="375.5" x2="71.5" y2="375.5" id="直线-17" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="77.5" x2="198.5" y2="77.5" id="直线-6" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="77.5" x2="198.5" y2="77.5" id="直线-5" stroke="#979797" stroke-linecap="square"></line>
+        <rect id="矩形" stroke="#979797" fill="#D8D8D8" x="71.5" y="59.5" width="254" height="325"></rect>
+        <line x1="71.5" y1="328.5" x2="198.5" y2="328.5" id="直线-15" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="238.5" x2="198.5" y2="238.5" id="直线-13" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="253.5" x2="198.5" y2="253.5" id="直线-14" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="142.5" x2="198.5" y2="142.5" id="直线-10" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="158.5" x2="198.5" y2="158.5" id="直线-11" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="207.5" x2="198.5" y2="207.5" id="直线-12" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="91.5" x2="198.5" y2="91.5" id="直线-9" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="77.5" x2="198.5" y2="77.5" id="直线-7" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="77.5" x2="198.5" y2="77.5" id="直线-7" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="114.5" x2="198.5" y2="114.5" id="直线-8" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="127.5" x2="198.5" y2="127.5" id="直线-2" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="222.5" x2="198.5" y2="222.5" id="直线-3" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="71.5" y1="347.5" x2="198.5" y2="347.5" id="直线-4" stroke="#979797" stroke-linecap="square"></line>
+        <rect id="矩形" stroke="#979797" fill="#D8D8D8" x="71.5" y="24.5" width="254" height="35"></rect>
+        <text id="buckets[0]" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="10" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="107.74" y="53">buckets[0]</tspan>
+        </text>
+        <text id="tophash[0]" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000102" fill-opacity="0.5">
+            <tspan x="111.68" y="74">tophash[0]</tspan>
+        </text>
+        <text id="key[0]" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="120.192" y="138">key[0]</tspan>
+        </text>
+        <text id="key[1]" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="120.192" y="155">key[1]</tspan>
+        </text>
+        <text id="key[7]" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="120.192" y="217">key[7]</tspan>
+        </text>
+        <text id="value[0]" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="116.852" y="234">value[0]</tspan>
+        </text>
+        <text id="value[1]" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="116.852" y="250">value[1]</tspan>
+        </text>
+        <text id="value[7]" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="120.852" y="343">value[7]</tspan>
+        </text>
+        <text id="overflow" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="119.732" y="373">overflow</tspan>
+        </text>
+        <text id="tophashs" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="43.616" y="453">tophashs</tspan>
+        </text>
+        <text id="overflow-buckets" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="76.768" y="427">overflow buckets</tspan>
+        </text>
+        <text id="keys" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="52.152" y="481">keys</tspan>
+        </text>
+        <text id="values" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="48.748" y="509">values</tspan>
+        </text>
+        <text id="overflow" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="44.732" y="531">overflow</tspan>
+        </text>
+        <text id="tophashs" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="133.616" y="455">tophashs</tspan>
+        </text>
+        <text id="链表" font-family="HarmonyOS_Sans_SC_Medium, HarmonyOS Sans SC" font-size="14" font-weight="400" fill="#000000" fill-opacity="0.5">
+            <tspan x="282" y="460">链表</tspan>
+        </text>
+        <text id="keys" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="142.152" y="481">keys</tspan>
+        </text>
+        <text id="values" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="137.748" y="509">values</tspan>
+        </text>
+        <text id="overflow" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="133.732" y="531">overflow</tspan>
+        </text>
+        <text id="tophash[7]" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="111.68" y="124">tophash[7]</tspan>
+        </text>
+        <text id="tophash[1]" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="8" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="111.68" y="86">tophash[1]</tspan>
+        </text>
+        <text id=".-.-." font-family="HarmonyOS_Sans_SC_Black, HarmonyOS Sans SC" font-size="6" font-weight="800" fill="#000000">
+            <tspan x="130.166" y="96">.</tspan>
+            <tspan x="130.166" y="104">.</tspan>
+            <tspan x="130.166" y="112">.</tspan>
+        </text>
+        <text id=".-.-." font-family="HarmonyOS_Sans_SC_Black, HarmonyOS Sans SC" font-size="6" font-weight="800" fill="#000000">
+            <tspan x="130.166" y="177">.</tspan>
+            <tspan x="130.166" y="185">.</tspan>
+            <tspan x="130.166" y="193">.</tspan>
+        </text>
+        <text id=".-.-." font-family="HarmonyOS_Sans_SC_Black, HarmonyOS Sans SC" font-size="6" font-weight="800" fill="#000000">
+            <tspan x="133.166" y="289">.</tspan>
+            <tspan x="133.166" y="297">.</tspan>
+            <tspan x="133.166" y="305">.</tspan>
+        </text>
+        <text id="buckets[1]" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="10" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="239.74" y="52">buckets[1]</tspan>
+        </text>
+        <text id="v,ok-:=-m[key]" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="10" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="412.86" y="64">v,ok := m[key]</tspan>
+        </text>
+        <text id="hashcode-=-hash(key)" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="10" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="398.35" y="142">hashcode = hash(key)</tspan>
+        </text>
+        <line x1="198.5" y1="385.5" x2="198.5" y2="59.5" id="直线" stroke="#979797" stroke-linecap="square"></line>
+        <path id="直线-20" d="M120,448 L129,452.5 L120,457 L120,453 L106,453 L106,452 L120,452 L120,448 Z" fill="#979797" fill-rule="nonzero"></path>
+        <line x1="41.5" y1="489.5" x2="82.5" y2="489.5" id="直线-22" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="130.5" y1="489.5" x2="169.5" y2="489.5" id="直线-25" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="41.5" y1="521.5" x2="82.5" y2="521.5" id="直线-23" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="130.5" y1="521.5" x2="169.5" y2="521.5" id="直线-23" stroke="#979797" stroke-linecap="square"></line>
+        <path d="M224,409 L224,552 L7,552 L7,409 L224,409 Z" id="直线-27" stroke="#830D0D" stroke-linecap="square"></path>
+        <path id="直线-28" d="M278.703934,463.822939 L279.177061,464.703934 L278.736563,464.940497 L232.225,489.918 L234.117523,493.442899 L224.059503,493.736563 L229.859383,485.513949 L231.751,489.037 L278.263437,464.059503 L278.703934,463.822939 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="直线-29" d="M363,62 L372,66.5 L363,71 L363,62 Z M205,66 L205,67 L198,67 L198,66 L205,66 Z M217,66 L217,67 L210,67 L210,66 L217,66 Z M229,66 L229,67 L222,67 L222,66 L229,66 Z M241,66 L241,67 L234,67 L234,66 L241,66 Z M253,66 L253,67 L246,67 L246,66 L253,66 Z M265,66 L265,67 L258,67 L258,66 L265,66 Z M277,66 L277,67 L270,67 L270,66 L277,66 Z M289,66 L289,67 L282,67 L282,66 L289,66 Z M301,66 L301,67 L294,67 L294,66 L301,66 Z M313,66 L313,67 L306,67 L306,66 L313,66 Z M325,66 L325,67 L318,67 L318,66 L325,66 Z M337,66 L337,67 L330,67 L330,66 L337,66 Z M349,66 L349,67 L342,67 L342,66 L349,66 Z M361,66 L361,67 L354,67 L354,66 L361,66 Z" fill="#2621C7" fill-rule="nonzero" opacity="0.49781436"></path>
+        <rect id="矩形" stroke="#979797" fill="#D8D8D8" x="360.5" y="222.5" width="166" height="54"></rect>
+        <text id="hashcode高位区" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="10" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="366.32" y="256">hashcode高位区 </tspan>
+        </text>
+        <text id="hashcode的高位区域组成topha" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="10" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="356.575" y="319">hashcode的高位区域组成tophash，</tspan>
+            <tspan x="373.255" y="332">用来确定在tophash中的位置</tspan>
+            <tspan x="436.5" y="345"></tspan>
+            <tspan x="353.17" y="358">hashcode的低位区域经过mask最终来</tspan>
+            <tspan x="401.5" y="371">确定是哪一个桶 </tspan>
+        </text>
+        <text id="hashcode低位区" font-family="HarmonyOS_Sans_SC_Light, HarmonyOS Sans SC" font-size="10" font-weight="300" fill="#000000" fill-opacity="0.5">
+            <tspan x="451.32" y="257">hashcode低位区</tspan>
+        </text>
+        <line x1="445.5" y1="221.5" x2="445.5" y2="276.5" id="直线-32" stroke="#979797" stroke-linecap="square"></line>
+    </g>
+</svg>
