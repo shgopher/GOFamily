@@ -2,7 +2,7 @@
  * @Author: shgopher shgopher@gmail.com
  * @Date: 2023-05-14 23:08:19
  * @LastEditors: shgopher shgopher@gmail.com
- * @LastEditTime: 2024-03-02 15:18:19
+ * @LastEditTime: 2024-03-14 00:36:11
  * @FilePath: /GOFamily/并发/channel/README.md
  * @Description: 
  * 
@@ -225,7 +225,9 @@ func main() {
   }
 }
 ```
-首先，select 的 case 中只能存放 channel 的收和发，以及一个 default 分支，各个分支如果在相同时间满足了条件是会随机去走分支的，不存在先后顺序，在 select 中也是可以去做判断的，判断 channel 是否存在正常值
+首先，select 的 case 中只能存放 channel 的收和发，以及一个 default 分支，各个分支如果在相同时间满足了条件是会随机去走分支的，不存在先后顺序，在 case 都阻塞的情况下再去走 defalut 分支，default 分支的优先级要低于 case 分支，所以 select 会优先去执行 case 中的 send 和 receive 操作，如果都满足条件，那么 select 会随机去执行一个 case 分支，如果都不存在条件，那么 select 会去执行 default 分支，如果 default 不存在，那么 select 会阻塞。
+
+在 select 中也是可以去做判断的，判断 channel 是否存在正常值
 
 select 本身不具有循环性质，所以通常被配合 for 循环使用
 
