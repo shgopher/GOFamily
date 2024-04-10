@@ -1,4 +1,5 @@
-<p align="left">
+# Go 程序员宝典
+<p align="left"> 
 hey~，我是科科，目前就职于国内一家互联网公司，你们可以加我<a href="#wechat.png">微信</a>，交个朋友吧~
 </p>
 <br>
