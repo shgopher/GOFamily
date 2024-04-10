@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>GOFamily - go 程序员宝典</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="shortcut icon" type="image/x-icon" href="/GOFamily/favicon.ico">
+    <meta name="description" content="🔥 go 程序员宝典，包含了：算法，数据库，网络操作系统，分布式，系统设计等一揽子知识体系">
+    
+    <link rel="preload" href="/GOFamily/assets/css/0.styles.93ee3edc.css" as="style"><link rel="preload" href="/GOFamily/assets/js/app.72dc8c96.js" as="script"><link rel="preload" href="/GOFamily/assets/js/2.5c331e53.js" as="script"><link rel="preload" href="/GOFamily/assets/js/42.d4dc564f.js" as="script"><link rel="prefetch" href="/GOFamily/assets/js/10.e2a7ae9e.js"><link rel="prefetch" href="/GOFamily/assets/js/100.6f49f3c0.js"><link rel="prefetch" href="/GOFamily/assets/js/101.4512c8a2.js"><link rel="prefetch" href="/GOFamily/assets/js/102.4cb34ac0.js"><link rel="prefetch" href="/GOFamily/assets/js/103.b4531caf.js"><link rel="prefetch" href="/GOFamily/assets/js/104.5190ec56.js"><link rel="prefetch" href="/GOFamily/assets/js/105.27135b71.js"><link rel="prefetch" href="/GOFamily/assets/js/106.ee0a923b.js"><link rel="prefetch" href="/GOFamily/assets/js/107.abf9bc9d.js"><link rel="prefetch" href="/GOFamily/assets/js/108.339b1d12.js"><link rel="prefetch" href="/GOFamily/assets/js/109.7ee4cfe4.js"><link rel="prefetch" href="/GOFamily/assets/js/11.0307bcae.js"><link rel="prefetch" href="/GOFamily/assets/js/110.25bb24d2.js"><link rel="prefetch" href="/GOFamily/assets/js/111.800f7506.js"><link rel="prefetch" href="/GOFamily/assets/js/112.d3ef22bf.js"><link rel="prefetch" href="/GOFamily/assets/js/113.befe1449.js"><link rel="prefetch" href="/GOFamily/assets/js/114.c126b120.js"><link rel="prefetch" href="/GOFamily/assets/js/115.773ca7ce.js"><link rel="prefetch" href="/GOFamily/assets/js/12.521ef871.js"><link rel="prefetch" href="/GOFamily/assets/js/13.6a579e8b.js"><link rel="prefetch" href="/GOFamily/assets/js/14.75c0ff31.js"><link rel="prefetch" href="/GOFamily/assets/js/15.e52e5499.js"><link rel="prefetch" href="/GOFamily/assets/js/16.66196c30.js"><link rel="prefetch" href="/GOFamily/assets/js/17.700521a1.js"><link rel="prefetch" href="/GOFamily/assets/js/18.4b8a1599.js"><link rel="prefetch" href="/GOFamily/assets/js/19.5ed73af4.js"><link rel="prefetch" href="/GOFamily/assets/js/20.536c666c.js"><link rel="prefetch" href="/GOFamily/assets/js/21.f6f10d5b.js"><link rel="prefetch" href="/GOFamily/assets/js/22.a6f2abf2.js"><link rel="prefetch" href="/GOFamily/assets/js/23.a3a10d16.js"><link rel="prefetch" href="/GOFamily/assets/js/24.edf743ad.js"><link rel="prefetch" href="/GOFamily/assets/js/25.399a7d8f.js"><link rel="prefetch" href="/GOFamily/assets/js/26.83ccb127.js"><link rel="prefetch" href="/GOFamily/assets/js/27.a48d42b2.js"><link rel="prefetch" href="/GOFamily/assets/js/28.69e5608b.js"><link rel="prefetch" href="/GOFamily/assets/js/29.742dd6e8.js"><link rel="prefetch" href="/GOFamily/assets/js/3.159fe1e3.js"><link rel="prefetch" href="/GOFamily/assets/js/30.4aafb94a.js"><link rel="prefetch" href="/GOFamily/assets/js/31.87baab0b.js"><link rel="prefetch" href="/GOFamily/assets/js/32.1ea926c5.js"><link rel="prefetch" href="/GOFamily/assets/js/33.b5f044ae.js"><link rel="prefetch" href="/GOFamily/assets/js/34.6f528336.js"><link rel="prefetch" href="/GOFamily/assets/js/35.32a9ec30.js"><link rel="prefetch" href="/GOFamily/assets/js/36.8d562ec5.js"><link rel="prefetch" href="/GOFamily/assets/js/37.1fac0e0a.js"><link rel="prefetch" href="/GOFamily/assets/js/38.53670642.js"><link rel="prefetch" href="/GOFamily/assets/js/39.9c8315fb.js"><link rel="prefetch" href="/GOFamily/assets/js/4.a73c4d70.js"><link rel="prefetch" href="/GOFamily/assets/js/40.3bf1fd84.js"><link rel="prefetch" href="/GOFamily/assets/js/41.0dc8c7ec.js"><link rel="prefetch" href="/GOFamily/assets/js/43.ceafd4d8.js"><link rel="prefetch" href="/GOFamily/assets/js/44.5dc33e34.js"><link rel="prefetch" href="/GOFamily/assets/js/45.f0718649.js"><link rel="prefetch" href="/GOFamily/assets/js/46.7fef4e9d.js"><link rel="prefetch" href="/GOFamily/assets/js/47.ed42ec16.js"><link rel="prefetch" href="/GOFamily/assets/js/48.46acecd4.js"><link rel="prefetch" href="/GOFamily/assets/js/49.565c30a8.js"><link rel="prefetch" href="/GOFamily/assets/js/5.864fc44c.js"><link rel="prefetch" href="/GOFamily/assets/js/50.e73c9c9f.js"><link rel="prefetch" href="/GOFamily/assets/js/51.df597de1.js"><link rel="prefetch" href="/GOFamily/assets/js/52.2c5f6040.js"><link rel="prefetch" href="/GOFamily/assets/js/53.60bb95e9.js"><link rel="prefetch" href="/GOFamily/assets/js/54.ee26f0f5.js"><link rel="prefetch" href="/GOFamily/assets/js/55.7b5dc58d.js"><link rel="prefetch" href="/GOFamily/assets/js/56.e3024720.js"><link rel="prefetch" href="/GOFamily/assets/js/57.ba1b4c58.js"><link rel="prefetch" href="/GOFamily/assets/js/58.d6c32d73.js"><link rel="prefetch" href="/GOFamily/assets/js/59.816d44fb.js"><link rel="prefetch" href="/GOFamily/assets/js/6.9747b1d8.js"><link rel="prefetch" href="/GOFamily/assets/js/60.ff4aee62.js"><link rel="prefetch" href="/GOFamily/assets/js/61.025df443.js"><link rel="prefetch" href="/GOFamily/assets/js/62.dfeb9d10.js"><link rel="prefetch" href="/GOFamily/assets/js/63.9a4b3540.js"><link rel="prefetch" href="/GOFamily/assets/js/64.b0245791.js"><link rel="prefetch" href="/GOFamily/assets/js/65.9e82002d.js"><link rel="prefetch" href="/GOFamily/assets/js/66.949483d3.js"><link rel="prefetch" href="/GOFamily/assets/js/67.613f77e3.js"><link rel="prefetch" href="/GOFamily/assets/js/68.f73d44cf.js"><link rel="prefetch" href="/GOFamily/assets/js/69.a717baf8.js"><link rel="prefetch" href="/GOFamily/assets/js/7.5c52a687.js"><link rel="prefetch" href="/GOFamily/assets/js/70.ae50c48a.js"><link rel="prefetch" href="/GOFamily/assets/js/71.5d1e6b28.js"><link rel="prefetch" href="/GOFamily/assets/js/72.5afe8bc8.js"><link rel="prefetch" href="/GOFamily/assets/js/73.03d8974c.js"><link rel="prefetch" href="/GOFamily/assets/js/74.ba79ddc9.js"><link rel="prefetch" href="/GOFamily/assets/js/75.d44fc2e7.js"><link rel="prefetch" href="/GOFamily/assets/js/76.13d1db91.js"><link rel="prefetch" href="/GOFamily/assets/js/77.bad2588a.js"><link rel="prefetch" href="/GOFamily/assets/js/78.2ee31447.js"><link rel="prefetch" href="/GOFamily/assets/js/79.f5c3f20d.js"><link rel="prefetch" href="/GOFamily/assets/js/8.706832d3.js"><link rel="prefetch" href="/GOFamily/assets/js/80.5aa44af4.js"><link rel="prefetch" href="/GOFamily/assets/js/81.33455a03.js"><link rel="prefetch" href="/GOFamily/assets/js/82.9f2284bd.js"><link rel="prefetch" href="/GOFamily/assets/js/83.5e222179.js"><link rel="prefetch" href="/GOFamily/assets/js/84.b93653e7.js"><link rel="prefetch" href="/GOFamily/assets/js/85.d5eced6c.js"><link rel="prefetch" href="/GOFamily/assets/js/86.5e630ea2.js"><link rel="prefetch" href="/GOFamily/assets/js/87.3c1fb9fa.js"><link rel="prefetch" href="/GOFamily/assets/js/88.87973a44.js"><link rel="prefetch" href="/GOFamily/assets/js/89.37b7fea9.js"><link rel="prefetch" href="/GOFamily/assets/js/9.e2b0263e.js"><link rel="prefetch" href="/GOFamily/assets/js/90.dedfc540.js"><link rel="prefetch" href="/GOFamily/assets/js/91.bc281b0a.js"><link rel="prefetch" href="/GOFamily/assets/js/92.725801f7.js"><link rel="prefetch" href="/GOFamily/assets/js/93.aad7aa97.js"><link rel="prefetch" href="/GOFamily/assets/js/94.bd1a1b8b.js"><link rel="prefetch" href="/GOFamily/assets/js/95.471eafef.js"><link rel="prefetch" href="/GOFamily/assets/js/96.4d743ebe.js"><link rel="prefetch" href="/GOFamily/assets/js/97.97ceab86.js"><link rel="prefetch" href="/GOFamily/assets/js/98.e08b5049.js"><link rel="prefetch" href="/GOFamily/assets/js/99.ad21ff40.js">
+    <link rel="stylesheet" href="/GOFamily/assets/css/0.styles.93ee3edc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/GOFamily/" class="home-link router-link-active"><img src="https://avatars.githubusercontent.com/u/42873232" alt="GOFamily - go 程序员宝典" class="logo"> <span class="site-name can-hide">GOFamily - go 程序员宝典</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/GOFamily/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Menu" class="dropdown-title"><span class="title">系列教程</span> <span class="arrow down"></span></button> <button type="button" aria-label="Menu" class="mobile-dropdown-title"><span class="title">系列教程</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://shgopher.github.io/GOFamily/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GOFamily 【go语言教程】
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://shgopher.github.io/408/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  408  【基础408知识教程】
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://shgopher.github.io/luban/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  luban  【系统设计教程】
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://shgopher.github.io/dingdang/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  dingdang  【工具教程】
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://shgopher.github.io/god/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  god  【给程序员写的书】
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://shgopher.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  作者
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/shgopher/GOFamily" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/GOFamily/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Menu" class="dropdown-title"><span class="title">系列教程</span> <span class="arrow down"></span></button> <button type="button" aria-label="Menu" class="mobile-dropdown-title"><span class="title">系列教程</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://shgopher.github.io/GOFamily/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GOFamily 【go语言教程】
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://shgopher.github.io/408/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  408  【基础408知识教程】
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://shgopher.github.io/luban/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  luban  【系统设计教程】
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://shgopher.github.io/dingdang/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  dingdang  【工具教程】
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://shgopher.github.io/god/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  god  【给程序员写的书】
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://shgopher.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  作者
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/shgopher/GOFamily" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span></span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/GOFamily/%E5%9F%BA%E7%A1%80/%E7%BB%93%E6%9E%84%E4%BD%93/#简单介绍-struct" class="sidebar-link">简单介绍 struct</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/GOFamily/%E5%9F%BA%E7%A1%80/%E7%BB%93%E6%9E%84%E4%BD%93/#解耦结构体声明和调用" class="sidebar-link">解耦结构体声明和调用</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/GOFamily/%E5%9F%BA%E7%A1%80/%E7%BB%93%E6%9E%84%E4%BD%93/#匿名-struct" class="sidebar-link">匿名 struct</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/GOFamily/%E5%9F%BA%E7%A1%80/%E7%BB%93%E6%9E%84%E4%BD%93/#空结构体" class="sidebar-link">空结构体</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/GOFamily/%E5%9F%BA%E7%A1%80/%E7%BB%93%E6%9E%84%E4%BD%93/#直接嵌套还是作为字段" class="sidebar-link">直接嵌套还是作为字段</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="结构体">结构体</h1> <h2 id="简单介绍-struct">简单介绍 struct</h2> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> People <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  Addr <span class="token builtin">string</span>
+  name <span class="token builtin">string</span>
+  year <span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>Peopel 首字母大写，根据我们所学的首字母大写可导出的知识，它是包级可导出结构</li> <li>Addr 首字母大写，所以它是可导出字段，name 和 year 都是小写，所以他们俩不可导出</li></ul> <p>下面看一下结构体的使用</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 初始化</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> p People
+  p<span class="token punctuation">.</span>Addr <span class="token operator">=</span> <span class="token string">&quot;北京&quot;</span>
+  p<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;小明&quot;</span>
+  p<span class="token punctuation">.</span>year <span class="token operator">=</span> <span class="token number">2000</span>
+
+  <span class="token keyword">var</span> p1 <span class="token operator">=</span> People<span class="token punctuation">{</span>
+    Addr<span class="token punctuation">:</span> <span class="token string">&quot;北京&quot;</span><span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token string">&quot;小明&quot;</span><span class="token punctuation">,</span>
+    year<span class="token punctuation">:</span> <span class="token number">2000</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">var</span> p2 <span class="token operator">=</span> <span class="token operator">&amp;</span>People<span class="token punctuation">{</span>
+    Addr<span class="token punctuation">:</span> <span class="token string">&quot;北京&quot;</span><span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token string">&quot;小明&quot;</span><span class="token punctuation">,</span>
+    year<span class="token punctuation">:</span> <span class="token number">2000</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> People <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  Addr <span class="token builtin">string</span>
+  name <span class="token builtin">string</span>
+  year <span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 结构体的调用</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> p  <span class="token operator">=</span> <span class="token operator">&amp;</span>People<span class="token punctuation">{</span>
+    Addr<span class="token punctuation">:</span> <span class="token string">&quot;北京&quot;</span><span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token string">&quot;小明&quot;</span><span class="token punctuation">,</span>
+    year<span class="token punctuation">:</span> <span class="token number">2000</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 这里是语法糖，p虽然是people的指针，</span>
+  <span class="token comment">// 但是它却可以直接调用 Addr</span>
+  <span class="token comment">// 实际上就是 (*p).Addr 的省略</span>
+  p<span class="token punctuation">.</span>Addr <span class="token operator">=</span> <span class="token string">&quot;上海&quot;</span>
+  p<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;小红&quot;</span>
+  p<span class="token punctuation">.</span>year <span class="token operator">=</span> <span class="token number">2001</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>Addr<span class="token punctuation">,</span> p<span class="token punctuation">.</span>name<span class="token punctuation">,</span> p<span class="token punctuation">.</span>year<span class="token punctuation">)</span>
+
+  <span class="token comment">// 我们还可以使用new来代替&amp;</span>
+  <span class="token comment">// 这种写法跟上文中的 var p = &amp;People{} </span>
+  <span class="token comment">// 一个意思</span>
+  <span class="token keyword">var</span> p1 <span class="token operator">=</span> <span class="token function">new</span><span class="token punctuation">(</span>People<span class="token punctuation">)</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> People <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  Addr <span class="token builtin">string</span>
+  name <span class="token builtin">string</span>
+  year <span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="解耦结构体声明和调用">解耦结构体声明和调用</h2> <p>当我们实现结构体的时候，如果显示写出结构体的字段变量名称，就可以不按照顺序，以及可以不完全实现全部字段，这样的话，结构体的声明和实现就可以完全解耦，当然可以隐藏实现的结构体变量，那么你不得不要按照顺序，以及实现全部字段，满足这两者才可以。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 显式实现</span>
+<span class="token keyword">type</span> People <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  Addr <span class="token builtin">string</span>
+  name <span class="token builtin">string</span>
+  year <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span><span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> p <span class="token operator">=</span> People<span class="token punctuation">{</span>
+    Addr<span class="token punctuation">:</span> <span class="token string">&quot;北京&quot;</span><span class="token punctuation">,</span>
+    year<span class="token punctuation">:</span> <span class="token keyword">func</span><span class="token punctuation">(</span>a <span class="token builtin">int</span><span class="token punctuation">)</span><span class="token builtin">int</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token number">2000</span> <span class="token operator">+</span> a
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+ 
+<span class="token punctuation">}</span>
+</code></pre></div><p>上述代码就是显示的写出了字段的变量名称，你看，name 并没有被写上，这种情况下，name 就会被命名为一个初始值，即 “”</p> <p>这样，即使结构体本身有什么增加字段的行为，实现结构体的逻辑代码也不用改变了。</p> <p>如果是隐式的话，那么必须按照顺序，以及数量进行实现，建议在字段不变以及字段数量非常少的时候使用。</p> <h2 id="匿名-struct">匿名 struct</h2> <p>我们使用匿名 struct，可以完全将另一个结构体嵌入到这个结构体中。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Student <span class="token keyword">struct</span><span class="token punctuation">{</span>
+  People
+  score <span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> People <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  name <span class="token builtin">string</span>
+  year <span class="token builtin">string</span>
+  addr <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>使用匿名函数，等于将这个匿名函数的字段完全给予了这个新的结构体，这跟使用这个结构体当作一个字段的类型是不同的，我们看一个例子</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Student <span class="token keyword">struct</span><span class="token punctuation">{</span>
+  People People
+  score <span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> People <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  name <span class="token builtin">string</span>
+  year <span class="token builtin">string</span>
+  addr <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这段代码跟上文看起来很像，但是一个是将 people 直接嵌入，一个是当成了它的一个字段类型。让我们看一下这两者使用起来的区别</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Student1 <span class="token keyword">struct</span><span class="token punctuation">{</span>
+  People People
+  score <span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> Student <span class="token keyword">struct</span><span class="token punctuation">{</span>
+  People
+  score <span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> People <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  name <span class="token builtin">string</span>
+  year <span class="token builtin">string</span>
+  addr <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token function">new</span><span class="token punctuation">(</span>Student<span class="token punctuation">)</span>
+  <span class="token keyword">var</span> s1 <span class="token operator">=</span> <span class="token function">new</span><span class="token punctuation">(</span>Student1<span class="token punctuation">)</span>
+  s<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;小明&quot;</span>
+  s<span class="token punctuation">.</span>year <span class="token operator">=</span> <span class="token string">&quot;2000&quot;</span>
+  s<span class="token punctuation">.</span>addr <span class="token operator">=</span> <span class="token string">&quot;北京&quot;</span>
+  s<span class="token punctuation">.</span>score <span class="token operator">=</span> <span class="token number">100</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>name<span class="token punctuation">,</span> s<span class="token punctuation">.</span>year<span class="token punctuation">,</span> s<span class="token punctuation">.</span>addr<span class="token punctuation">,</span> s<span class="token punctuation">.</span>score<span class="token punctuation">)</span>
+  s1<span class="token punctuation">.</span>people<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;小红&quot;</span>
+  s1<span class="token punctuation">.</span>people<span class="token punctuation">.</span>year <span class="token operator">=</span> <span class="token string">&quot;2001&quot;</span>
+  s1<span class="token punctuation">.</span>people<span class="token punctuation">.</span>addr <span class="token operator">=</span> <span class="token string">&quot;上海&quot;</span>
+  s1<span class="token punctuation">.</span>score <span class="token operator">=</span> <span class="token number">200</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s1<span class="token punctuation">.</span>people<span class="token punctuation">.</span>name<span class="token punctuation">,</span> s1<span class="token punctuation">.</span>people<span class="token punctuation">.</span>year<span class="token punctuation">,</span> s1<span class="token punctuation">.</span>people<span class="token punctuation">.</span>addr<span class="token punctuation">,</span> s1<span class="token punctuation">.</span>score<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>我们发现匿名函数的字段直接赋予了新的结构体，它不再需要显式的调用 <code>s1.People.name</code></p> <p>实际上，不止一个 struct 可以当作匿名函数，内置类型也是可以的</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Student <span class="token keyword">struct</span><span class="token punctuation">{</span>
+  <span class="token builtin">string</span>
+  People
+  <span class="token builtin">int</span>
+  score <span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> People <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  name <span class="token builtin">string</span>
+  year <span class="token builtin">string</span>
+  addr <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token function">new</span><span class="token punctuation">(</span>Student<span class="token punctuation">)</span>
+  s<span class="token punctuation">.</span>People <span class="token operator">=</span> People<span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">&quot;小明&quot;</span><span class="token punctuation">,</span>
+    year<span class="token punctuation">:</span> <span class="token string">&quot;2000&quot;</span><span class="token punctuation">,</span>
+    addr<span class="token punctuation">:</span> <span class="token string">&quot;北京&quot;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+  s<span class="token punctuation">.</span><span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">12</span>
+  s<span class="token punctuation">.</span><span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">&quot;12&quot;</span>
+  s<span class="token punctuation">.</span>score <span class="token operator">=</span> <span class="token number">100</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>函数也可以将指针类型当作类型以及直接嵌入，与非指针相比，我们不能直接调用嵌入的结构体的字段，因为它目前还是 nil，这个时候我们必须先将结构体初始化，然后再进行操作，下文的代码有演示。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Student <span class="token keyword">struct</span><span class="token punctuation">{</span>
+  Name <span class="token operator">*</span>Name
+  <span class="token operator">*</span>People
+  <span class="token builtin">int</span>
+  <span class="token builtin">string</span>
+  score <span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> Name <span class="token builtin">string</span><span class="token punctuation">{</span>
+  fist <span class="token builtin">string</span>
+
+  last <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> People <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  name <span class="token builtin">string</span>
+  year <span class="token builtin">string</span>
+  addr <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token function">new</span><span class="token punctuation">(</span>Student<span class="token punctuation">)</span>
+
+  s<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token function">new</span><span class="token punctuation">(</span>Name<span class="token punctuation">)</span>
+  s<span class="token punctuation">.</span>People <span class="token operator">=</span> <span class="token function">new</span><span class="token punctuation">(</span>People<span class="token punctuation">)</span>
+
+  s<span class="token punctuation">.</span>Name<span class="token punctuation">.</span>first <span class="token operator">=</span> <span class="token string">&quot;小明&quot;</span>
+  s<span class="token punctuation">.</span>Name<span class="token punctuation">.</span>last <span class="token operator">=</span> <span class="token string">&quot;小红&quot;</span>
+  s<span class="token punctuation">.</span>name<span class="token operator">=</span> <span class="token string">&quot;小明&quot;</span>
+  s<span class="token punctuation">.</span>year <span class="token operator">=</span> <span class="token string">&quot;2000&quot;</span>
+  s<span class="token punctuation">.</span>addr <span class="token operator">=</span> <span class="token string">&quot;北京&quot;</span>
+  s<span class="token punctuation">.</span><span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">12</span>
+  s<span class="token punctuation">.</span><span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">&quot;12&quot;</span>
+  s<span class="token punctuation">.</span>score <span class="token operator">=</span> <span class="token number">100</span>
+
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>通过这个演示我们发现，其实嵌入更像是一种语法糖，它就跟将结构体当作类型，前面的结构体字段变量跟这个类型保持一致这种操作是同样的作用，只不过直接嵌入可以将嵌入的字段当作自己的字段，省略了中间的变量罢了，它有下面的等于关系</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Student <span class="token keyword">struct</span><span class="token punctuation">{</span>
+  <span class="token comment">//People *People</span>
+  <span class="token comment">// 等于 </span>
+  <span class="token comment">// *People</span>
+
+
+  <span class="token comment">// People People</span>
+  <span class="token comment">// 等于 </span>
+  <span class="token comment">// People</span>
+  
+
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> People <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  name <span class="token builtin">string</span>
+  year <span class="token builtin">string</span>
+  addr <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>当一个结构体拥有了其它嵌入的时，也一起拥有了在他们身上的方法，不过，非嵌入的那种，还是需要带上中间的字段变量名称比如：</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">type</span> Student <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	Name Name
+	<span class="token operator">*</span>People
+	<span class="token builtin">int</span>
+	<span class="token builtin">string</span>
+	score <span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">type</span> Name <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	first <span class="token builtin">string</span>
+	last  <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">type</span> People <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	name <span class="token builtin">string</span>
+	year <span class="token builtin">string</span>
+	addr <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>Name<span class="token punctuation">)</span><span class="token function">S</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;stuend-s&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 如果这里不是定义在指针上的方法，这段代码将报错</span>
+<span class="token comment">// 原因是 people嵌入的时候还是nil，如果这里不是指针上的方法，是值上的方法</span>
+<span class="token comment">// 底层是需要 *People （取值）  操作的，但是这时候是nil，所以就会报错。</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>People<span class="token punctuation">)</span><span class="token function">SetS</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;people-setS&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token function">new</span><span class="token punctuation">(</span>Student<span class="token punctuation">)</span>
+  <span class="token comment">// 这里注意，因为不是嵌入的操作，所以它必须带上中间的 Name</span>
+	s<span class="token punctuation">.</span>Name<span class="token punctuation">.</span><span class="token function">S</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	s<span class="token punctuation">.</span><span class="token function">SetS</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h2 id="空结构体">空结构体</h2> <p>通常，当我们需要一个临时的变量时，我们可以会想到设置一个 bool 类型，因为我们潜意识中感觉一个 bool 类型是比较小的，但是一个空的变量才是最小的，下面让我们看一个例子，这个例子发生在使用 channel 传递信息这个场景。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  sig <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">bool</span><span class="token punctuation">)</span>
+  <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+    sig <span class="token operator">&lt;-</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token operator">&lt;-</span> sig
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;任务已经完成&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>没错，这段代码中，使用一个 bool 类型的 channel 是没什么问题的，你甚至也可以使用 int string 都可以，因为只是传递一个信息，信息的内容不重要，但是当我们站在优化的角度来考虑，这里的 bool 就不完美了，我们改成空的结构体即可：</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  sig <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token keyword">struct</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+    sig <span class="token operator">&lt;-</span> <span class="token keyword">struct</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token operator">&lt;-</span> sig
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;任务已经完成&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>需要注意的是，一个空的结构体，表示它类型的方式是 <code>struct{}</code>，而使用这个空结构体的方式就是 <code>struct{}{}</code>，前面的大括号是跟 struct 一起的整体表示空结构体，后面的大括号表示一个空结构体类型的结构体调用</p> <h2 id="直接嵌套还是作为字段">直接嵌套还是作为字段</h2> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Pool <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  wg sync<span class="token punctuation">.</span>WaitGroup
+  JobQueue <span class="token keyword">chan</span> Job
+  dispatcher <span class="token operator">*</span>dispatcher
+<span class="token punctuation">}</span>
+<span class="token comment">// or</span>
+<span class="token keyword">type</span> Pool <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  sync<span class="token punctuation">.</span>WaitGroup
+  
+  JobQueue <span class="token keyword">chan</span> Job
+  dispatcher <span class="token operator">*</span>dispatcher
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>结构体嵌套可能带来的问题：</p> <ul><li><p>名称冲突
+如果 Pool 结构体中还定义了 Add/Done/Wait 方法，和嵌套的 WaitGroup 中的方法就会产生冲突。</p></li> <li><p>不必要的方法
+嵌套整个 WaitGroup 会让 Pool 结构体拥有 Add/Done/Wait 等方法，但 Pool 可能只需要 Wait 就够了。</p></li> <li><p>使结构体臃肿
+嵌套整个 WaitGroup 会让 Pool 结构体看起来很臃肿，包含许多其实用不到的方法。</p></li> <li><p>继承关系不清晰
+Pool 并不是 WaitGroup 的一种，嵌套整个 WaitGroup 让人可能误以为它是在继承 WaitGroup。</p></li></ul> <p>所以，作为一个字段，可以避免上述问题，又可以保持必要的功能。</p> <p>总结一下，嵌套要慎用，只有当：</p> <ul><li>被嵌套的类型方法不会与现有方法冲突</li> <li>被嵌套的所有方法都会被用到</li> <li>两者之间有逻辑上的继承关系</li></ul> <p>时，才更适合使用嵌套 (组合) 的方式。</p> <p>否则，使用字段的方式可以获得必要的功能，而不引入嵌套的潜在问题。</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/shgopher/GOFamily/edit/release/基础/结构体/README.md" target="_blank" rel="noopener noreferrer">在GitHub中编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">最后更新:</span> <span class="time">1/13/2024, 2:04:03 PM</span></div></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/GOFamily/assets/js/app.72dc8c96.js" defer></script><script src="/GOFamily/assets/js/2.5c331e53.js" defer></script><script src="/GOFamily/assets/js/42.d4dc564f.js" defer></script>
+  </body>
+</html>
