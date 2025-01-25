@@ -87,12 +87,21 @@ s = s[:] // 或者 s = s[:0]  or  s = s[0:] or  s= s[0:0]
 - 互斥锁的值复制
 
 ```go
-var s slice
+var s []int
 s[0] = 1 // 错误 ❌
 
 var m map[int]int
 m[1] = 12 // 错误 ❌
 ```
+
+不过这里要强调一下，go 语言中零值为 nil 的 map 和 slice ，尝试向 nil map（或者slice） 写入数据时会 panic，如果要访问该 nil map（或者 slice）的索引值，那么**不会**发生 panic ，只会访问该索引值的零值
+
+```go
+
+var s map[int]int
+fmt.Println(s[1]) // 这是正常输出为 0
+```
+
 再看互斥锁的案例
 ```go
 var mu sync.Mutex
