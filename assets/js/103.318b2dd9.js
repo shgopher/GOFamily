@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[103],{534:function(t,s,e){"use strict";e.r(s);var n=e(36),o=Object(n.a)({},(function(){var t=this.$createElement,s=this._self._c||t;return s("ContentSlotsDistributor",{attrs:{"slot-key":this.$parent.slotKey}},[s("h1",{attrs:{id:"go-语言的读写模型"}},[this._v("go 语言的读写模型")])])}),[],!1,null,null,null);s.default=o.exports}}]);
